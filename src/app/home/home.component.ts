@@ -27,15 +27,20 @@ export class HomeComponent implements OnInit {
   registrationErrorText: string;
   loading: boolean = false;
 
+  isNotBigScreen: boolean = false;
+
   constructor(private formBuilder: FormBuilder,
     private dialog: MatDialog,
-    private title: Title) { 
-      title.setTitle("Home - StudyBoom")
-    }
+    private title: Title) {
+    title.setTitle("Home - StudyBoom")
+  }
 
 
 
   ngOnInit() {
+    console.log(navigator.userAgent)
+    if (navigator.userAgent.match(/Android|iPhone|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i))
+      this.isNotBigScreen = true
   }
 
   performLogin() {
@@ -71,8 +76,8 @@ export class HomeComponent implements OnInit {
   }
   openDialog() {
     this.dialog.open(AlertBoxComponent, {
-      minWidth:'25%',
-      data:{title:'Warning', type:'warn', message:'This is just a demo please do not get serious!'}
+      minWidth: '25%',
+      data: { title: 'Warning', type: 'warn', message: 'This is just a demo please do not get serious!' }
     })
   }
 
