@@ -1,0 +1,13 @@
+<div class="main-div-animation" fxLayout="column" fxLayoutAlign="center center" *ngIf="loading">
+    <div class="cssload-thecube">
+        <div class="cssload-cube cssload-c1"></div>
+        <div class="cssload-cube cssload-c2"></div>
+        <div class="cssload-cube cssload-c4"></div>
+        <div class="cssload-cube cssload-c3"></div>
+    </div>
+    <br>
+    <span class="anim-loading-title"><b>Loading...</b></span>
+</div>
+<div @routerInAnimation >
+    <router-outlet></router-outlet>
+</div>

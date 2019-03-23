@@ -1,0 +1,31 @@
+<h3 mat-dialog-title class="dialog-title margin-zero" fxLayoutAlign="center center">
+    <mat-icon *ngIf="type==='success'">done_outline</mat-icon>
+    <mat-icon *ngIf="type==='error'">block</mat-icon>
+    <mat-icon *ngIf="type==='warn'">error_outline</mat-icon>&nbsp;
+    {{title}}
+</h3>
+<div mat-dialog-content class="margin-zero dialog-content" fxLayout="column" fxLayoutAlign="center center">
+    <div fxFlex="100" fxLayoutAlign="center center">
+        <div *ngIf="type==='success'" fxFlex="100" class="success-check">
+            <i class="fa fa-check-circle-o fa-4x" aria-hidden="true"></i>
+        </div>
+        <div *ngIf="type==='error'" fxFlex="100" class="danger-check">
+            <i class="fa fa-times-circle fa-4x" aria-hidden="true"></i>
+        </div>
+        <div *ngIf="type==='warn'" fxFlex="100" class="warn-check">
+            <i class="fa fa-info-circle fa-4x" aria-hidden="true"></i>
+        </div>
+    </div>
+    <br>
+    <span fxFlex="100" class="alert-box-message" fxLayoutAlign="center start">{{message}}</span>
+    <br>
+</div>
+<div mat-dialog-actions class="dialog-action" fxLayoutAlign="center center" *ngIf="!routerLinkArray">
+    <button mat-button class="button-padding-2 close-button-color" (click)="closeDialog()" [mat-dialog-close]="{status: true}">OK</button>
+</div>
+<div mat-dialog-actions class="dialog-action" fxLayoutAlign="end center" *ngIf="routerLinkArray">
+    <div *ngFor="let router of routerLinkArray" class="margin-right-2">
+        <button mat-button [routerLink]="[router.link]" class="button-padding-2 close-button-color" [mat-dialog-close]="{status: true}">{{router.message}}</button>
+    </div>
+</div>
+

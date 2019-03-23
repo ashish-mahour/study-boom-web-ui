@@ -1,0 +1,61 @@
+::ng-deep{
+    .mat-dialog-container{
+        padding: 0%;
+    }
+}
+.margin-zero{
+    margin: 0%;
+}
+.dialog-content{
+    background-image: radial-gradient(circle,rgb(164, 206, 206),rgb(125, 155, 168));
+}
+.dialog-title{
+    background-color:rgba(43, 43, 43, 0.863);
+    padding: 2%;
+    color:rgb(209, 206, 206);
+}
+.dialog-action{
+    margin-bottom: 0%;
+    background-image: radial-gradient(circle,rgb(164, 206, 206),rgb(125, 155, 168));
+}
+.dialog-title-icon{
+    padding: 2%;
+}
+.margin-right-2{
+    margin-right: 2%;
+}
+.button-padding-2{
+    border-radius: 10%;
+}
+.success-check{
+    color: #118811;
+    text-align: center;
+    padding: 1%;
+}
+
+.danger-check{
+    color: #D31800;
+    text-align: center;
+    padding: 1%;
+}
+.warn-check{
+    color: rgb(199, 137, 4);
+    text-align: center;
+    padding: 1%;
+}
+.alert-box-message{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 100%;
+    font-weight: 500;
+    color:rgba(43, 43, 43, 0.863);
+    padding: 1%;
+}
+.close-button-color{
+    background-image: radial-gradient(circle,rgb(68, 144, 177),rgb(79, 157, 179));
+    color: rgb(44, 44, 44);
+    padding: 1%;
+}
+.dialog-marginp-0{
+    margin: 0;
+}
+
