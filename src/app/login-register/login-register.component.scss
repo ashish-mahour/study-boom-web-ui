@@ -1,0 +1,74 @@
+.login-register-content{
+    color: rgba(43, 43, 43, 0.863); 
+    width: 30%;
+    margin-top: 2%;
+    padding: 0%;
+    padding-top: 1%;
+    @media only screen and (max-width: 1400px) {
+        width: 50%;
+        margin-top: 10%;
+    }
+    @media only screen and (max-width: 800px) {
+        width: 60%;
+        margin-top: 12%;
+    }
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+    }
+}
+.mat-tab-content{
+    background-image: radial-gradient(circle,rgb(164, 206, 206),rgb(125, 155, 168));
+    padding: 5%;
+    overflow: hidden;
+}
+::ng-deep {
+    .form-field-outline .mat-form-field-outline{
+       color: rgba(43, 43, 43, 0.863) !important;
+    }
+    .mat-form-field-invalid .mat-form-field-outline {
+        color: rgb(216, 98, 98) !important;
+    }
+    .form-field-outline .mat-form-field-wrapper{
+        padding-bottom: 4%;
+    }
+    .login-register-content .mat-ink-bar{
+        background: rgb(78, 190, 255) !important;
+    } 
+    .login-register-content .mat-tab-label-content{
+        font-size: 135%;
+    }
+    .user-select .mat-select-value {
+         color: black !important;
+    }
+    .user-select .mat-select-arrow{
+         color: black !important;
+    }
+    .user-select-option .mat-option-text{
+        color: rgb(209, 206, 206) !important;
+    }
+}
+
+.color-black{
+    color: black;
+}
+
+.button-layout{
+    padding: 2%;
+    font-size: 120%;
+    font-weight: 500;
+    background-image: radial-gradient(circle,rgb(68, 144, 177),rgb(79, 157, 179));
+    color: rgb(44, 44, 44);
+}
+.button-layout:disabled{
+    background-image: radial-gradient(circle,rgb(139, 156, 163),rgb(158, 163, 165));
+    color: rgb(126, 129, 129);
+}
+.forgot-password-label{
+    cursor: pointer;
+    padding: 1%;
+    color: rgb(44, 44, 44);
+}
+.forgot-password-label:hover{
+    background-color: rgb(44, 44, 44);
+    color: rgb(209, 206, 206);
+}
