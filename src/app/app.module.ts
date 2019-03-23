@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +41,7 @@ import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
     MatDialogModule,
     MatToolbarModule
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent],
   entryComponents: [AlertBoxComponent]
 })

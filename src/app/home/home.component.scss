@@ -1,6 +1,26 @@
 .home-header{
     font-weight: bold;
     color: rgb(209, 206, 206);
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+    width: 100%;
+}
+.header-heading {
+    font-size: 165%;
+    width: 100%;
+    height: 100%;
+}
+.header-tagline {
+    padding: 0%;
+    font-size: 76%;
+    color: rgba(209, 206, 206, 0.623);
+    font-weight: lighter;
+    overflow: auto;
+}
+.home-header-row{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 }
 .home-backgroud{
     background-image: url('/assets/images/background-image.jpg');

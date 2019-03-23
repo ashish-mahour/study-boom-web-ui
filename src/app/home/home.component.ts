@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AlertBoxComponent } from '../shared/alert-box/alert-box.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,10 @@ export class HomeComponent implements OnInit {
   loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private title: Title) { 
+      title.setTitle("Home - StudyBoom")
+    }
 
 
 
