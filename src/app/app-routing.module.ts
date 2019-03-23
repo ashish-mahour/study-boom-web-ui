@@ -12,11 +12,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    children:[
+    children: [
       {
-        path:'',
-        component:LoginRegisterComponent,
-        outlet:'home-page-router'
+        path: '',
+        component: LoginRegisterComponent,
+        outlet: 'home-page-router'
       }
     ]
   }
