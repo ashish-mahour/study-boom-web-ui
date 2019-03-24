@@ -1,7 +1,7 @@
+import { AlertBoxComponent } from './../../shared/alert-box/alert-box.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { AlertBoxComponent } from '../shared/alert-box/alert-box.component';
 
 @Component({
   selector: 'app-login-register',
