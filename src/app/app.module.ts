@@ -1,3 +1,4 @@
+import { LoginRegisterComponent } from './authentication/login-register/login-register.component';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -17,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
-import { LoginRegisterComponent } from './login-register/login-register.component';
+
 
 @NgModule({
   declarations: [

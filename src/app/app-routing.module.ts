@@ -1,4 +1,4 @@
-import { LoginRegisterComponent } from './login-register/login-register.component';
+import { LoginRegisterComponent } from './authentication/login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
