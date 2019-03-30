@@ -1,4 +1,3 @@
-import { LoadingAnimServiceService } from '../../shared/loading/loading-anim-service.service';
 import { AlertBoxComponent } from './../../shared/alert-box/alert-box.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -27,11 +26,11 @@ export class LoginRegisterComponent implements OnInit {
   loginErrorText: string;
   registrationErrorText: string;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private dialog: MatDialog,
-    private router: Router,
-    private loadingService: LoadingAnimServiceService) {
-  }
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -43,8 +42,8 @@ export class LoginRegisterComponent implements OnInit {
 
   performRegistration() {
     if (this.validateRegistration()) {
-      console.log(this.registerForm.value)
-      this.router.navigate(['/home', { outlets: { 'home-page-router': ['usertype'] } }]);
+      this.router.navigate(['/home', { outlets: { 'home-page-router': ['usertype'] } }]
+        , { queryParams: this.registerForm.value });
     }
   }
 

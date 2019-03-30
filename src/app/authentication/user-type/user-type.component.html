@@ -3,7 +3,7 @@
     <mat-card-header>
       <mat-card-title class="user-type-title">I'm a</mat-card-title>
     </mat-card-header>
-    <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column">
+    <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column" (change)="userTypeSelected()" [(ngModel)]="userType">
       <mat-button-toggle value="PUBLISHER" class="user-type-option">
         PUBLISHER
       </mat-button-toggle>

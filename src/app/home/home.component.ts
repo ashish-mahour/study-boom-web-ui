@@ -1,4 +1,4 @@
-import { LoadingAnimServiceService } from '../shared/loading/loading-anim-service.service';
+import { LoadingAnimServiceService } from './../shared/loading/loading-anim-service.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
@@ -16,14 +16,16 @@ export class HomeComponent implements OnInit {
   isNotBigScreen: boolean = false;
 
   constructor(
-    private title: Title,
+    private titleService: Title,
     private loadingService: LoadingAnimServiceService) {
-    title.setTitle("Home - StudyBoom")
   }
 
 
 
   ngOnInit() {
+    
+    this.titleService.setTitle("Home - StudyBoom")
+
     if (navigator.userAgent.match(/Android|iPhone|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i))
       this.isNotBigScreen = true
   }
