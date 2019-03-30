@@ -2,6 +2,7 @@ import { AlertBoxComponent } from './../../shared/alert-box/alert-box.component'
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login-register',
@@ -24,9 +25,13 @@ export class LoginRegisterComponent implements OnInit {
 
   loginErrorText: string;
   registrationErrorText: string;
+  loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
   }
@@ -37,8 +42,10 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   performRegistration() {
-    if (this.validateRegistration())
+    if (this.validateRegistration()) {
       console.log(this.registerForm.value)
+      this.router.navigate(['/home', { outlets: { 'home-page-router': ['usertype'] } }]);
+    }
   }
 
   validateLogin(): boolean {

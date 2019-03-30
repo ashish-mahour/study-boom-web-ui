@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,14 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
-  
+
   loading: boolean = false;
 
   isNotBigScreen: boolean = false;
 
   constructor(
-    private title: Title) {
+    private title: Title,
+    private route: ActivatedRoute) {
     title.setTitle("Home - StudyBoom")
   }
 

@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
+import { UserTypeComponent } from './authentication/user-type/user-type.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
     AppComponent,
     HomeComponent,
     AlertBoxComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    UserTypeComponent
   ],
   imports: [
     BrowserModule,
