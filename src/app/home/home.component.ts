@@ -1,7 +1,7 @@
+import { LoadingAnimServiceService } from '../shared/loading/loading-anim-service.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,14 +17,13 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private title: Title,
-    private route: ActivatedRoute) {
+    private loadingService: LoadingAnimServiceService) {
     title.setTitle("Home - StudyBoom")
   }
 
 
 
   ngOnInit() {
-    console.log(navigator.userAgent)
     if (navigator.userAgent.match(/Android|iPhone|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i))
       this.isNotBigScreen = true
   }

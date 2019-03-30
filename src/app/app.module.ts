@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
 import { UserTypeComponent } from './authentication/user-type/user-type.component';
+import { LoadingAnimServiceService } from './shared/loading/loading-anim-service.service';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import { UserTypeComponent } from './authentication/user-type/user-type.componen
     MatDialogModule,
     MatToolbarModule
   ],
-  providers: [Title],
+  providers: [Title, LoadingAnimServiceService],
   bootstrap: [AppComponent],
   entryComponents: [AlertBoxComponent]
 })

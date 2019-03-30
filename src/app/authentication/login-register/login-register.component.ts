@@ -1,8 +1,9 @@
+import { LoadingAnimServiceService } from '../../shared/loading/loading-anim-service.service';
 import { AlertBoxComponent } from './../../shared/alert-box/alert-box.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-register',
@@ -25,12 +26,11 @@ export class LoginRegisterComponent implements OnInit {
 
   loginErrorText: string;
   registrationErrorText: string;
-  loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute) {
+    private loadingService : LoadingAnimServiceService) {
   }
 
   ngOnInit() {
