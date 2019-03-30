@@ -16,10 +16,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
 import { UserTypeComponent } from './authentication/user-type/user-type.component';
 import { LoadingAnimServiceService } from './shared/loading/loading-anim-service.service';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { LoadingAnimServiceService } from './shared/loading/loading-anim-service
     MatButtonModule,
     MatSelectModule,
     MatDialogModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonToggleModule
   ],
   providers: [Title, LoadingAnimServiceService],
   bootstrap: [AppComponent],

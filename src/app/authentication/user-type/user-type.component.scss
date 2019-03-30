@@ -1,0 +1,42 @@
+.user-type-content{
+    color: rgb(209, 206, 206); 
+    background: rgba(43, 43, 43, 0.863);
+    width: 30%;
+    margin-top: 3%;
+    padding: 0%;
+    padding-top: 1%;
+    margin-left: 0%;
+    font-family: cursive;
+    @media only screen and (max-width: 1400px) {
+        width: 50%;
+        margin-top: 10%;
+    }
+    @media only screen and (max-width: 800px) {
+        width: 60%;
+        margin-top: 12%;
+    }
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+    }
+}
+.user-type-title{
+    font-size: 180%;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+::ng-deep{
+    .user-type-option .mat-button-toggle-button{
+        background: rgb(176, 189, 189);
+        font-size: 150%;
+        padding-bottom: 5%;
+        padding-top: 5%;
+        cursor: pointer;
+        letter-spacing: 2px;
+        color: rgba(43, 43, 43, 0.863);
+    }
+    .user-type-option .mat-button-toggle-button:focus{
+        background: rgb(9, 161, 116);
+        border-color: rgba(43, 43, 43, 0.863);
+    }
+}
+

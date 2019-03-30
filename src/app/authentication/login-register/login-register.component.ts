@@ -30,7 +30,7 @@ export class LoginRegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private router: Router,
-    private loadingService : LoadingAnimServiceService) {
+    private loadingService: LoadingAnimServiceService) {
   }
 
   ngOnInit() {

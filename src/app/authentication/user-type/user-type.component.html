@@ -1,5 +1,15 @@
-<div fxLayoutAlign="center start">
-  <p>
-    user-type works!
-  </p>
+<div fxLayoutAlign="center center">
+  <mat-card class="user-type-content">
+    <mat-card-header>
+      <mat-card-title class="user-type-title">I'm a</mat-card-title>
+    </mat-card-header>
+    <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column">
+      <mat-button-toggle value="PUBLISHER" class="user-type-option">
+        PUBLISHER
+      </mat-button-toggle>
+      <mat-button-toggle value="STUDENT" class="user-type-option">
+        STUDENT
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card>
 </div>

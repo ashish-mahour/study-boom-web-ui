@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +10,9 @@ export class UserTypeComponent implements OnInit {
   
   loading: boolean = false;
 
-  constructor() { }
+  constructor(private titleService: Title) { 
+    titleService.setTitle('User type - StudyBoom')
+  }
 
   ngOnInit() {
   }
