@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginRegisterComponent implements OnInit {
 
   loginForm: FormGroup = this.formBuilder.group({
-    username: [null, [Validators.required, Validators.pattern("[A-Za-z0-9]+")]],
+    username: [null, [Validators.required, Validators.pattern("[A-Za-z0-9]+[@.]*")]],
     password: [null, [Validators.required]]
   })
 

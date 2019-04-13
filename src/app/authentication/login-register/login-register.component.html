@@ -15,6 +15,9 @@
             <mat-error *ngIf="this.loginForm.controls['username'].touched && this.loginForm.controls['username'].hasError('required')">
               Username required!
             </mat-error>
+            <mat-error *ngIf="this.loginForm.controls['username'].touched && !this.loginForm.controls['username'].hasError('required') && this.loginForm.controls['username'].hasError('pattern')">
+              Invalid Username! Only alphanumeric and "@" allowed!
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" class="form-field-outline">
             <mat-label class="color-black">Password
@@ -48,6 +51,9 @@
             <mat-error *ngIf="this.registerForm.controls['fullname'].touched && this.registerForm.controls['fullname'].hasError('required')">
               Full Name required!
             </mat-error>
+            <mat-error *ngIf="this.registerForm.controls['fullname'].touched && !this.registerForm.controls['fullname'].hasError('required') && this.registerForm.controls['fullname'].hasError('pattern')">
+              Invalid Full Name! Only alphabets and space allowed!
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" class="form-field-outline">
             <mat-label class="color-black">Email
@@ -58,6 +64,9 @@
             <mat-error *ngIf="this.registerForm.controls['email'].touched && this.registerForm.controls['email'].hasError('required')">
               Email required!
             </mat-error>
+            <mat-error *ngIf="this.registerForm.controls['email'].touched && !this.registerForm.controls['email'].hasError('required') && this.registerForm.controls['email'].hasError('pattern')">
+              Invalid Email Address! Only alphanumeric and "@" allowed!
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" class="form-field-outline">
             <mat-label class="color-black">Username
@@ -67,6 +76,9 @@
             <mat-icon matSuffix>account_circle</mat-icon>
             <mat-error *ngIf="this.registerForm.controls['username'].touched && this.registerForm.controls['username'].hasError('required')">
               Username required!
+            </mat-error>
+            <mat-error *ngIf="this.registerForm.controls['username'].touched && !this.registerForm.controls['username'].hasError('required') && this.registerForm.controls['username'].hasError('pattern')">
+              Invalid Username! Only alphanumeric allowed!
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" class="form-field-outline">
