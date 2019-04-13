@@ -3,6 +3,8 @@ import { LoginRegisterComponent } from './authentication/login-register/login-re
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PublisherMoreDetailsComponent } from './authentication/publisher-more-details/publisher-more-details.component';
+import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,16 @@ const routes: Routes = [
       {
         path: 'usertype',
         component: UserTypeComponent,
+        outlet: 'home-page-router'
+      },
+      {
+        path: 'publisher-more-details',
+        component: PublisherMoreDetailsComponent,
+        outlet: 'home-page-router'
+      },
+      {
+        path: 'user-more-details',
+        component: UserMoreDetailsComponent,
         outlet: 'home-page-router'
       }
     ]

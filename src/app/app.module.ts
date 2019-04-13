@@ -21,6 +21,8 @@ import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
 import { UserTypeComponent } from './authentication/user-type/user-type.component';
 import { LoadingAnimServiceService } from './shared/loading/loading-anim-service.service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { PublisherMoreDetailsComponent } from './authentication/publisher-more-details/publisher-more-details.component';
+import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     HomeComponent,
     AlertBoxComponent,
     LoginRegisterComponent,
-    UserTypeComponent
+    UserTypeComponent,
+    PublisherMoreDetailsComponent,
+    UserMoreDetailsComponent
   ],
   imports: [
     BrowserModule,
