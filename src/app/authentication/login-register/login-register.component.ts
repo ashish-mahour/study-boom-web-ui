@@ -43,7 +43,7 @@ export class LoginRegisterComponent implements OnInit {
   performRegistration() {
     if (this.validateRegistration()) {
       this.router.navigate(['/home', { outlets: { 'home-page-router': ['usertype'] } }]
-        , { queryParams: this.registerForm.value });
+        , { queryParams: this.registerForm.value, skipLocationChange:true });
     }
   }
 

@@ -1,12 +1,12 @@
 .login-register-content{
     color: rgba(43, 43, 43, 0.863); 
-    width: 30%;
-    margin-top: 2%;
+    width: 30% !important;
+    margin-top: 1%;
     padding: 0%;
     padding-top: 1%;
+    font-size: 80%;
     @media only screen and (max-width: 1400px) {
         width: 50%;
-        margin-top: 10%;
     }
     @media only screen and (max-width: 800px) {
         width: 60%;
@@ -22,11 +22,16 @@
     overflow: hidden;
 }
 ::ng-deep {
+    .login-register-content .mat-tab-label{
+        padding: 0%;
+        font-size: 80%;
+        height: 35px;
+    }
     .form-field-outline .mat-form-field-outline{
        color: rgba(43, 43, 43, 0.863) !important;
     }
     .mat-form-field-invalid .mat-form-field-outline {
-        color: rgb(216, 98, 98) !important;
+        color: rgb(165, 62, 62) !important;
     }
     .form-field-outline .mat-form-field-wrapper{
         padding-bottom: 4%;
@@ -53,8 +58,8 @@
 }
 
 .button-layout{
-    padding: 2%;
-    font-size: 120%;
+    padding: 1%;
+    letter-spacing: 1px;
     font-weight: 500;
     background-image: radial-gradient(circle,rgb(68, 144, 177),rgb(79, 157, 179));
     color: rgb(44, 44, 44);
@@ -66,7 +71,7 @@
 .forgot-password-label{
     cursor: pointer;
     padding: 1%;
-    color: rgb(44, 44, 44);
+    color: rgb(32, 12, 12);
 }
 .forgot-password-label:hover{
     background-color: rgb(44, 44, 44);

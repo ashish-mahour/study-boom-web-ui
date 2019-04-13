@@ -16,9 +16,7 @@
             <i class="fa fa-info-circle fa-4x" aria-hidden="true"></i>
         </div>
     </div>
-    <br>
     <span fxFlex="100" class="alert-box-message" fxLayoutAlign="center start">{{message}}</span>
-    <br>
 </div>
 <div mat-dialog-actions class="dialog-action" fxLayoutAlign="center center" *ngIf="!routerLinkArray">
     <button mat-button class="button-padding-2 close-button-color" (click)="closeDialog()" [mat-dialog-close]="{status: true}">OK</button>

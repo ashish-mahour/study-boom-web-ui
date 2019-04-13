@@ -1,92 +1,89 @@
 <div fxLayoutAlign="center start">
-    <mat-card class="login-register-content">
-      <mat-tab-group>
-        <mat-tab label="Login">
-          <form class="mat-tab-content" fxLayout="column" [formGroup]="loginForm">
-            <div class="alert alert-danger" role="alert" *ngIf="loginErrorText">
-              <strong>Warning : </strong> {{loginErrorText}}
-            </div>
-            <mat-form-field appearance="outline" class="form-field-outline">
-              <mat-label class="color-black">Username <font color="red">*</font>
-              </mat-label>
-              <input matInput type="text" class="color-black" formControlName="username">
-              <mat-icon matSuffix>account_circle</mat-icon>
-              <mat-error
-                *ngIf="this.loginForm.controls['username'].touched && this.loginForm.controls['username'].hasError('required')">
-                Username required!
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="form-field-outline">
-              <mat-label class="color-black">Password <font color="red">*</font>
-              </mat-label>
-              <input matInput type="password" class="color-black" formControlName="password">
-              <mat-icon matSuffix>vpn_key</mat-icon>
-              <mat-error
-                *ngIf="this.loginForm.controls['password'].touched && this.loginForm.controls['password'].hasError('required')">
-                Password required!
-              </mat-error>
-            </mat-form-field>
-            <div fxLayoutAlign="end center">
-              <span class="forgot-password-label" fxLayoutAlign="end center" fxFlex="35" fxFlex.xs="60"
-                (click)="openDialog()">Forgot Password?</span>
-            </div>
-            <div fxLayoutAlign="end center">
-              <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60"
-                (click)="performLogin()">Login</button>
-            </div>
-          </form>
-        </mat-tab>
-        <mat-tab label="Registration">
-          <form class="mat-tab-content" fxLayout="column" [formGroup]="registerForm">
-            <div class="alert alert-danger" role="alert" *ngIf="registrationErrorText">
-              <strong>Warning : </strong> {{registrationErrorText}}
-            </div>
-            <mat-form-field appearance="outline" class="form-field-outline">
-              <mat-label class="color-black">Full Name <font color="red">*</font>
-              </mat-label>
-              <input matInput type="text" class="color-black" formControlName="fullname">
-              <mat-icon matSuffix>person</mat-icon>
-              <mat-error
-                *ngIf="this.registerForm.controls['fullname'].touched && this.registerForm.controls['fullname'].hasError('required')">
-                Full Name required!
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="form-field-outline">
-              <mat-label class="color-black">Email <font color="red">*</font>
-              </mat-label>
-              <input matInput type="text" class="color-black" formControlName="email">
-              <mat-icon matSuffix>mail</mat-icon>
-              <mat-error
-                *ngIf="this.registerForm.controls['email'].touched && this.registerForm.controls['email'].hasError('required')">
-                Email required!
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="form-field-outline">
-              <mat-label class="color-black">Username <font color="red">*</font>
-              </mat-label>
-              <input matInput type="text" class="color-black" formControlName="username">
-              <mat-icon matSuffix>account_circle</mat-icon>
-              <mat-error
-                *ngIf="this.registerForm.controls['username'].touched && this.registerForm.controls['username'].hasError('required')">
-                Username required!
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="form-field-outline">
-              <mat-label class="color-black">Password <font color="red">*</font>
-              </mat-label>
-              <input matInput type="password" class="color-black" formControlName="password">
-              <mat-icon matSuffix>vpn_key</mat-icon>
-              <mat-error
-                *ngIf="this.registerForm.controls['password'].touched && this.registerForm.controls['password'].hasError('required')">
-                Password required!
-              </mat-error>
-            </mat-form-field>
-            <div fxLayoutAlign="end center">
-              <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60"
-                (click)="performRegistration()">Register</button>
-            </div>
-          </form>
-        </mat-tab>
-      </mat-tab-group>
-    </mat-card>
-  </div>
+  <mat-card class="login-register-content">
+    <mat-tab-group>
+      <mat-tab label="Login">
+        <form class="mat-tab-content" fxLayout="column" [formGroup]="loginForm">
+          <div class="alert alert-danger" role="alert" *ngIf="loginErrorText">
+            <strong>Warning : </strong> {{loginErrorText}}
+          </div>
+          <mat-form-field appearance="outline" class="form-field-outline">
+            <mat-label class="color-black">Username
+              <font color="red">*</font>
+            </mat-label>
+            <input matInput type="text" class="color-black" formControlName="username">
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-error *ngIf="this.loginForm.controls['username'].touched && this.loginForm.controls['username'].hasError('required')">
+              Username required!
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field-outline">
+            <mat-label class="color-black">Password
+              <font color="red">*</font>
+            </mat-label>
+            <input matInput type="password" class="color-black" formControlName="password">
+            <mat-icon matSuffix>vpn_key</mat-icon>
+            <mat-error *ngIf="this.loginForm.controls['password'].touched && this.loginForm.controls['password'].hasError('required')">
+              Password required!
+            </mat-error>
+          </mat-form-field>
+          <div fxLayoutAlign="end center">
+            <span class="forgot-password-label" (click)="openDialog()">Forgot Password?</span>
+          </div>
+          <div fxLayoutAlign="end center">
+            <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60" (click)="performLogin()">Login</button>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="Registration">
+        <form class="mat-tab-content" fxLayout="column" [formGroup]="registerForm">
+          <div class="alert alert-danger" role="alert" *ngIf="registrationErrorText">
+            <strong>Warning : </strong> {{registrationErrorText}}
+          </div>
+          <mat-form-field appearance="outline" class="form-field-outline">
+            <mat-label class="color-black">Full Name
+              <font color="red">*</font>
+            </mat-label>
+            <input matInput type="text" class="color-black" formControlName="fullname">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error *ngIf="this.registerForm.controls['fullname'].touched && this.registerForm.controls['fullname'].hasError('required')">
+              Full Name required!
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field-outline">
+            <mat-label class="color-black">Email
+              <font color="red">*</font>
+            </mat-label>
+            <input matInput type="text" class="color-black" formControlName="email">
+            <mat-icon matSuffix>mail</mat-icon>
+            <mat-error *ngIf="this.registerForm.controls['email'].touched && this.registerForm.controls['email'].hasError('required')">
+              Email required!
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field-outline">
+            <mat-label class="color-black">Username
+              <font color="red">*</font>
+            </mat-label>
+            <input matInput type="text" class="color-black" formControlName="username">
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-error *ngIf="this.registerForm.controls['username'].touched && this.registerForm.controls['username'].hasError('required')">
+              Username required!
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field-outline">
+            <mat-label class="color-black">Password
+              <font color="red">*</font>
+            </mat-label>
+            <input matInput type="password" class="color-black" formControlName="password">
+            <mat-icon matSuffix>vpn_key</mat-icon>
+            <mat-error *ngIf="this.registerForm.controls['password'].touched && this.registerForm.controls['password'].hasError('required')">
+              Password required!
+            </mat-error>
+          </mat-form-field>
+          <div fxLayoutAlign="end center">
+            <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60" (click)="performRegistration()">Register</button>
+          </div>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>
