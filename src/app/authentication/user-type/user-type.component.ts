@@ -18,7 +18,7 @@ export class UserTypeComponent implements OnInit {
     private router: Router,
     private loadingService: LoadingAnimServiceService
   ) { 
-    console.log(activateRoute)
+    
   }
   
 

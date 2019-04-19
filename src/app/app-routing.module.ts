@@ -5,7 +5,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PublisherMoreDetailsComponent } from './authentication/publisher-more-details/publisher-more-details.component';
 import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
-import { childRouterOutlets } from './shared/router-outlets';
+
+export const childRouterOutlets : string[] = [
+  'home-page-router'
+]
 
 const routes: Routes = [
   {
@@ -18,24 +21,29 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
+        path: '**',
+        pathMatch: 'full',
+        redirectTo: '/home'
+      },
+      {
         path: '',
         component: LoginRegisterComponent,
-        outlet: 'home-page-router'
+        outlet: childRouterOutlets[0]
       },
       {
         path: 'usertype',
         component: UserTypeComponent,
-        outlet: 'home-page-router'
+        outlet: childRouterOutlets[0]
       },
       {
         path: 'publisher-more-details',
         component: PublisherMoreDetailsComponent,
-        outlet: 'home-page-router'
+        outlet: childRouterOutlets[0]
       },
       {
         path: 'user-more-details',
         component: UserMoreDetailsComponent,
-        outlet: 'home-page-router'
+        outlet: childRouterOutlets[0]
       }
     ]
   }

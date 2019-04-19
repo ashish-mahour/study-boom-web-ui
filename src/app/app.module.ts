@@ -23,6 +23,8 @@ import { LoadingAnimServiceService } from './shared/loading/loading-anim-service
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PublisherMoreDetailsComponent } from './authentication/publisher-more-details/publisher-more-details.component';
 import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
+import { UrlSerializer } from '@angular/router';
+import { GlobalUrlSerializerService } from './shared/global-url-serializer/global-url-serializer.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,11 @@ import { UserMoreDetailsComponent } from './authentication/user-more-details/use
   ],
   providers: [
     Title,
-    LoadingAnimServiceService
+    LoadingAnimServiceService,
+    {
+      provide: UrlSerializer,
+      useClass: GlobalUrlSerializerService
+    }
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlertBoxComponent]

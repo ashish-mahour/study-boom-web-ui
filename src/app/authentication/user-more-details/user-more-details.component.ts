@@ -49,7 +49,7 @@ export class UserMoreDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.userMoreDetails)
+    
   }
 
 }
