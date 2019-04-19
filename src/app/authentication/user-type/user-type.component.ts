@@ -17,10 +17,10 @@ export class UserTypeComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     private router: Router,
     private loadingService: LoadingAnimServiceService
-  ) { 
-    
+  ) {
+
   }
-  
+
 
   ngOnInit() {
     this.titleService.setTitle('User type - StudyBoom')
@@ -35,11 +35,9 @@ export class UserTypeComponent implements OnInit {
   userTypeSelected() {
     this.registrationForm.usertype = this.userType;
     if (this.userType === 'PUBLISHER')
-      this.router.navigate(["/home", { outlets: { 'home-page-router': ['publisher-more-details'] } }]
-        , { queryParams: this.registrationForm });
+      this.registerPublisher();
     else if (this.userType === 'STUDENT')
-      this.router.navigate(["/home", { outlets: { 'home-page-router': ['user-more-details'] } }]
-        , { queryParams: this.registrationForm });
+      this.registerStudent();
     else if (this.userType === 'ADMIN')
       this.registerAdmin();
   }
@@ -47,5 +45,14 @@ export class UserTypeComponent implements OnInit {
   registerAdmin() {
 
   }
+
+  registerPublisher() {
+    this.router.navigate(["/home", { outlets: { 'home-page-router': ['publisher-more-details'] } }]);
+  }
+
+  registerStudent() {
+    this.router.navigate(["/home", { outlets: { 'home-page-router': ['user-more-details'] } }]);
+  }
+
 
 }

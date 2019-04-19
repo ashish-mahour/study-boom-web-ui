@@ -13,11 +13,6 @@ export class UserMoreDetailsComponent implements OnInit {
   userMoreDetails: FormGroup = this.formBuilder.group
     (
       {
-        fullname: [null],
-        email: [null],
-        username: [null],
-        password: [null],
-        usertype: [null],
         mobile: [null, Validators.required],
         choosedCategories: this.formBuilder.array([this.categoryArrayItem()], Validators.required)
       }

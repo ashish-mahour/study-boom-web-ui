@@ -57,10 +57,10 @@ import { GlobalUrlSerializerService } from './shared/global-url-serializer/globa
   providers: [
     Title,
     LoadingAnimServiceService,
-    {
-      provide: UrlSerializer,
-      useClass: GlobalUrlSerializerService
-    }
+    // {
+    //   provide: UrlSerializer,
+    //   useClass: GlobalUrlSerializerService
+    // }
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlertBoxComponent]

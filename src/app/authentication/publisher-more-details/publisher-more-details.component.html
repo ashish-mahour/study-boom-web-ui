@@ -4,7 +4,23 @@
       <mat-card-title class="publisher-more-details-title">Publisher Details</mat-card-title>
     </mat-card-header>
     <div class="mat-card-content">
-      ggg
+      <form fxLayout="column" [formGroup]="publisherMoreDetails">
+        <mat-form-field appearance="outline" class="form-field-outline">
+          <mat-label class="color-black">Mobile No.
+            <font color="red">*</font>
+          </mat-label>
+          <input matInput type="text" class="color-black" formControlName="mobile">
+          <mat-icon matSuffix class="color-black">account_circle</mat-icon>
+          <mat-error
+            *ngIf="publisherMoreDetails.controls['mobile'].touched && publisherMoreDetails.controls['mobile'].hasError('required')">
+            Mobile required!
+          </mat-error>
+          <mat-error
+            *ngIf="publisherMoreDetails.controls['mobile'].touched && !publisherMoreDetails.controls['mobile'].hasError('required') && publisherMoreDetails.controls['mobile'].hasError('pattern')">
+            Invalid Mobile! Only Numeric allowed!
+          </mat-error>
+        </mat-form-field>
+      </form>
     </div>
   </mat-card>
 </div>
