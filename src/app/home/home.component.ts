@@ -13,8 +13,6 @@ export class HomeComponent implements OnInit {
 
   loading: boolean = false;
 
-  isNotBigScreen: boolean = false;
-
   constructor(
     private titleService: Title,
     private loadingService: LoadingAnimServiceService) {
@@ -23,11 +21,9 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    
+
     this.titleService.setTitle("Home - StudyBoom")
 
-    if (navigator.userAgent.match(/Android|iPhone|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i))
-      this.isNotBigScreen = true
   }
 
 }

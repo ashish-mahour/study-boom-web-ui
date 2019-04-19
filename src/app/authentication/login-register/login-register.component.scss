@@ -1,13 +1,10 @@
 .login-register-content{
     color: rgba(43, 43, 43, 0.863); 
-    width: 30% !important;
+    width: 30%;
     margin-top: 1%;
     padding: 0%;
     padding-top: 1%;
     font-size: 80%;
-    @media only screen and (max-width: 1400px) {
-        width: 50%;
-    }
     @media only screen and (max-width: 800px) {
         width: 60%;
         margin-top: 12%;

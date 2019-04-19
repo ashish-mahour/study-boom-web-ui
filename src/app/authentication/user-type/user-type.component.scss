@@ -1,15 +1,12 @@
 .user-type-content{
     color: rgb(209, 206, 206); 
     background: rgba(43, 43, 43, 0.863);
-    width: 30% !important;
+    width: 30%;
     margin-top: 3%;
     padding: 0%;
     padding-top: 1%;
     margin-left: 0%;
     font-family: cursive;
-    @media only screen and (max-width: 1400px) {
-        width: 50%;
-    }
     @media only screen and (max-width: 800px) {
         width: 60%;
     }
