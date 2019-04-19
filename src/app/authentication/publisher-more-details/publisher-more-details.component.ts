@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
 
 @Component({
   selector: 'app-publisher-more-details',
@@ -7,7 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublisherMoreDetailsComponent implements OnInit {
 
-  constructor() { }
+  publisherMoreDetails: FormGroup = this.formBuilder.group
+    (
+      {
+        fullname: [null],
+        email: [null],
+        username: [null],
+        password: [null],
+        usertype: [null]
+      }
+    );
+
+  constructor(
+    private loadingService: LoadingAnimServiceService,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
   }

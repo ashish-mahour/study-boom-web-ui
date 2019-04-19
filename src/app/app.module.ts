@@ -24,7 +24,6 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PublisherMoreDetailsComponent } from './authentication/publisher-more-details/publisher-more-details.component';
 import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +52,10 @@ import { UserMoreDetailsComponent } from './authentication/user-more-details/use
     MatToolbarModule,
     MatButtonToggleModule
   ],
-  providers: [Title, LoadingAnimServiceService],
+  providers: [
+    Title,
+    LoadingAnimServiceService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [AlertBoxComponent]
 })

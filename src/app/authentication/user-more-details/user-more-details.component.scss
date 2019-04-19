@@ -1,0 +1,27 @@
+.user-more-details-content {
+    color: rgb(209, 206, 206);
+    background: rgba(43, 43, 43, 0.863);
+    width: 30%;
+    margin-top: 3%;
+    padding: 0%;
+    padding-top: 1%;
+    margin-left: 0%;
+    @media only screen and (max-width: 800px) {
+        width: 60%;
+    }
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+    }
+}
+
+.user-more-details-title {
+    font-size: 150%;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.mat-card-content {
+    background-image: radial-gradient(circle, rgb(164, 206, 206), rgb(125, 155, 168));
+    padding: 5%;
+    overflow: hidden;
+}

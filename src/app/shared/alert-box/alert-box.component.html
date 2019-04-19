@@ -5,7 +5,8 @@
     {{title}}
 </h3>
 <div mat-dialog-content class="margin-zero dialog-content" fxLayout="column" fxLayoutAlign="center center">
-    <div fxFlex="100" fxLayoutAlign="center center">
+    <div fxFlex="100" fxLayoutAlign="center center" fxLayout="column">
+        <br>
         <div *ngIf="type==='success'" fxFlex="100" class="success-check">
             <i class="fa fa-check-circle-o fa-4x" aria-hidden="true"></i>
         </div>
@@ -13,7 +14,7 @@
             <i class="fa fa-times-circle fa-4x" aria-hidden="true"></i>
         </div>
         <div *ngIf="type==='warn'" fxFlex="100" class="warn-check">
-            <i class="fa fa-info-circle fa-4x" aria-hidden="true"></i>
+            <i class="fa fa-exclamation-triangle fa-4x" aria-hidden="true"></i>
         </div>
     </div>
     <span fxFlex="100" class="alert-box-message" fxLayoutAlign="center start">{{message}}</span>

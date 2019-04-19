@@ -1,6 +1,7 @@
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
 
 @Component({
   selector: 'app-user-type',
@@ -13,8 +14,13 @@ export class UserTypeComponent implements OnInit {
   registrationForm: any = {};
   constructor(
     private titleService: Title,
-    private activateRoute: ActivatedRoute
-  ) { }
+    private activateRoute: ActivatedRoute,
+    private router: Router,
+    private loadingService: LoadingAnimServiceService
+  ) { 
+    console.log(activateRoute)
+  }
+  
 
   ngOnInit() {
     this.titleService.setTitle('User type - StudyBoom')
@@ -28,6 +34,18 @@ export class UserTypeComponent implements OnInit {
 
   userTypeSelected() {
     this.registrationForm.usertype = this.userType;
+    if (this.userType === 'PUBLISHER')
+      this.router.navigate(["/home", { outlets: { 'home-page-router': ['publisher-more-details'] } }]
+        , { queryParams: this.registrationForm });
+    else if (this.userType === 'STUDENT')
+      this.router.navigate(["/home", { outlets: { 'home-page-router': ['user-more-details'] } }]
+        , { queryParams: this.registrationForm });
+    else if (this.userType === 'ADMIN')
+      this.registerAdmin();
+  }
+
+  registerAdmin() {
+
   }
 
 }
