@@ -20,7 +20,7 @@
     <span fxFlex="100" class="alert-box-message" fxLayoutAlign="center start">{{message}}</span>
 </div>
 <div mat-dialog-actions class="dialog-action" fxLayoutAlign="center center" *ngIf="!routerLinkArray">
-    <button mat-button class="button-padding-2 close-button-color" (click)="closeDialog()" [mat-dialog-close]="{status: true}">OK</button>
+    <button mat-button class="button-padding-2 close-button-color" [mat-dialog-close]="{status: true}">OK</button>
 </div>
 <div mat-dialog-actions class="dialog-action" fxLayoutAlign="end center" *ngIf="routerLinkArray">
     <div *ngFor="let router of routerLinkArray" class="margin-right-2">

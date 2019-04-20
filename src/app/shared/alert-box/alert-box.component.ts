@@ -23,9 +23,4 @@ export class AlertBoxComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  closeDialog() {
-    this.dialogRef.close();
-  }
-
 }

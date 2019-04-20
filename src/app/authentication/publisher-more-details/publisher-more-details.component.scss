@@ -2,13 +2,15 @@
     color: rgb(209, 206, 206);
     background: rgba(43, 43, 43, 0.863);
     width: 30%;
-    margin-top: 3%;
+    margin-top: 0.5%;
     padding: 0%;
     padding-top: 1%;
     margin-left: 0%;
+
     @media only screen and (max-width: 800px) {
         width: 60%;
     }
+
     @media only screen and (max-width: 600px) {
         width: 80%;
     }
@@ -26,12 +28,43 @@
     overflow: hidden;
 }
 
+.form-field-outline {
+    font-size: 75%;
+}
+
 ::ng-deep {
     .form-field-outline .mat-form-field-outline {
         color: rgba(43, 43, 43, 0.863) !important;
+    }
+
+    .mat-form-field-invalid .mat-form-field-outline {
+        color: rgb(165, 62, 62) !important;
     }
 }
 
 .color-black {
     color: black;
+}
+
+.error-color {
+    color: crimson;
+}
+
+.skip-this-step-label {
+    cursor: pointer;
+    padding: 1%;
+    color: rgb(32, 12, 12);
+    font-size: 80%;
+}
+
+.skip-this-step-label:hover {
+    background-color: rgb(44, 44, 44);
+    color: rgb(209, 206, 206);
+}
+
+.button-layout {
+    letter-spacing: 1px;
+    font-weight: 500;
+    background-image: radial-gradient(circle, rgb(68, 144, 177), rgb(79, 157, 179));
+    color: rgb(44, 44, 44);
 }

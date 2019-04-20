@@ -12,10 +12,10 @@
             </mat-label>
             <input matInput type="text" class="color-black" formControlName="username">
             <mat-icon matSuffix class="color-black">account_circle</mat-icon>
-            <mat-error *ngIf="this.loginForm.controls['username'].touched && this.loginForm.controls['username'].hasError('required')">
+            <mat-error class="error-color" *ngIf="this.loginForm.controls['username'].touched && this.loginForm.controls['username'].hasError('required')">
               Username required!
             </mat-error>
-            <mat-error *ngIf="this.loginForm.controls['username'].touched && !this.loginForm.controls['username'].hasError('required') && this.loginForm.controls['username'].hasError('pattern')">
+            <mat-error class="error-color" *ngIf="this.loginForm.controls['username'].touched && !this.loginForm.controls['username'].hasError('required') && this.loginForm.controls['username'].hasError('pattern')">
               Invalid Username! Only alphanumeric and "@" allowed!
             </mat-error>
           </mat-form-field>
@@ -25,7 +25,7 @@
             </mat-label>
             <input matInput type="password" class="color-black" formControlName="password">
             <mat-icon matSuffix class="color-black">vpn_key</mat-icon>
-            <mat-error *ngIf="this.loginForm.controls['password'].touched && this.loginForm.controls['password'].hasError('required')">
+            <mat-error class="error-color" *ngIf="this.loginForm.controls['password'].touched && this.loginForm.controls['password'].hasError('required')">
               Password required!
             </mat-error>
           </mat-form-field>
@@ -48,10 +48,10 @@
             </mat-label>
             <input matInput type="text" class="color-black" formControlName="fullname">
             <mat-icon matSuffix class="color-black">person</mat-icon>
-            <mat-error *ngIf="this.registerForm.controls['fullname'].touched && this.registerForm.controls['fullname'].hasError('required')">
+            <mat-error class="error-color" *ngIf="this.registerForm.controls['fullname'].touched && this.registerForm.controls['fullname'].hasError('required')">
               Full Name required!
             </mat-error>
-            <mat-error *ngIf="this.registerForm.controls['fullname'].touched && !this.registerForm.controls['fullname'].hasError('required') && this.registerForm.controls['fullname'].hasError('pattern')">
+            <mat-error class="error-color" *ngIf="this.registerForm.controls['fullname'].touched && !this.registerForm.controls['fullname'].hasError('required') && this.registerForm.controls['fullname'].hasError('pattern')">
               Invalid Full Name! Only alphabets and space allowed!
             </mat-error>
           </mat-form-field>
@@ -61,10 +61,10 @@
             </mat-label>
             <input matInput type="text" class="color-black" formControlName="email">
             <mat-icon matSuffix class="color-black">mail</mat-icon>
-            <mat-error *ngIf="this.registerForm.controls['email'].touched && this.registerForm.controls['email'].hasError('required')">
+            <mat-error class="error-color" *ngIf="this.registerForm.controls['email'].touched && this.registerForm.controls['email'].hasError('required')">
               Email required!
             </mat-error>
-            <mat-error *ngIf="this.registerForm.controls['email'].touched && !this.registerForm.controls['email'].hasError('required') && this.registerForm.controls['email'].hasError('pattern')">
+            <mat-error class="error-color" *ngIf="this.registerForm.controls['email'].touched && !this.registerForm.controls['email'].hasError('required') && this.registerForm.controls['email'].hasError('pattern')">
               Invalid Email Address! Only alphanumeric and "@" allowed!
             </mat-error>
           </mat-form-field>
@@ -74,10 +74,10 @@
             </mat-label>
             <input matInput type="text" class="color-black" formControlName="username">
             <mat-icon matSuffix class="color-black">account_circle</mat-icon>
-            <mat-error *ngIf="this.registerForm.controls['username'].touched && this.registerForm.controls['username'].hasError('required')">
+            <mat-error class="error-color" *ngIf="this.registerForm.controls['username'].touched && this.registerForm.controls['username'].hasError('required')">
               Username required!
             </mat-error>
-            <mat-error *ngIf="this.registerForm.controls['username'].touched && !this.registerForm.controls['username'].hasError('required') && this.registerForm.controls['username'].hasError('pattern')">
+            <mat-error class="error-color" *ngIf="this.registerForm.controls['username'].touched && !this.registerForm.controls['username'].hasError('required') && this.registerForm.controls['username'].hasError('pattern')">
               Invalid Username! Only alphanumeric allowed!
             </mat-error>
           </mat-form-field>
@@ -87,12 +87,12 @@
             </mat-label>
             <input matInput type="password" class="color-black" formControlName="password">
             <mat-icon matSuffix class="color-black">vpn_key</mat-icon>
-            <mat-error *ngIf="this.registerForm.controls['password'].touched && this.registerForm.controls['password'].hasError('required')">
+            <mat-error class="error-color" *ngIf="this.registerForm.controls['password'].touched && this.registerForm.controls['password'].hasError('required')">
               Password required!
             </mat-error>
           </mat-form-field>
-          <div fxLayoutAlign="end center">
-            <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60" (click)="performRegistration()">Register</button>
+          <div fxLayoutAlign="end start">
+            <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60" (click)="performRegistration()">Proceed</button>
           </div>
         </form>
       </mat-tab>
