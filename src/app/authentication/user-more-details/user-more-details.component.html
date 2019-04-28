@@ -4,7 +4,72 @@
       <mat-card-title class="user-more-details-title">Student Details</mat-card-title>
     </mat-card-header>
     <div class="mat-card-content">
-      
+      <form fxLayout="column" [formGroup]="userMoreDetails">
+        <mat-form-field appearance="outline" class="form-field-outline">
+          <mat-label class="color-black">Mobile No.
+            <font color="red">*</font>
+          </mat-label>
+          <input matInput type="tel" class="color-black" formControlName="mobile" maxlength="10">
+          <mat-icon matSuffix class="color-black">phone</mat-icon>
+          <mat-error class="error-color"
+            *ngIf="userMoreDetails.controls['mobile'].touched && userMoreDetails.controls['mobile'].hasError('required')">
+            Mobile required!
+          </mat-error>
+          <mat-error class="error-color"
+            *ngIf="userMoreDetails.controls['mobile'].touched && !userMoreDetails.controls['mobile'].hasError('required') && userMoreDetails.controls['mobile'].hasError('pattern')">
+            Invalid Mobile! Only 8 Numeric allowed!
+          </mat-error>
+        </mat-form-field>
+        <div fxLayout="column">
+          <div formArrayName="choosedCategories"
+            *ngFor="let category of userMoreDetails.controls['choosedCategories'].controls; let i=index;let last=last">
+            <div formGroupName="{{i}}" fxLayout="column">
+              <div fxLayout>
+                <mat-form-field appearance="outline" class="form-field-outline" fxFlex="90">
+                  <mat-select formControlName="categoryId" (selectionChange)="categorySelected($event.value)">
+                    <mat-option value="">
+                      Category {{i+1}}
+                    </mat-option>
+                    <mat-option *ngFor="let category of categoriesData" value="{{category.categoryId}}">
+                      {{category.categoryName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <i class="fa fa-plus-circle fa-2x add-icon" aria-hidden="true"
+                  *ngIf="last && userMoreDetails.controls['choosedCategories'].controls[i].controls['categoryId'].valid"
+                  fxFlex="10" (click)="addCategory()"></i>
+                <i class="fa fa-trash fa-2x remove-icon" aria-hidden="true" fxFlex="10" *ngIf="!last"
+                  (click)="removeCategory(i)"></i>
+              </div>
+              <div
+                *ngIf="userMoreDetails.controls['choosedCategories'].controls[i].controls['categoryId'] && userMoreDetails.controls['choosedCategories'].controls[i].controls['categoryId'].value!==null && userMoreDetails.controls['choosedCategories'].controls[i].controls['categoryId'].value!==''">
+                <div formArrayName="subCategories"
+                  *ngFor="let subCategory of userMoreDetails.controls['choosedCategories'].controls[i].controls['subCategories'].controls; let j=index;let last=last">
+                  <div formGroupName="{{j}}">
+                    <mat-form-field appearance="outline" class="form-field-outline">
+                      <mat-select formControlName="subCategoryId">
+                        <mat-option value="">
+                          Sub-Category {{j+1}}
+                        </mat-option>
+                        <mat-option
+                          *ngFor="let subcategory of categoriesData | findSubcategories : userMoreDetails?.controls['choosedCategories']?.controls[i]?.controls['categoryId']?.value"
+                          value="{{subcategory.subCategoryId}}">
+                          {{subcategory.subCategoryName}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <i class="fa fa-plus-circle fa-2x add-icon" aria-hidden="true"
+                      *ngIf="last && userMoreDetails.controls['choosedCategories'].controls[i].controls['subCategories'].controls[j].controls['subCategoryId'].valid"
+                      fxFlex="10" (click)="addSubCategory(i)"></i>
+                    <i class="fa fa-trash fa-2x remove-icon" aria-hidden="true" fxFlex="10" *ngIf="!last"
+                      (click)="removeSubCategory(i, j)"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </mat-card>
 </div>

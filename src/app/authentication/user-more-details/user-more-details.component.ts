@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,11 +10,48 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserMoreDetailsComponent implements OnInit {
 
+  categoriesData: any[] = [
+    {
+      categoryId: 1,
+      categoryName: 'IT',
+      subCategories: [
+        {
+          subCategoryId: 1,
+          subCategoryName: 'JAVA'
+        },
+        {
+          subCategoryId: 2,
+          subCategoryName: 'C++'
+        }
+      ]
+    },
+    {
+      categoryId: 2,
+      categoryName: 'Commerce',
+      subCategories: [
+        {
+          subCategoryId: 1,
+          subCategoryName: 'Accountancy'
+        },
+        {
+          subCategoryId: 2,
+          subCategoryName: 'Principle of Management'
+        }
+      ]
+    }
+  ]
+
+  subCategories: any[] = [];
+
   userMoreDetails: FormGroup = this.formBuilder.group
     (
       {
         mobile: [null, Validators.required],
-        choosedCategories: this.formBuilder.array([this.categoryArrayItem()], Validators.required)
+        choosedCategories: this.formBuilder.array(
+          [
+            this.categoryArrayItem()
+          ]
+        )
       }
     );
 
@@ -28,8 +65,12 @@ export class UserMoreDetailsComponent implements OnInit {
     return this.formBuilder.group
       (
         {
-          categoryId: [null, Validators.required],
-          subCategories: this.formBuilder.array([this.subCategoryArrayItem()], Validators.required)
+          categoryId: ['', Validators.required],
+          subCategories: this.formBuilder.array(
+            [
+              this.subCategoryArrayItem()
+            ]
+          )
         }
       )
   }
@@ -38,13 +79,39 @@ export class UserMoreDetailsComponent implements OnInit {
     return this.formBuilder.group
       (
         {
-          subCategoryId: [null, Validators.required]
+          subCategoryId: ['', Validators.required]
         }
       )
   }
 
   ngOnInit() {
-    
+    console.log((this.userMoreDetails.controls['choosedCategories'] as FormArray).controls)
+  }
+  addCategory() {
+    let categoryArray = this.userMoreDetails.controls['choosedCategories'] as FormArray;
+    categoryArray.push(this.categoryArrayItem())
+  }
+  addSubCategory(i: number) {
+    let categoryArray = this.userMoreDetails.controls['choosedCategories'] as FormArray;
+    let categoryFormGroup = categoryArray.controls[i] as FormGroup;
+    let subCategoryArray = categoryFormGroup.controls['subCategories'] as FormArray;
+    subCategoryArray.push(this.subCategoryArrayItem())
+  }
+
+  categorySelected(value: number) {
+
+  }
+
+  removeCategory(i: number) {
+    let categoryArray = this.userMoreDetails.controls['choosedCategories'] as FormArray;
+    categoryArray.removeAt(i)
+  }
+
+  removeSubCategory(i: number, j: number) {
+    let categoryArray = this.userMoreDetails.controls['choosedCategories'] as FormArray;
+    let categoryFormGroup = categoryArray.controls[i] as FormGroup;
+    let subCategoryArray = categoryFormGroup.controls['subCategories'] as FormArray;
+    subCategoryArray.removeAt(j)
   }
 
 }

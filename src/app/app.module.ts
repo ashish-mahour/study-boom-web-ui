@@ -25,6 +25,8 @@ import { PublisherMoreDetailsComponent } from './authentication/publisher-more-d
 import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
 import { UrlSerializer } from '@angular/router';
 import { GlobalUrlSerializerService } from './shared/global-url-serializer/global-url-serializer.service';
+import { FindSubcategoriesPipe } from './shared/pipes/find-subcategories/find-subcategories.pipe';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { GlobalUrlSerializerService } from './shared/global-url-serializer/globa
     LoginRegisterComponent,
     UserTypeComponent,
     PublisherMoreDetailsComponent,
-    UserMoreDetailsComponent
+    UserMoreDetailsComponent,
+    FindSubcategoriesPipe
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@
   <mat-card class="login-register-content">
     <mat-tab-group>
       <mat-tab label="Login">
-        <form class="mat-tab-content" fxLayout="column" [formGroup]="loginForm">
+        <form class="mat-tab-content" fxLayout="column" [formGroup]="loginForm" (ngSubmit)="performLogin()">
           <div class="alert alert-danger" role="alert" *ngIf="loginErrorText">
             <strong>Warning : </strong> {{loginErrorText}}
           </div>
@@ -38,7 +38,7 @@
         </form>
       </mat-tab>
       <mat-tab label="Registration">
-        <form class="mat-tab-content" fxLayout="column" [formGroup]="registerForm">
+        <form class="mat-tab-content" fxLayout="column" [formGroup]="registerForm" (ngSubmit)="performRegistration()">
           <div class="alert alert-danger" role="alert" *ngIf="registrationErrorText">
             <strong>Warning : </strong> {{registrationErrorText}}
           </div>
