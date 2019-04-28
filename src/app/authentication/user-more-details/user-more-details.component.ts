@@ -102,13 +102,14 @@ export class UserMoreDetailsComponent implements OnInit {
 
   removeCategory(i: number) {
     let categoryArray = this.userMoreDetails.controls['choosedCategories'] as FormArray;
-    categoryArray.removeAt(i)
+    categoryArray.removeAt(i);
   }
 
   removeSubCategory(i: number, j: number) {
     let categoryArray = this.userMoreDetails.controls['choosedCategories'] as FormArray;
     let categoryFormGroup = categoryArray.controls[i] as FormGroup;
     let subCategoryArray = categoryFormGroup.controls['subCategories'] as FormArray;
+    subCategoryArray.markAsUntouched()
     subCategoryArray.removeAt(j)
   }
 
