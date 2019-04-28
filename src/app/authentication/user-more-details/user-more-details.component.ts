@@ -41,8 +41,6 @@ export class UserMoreDetailsComponent implements OnInit {
     }
   ]
 
-  subCategories: any[] = [];
-
   userMoreDetails: FormGroup = this.formBuilder.group
     (
       {
