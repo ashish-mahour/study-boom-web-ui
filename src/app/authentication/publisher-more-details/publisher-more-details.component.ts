@@ -26,15 +26,16 @@ export class PublisherMoreDetailsComponent implements OnInit {
   constructor(
     private loadingService: LoadingAnimServiceService,
     private formBuilder: FormBuilder,
-    private dialog : MatDialog
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
   }
 
-  skipTheStepAction(){
+  skipTheStepAction() {
     this.dialog.open(AlertBoxComponent, {
-      maxWidth: '25%',
+      minWidth: '25%',
+      maxWidth: '60%',
       data: { title: 'Skipping this Step', type: 'warn', message: 'All the details is nessasary for transfer of money! Skipping the step means you can enter it later for money transfer purpuses!!' }
     })
   }

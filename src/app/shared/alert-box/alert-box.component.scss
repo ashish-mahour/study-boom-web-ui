@@ -1,22 +1,20 @@
 ::ng-deep{
     .mat-dialog-container{
         padding: 0%;
+        background: none;
+        border-style: solid;
+        border-color: rgb(26, 25, 25);
     }
 }
 .margin-zero{
     margin: 0%;
 }
 .dialog-content{
-    background-color: rgba(43, 42, 42, 0.432);
-}
-.dialog-title{
-    background-color:rgba(43, 43, 43, 0.863);
-    padding: 2%;
-    color: rgba(230, 227, 227, 0.863);
+    background-color: rgba(43, 42, 42, 0.884);
 }
 .dialog-action{
     margin-bottom: 0%;
-    background-color: rgba(43, 42, 42, 0.432);
+    background-color: rgba(43, 42, 42, 0.884);
 }
 .dialog-title-icon{
     padding: 2%;
@@ -54,14 +52,8 @@
 .close-button-color{
     letter-spacing: 1px;
     font-weight: 500;
-    background-image: radial-gradient(circle, rgb(242, 183, 145), rgb(245, 154, 94));
-    color: rgb(44, 44, 44);
-}
-.close-button-color:focus{
-    letter-spacing: 1px;
-    font-weight: 500;
-    background-image: radial-gradient(circle, rgb(242, 183, 145), rgb(245, 154, 94));
-    color: rgb(44, 44, 44);
+    background: rgba(40, 206, 115, 0.863);
+    color: rgb(22, 22, 22);
 }
 .dialog-marginp-0{
     margin: 0;
