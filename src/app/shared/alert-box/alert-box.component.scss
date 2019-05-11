@@ -7,16 +7,16 @@
     margin: 0%;
 }
 .dialog-content{
-    background-image: radial-gradient(circle,rgb(164, 206, 206),rgb(125, 155, 168));
+    background-color: rgba(43, 42, 42, 0.432);
 }
 .dialog-title{
     background-color:rgba(43, 43, 43, 0.863);
     padding: 2%;
-    color:rgb(209, 206, 206);
+    color: rgba(230, 227, 227, 0.863);
 }
 .dialog-action{
     margin-bottom: 0%;
-    background-image: radial-gradient(circle,rgb(164, 206, 206),rgb(125, 155, 168));
+    background-color: rgba(43, 42, 42, 0.432);
 }
 .dialog-title-icon{
     padding: 2%;
@@ -47,15 +47,21 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 80%;
     font-weight: 500;
-    color:rgba(43, 43, 43, 0.863);
+    color: rgba(230, 227, 227, 0.863);
     padding: 1%;
     text-align: center;
 }
 .close-button-color{
-    background-image: radial-gradient(circle,rgb(68, 144, 177),rgb(79, 157, 179));
-    color: rgb(44, 44, 44);
-    padding: 1%;
     letter-spacing: 1px;
+    font-weight: 500;
+    background-image: radial-gradient(circle, rgb(242, 183, 145), rgb(245, 154, 94));
+    color: rgb(44, 44, 44);
+}
+.close-button-color:focus{
+    letter-spacing: 1px;
+    font-weight: 500;
+    background-image: radial-gradient(circle, rgb(242, 183, 145), rgb(245, 154, 94));
+    color: rgb(44, 44, 44);
 }
 .dialog-marginp-0{
     margin: 0;

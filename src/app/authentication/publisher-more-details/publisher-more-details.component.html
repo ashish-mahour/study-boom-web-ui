@@ -6,11 +6,11 @@
     <div class="mat-card-content">
       <form fxLayout="column" [formGroup]="publisherMoreDetails">
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-black">Mobile No.
+          <mat-label class="color-for-text">Mobile No.
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="tel" class="color-black" formControlName="mobile" maxlength="10">
-          <mat-icon matSuffix class="color-black">phone</mat-icon>
+          <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10">
+          <mat-icon matSuffix class="color-for-text">phone</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['mobile'].touched && publisherMoreDetails.controls['mobile'].hasError('required')">
             Mobile required!
@@ -22,11 +22,11 @@
         </mat-form-field>
         
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-black">Pan No.
+          <mat-label class="color-for-text">Pan No.
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="text" class="color-black" formControlName="panNo" maxlength="10">
-          <mat-icon matSuffix class="color-black">person_pin</mat-icon>
+          <input matInput type="text" class="color-for-text" formControlName="panNo" maxlength="10">
+          <mat-icon matSuffix class="color-for-text">person_pin</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['panNo'].touched && publisherMoreDetails.controls['panNo'].hasError('required')">
             Pan No required!
@@ -38,11 +38,11 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-black">Bank Name
+          <mat-label class="color-for-text">Bank Name
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="text" class="color-black" formControlName="bankName">
-          <mat-icon matSuffix class="color-black">perm_identity</mat-icon>
+          <input matInput type="text" class="color-for-text" formControlName="bankName">
+          <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['bankName'].touched && publisherMoreDetails.controls['bankName'].hasError('required')">
             Bank Name required!
@@ -54,11 +54,11 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-black">Branch Name
+          <mat-label class="color-for-text">Branch Name
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="text" class="color-black" formControlName="branchName">
-          <mat-icon matSuffix class="color-black">perm_identity</mat-icon>
+          <input matInput type="text" class="color-for-text" formControlName="branchName">
+          <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['branchName'].touched && publisherMoreDetails.controls['branchName'].hasError('required')">
             Branch Name required!
@@ -70,11 +70,11 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-black">Account No.
+          <mat-label class="color-for-text">Account No.
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="tel" class="color-black" formControlName="accountNo">
-          <mat-icon matSuffix class="color-black">perm_identity</mat-icon>
+          <input matInput type="tel" class="color-for-text" formControlName="accountNo">
+          <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['accountNo'].touched && publisherMoreDetails.controls['accountNo'].hasError('required')">
             Account No. required!
@@ -86,11 +86,11 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-black">IFSC Code
+          <mat-label class="color-for-text">IFSC Code
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="text" class="color-black" formControlName="ifscCode">
-          <mat-icon matSuffix class="color-black">perm_identity</mat-icon>
+          <input matInput type="text" class="color-for-text" formControlName="ifscCode">
+          <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['ifscCode'].touched && publisherMoreDetails.controls['ifscCode'].hasError('required')">
             IFSC Code required!
@@ -101,7 +101,7 @@
           </mat-error>
         </mat-form-field>
         <div fxLayoutAlign="end start">
-          <span class="skip-this-step-label" (click)="skipTheStepAction()">Skip this Step..</span>
+          <span class="skip-this-step-label" fxFlex="40" fxFlex.xs="60" (click)="skipTheStepAction()">Skip this Step..</span>
         </div>
         <div fxLayoutAlign="end start">
           <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60">Save</button>

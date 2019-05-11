@@ -1,21 +1,32 @@
 .home-header{
     font-weight: bold;
     color: rgb(209, 206, 206);
+    background-image: url('/assets/images/header-image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     padding-bottom: 0.5%;
     padding-top: 0.5%;
     width: 100%;
 }
 .header-heading {
-    font-size: 130%;
+    font-size: 150%;
     width: 100%;
     height: 100%;
+    padding-left: 2%;
+    padding-top: 0.3%;
+    padding-bottom: 0.3%;
+    word-wrap: break-word;
 }
 .header-tagline {
     padding: 0%;
-    font-size: 65%;
+    font-size: 80%;
     color: rgba(209, 206, 206, 0.623);
     font-weight: lighter;
-    overflow: auto;
+    word-wrap: break-word;
+    padding-left: 2%;
+    padding-top: 0.3%;
+    padding-bottom: 0.3%;
 }
 .home-header-row{
     width: 100%;

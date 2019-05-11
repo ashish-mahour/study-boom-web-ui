@@ -6,11 +6,11 @@
     <div class="mat-card-content">
       <form fxLayout="column" [formGroup]="userMoreDetails">
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-black">Mobile No.
+          <mat-label class="color-for-text">Mobile No.
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="tel" class="color-black" formControlName="mobile" maxlength="10">
-          <mat-icon matSuffix class="color-black">phone</mat-icon>
+          <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10">
+          <mat-icon matSuffix class="color-for-text">phone</mat-icon>
           <mat-error class="error-color"
             *ngIf="userMoreDetails.controls['mobile'].touched && userMoreDetails.controls['mobile'].hasError('required')">
             Mobile required!

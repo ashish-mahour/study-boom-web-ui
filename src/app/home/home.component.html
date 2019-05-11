@@ -9,8 +9,8 @@
   <span class="anim-loading-title"><b>Loading...</b></span>
 </div>
 <div class="home-backgroud" fxLayout="column">
-  <mat-toolbar class="home-header">
-    <mat-toolbar-row class="home-header-row" fxLayout="column" fxLayoutAlign="start start">
+  <div class="home-header">
+    <div class="home-header-row" fxLayout="column" fxLayoutAlign="start start">
       <span class="header-heading">
         <i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;
         StudyBoom Application
@@ -18,7 +18,7 @@
       <span class="header-tagline" fxFelx="100">
         A place where you can enhance your knowlegde and skills by performing various tests..
       </span>
-    </mat-toolbar-row>
-  </mat-toolbar>
+    </div>
+  </div>
   <router-outlet name="home-page-router" activatedRouteData=""></router-outlet>
 </div>

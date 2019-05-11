@@ -1,37 +1,45 @@
-.user-type-content{
-    color: rgb(209, 206, 206); 
-    background: rgba(43, 43, 43, 0.863);
+.user-type-content {
+    color: rgba(230, 227, 227, 0.863);
+    background-color: rgba(43, 42, 42, 0.644);
     width: 30%;
     margin-top: 3%;
     padding: 0%;
     padding-top: 1%;
     margin-left: 0%;
     font-family: cursive;
+
     @media only screen and (max-width: 800px) {
         width: 60%;
     }
+
     @media only screen and (max-width: 600px) {
         width: 80%;
     }
 }
-.user-type-title{
+
+.user-type-title {
     font-size: 150%;
     font-weight: bolder;
     letter-spacing: 1px;
 }
-::ng-deep{
-    .user-type-option .mat-button-toggle-button{
-        background: rgb(176, 189, 189);
+
+::ng-deep {
+    .user-type-option .mat-button-toggle-button {
         font-size: 120%;
         padding-bottom: 2%;
         padding-top: 2%;
         cursor: pointer;
         letter-spacing: 2px;
-        color: rgba(43, 43, 43, 0.863);
+        color: rgba(230, 227, 227, 0.863);
     }
-    .user-type-option .mat-button-toggle-button:focus{
-        background: rgb(9, 161, 116);
+
+    .user-type-option .mat-button-toggle-button:focus {
+        background: rgb(26, 197, 132);
         border-color: rgba(43, 43, 43, 0.863);
+        color: rgba(43, 43, 43, 0.863);
     }
 }
 
+.mat-button-toggle {
+    background: none;
+}

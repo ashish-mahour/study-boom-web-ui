@@ -1,5 +1,5 @@
 .login-register-content {
-    color: rgba(43, 43, 43, 0.863);
+    background-color: rgba(43, 42, 42, 0.644);
     width: 30%;
     margin-top: 1%;
     padding: 0%;
@@ -16,7 +16,7 @@
 }
 
 .mat-tab-content {
-    background-image: radial-gradient(circle, rgb(164, 206, 206), rgb(125, 155, 168));
+    background-color: rgba(0, 0, 0, 0);
     padding: 5%;
     overflow: hidden;
 }
@@ -33,11 +33,11 @@
     }
 
     .form-field-outline .mat-form-field-outline {
-        color: rgba(43, 43, 43, 0.863) !important;
+        color: rgba(230, 227, 227, 0.863) !important;
     }
 
     .mat-form-field-invalid .mat-form-field-outline {
-        color: rgb(165, 62, 62) !important;
+        color: rgb(255, 0, 0) !important;
     }
 
     .form-field-outline .mat-form-field-wrapper {
@@ -45,7 +45,7 @@
     }
 
     .login-register-content .mat-ink-bar {
-        background: rgb(78, 190, 255) !important;
+        background: rgb(245, 154, 94) !important;
     }
 
     .login-register-content .mat-tab-label-content {
@@ -53,11 +53,11 @@
     }
 
     .user-select .mat-select-value {
-        color: black !important;
+        color: rgba(230, 227, 227, 0.863) !important;
     }
 
     .user-select .mat-select-arrow {
-        color: black !important;
+        color: rgba(230, 227, 227, 0.863) !important;
     }
 
     .user-select-option .mat-option-text {
@@ -65,14 +65,14 @@
     }
 }
 
-.color-black {
-    color: black;
+.color-for-text {
+    color: rgba(230, 227, 227, 0.863)
 }
 
 .button-layout {
     letter-spacing: 1px;
     font-weight: 500;
-    background-image: radial-gradient(circle, rgb(68, 144, 177), rgb(79, 157, 179));
+    background-image: radial-gradient(circle, rgb(242, 183, 145), rgb(245, 154, 94));
     color: rgb(44, 44, 44);
 }
 
@@ -94,5 +94,5 @@
 }
 
 .error-color {
-    color: crimson;
+    color: rgb(250, 102, 102);
 }
