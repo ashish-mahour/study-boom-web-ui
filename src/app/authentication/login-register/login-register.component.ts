@@ -72,7 +72,7 @@ export class LoginRegisterComponent implements OnInit {
     this.dialog.open(AlertBoxComponent, {
       minWidth: '25%',
       maxWidth: '70%',
-      data: { title: 'Warning', type: 'warn', message: 'This is just a demo please do not get serious!' }
+      data: { type: 'success', message: 'This is just a demo please do not get serious!' }
     })
   }
 

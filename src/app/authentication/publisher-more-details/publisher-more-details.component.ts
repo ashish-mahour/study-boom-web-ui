@@ -36,7 +36,7 @@ export class PublisherMoreDetailsComponent implements OnInit {
     this.dialog.open(AlertBoxComponent, {
       minWidth: '25%',
       maxWidth: '60%',
-      data: { title: 'Skipping this Step', type: 'warn', message: 'All the details is nessasary for transfer of money! Skipping the step means you can enter it later for money transfer purpuses!!' }
+      data: { type: 'warn', message: 'All the details is nessasary for transfer of money! Skipping the step means you can enter it later for money transfer purpuses!!' }
     })
   }
 

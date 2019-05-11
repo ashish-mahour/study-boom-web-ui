@@ -2,11 +2,13 @@ import { LoadingAnimServiceService } from './../shared/loading/loading-anim-serv
 import { Component, OnInit } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
+import { routerInAnimation } from '../shared/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [routerInAnimation]
 })
 export class HomeComponent implements OnInit {
 

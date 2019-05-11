@@ -8,7 +8,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class AlertBoxComponent implements OnInit {
 
-  title: string;
   type: string;
   message: string;
   routerLinkArray: any[];
@@ -17,7 +16,6 @@ export class AlertBoxComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<AlertBoxComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any) {
-    this.title = data.title;
     this.type = data.type;
     this.message = data.message;
     this.routerLinkArray = data.routerLinkArray;
