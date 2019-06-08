@@ -21,23 +21,26 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-chip-list #chipList>
+          <mat-chip-list #categoryList>
             <mat-chip *ngFor="let category of selectedCategories" [selectable]="true" [removable]="true"
-              (removed)="removeCategory(category)">
+              (removed)="removeCategory(category)" class="category-item">
               {{category.categoryName}}
-              <mat-icon matChipRemove>cancel</mat-icon>
+              <mat-icon matChipRemove>cancel
+              </mat-icon>
             </mat-chip>
           </mat-chip-list>
           <mat-label class="color-for-text">Choose Categories
             <font color="red">*</font>
           </mat-label>
-          <input [matAutocomplete]="categoryAutoComplete" type="text" [matChipInputFor]="chipList"
+          <input [matAutocomplete]="categoryAutoComplete" type="text" [matChipInputFor]="categoryList"
             [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
-            formControlName="choosedCategories">
-          <mat-icon matSuffix class="color-for-text">phone</mat-icon>
+            formControlName="choosedCategory" (matChipInputTokenEnd)="clearCategory($event)">
+          <mat-icon matSuffix class="color-for-text">category</mat-icon>
           <mat-autocomplete #categoryAutoComplete="matAutocomplete"
             (optionSelected)="categorySelected($event.option.value)">
-            <mat-option *ngFor="let category of categoriesData" [value]="category.categoryId">
+            <mat-option
+              *ngFor="let category of categoriesData | filterCategories : userMoreDetails.controls['choosedCategory'].value"
+              [value]="category.categoryId">
               {{category.categoryName}}
             </mat-option>
           </mat-autocomplete>

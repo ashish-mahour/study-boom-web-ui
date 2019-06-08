@@ -82,15 +82,7 @@
 .width-100 {
     width: 100%;
 }
-.add-icon{
-    margin-top: 3%;
-    margin-left: 2%;
-    color: rgb(41, 226, 118);
-    cursor: pointer;
-}
-.remove-icon{
-    margin-top: 3%;
-    margin-left: 2%;
-    color: rgb(248, 56, 23);
-    cursor: pointer;
+
+.category-item{
+    background-image: radial-gradient(circle, rgb(242, 183, 145), rgb(245, 154, 94));
 }

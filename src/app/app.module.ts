@@ -27,6 +27,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { UrlSerializer } from '@angular/router';
 import { GlobalUrlSerializerService } from './shared/global-url-serializer/global-url-serializer.service';
+import { FilterPipePipe } from './shared/pipes/filter-pipe/filter-pipes.pipe';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { GlobalUrlSerializerService } from './shared/global-url-serializer/globa
     LoginRegisterComponent,
     UserTypeComponent,
     PublisherMoreDetailsComponent,
-    UserMoreDetailsComponent
+    UserMoreDetailsComponent,
+    FilterPipePipe
   ],
   imports: [
     BrowserModule,

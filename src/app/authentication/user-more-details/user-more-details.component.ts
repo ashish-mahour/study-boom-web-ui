@@ -1,12 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Pipe, PipeTransform } from '@angular/core';
 import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { MatAutocomplete } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-user-more-details',
   templateUrl: './user-more-details.component.html',
-  styleUrls: ['./user-more-details.component.scss']
+  styleUrls: ['./user-more-details.component.scss'],
+
 })
 export class UserMoreDetailsComponent implements OnInit {
 
@@ -47,10 +50,14 @@ export class UserMoreDetailsComponent implements OnInit {
   selectedSubCategories: any[] = [];
   selectedCategories: any[] = [];
 
+  @ViewChild("categoryList", { static: false })
+  categoryList: MatAutocomplete;
+
   userMoreDetails: FormGroup = this.formBuilder.group
     (
       {
         mobile: [null, Validators.required],
+        choosedCategory: [null],
         choosedCategories: [this.selectedCategories, Validators.required],
         choosedSubCategories: [null, Validators.required]
       }
@@ -68,15 +75,25 @@ export class UserMoreDetailsComponent implements OnInit {
   }
 
   removeCategory(selectedCategory: any) {
-    console.log(selectedCategory)
     this.selectedCategories.splice(this.selectedCategories.indexOf(selectedCategory), 1)
+    this.categoriesData.push(selectedCategory)
   }
 
 
   categorySelected(value: number) {
     let category = this.categoriesData.find(x => x.categoryId == value)
     this.selectedCategories.push(category)
-    console.log(this.userMoreDetails.controls['choosedCategories'].value)
+    this.categoriesData.splice(this.categoriesData.indexOf(category), 1)
+  }
+
+  clearCategory(event: MatChipInputEvent) {
+    if (!this.categoryList.isOpen) {
+      const input = event.input;
+
+      if (input) {
+        input.value = '';
+      }
+    }
   }
 
 
