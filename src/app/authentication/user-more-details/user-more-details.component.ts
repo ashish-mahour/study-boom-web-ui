@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -13,43 +13,46 @@ export class UserMoreDetailsComponent implements OnInit {
   categoriesData: any[] = [
     {
       categoryId: 1,
-      categoryName: 'IT',
-      subCategories: [
-        {
-          subCategoryId: 1,
-          subCategoryName: 'JAVA'
-        },
-        {
-          subCategoryId: 2,
-          subCategoryName: 'C++'
-        }
-      ]
+      categoryName: 'IT'
     },
     {
       categoryId: 2,
-      categoryName: 'Commerce',
-      subCategories: [
-        {
-          subCategoryId: 1,
-          subCategoryName: 'Accountancy'
-        },
-        {
-          subCategoryId: 2,
-          subCategoryName: 'Principle of Management'
-        }
-      ]
+      categoryName: 'Commerce'
     }
   ]
+
+  subCategoriesData: any[] = [
+    {
+      categoryId: 1,
+      subCategoryId: 1,
+      subCategoryName: 'JAVA'
+    },
+    {
+      categoryId: 1,
+      subCategoryId: 2,
+      subCategoryName: 'C++'
+    },
+    {
+      categoryId: 2,
+      subCategoryId: 1,
+      subCategoryName: 'Accountancy'
+    },
+    {
+      categoryId: 2,
+      subCategoryId: 2,
+      subCategoryName: 'Principle of Management'
+    }
+  ]
+
+  selectedSubCategories: any[] = [];
+  selectedCategories: any[] = [];
 
   userMoreDetails: FormGroup = this.formBuilder.group
     (
       {
         mobile: [null, Validators.required],
-        choosedCategories: this.formBuilder.array(
-          [
-            this.categoryArrayItem()
-          ]
-        )
+        choosedCategories: [this.selectedCategories, Validators.required],
+        choosedSubCategories: [null, Validators.required]
       }
     );
 
@@ -59,58 +62,22 @@ export class UserMoreDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) { }
 
-  categoryArrayItem(): FormGroup {
-    return this.formBuilder.group
-      (
-        {
-          categoryId: ['', Validators.required],
-          subCategories: this.formBuilder.array(
-            [
-              this.subCategoryArrayItem()
-            ]
-          )
-        }
-      )
-  }
-
-  subCategoryArrayItem(): FormGroup {
-    return this.formBuilder.group
-      (
-        {
-          subCategoryId: ['', Validators.required]
-        }
-      )
-  }
 
   ngOnInit() {
-    console.log((this.userMoreDetails.controls['choosedCategories'] as FormArray).controls)
+
   }
-  addCategory() {
-    let categoryArray = this.userMoreDetails.controls['choosedCategories'] as FormArray;
-    categoryArray.push(this.categoryArrayItem())
+
+  removeCategory(selectedCategory: any) {
+    console.log(selectedCategory)
+    this.selectedCategories.splice(this.selectedCategories.indexOf(selectedCategory), 1)
   }
-  addSubCategory(i: number) {
-    let categoryArray = this.userMoreDetails.controls['choosedCategories'] as FormArray;
-    let categoryFormGroup = categoryArray.controls[i] as FormGroup;
-    let subCategoryArray = categoryFormGroup.controls['subCategories'] as FormArray;
-    subCategoryArray.push(this.subCategoryArrayItem())
-  }
+
 
   categorySelected(value: number) {
-
+    let category = this.categoriesData.find(x => x.categoryId == value)
+    this.selectedCategories.push(category)
+    console.log(this.userMoreDetails.controls['choosedCategories'].value)
   }
 
-  removeCategory(i: number) {
-    let categoryArray = this.userMoreDetails.controls['choosedCategories'] as FormArray;
-    categoryArray.removeAt(i);
-  }
-
-  removeSubCategory(i: number, j: number) {
-    let categoryArray = this.userMoreDetails.controls['choosedCategories'] as FormArray;
-    let categoryFormGroup = categoryArray.controls[i] as FormGroup;
-    let subCategoryArray = categoryFormGroup.controls['subCategories'] as FormArray;
-    subCategoryArray.markAsUntouched()
-    subCategoryArray.removeAt(j)
-  }
 
 }

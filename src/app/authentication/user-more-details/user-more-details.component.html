@@ -20,63 +20,28 @@
             Invalid Mobile! Only 8 Numeric allowed!
           </mat-error>
         </mat-form-field>
-        <div fxLayout="column">
-          <div formArrayName="choosedCategories"
-            *ngFor="let category of userMoreDetails.controls['choosedCategories'].controls; let i=index;let last=last">
-            <div formGroupName="{{i}}" fxLayout="column">
-              <div fxLayout>
-                <mat-form-field appearance="outline" class="form-field-outline" fxFlex="90">
-                  <mat-select formControlName="categoryId" (selectionChange)="categorySelected($event.value)">
-                    <mat-option value="">
-                      Category {{i+1}}
-                    </mat-option>
-                    <mat-option *ngFor="let category of categoriesData" value="{{category.categoryId}}">
-                      {{category.categoryName}}
-                    </mat-option>
-                  </mat-select>
-                  <mat-error class="error-color"
-                    *ngIf="userMoreDetails.controls['choosedCategories'].controls[i].controls['categoryId'].touched && userMoreDetails.controls['choosedCategories'].controls[i].controls['categoryId'].hasError('required')">
-                    Category {{i+1}} Required
-                  </mat-error>
-                </mat-form-field>
-                <i class="fa fa-plus-circle fa-2x add-icon" aria-hidden="true"
-                  *ngIf="last && userMoreDetails.controls['choosedCategories'].controls[i].controls['categoryId'].valid"
-                  fxFlex="10" (click)="addCategory()"></i>
-                <i class="fa fa-trash fa-2x remove-icon" aria-hidden="true" fxFlex="10" *ngIf="!last"
-                  (click)="removeCategory(i)"></i>
-              </div>
-              <div
-                *ngIf="userMoreDetails.controls['choosedCategories'].controls[i].controls['categoryId'] && userMoreDetails.controls['choosedCategories'].controls[i].controls['categoryId'].value!==null && userMoreDetails.controls['choosedCategories'].controls[i].controls['categoryId'].value!==''">
-                <div formArrayName="subCategories"
-                  *ngFor="let subCategory of userMoreDetails.controls['choosedCategories'].controls[i].controls['subCategories'].controls; let j=index;let last=last">
-                  <div formGroupName="{{j}}">
-                    <mat-form-field appearance="outline" class="form-field-outline">
-                      <mat-select formControlName="subCategoryId">
-                        <mat-option value="">
-                          Sub-Category {{j+1}}
-                        </mat-option>
-                        <mat-option
-                          *ngFor="let subcategory of categoriesData | findSubcategories : userMoreDetails?.controls['choosedCategories']?.controls[i]?.controls['categoryId']?.value"
-                          value="{{subcategory.subCategoryId}}">
-                          {{subcategory.subCategoryName}}
-                        </mat-option>
-                      </mat-select>
-                      <mat-error class="error-color"
-                        *ngIf="userMoreDetails.controls['choosedCategories'].controls[i].controls['subCategories'].controls[j].controls['subCategoryId'].touched && userMoreDetails.controls['choosedCategories'].controls[i].controls['subCategories'].controls[j].controls['subCategoryId'].hasError('required')">
-                        Sub-Category {{j+1}} Required
-                      </mat-error>
-                    </mat-form-field>
-                    <i class="fa fa-plus-circle fa-2x add-icon" aria-hidden="true"
-                      *ngIf="last && userMoreDetails.controls['choosedCategories'].controls[i].controls['subCategories'].controls[j].controls['subCategoryId'].valid"
-                      fxFlex="10" (click)="addSubCategory(i)"></i>
-                    <i class="fa fa-trash fa-2x remove-icon" aria-hidden="true" fxFlex="10" *ngIf="!last"
-                      (click)="removeSubCategory(i, j)"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <mat-form-field appearance="outline" class="form-field-outline">
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let category of selectedCategories" [selectable]="true" [removable]="true"
+              (removed)="removeCategory(category)">
+              {{category.categoryName}}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+          <mat-label class="color-for-text">Choose Categories
+            <font color="red">*</font>
+          </mat-label>
+          <input [matAutocomplete]="categoryAutoComplete" type="text" [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
+            formControlName="choosedCategories">
+          <mat-icon matSuffix class="color-for-text">phone</mat-icon>
+          <mat-autocomplete #categoryAutoComplete="matAutocomplete"
+            (optionSelected)="categorySelected($event.option.value)">
+            <mat-option *ngFor="let category of categoriesData" [value]="category.categoryId">
+              {{category.categoryName}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
       </form>
     </div>
   </mat-card>

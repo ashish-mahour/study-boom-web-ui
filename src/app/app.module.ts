@@ -23,9 +23,10 @@ import { LoadingAnimServiceService } from './shared/loading/loading-anim-service
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PublisherMoreDetailsComponent } from './authentication/publisher-more-details/publisher-more-details.component';
 import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { UrlSerializer } from '@angular/router';
 import { GlobalUrlSerializerService } from './shared/global-url-serializer/global-url-serializer.service';
-import { FindSubcategoriesPipe } from './shared/pipes/find-subcategories/find-subcategories.pipe';
 
 
 @NgModule({
@@ -36,8 +37,7 @@ import { FindSubcategoriesPipe } from './shared/pipes/find-subcategories/find-su
     LoginRegisterComponent,
     UserTypeComponent,
     PublisherMoreDetailsComponent,
-    UserMoreDetailsComponent,
-    FindSubcategoriesPipe
+    UserMoreDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +55,9 @@ import { FindSubcategoriesPipe } from './shared/pipes/find-subcategories/find-su
     MatSelectModule,
     MatDialogModule,
     MatToolbarModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   providers: [
     Title,
