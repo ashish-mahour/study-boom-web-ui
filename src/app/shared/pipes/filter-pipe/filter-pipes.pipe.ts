@@ -6,10 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipePipe implements PipeTransform {
 
   transform(list: any[], args?: string): any {
-    if (!args || args === null || args === '')
+    if (!args || args === null || args === ''|| typeof(args) !== 'string')
       return [];
     else
-      return list.filter(x => (x.categoryName as string).includes(args))
+      return list.filter(x => (x.categoryName as string).toLowerCase().includes(args.toLowerCase()))
   }
 
 }
