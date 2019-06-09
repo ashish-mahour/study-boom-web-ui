@@ -45,6 +45,39 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-outline">
+          <mat-chip-list #subCategoryList>
+            <mat-chip *ngFor="let subCategory of selectedSubCategories" [selectable]="true" [removable]="true"
+              (removed)="removeSubCategory(subCategory)" class="category-item">
+              {{subCategory.subCategoryName}}
+              <mat-icon matChipRemove>cancel
+              </mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+          <mat-label class="color-for-text">Choose Sub-Categories
+            <font color="red">*</font>
+          </mat-label>
+          <input [matAutocomplete]="subCategoryAutoComplete" type="text" [matChipInputFor]="subCategoryList"
+            [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
+            formControlName="choosedSubCategory" (matChipInputTokenEnd)="clearSubCategory($event)">
+          <mat-icon matSuffix class="color-for-text">category</mat-icon>
+          <mat-autocomplete #subCategoryAutoComplete="matAutocomplete"
+            (optionSelected)="subCategorySelected($event.option.value)">
+            <mat-option
+              *ngFor="let subCategory of filteredSubCategories | filterSubCategories : userMoreDetails.controls['choosedSubCategory'].value"
+              [value]="subCategory.subCategoryId">
+              {{subCategory.subCategoryName}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div fxLayoutAlign="end start">
+          <span class="skip-this-step-label" fxFlex="40" fxFlex.xs="60" (click)="skipTheStepAction()">Skip this
+            Step..</span>
+        </div>
+        <div fxLayoutAlign="end start">
+          <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60" (click)="saveDetails()">Save</button>
+        </div>
       </form>
     </div>
   </mat-card>

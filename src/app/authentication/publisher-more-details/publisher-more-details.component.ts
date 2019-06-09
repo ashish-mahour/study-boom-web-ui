@@ -40,4 +40,8 @@ export class PublisherMoreDetailsComponent implements OnInit {
     })
   }
 
+  saveDetails() {
+    let publisherAllDetails: any = this.publisherMoreDetails.value;
+    console.log(publisherAllDetails)
+  }
 }

@@ -27,7 +27,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { UrlSerializer } from '@angular/router';
 import { GlobalUrlSerializerService } from './shared/global-url-serializer/global-url-serializer.service';
-import { FilterPipePipe } from './shared/pipes/filter-pipe/filter-pipes.pipe';
+import { FilterSubCategoriesPipe, FilterCategoriesPipe } from './shared/pipes/filter-pipe/filter-pipes.pipe';
 
 
 @NgModule({
@@ -39,7 +39,8 @@ import { FilterPipePipe } from './shared/pipes/filter-pipe/filter-pipes.pipe';
     UserTypeComponent,
     PublisherMoreDetailsComponent,
     UserMoreDetailsComponent,
-    FilterPipePipe
+    FilterCategoriesPipe,
+    FilterSubCategoriesPipe
   ],
   imports: [
     BrowserModule,
