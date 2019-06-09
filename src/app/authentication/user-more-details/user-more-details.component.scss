@@ -7,6 +7,7 @@
     padding-top: 1%;
     margin-left: 0%;
     font-family: cursive;
+
     @media only screen and (max-width: 800px) {
         width: 60%;
     }
@@ -43,9 +44,11 @@
     .form-field-outline .mat-select-arrow {
         color: rgba(230, 227, 227, 0.863) !important;
     }
-    .mat-option-text{
+
+    .mat-option-text {
         color: rgb(209, 206, 206) !important;
     }
+
     .mat-form-field-invalid .mat-form-field-outline {
         color: rgb(165, 62, 62) !important;
     }
@@ -53,7 +56,12 @@
 }
 
 .color-for-text {
-    color: rgba(230, 227, 227, 0.863)
+    color: rgba(230, 227, 227, 0.863);
+}
+
+.question-icon-size {
+    font-size: 200%;
+    cursor: pointer;
 }
 
 .error-color {
@@ -83,6 +91,6 @@
     width: 100%;
 }
 
-.category-item{
+.category-item {
     background-image: radial-gradient(circle, rgb(242, 183, 145), rgb(245, 154, 94));
 }

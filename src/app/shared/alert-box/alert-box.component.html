@@ -11,7 +11,7 @@
             <i class="fa fa-exclamation-triangle fa-4x" aria-hidden="true"></i>
         </div>
     </div>
-    <span fxFlex="100" class="alert-box-message" fxLayoutAlign="center start">{{message}}</span>
+    <span fxFlex="100" class="alert-box-message" fxLayoutAlign="center start" [innerHTML]="message"></span>
 </div>
 <div mat-dialog-actions class="dialog-action" fxLayoutAlign="center center"
     *ngIf="!routerLinkArray && !dialogYesNo && !dialogNoYes">

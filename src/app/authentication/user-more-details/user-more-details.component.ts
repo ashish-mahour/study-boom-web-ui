@@ -172,4 +172,22 @@ export class UserMoreDetailsComponent implements OnInit {
     console.log(userAllDetails)
   }
 
+  availableCategories() {
+    this.dialog.open(AlertBoxComponent, {
+      minWidth: '25%',
+      maxWidth: '60%',
+      data: { type: 'success', message: 'IT, Science and Commerce' }
+    })
+  }
+
+  availableSubCategories() {
+    this.dialog.open(AlertBoxComponent, {
+      minWidth: '25%',
+      maxWidth: '60%',
+      data: { 
+        type: 'success', 
+        message: 'IT (Java and C++) <br> Science (Physics, Chemistry and Biology) <br> Commerce (Accountancy and Principles of Management)' }
+    })
+  }
+
 }

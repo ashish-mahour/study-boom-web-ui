@@ -35,7 +35,9 @@
           <input [matAutocomplete]="categoryAutoComplete" type="text" [matChipInputFor]="categoryList"
             [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
             formControlName="choosedCategory" (matChipInputTokenEnd)="clearCategory($event)">
-          <mat-icon matSuffix class="color-for-text">category</mat-icon>
+          <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span
+              class="fa fa-question-circle-o fa-1x" aria-hidden="true" matTooltip="Available categories"
+              [matTooltipPosition]="'below'" (click)="availableCategories()"></span></mat-icon>
           <mat-autocomplete #categoryAutoComplete="matAutocomplete"
             (optionSelected)="categorySelected($event.option.value)">
             <mat-option
@@ -61,7 +63,9 @@
           <input [matAutocomplete]="subCategoryAutoComplete" type="text" [matChipInputFor]="subCategoryList"
             [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
             formControlName="choosedSubCategory" (matChipInputTokenEnd)="clearSubCategory($event)">
-          <mat-icon matSuffix class="color-for-text">category</mat-icon>
+            <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span
+              class="fa fa-question-circle-o fa-1x" aria-hidden="true" matTooltip="Available sub-categories"
+              [matTooltipPosition]="'below'" (click)="availableSubCategories()"></span></mat-icon>
           <mat-autocomplete #subCategoryAutoComplete="matAutocomplete"
             (optionSelected)="subCategorySelected($event.option.value)">
             <mat-option
@@ -76,7 +80,8 @@
             Step..</span>
         </div>
         <div fxLayoutAlign="end start">
-          <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60" (click)="saveDetails()">Save</button>
+          <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60"
+            (click)="saveDetails()">Save</button>
         </div>
       </form>
     </div>
