@@ -12,7 +12,7 @@ import { routerInAnimation } from 'src/app/shared/animations';
 export class DashboardMainComponent implements OnInit {
 
   isMobile: boolean = false;
-  userType: string = 'STUDENT';
+  userType: string = 'PUBLISHER';
   userUploadedProfilePic: string;
 
   constructor(
@@ -21,7 +21,12 @@ export class DashboardMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle("Dashboard - StudyBoom")
+    if (this.userType === 'ADMIN')
+      this.titleService.setTitle("Admin Dashboard - StudyBoom")
+    else if (this.userType === 'STUDENT')
+      this.titleService.setTitle("Student Dashboard - StudyBoom")
+    else if (this.userType === 'PUBLISHER')
+      this.titleService.setTitle("Publisher Dashboard - StudyBoom")
     this.checkBrowser();
   }
 
