@@ -8,8 +8,34 @@
   <br>
   <span class="anim-loading-title"><b>Loading...</b></span>
 </div>
-<div class="dashboard-backgroud" fxLayout="column">
-  <div @routerInAnimation>
-    <router-outlet name="dashboard-page-router"></router-outlet>
+<div fxLayoutWrap>
+  <div class="home-header" fxHide.lg fxHide.md fxHide.xl>
+    <div class="home-header-row" fxLayout="column" fxLayoutAlign="start start">
+      <span class="header-heading">
+        <i class="fa fa-bars nav-bar-menu" aria-hidden="true" (click)="navBar.toggle()"></i>&nbsp;&nbsp;&nbsp;
+        StudyBoom Application
+      </span>
+    </div>
   </div>
+  <mat-sidenav-container autosize=true>
+    <mat-sidenav [mode]="isMobile? 'over':'side'" position="start" [opened]="!isMobile" fxFlex=20 fxFlex.xs=50
+      fxFlex.sm=30 fixedInViewport=true [fixedTopGap]="isMobile? 36 : 20" [fixedBottomGap]="isMobile? 0 : 20" #navBar>
+      <mat-nav-list>
+        <div mat-list-item fxLayoutAlign="center start">
+          <img src="assets/images/default-user-image.png" class="user-image">
+        </div>
+        <div mat-list-item fxLayoutAlign="center start" class="user-name">
+          Ashish Mahour
+        </div>
+        <div mat-list-item fxLayoutAlign="center start">
+
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="dashboard-backgroud" fxFlex=100>
+      <div @routerInAnimation>
+        <router-outlet name="dashboard-page-router"></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

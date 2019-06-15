@@ -25,6 +25,8 @@ import { PublisherMoreDetailsComponent } from './authentication/publisher-more-d
 import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { UrlSerializer } from '@angular/router';
 import { GlobalUrlSerializerService } from './shared/global-url-serializer/global-url-serializer.service';
 import { FilterSubCategoriesPipe, FilterCategoriesPipe } from './shared/pipes/filter-pipe/filter-pipes.pipe';
@@ -65,7 +67,9 @@ import { DashboardScreenComponent } from './dashboard/dashboard-screen/dashboard
     MatButtonToggleModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [
     Title,
