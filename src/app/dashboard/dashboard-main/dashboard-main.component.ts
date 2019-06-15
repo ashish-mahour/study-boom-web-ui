@@ -12,6 +12,8 @@ import { routerInAnimation } from 'src/app/shared/animations';
 export class DashboardMainComponent implements OnInit {
 
   isMobile: boolean = false;
+  userType: string = 'STUDENT';
+  userUploadedProfilePic: string;
 
   constructor(
     private titleService: Title,
@@ -27,7 +29,8 @@ export class DashboardMainComponent implements OnInit {
   onResize() {
     this.checkBrowser();
   }
-  checkBrowser(){
+
+  checkBrowser() {
     if (navigator.userAgent.match(/Android/i)
       || navigator.userAgent.match(/webOS/i)
       || navigator.userAgent.match(/iPhone/i)
@@ -40,5 +43,15 @@ export class DashboardMainComponent implements OnInit {
     else
       this.isMobile = false
   }
+  changeProfilePic(event: any) {
+    let file: File = event.target.files[0];
+    let fileReader = new FileReader();
+    fileReader.onload = this.handleReaderEvent.bind(this);
+    fileReader.readAsDataURL(file)
+  }
 
+  handleReaderEvent(event: any) {
+    let reader: FileReader = event.target;
+    this.userUploadedProfilePic = reader.result.toString();
+  }
 }

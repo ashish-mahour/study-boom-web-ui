@@ -49,7 +49,19 @@
 .nav-bar-menu {
       cursor: pointer;
 }
-.user-name{
-    text-align: center;
-    font-family: cursive;
+
+.user-name {
+      text-align: center;
+      font-family: cursive;
+}
+
+.footer-bottom {
+      padding: 0%;
+      font-size: 80%;
+      color: rgba(209, 206, 206, 0.623);
+      font-weight: lighter;
+      word-wrap: break-word;
+      padding-bottom: 0.3%;
+      bottom: 0;
+      position: fixed;
 }
