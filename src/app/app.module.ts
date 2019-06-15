@@ -29,6 +29,8 @@ import { UrlSerializer } from '@angular/router';
 import { GlobalUrlSerializerService } from './shared/global-url-serializer/global-url-serializer.service';
 import { FilterSubCategoriesPipe, FilterCategoriesPipe } from './shared/pipes/filter-pipe/filter-pipes.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-main.component';
+import { DashboardScreenComponent } from './dashboard/dashboard-screen/dashboard-screen.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     PublisherMoreDetailsComponent,
     UserMoreDetailsComponent,
     FilterCategoriesPipe,
-    FilterSubCategoriesPipe
+    FilterSubCategoriesPipe,
+    DashboardMainComponent,
+    DashboardScreenComponent
   ],
   imports: [
     BrowserModule,

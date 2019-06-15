@@ -5,9 +5,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PublisherMoreDetailsComponent } from './authentication/publisher-more-details/publisher-more-details.component';
 import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
+import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-main.component';
+import { DashboardScreenComponent } from './dashboard/dashboard-screen/dashboard-screen.component';
 
-export const childRouterOutlets : string[] = [
-  'home-page-router'
+export const childRouterOutlets: string[] = [
+  'home-page-router',
+  'dashboard-page-router'
 ]
 
 const routes: Routes = [
@@ -44,6 +47,22 @@ const routes: Routes = [
         path: 'user-more-details',
         component: UserMoreDetailsComponent,
         outlet: childRouterOutlets[0]
+      }
+    ]
+  },
+  {
+    path: 'dashboard',
+    component: DashboardMainComponent,
+    children: [
+      {
+        path: '**',
+        pathMatch: 'full',
+        redirectTo: '/dashboard'
+      },
+      {
+        path: '',
+        component: DashboardScreenComponent,
+        outlet: childRouterOutlets[1]
       }
     ]
   }
