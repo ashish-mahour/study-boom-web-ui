@@ -1,3 +1,75 @@
-<p>
-  dashboard-screen works!
-</p>
+<div fxLayoutAlign="center center">
+  <mat-card class="dashboard-screen-content">
+    <mat-card-header>
+      <mat-card-title>Dashboard</mat-card-title>
+      <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content fxLayout="column">
+      <div fxLayoutAlign="center center" fxLayout="column" fxFlex=100>
+        <div class="alert alert-success" role="alert" *ngIf="profileCompletion===100">
+          Your Profile is completed...
+        </div>
+        <div class="alert alert-primary" role="alert" *ngIf="profileCompletion!==100" fxLayoutWrap>
+          <span fxFlex="80" fxFlex.xs="100" fxFlex.sm="100">
+            Your Profile is {{profileCompletion}}% completed...
+          </span>
+          <span fxLayoutAlign="end start" fxFlex="20" fxFlex.xs="100" fxFlex.sm="100">
+            <button mat-raised-button class="edit-profile-button">Edit profile</button>
+          </span>
+        </div>
+      </div>
+      <div fxFlex=100 fxLayout="column" class="dashboard-screen-table-content" fxLayoutAlign="center center">
+        <table class="table publisher-table wraping-the-text" *ngIf="userType === 'PUBLISHER'">
+          <thead>
+            <tr>
+              <th scope="col" fxflex=5>#</th>
+              <th scope="col" fxflex=20>Name</th>
+              <th scope="col" fxflex=15>No. of Questions</th>
+              <th scope="col" fxflex=20>Time Duration</th>
+              <th scope="col" fxflex=20>Created Date/Time</th>
+              <th scope="col" fxflex=20>Sold Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row">
+
+            </tr>
+          </tbody>
+        </table>
+        <table class="table student-table wraping-the-text" *ngIf="userType === 'STUDENT'">
+          <thead>
+            <tr>
+              <th scope="col" fxflex=5>#</th>
+              <th scope="col" fxflex=20>Name</th>
+              <th scope="col" fxflex=20>Time Duration</th>
+              <th scope="col" fxflex=20>Date/Time</th>
+              <th scope="col" fxflex=15>No. of Questions Attempted</th>
+              <th scope="col" fxflex=20>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+
+            </tr>
+          </tbody>
+        </table>
+        <table class="table student-table wraping-the-text" *ngIf="userType === 'ADMIN'">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Request Type</th>
+              <th scope="col">To be Perform at</th>
+              <th scope="col">Request Date/Time</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

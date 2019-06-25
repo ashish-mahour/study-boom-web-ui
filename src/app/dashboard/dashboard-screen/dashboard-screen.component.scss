@@ -1,0 +1,58 @@
+.dashboard-screen-content {
+      background-color: rgba(43, 42, 42, 0.644);
+      width: 70%;
+      margin-top: 1%;
+      padding: 0%;
+      padding-top: 1%;
+
+      @media only screen and (max-width: 800px) {
+            width: 80%;
+            margin-top: 12%;
+      }
+
+      @media only screen and (max-width: 600px) {
+            width: 80%;
+      }
+}
+
+.dashboard-screen-table-content {
+      text-align: center;
+      overflow-x: auto;
+}
+
+.alert-success {
+      width: 96%;
+      color: rgb(32, 12, 12);
+      overflow-x: auto;
+      background-color: rgba(1, 211, 81, 0.712);
+      border-color: rgba(1, 211, 81, 0.712);
+}
+
+.alert-primary {
+      width: 96%;
+      color: rgb(32, 12, 12);
+      overflow-x: auto;
+      background-color: rgba(0, 153, 224, 0.664);
+      border-color: rgba(0, 153, 224, 0.664);
+}
+
+.publisher-table {
+      color: rgb(209, 206, 206);
+      width: 96%;
+      overflow-x: auto;
+}
+
+.student-table {
+      color: rgb(209, 206, 206);
+      width: 96%;
+      overflow-x: auto;
+}
+
+.wraping-the-text {
+      word-wrap: break-word;
+}
+
+.edit-profile-button{
+      color: rgb(32, 12, 12);
+      background: rgba(1, 211, 81, 0.712);
+}

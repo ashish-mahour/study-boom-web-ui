@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardScreenComponent implements OnInit {
 
+  userType: string = 'PUBLISHER';
+  profileCompletion: number = 90;
   constructor() { }
 
   ngOnInit() {
