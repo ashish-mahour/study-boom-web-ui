@@ -7,6 +7,9 @@ import { PublisherMoreDetailsComponent } from './authentication/publisher-more-d
 import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
 import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-main.component';
 import { DashboardScreenComponent } from './dashboard/dashboard-screen/dashboard-screen.component';
+import { UserEditDetailsComponent } from './authentication/edit-users/user-edit-details/user-edit-details.component';
+import { AdminEditDetailsComponent } from './authentication/edit-users/admin-edit-details/admin-edit-details.component';
+import { PublisherEditDetailsComponent } from './authentication/edit-users/publisher-edit-details/publisher-edit-details.component';
 
 export const childRouterOutlets: string[] = [
   'home-page-router',
@@ -62,6 +65,21 @@ const routes: Routes = [
       {
         path: '',
         component: DashboardScreenComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'user-edit-details',
+        component: UserEditDetailsComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'admin-edit-details',
+        component: AdminEditDetailsComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'publisher-edit-details',
+        component: PublisherEditDetailsComponent,
         outlet: childRouterOutlets[1]
       }
     ]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-screen',
@@ -7,11 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardScreenComponent implements OnInit {
 
-  userType: string = 'PUBLISHER';
-  profileCompletion: number = 90;
-  constructor() { }
+  userType: string = 'ADMIN';
+  profileCompletion: number = 30;
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  editProfile() {
+    if (this.userType === 'PUBLISHER')
+      this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': ['publisher-edit-details'] } }])
+    if (this.userType === 'ADMIN')
+      this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': ['admin-edit-details'] } }])
+    if (this.userType === 'STUDENT')
+      this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': 'user-edit-details' } }])
   }
 
 }

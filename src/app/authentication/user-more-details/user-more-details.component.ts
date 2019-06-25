@@ -161,7 +161,7 @@ export class UserMoreDetailsComponent implements OnInit {
     this.dialog.open(AlertBoxComponent, {
       minWidth: '25%',
       maxWidth: '60%',
-      data: { type: 'warn', message: 'All the details is nessasary for getting results ! Skipping the step means you can enter it later for dashboard purpuses!!' }
+      data: { type: 'warn', message: 'All the details is nessasary for getting results !<br> Skipping the step means you can enter it later for dashboard purpuses!!' }
     })
   }
 

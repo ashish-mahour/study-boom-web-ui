@@ -6,15 +6,17 @@
     </mat-card-header>
     <mat-card-content fxLayout="column">
       <div fxLayoutAlign="center center" fxLayout="column" fxFlex=100>
-        <div class="alert alert-success" role="alert" *ngIf="profileCompletion===100">
-          Your Profile is completed...
-        </div>
-        <div class="alert alert-primary" role="alert" *ngIf="profileCompletion!==100" fxLayoutWrap>
-          <span fxFlex="80" fxFlex.xs="100" fxFlex.sm="100">
-            Your Profile is {{profileCompletion}}% completed...
+        <div class="alert alert-success" role="alert" *ngIf="profileCompletion === 100">
+          <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-success-message">
+            Your Profile is completed...
           </span>
-          <span fxLayoutAlign="end start" fxFlex="20" fxFlex.xs="100" fxFlex.sm="100">
-            <button mat-raised-button class="edit-profile-button">Edit profile</button>
+        </div>
+        <div class="alert alert-primary" role="alert" *ngIf="profileCompletion !== 100" fxLayoutWrap>
+          <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-error-message">
+            Your profile is {{profileCompletion}}% completed...
+          </span>
+          <span fxLayoutAlign="end start" fxFlex="20" fxFlex.xs="50" fxFlex.sm="50">
+            <button mat-raised-button class="edit-profile-button" (click)="editProfile()">Edit profile</button>
           </span>
         </div>
       </div>

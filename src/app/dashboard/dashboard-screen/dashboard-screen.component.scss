@@ -52,7 +52,19 @@
       word-wrap: break-word;
 }
 
-.edit-profile-button{
+.edit-profile-button {
       color: rgb(32, 12, 12);
-      background: rgba(1, 211, 81, 0.712);
+      background: rgba(3, 171, 248, 0.863);
+}
+
+.alert-error-message {
+      font-size: 150%;
+      font-weight: 100;
+      color:rgba(176, 228, 252, 0.822);
+}
+
+.alert-success-message {
+      color: rgba(170, 255, 202, 0.822);
+      font-size: 150%;
+      font-weight: 100;
 }

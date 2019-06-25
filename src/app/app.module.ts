@@ -34,6 +34,9 @@ import { FilterSubCategoriesPipe, FilterCategoriesPipe } from './shared/pipes/fi
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-main.component';
 import { DashboardScreenComponent } from './dashboard/dashboard-screen/dashboard-screen.component';
+import { PublisherEditDetailsComponent } from './authentication/edit-users/publisher-edit-details/publisher-edit-details.component';
+import { UserEditDetailsComponent } from './authentication/edit-users/user-edit-details/user-edit-details.component';
+import { AdminEditDetailsComponent } from './authentication/edit-users/admin-edit-details/admin-edit-details.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { DashboardScreenComponent } from './dashboard/dashboard-screen/dashboard
     FilterCategoriesPipe,
     FilterSubCategoriesPipe,
     DashboardMainComponent,
-    DashboardScreenComponent
+    DashboardScreenComponent,
+    PublisherEditDetailsComponent,
+    UserEditDetailsComponent,
+    AdminEditDetailsComponent
   ],
   imports: [
     BrowserModule,
