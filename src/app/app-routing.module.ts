@@ -10,6 +10,14 @@ import { DashboardScreenComponent } from './dashboard/dashboard-screen/dashboard
 import { UserEditDetailsComponent } from './authentication/edit-users/user-edit-details/user-edit-details.component';
 import { AdminEditDetailsComponent } from './authentication/edit-users/admin-edit-details/admin-edit-details.component';
 import { PublisherEditDetailsComponent } from './authentication/edit-users/publisher-edit-details/publisher-edit-details.component';
+import { ManageTestSeriesComponent } from './admin-components/manage-test-series/manage-test-series.component';
+import { ManageUsersComponent } from './admin-components/manage-users/manage-users.component';
+import { ReportsComponent } from './admin-components/reports/reports.component';
+import { AddTestSeriesComponent } from './publisher-components/add-test-series/add-test-series.component';
+import { UploadTestSeriesComponent } from './publisher-components/upload-test-series/upload-test-series.component';
+import { CartComponent } from './user-components/cart/cart.component';
+import { PerformTestSeriesComponent } from './user-components/perform-test-series/perform-test-series.component';
+import { TestSeriesListingComponent } from './user-components/test-series-listing/test-series-listing.component';
 
 export const childRouterOutlets: string[] = [
   'home-page-router',
@@ -80,6 +88,46 @@ const routes: Routes = [
       {
         path: 'publisher-edit-details',
         component: PublisherEditDetailsComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'admin-manage-test-series',
+        component: ManageTestSeriesComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'admin-manage-users',
+        component: ManageUsersComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'admin-reports',
+        component: ReportsComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'publisher-add-test-series',
+        component: AddTestSeriesComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'publisher-upload-test-series',
+        component: UploadTestSeriesComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'user-cart',
+        component: CartComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'user-perform-test-series',
+        component: PerformTestSeriesComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'user-test-series-listings',
+        component: TestSeriesListingComponent,
         outlet: childRouterOutlets[1]
       }
     ]

@@ -37,6 +37,14 @@ import { DashboardScreenComponent } from './dashboard/dashboard-screen/dashboard
 import { PublisherEditDetailsComponent } from './authentication/edit-users/publisher-edit-details/publisher-edit-details.component';
 import { UserEditDetailsComponent } from './authentication/edit-users/user-edit-details/user-edit-details.component';
 import { AdminEditDetailsComponent } from './authentication/edit-users/admin-edit-details/admin-edit-details.component';
+import { CartComponent } from './user-components/cart/cart.component';
+import { TestSeriesListingComponent } from './user-components/test-series-listing/test-series-listing.component';
+import { PerformTestSeriesComponent } from './user-components/perform-test-series/perform-test-series.component';
+import { AddTestSeriesComponent } from './publisher-components/add-test-series/add-test-series.component';
+import { UploadTestSeriesComponent } from './publisher-components/upload-test-series/upload-test-series.component';
+import { ManageUsersComponent } from './admin-components/manage-users/manage-users.component';
+import { ManageTestSeriesComponent } from './admin-components/manage-test-series/manage-test-series.component';
+import { ReportsComponent } from './admin-components/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +61,15 @@ import { AdminEditDetailsComponent } from './authentication/edit-users/admin-edi
     DashboardScreenComponent,
     PublisherEditDetailsComponent,
     UserEditDetailsComponent,
-    AdminEditDetailsComponent
+    AdminEditDetailsComponent,
+    CartComponent,
+    TestSeriesListingComponent,
+    PerformTestSeriesComponent,
+    AddTestSeriesComponent,
+    UploadTestSeriesComponent,
+    ManageUsersComponent,
+    ManageTestSeriesComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
