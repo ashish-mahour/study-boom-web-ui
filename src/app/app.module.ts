@@ -45,6 +45,7 @@ import { UploadTestSeriesComponent } from './publisher-components/upload-test-se
 import { ManageUsersComponent } from './admin-components/manage-users/manage-users.component';
 import { ManageTestSeriesComponent } from './admin-components/manage-test-series/manage-test-series.component';
 import { ReportsComponent } from './admin-components/reports/reports.component';
+import { ManageCategoriesComponent } from './admin-components/manage-categories/manage-categories.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ReportsComponent } from './admin-components/reports/reports.component';
     UploadTestSeriesComponent,
     ManageUsersComponent,
     ManageTestSeriesComponent,
-    ReportsComponent
+    ReportsComponent,
+    ManageCategoriesComponent
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,7 @@ import { UploadTestSeriesComponent } from './publisher-components/upload-test-se
 import { CartComponent } from './user-components/cart/cart.component';
 import { PerformTestSeriesComponent } from './user-components/perform-test-series/perform-test-series.component';
 import { TestSeriesListingComponent } from './user-components/test-series-listing/test-series-listing.component';
+import { ManageCategoriesComponent } from './admin-components/manage-categories/manage-categories.component';
 
 export const childRouterOutlets: string[] = [
   'home-page-router',
@@ -98,6 +99,11 @@ const routes: Routes = [
       {
         path: 'admin-manage-users',
         component: ManageUsersComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
+        path: 'admin-manage-categories',
+        component: ManageCategoriesComponent,
         outlet: childRouterOutlets[1]
       },
       {

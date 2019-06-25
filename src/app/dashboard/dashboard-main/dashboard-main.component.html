@@ -75,6 +75,11 @@
             <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             Manage Test Series
           </a>
+          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
+            <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+            Manage Categories
+          </a>
+          <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
           <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
           <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
             <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
