@@ -81,7 +81,7 @@ export class UserMoreDetailsComponent implements OnInit {
   userMoreDetails: FormGroup = this.formBuilder.group
     (
       {
-        mobile: [null, Validators.required],
+        mobile: [null, [Validators.required, Validators.pattern("[0-9]{10}")]],
         choosedCategory: [null],
         choosedCategories: [this.selectedCategories, Validators.minLength(1)],
         choosedSubCategory: [null],

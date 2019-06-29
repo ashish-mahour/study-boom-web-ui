@@ -25,7 +25,7 @@
             <mat-chip *ngFor="let category of selectedCategories" [selectable]="true" [removable]="true"
               (removed)="removeCategory(category)" class="category-item">
               {{category.categoryName}}
-              <mat-icon matChipRemove>cancel
+              <mat-icon matChipRemove class="close-button">cancel
               </mat-icon>
             </mat-chip>
           </mat-chip-list>
@@ -35,9 +35,9 @@
           <input [matAutocomplete]="categoryAutoComplete" type="text" [matChipInputFor]="categoryList"
             [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
             formControlName="choosedCategory" (matChipInputTokenEnd)="clearCategory($event)">
-          <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span
-              class="fa fa-question-circle-o fa-1x" aria-hidden="true" matTooltip="Available categories"
-              [matTooltipPosition]="'below'" (click)="availableCategories()"></span></mat-icon>
+          <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span aria-hidden="true"
+              matTooltip="Available categories" [matTooltipPosition]="'below'"
+              (click)="availableCategories()">category</span></mat-icon>
           <mat-autocomplete #categoryAutoComplete="matAutocomplete"
             (optionSelected)="categorySelected($event.option.value)">
             <mat-option
@@ -53,7 +53,7 @@
             <mat-chip *ngFor="let subCategory of selectedSubCategories" [selectable]="true" [removable]="true"
               (removed)="removeSubCategory(subCategory)" class="category-item">
               {{subCategory.subCategoryName}}
-              <mat-icon matChipRemove>cancel
+              <mat-icon matChipRemove class="close-button">cancel
               </mat-icon>
             </mat-chip>
           </mat-chip-list>
@@ -63,9 +63,9 @@
           <input [matAutocomplete]="subCategoryAutoComplete" type="text" [matChipInputFor]="subCategoryList"
             [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
             formControlName="choosedSubCategory" (matChipInputTokenEnd)="clearSubCategory($event)">
-            <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span
-              class="fa fa-question-circle-o fa-1x" aria-hidden="true" matTooltip="Available sub-categories"
-              [matTooltipPosition]="'below'" (click)="availableSubCategories()"></span></mat-icon>
+          <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span aria-hidden="true"
+              matTooltip="Available sub-categories" [matTooltipPosition]="'below'"
+              (click)="availableSubCategories()">category</span></mat-icon>
           <mat-autocomplete #subCategoryAutoComplete="matAutocomplete"
             (optionSelected)="subCategorySelected($event.option.value)">
             <mat-option

@@ -4,6 +4,146 @@
       <mat-card-title>Edit Profile</mat-card-title>
       <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
+    <form class="mat-tab-content" fxLayout="column" [formGroup]="userEditForm" (ngSubmit)="editProfile()">
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
+          <mat-label class="color-for-text">Full Name
+            <font color="red">*</font>
+          </mat-label>
+          <input matInput type="text" class="color-for-text" formControlName="fullname">
+          <mat-icon matSuffix class="color-for-text">person</mat-icon>
+          <mat-error class="error-color"
+            *ngIf="this.userEditForm.controls['fullname'].touched && this.userEditForm.controls['fullname'].hasError('required')">
+            Full Name required!
+          </mat-error>
+          <mat-error class="error-color"
+            *ngIf="this.userEditForm.controls['fullname'].touched && !this.userEditForm.controls['fullname'].hasError('required') && this.userEditForm.controls['fullname'].hasError('pattern')">
+            Invalid Full Name! Only alphabets and space allowed!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field-outline" fxFlex=50 fxFlex.sm=100 fxFlex.xs=100
+          fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
+          <mat-label class="color-for-text">Email
+            <font color="red">*</font>
+          </mat-label>
+          <input matInput type="text" class="color-for-text" formControlName="email">
+          <mat-icon matSuffix class="color-for-text">mail</mat-icon>
+          <mat-error class="error-color"
+            *ngIf="this.userEditForm.controls['email'].touched && this.userEditForm.controls['email'].hasError('required')">
+            Email required!
+          </mat-error>
+          <mat-error class="error-color"
+            *ngIf="this.userEditForm.controls['email'].touched && !this.userEditForm.controls['email'].hasError('required') && this.userEditForm.controls['email'].hasError('pattern')">
+            Invalid Email Address! Only alphanumeric and "@" allowed!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
+          <mat-label class="color-for-text">Username
+            <font color="red">*</font>
+          </mat-label>
+          <input matInput type="text" class="color-for-text" formControlName="username">
+          <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
+          <mat-error class="error-color"
+            *ngIf="this.userEditForm.controls['username'].touched && this.userEditForm.controls['username'].hasError('required')">
+            Username required!
+          </mat-error>
+          <mat-error class="error-color"
+            *ngIf="this.userEditForm.controls['username'].touched && !this.userEditForm.controls['username'].hasError('required') && this.userEditForm.controls['username'].hasError('pattern')">
+            Invalid Username! Only alphanumeric allowed!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field-outline" fxFlex=50 fxFlex.sm=100 fxFlex.xs=100
+          fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
+          <mat-label class="color-for-text">Password
+            <font color="red">*</font>
+          </mat-label>
+          <input matInput type="password" class="color-for-text" formControlName="password">
+          <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
+          <mat-error class="error-color"
+            *ngIf="this.userEditForm.controls['password'].touched && this.userEditForm.controls['password'].hasError('required')">
+            Password required!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
+          <mat-label class="color-for-text">Mobile No.
+            <font color="red">*</font>
+          </mat-label>
+          <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10">
+          <mat-icon matSuffix class="color-for-text">phone</mat-icon>
+          <mat-error class="error-color"
+            *ngIf="userEditForm.controls['mobile'].touched && userEditForm.controls['mobile'].hasError('required')">
+            Mobile required!
+          </mat-error>
+          <mat-error class="error-color"
+            *ngIf="userEditForm.controls['mobile'].touched && !userEditForm.controls['mobile'].hasError('required') && userEditForm.controls['mobile'].hasError('pattern')">
+            Invalid Mobile! Only 8 Numeric allowed!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline" class="form-field-outline">
+        <mat-chip-list #categoryList>
+          <mat-chip *ngFor="let category of selectedCategories" [selectable]="true" [removable]="true"
+            (removed)="removeCategory(category)" class="category-item">
+            {{category.categoryName}}
+            <mat-icon matChipRemove class="close-button">cancel
+            </mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+        <mat-label class="color-for-text">Choose Categories
+          <font color="red">*</font>
+        </mat-label>
+        <input [matAutocomplete]="categoryAutoComplete" type="text" [matChipInputFor]="categoryList"
+          [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
+          formControlName="choosedCategory" (matChipInputTokenEnd)="clearCategory($event)">
+        <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span aria-hidden="true"
+            matTooltip="Available categories" [matTooltipPosition]="'below'"
+            (click)="availableCategories()">category</span></mat-icon>
+        <mat-autocomplete #categoryAutoComplete="matAutocomplete"
+          (optionSelected)="categorySelected($event.option.value)">
+          <mat-option
+            *ngFor="let category of categoriesData | filterCategories : userEditForm.controls['choosedCategory'].value"
+            [value]="category.categoryId">
+            {{category.categoryName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field-outline">
+        <mat-chip-list #subCategoryList>
+          <mat-chip *ngFor="let subCategory of selectedSubCategories" [selectable]="true" [removable]="true"
+            (removed)="removeSubCategory(subCategory)" class="category-item">
+            {{subCategory.subCategoryName}}
+            <mat-icon matChipRemove class="close-button">cancel
+            </mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+        <mat-label class="color-for-text">Choose Sub-Categories
+          <font color="red">*</font>
+        </mat-label>
+        <input [matAutocomplete]="subCategoryAutoComplete" type="text" [matChipInputFor]="subCategoryList"
+          [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
+          formControlName="choosedSubCategory" (matChipInputTokenEnd)="clearSubCategory($event)">
+        <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span aria-hidden="true"
+            matTooltip="Available sub-categories" [matTooltipPosition]="'below'"
+            (click)="availableSubCategories()">category</span></mat-icon>
+        <mat-autocomplete #subCategoryAutoComplete="matAutocomplete"
+          (optionSelected)="subCategorySelected($event.option.value)">
+          <mat-option
+            *ngFor="let subCategory of filteredSubCategories | filterSubCategories : userEditForm.controls['choosedSubCategory'].value"
+            [value]="subCategory.subCategoryId">
+            {{subCategory.subCategoryName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div fxLayoutAlign="end start">
+        <button type="button" mat-raised-button class="button-layout" fxFlex="20" fxFlex.xs="60"
+          (click)="editProfile()">Save</button>
+      </div>
+    </form>
   </mat-card>
 
 </div>
