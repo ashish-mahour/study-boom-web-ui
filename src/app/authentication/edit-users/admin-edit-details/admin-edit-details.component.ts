@@ -10,7 +10,7 @@ export class AdminEditDetailsComponent implements OnInit {
 
   userType: string = 'ADMIN';
 
-  adminRegisterForm: FormGroup = this.formBuilder.group({
+  adminEditForm: FormGroup = this.formBuilder.group({
     fullname: [null, [Validators.required, Validators.pattern("[A-Za-z ]+")]],
     email: [null, [Validators.required, Validators.pattern("[A-Za-z0-9]+[@][A-Za-z]+[.][A-Za-z]{2,3}")]],
     username: [null, [Validators.required, Validators.pattern("[A-Za-z0-9]+")]],
@@ -24,8 +24,8 @@ export class AdminEditDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  editProfile(){
-    
+  editProfile() {
+
   }
 
 }

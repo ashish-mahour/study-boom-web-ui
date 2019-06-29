@@ -4,7 +4,7 @@
       <mat-card-title>Edit Profile</mat-card-title>
       <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
-    <form class="mat-tab-content" fxLayout="column" [formGroup]="adminRegisterForm" (ngSubmit)="editProfile()">
+    <form class="mat-tab-content" fxLayout="column" [formGroup]="adminEditForm" (ngSubmit)="editProfile()">
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
           <mat-label class="color-for-text">Full Name
@@ -13,11 +13,11 @@
           <input matInput type="text" class="color-for-text" formControlName="fullname">
           <mat-icon matSuffix class="color-for-text">person</mat-icon>
           <mat-error class="error-color"
-            *ngIf="this.adminRegisterForm.controls['fullname'].touched && this.adminRegisterForm.controls['fullname'].hasError('required')">
+            *ngIf="this.adminEditForm.controls['fullname'].touched && this.adminEditForm.controls['fullname'].hasError('required')">
             Full Name required!
           </mat-error>
           <mat-error class="error-color"
-            *ngIf="this.adminRegisterForm.controls['fullname'].touched && !this.adminRegisterForm.controls['fullname'].hasError('required') && this.adminRegisterForm.controls['fullname'].hasError('pattern')">
+            *ngIf="this.adminEditForm.controls['fullname'].touched && !this.adminEditForm.controls['fullname'].hasError('required') && this.adminEditForm.controls['fullname'].hasError('pattern')">
             Invalid Full Name! Only alphabets and space allowed!
           </mat-error>
         </mat-form-field>
@@ -29,11 +29,11 @@
           <input matInput type="text" class="color-for-text" formControlName="email">
           <mat-icon matSuffix class="color-for-text">mail</mat-icon>
           <mat-error class="error-color"
-            *ngIf="this.adminRegisterForm.controls['email'].touched && this.adminRegisterForm.controls['email'].hasError('required')">
+            *ngIf="this.adminEditForm.controls['email'].touched && this.adminEditForm.controls['email'].hasError('required')">
             Email required!
           </mat-error>
           <mat-error class="error-color"
-            *ngIf="this.adminRegisterForm.controls['email'].touched && !this.adminRegisterForm.controls['email'].hasError('required') && this.adminRegisterForm.controls['email'].hasError('pattern')">
+            *ngIf="this.adminEditForm.controls['email'].touched && !this.adminEditForm.controls['email'].hasError('required') && this.adminEditForm.controls['email'].hasError('pattern')">
             Invalid Email Address! Only alphanumeric and "@" allowed!
           </mat-error>
         </mat-form-field>
@@ -46,11 +46,11 @@
           <input matInput type="text" class="color-for-text" formControlName="username">
           <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
           <mat-error class="error-color"
-            *ngIf="this.adminRegisterForm.controls['username'].touched && this.adminRegisterForm.controls['username'].hasError('required')">
+            *ngIf="this.adminEditForm.controls['username'].touched && this.adminEditForm.controls['username'].hasError('required')">
             Username required!
           </mat-error>
           <mat-error class="error-color"
-            *ngIf="this.adminRegisterForm.controls['username'].touched && !this.adminRegisterForm.controls['username'].hasError('required') && this.adminRegisterForm.controls['username'].hasError('pattern')">
+            *ngIf="this.adminEditForm.controls['username'].touched && !this.adminEditForm.controls['username'].hasError('required') && this.adminEditForm.controls['username'].hasError('pattern')">
             Invalid Username! Only alphanumeric allowed!
           </mat-error>
         </mat-form-field>
@@ -62,14 +62,14 @@
           <input matInput type="password" class="color-for-text" formControlName="password">
           <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
           <mat-error class="error-color"
-            *ngIf="this.adminRegisterForm.controls['password'].touched && this.adminRegisterForm.controls['password'].hasError('required')">
+            *ngIf="this.adminEditForm.controls['password'].touched && this.adminEditForm.controls['password'].hasError('required')">
             Password required!
           </mat-error>
         </mat-form-field>
       </div>
       <div fxLayoutAlign="end start">
         <button type="button" mat-raised-button class="button-layout" fxFlex="20" fxFlex.xs="60"
-          (click)="performRegistration()">Save</button>
+          (click)="editProfile()">Save</button>
       </div>
     </form>
   </mat-card>

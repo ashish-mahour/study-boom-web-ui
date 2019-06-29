@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardScreenComponent implements OnInit {
 
-  userType: string = 'ADMIN';
+  userType: string = 'PUBLISHER';
   profileCompletion: number = 30;
   constructor(
     private router: Router
