@@ -1,4 +1,5 @@
 import { Component, OnInit, IterableDiffers, HostListener } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-test-series-listing',
@@ -91,9 +92,12 @@ export class TestSeriesListingComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(
+    private title: Title
+  ) { }
 
   ngOnInit() {
+    this.title.setTitle("Test Series - StudyBoom")
   }
 
   @HostListener('window:resize')

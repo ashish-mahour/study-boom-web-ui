@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-perform-test-series',
@@ -9,9 +10,12 @@ export class PerformTestSeriesComponent implements OnInit {
 
   userType: string = 'STUDENT';
 
-  constructor() { }
+  constructor(
+    private title: Title
+  ) { }
 
   ngOnInit() {
+    this.title.setTitle("Performing Test - StudyBoom")
   }
 
 }
