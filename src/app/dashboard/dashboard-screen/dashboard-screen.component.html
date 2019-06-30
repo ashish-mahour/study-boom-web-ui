@@ -4,14 +4,14 @@
       <mat-card-title>Dashboard</mat-card-title>
       <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content fxLayout="column">
+    <mat-card-content fxLayout="column" fxLayout="row wrap">
       <div fxLayoutAlign="center center" fxLayout="column" fxFlex=100>
         <div class="alert alert-success" role="alert" *ngIf="profileCompletion === 100">
           <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-success-message">
             Your Profile is completed...
           </span>
         </div>
-        <div class="alert alert-primary" role="alert" *ngIf="profileCompletion !== 100" fxLayoutWrap>
+        <div class="alert alert-primary" role="alert" *ngIf="profileCompletion !== 100" fxLayout="row wrap">
           <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-error-message">
             Your profile is {{profileCompletion}}% completed...
           </span>
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div fxFlex=100>
-        <p-scrollPanel [style]="{width: '100%', height: height}">
+        <p-scrollPanel [style]="{width: '100%', height: height, overflow:'hidden'}">
           <div fxFlex=100 fxLayout="column" *ngIf="userType === 'PUBLISHER'">
             <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
               <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">

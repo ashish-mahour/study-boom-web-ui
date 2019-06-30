@@ -21,6 +21,7 @@ import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
 import { UserTypeComponent } from './authentication/user-type/user-type.component';
 import { LoadingAnimServiceService } from './shared/loading/loading-anim-service.service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { PanelModule } from 'primeng/panel';
 import { PublisherMoreDetailsComponent } from './authentication/publisher-more-details/publisher-more-details.component';
 import { UserMoreDetailsComponent } from './authentication/user-more-details/user-more-details.component';
 import { MatChipsModule } from '@angular/material/chips';
@@ -97,7 +98,8 @@ import { ManageCategoriesComponent } from './admin-components/manage-categories/
     MatSidenavModule,
     MatListModule,
     MatDividerModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    PanelModule
   ],
   providers: [
     Title,

@@ -7,7 +7,7 @@
     <mat-tab-group>
       <mat-tab label="ALL TEST SERIES">
         <div fxFlex=100>
-          <p-scrollPanel [style]="{width: '100%', height: height}">
+          <p-scrollPanel [style]="{width: '98%', height: height, overflow:'hidden'}">
             <div fxFlex=100 fxLayout="column">
               <div fxFlex=100 *ngFor="let test of testData" class="test-listing-row">
                 <div fxFlex=20>
@@ -74,7 +74,7 @@
       </mat-tab>
       <mat-tab label="MY TEST SERIES">
         <div fxFlex=100>
-          <p-scrollPanel [style]="{width: '100%', height: height}">
+          <p-scrollPanel [style]="{width: '100%', height: height, overflow:'hidden'}">
             <div fxFlex=100 fxLayout="column">
               <div fxFlex=100 *ngFor="let test of testData" class="test-listing-row">
                 <div fxFlex=20>
