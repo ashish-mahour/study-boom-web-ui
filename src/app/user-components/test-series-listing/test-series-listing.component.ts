@@ -1,5 +1,6 @@
 import { Component, OnInit, IterableDiffers, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test-series-listing',
@@ -93,7 +94,8 @@ export class TestSeriesListingComponent implements OnInit {
   ]
 
   constructor(
-    private title: Title
+    private title: Title,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -103,6 +105,10 @@ export class TestSeriesListingComponent implements OnInit {
   @HostListener('window:resize')
   onResizeScreen() {
     this.height = (window.innerHeight - 250) + 'px';
+  }
+
+  performTestSeries() {
+    this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': 'user-perform-test-series' } }])
   }
 
 }

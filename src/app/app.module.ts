@@ -30,6 +30,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { UrlSerializer } from '@angular/router';
 import { GlobalUrlSerializerService } from './shared/global-url-serializer/global-url-serializer.service';
 import { FilterSubCategoriesPipe, FilterCategoriesPipe } from './shared/pipes/filter-pipe/filter-pipes.pipe';
@@ -99,7 +100,8 @@ import { ManageCategoriesComponent } from './admin-components/manage-categories/
     MatListModule,
     MatDividerModule,
     ScrollPanelModule,
-    PanelModule
+    PanelModule,
+    MatGridListModule
   ],
   providers: [
     Title,

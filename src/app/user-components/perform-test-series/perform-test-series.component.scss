@@ -14,3 +14,182 @@
             width: 80%;
       }
 }
+
+.form-field-outline {
+      font-size: 75%;
+}
+
+::ng-deep {
+      .test-series-perform-content .mat-ink-bar {
+            background: rgb(245, 154, 94) !important;
+      }
+
+      .ui-scrollpanel-bar-y {
+            background-color: rgb(245, 154, 94);
+      }
+
+      .ui-scrollpanel-bar-x {
+            background-color: rgb(245, 154, 94);
+      }
+
+      .form-field-outline .mat-form-field-outline {
+            color: rgba(43, 42, 42) !important;
+      }
+
+      .mat-form-field-invalid .mat-form-field-outline {
+            color: rgb(255, 0, 0) !important;
+      }
+
+      .user-type-option .mat-button-toggle-button {
+            font-size: 120%;
+            cursor: pointer;
+            letter-spacing: 2px;
+            color: rgba(230, 227, 227, 0.863);
+      }
+
+      .user-type-option .mat-button-toggle-button:focus {
+            background: rgb(26, 197, 132);
+            border-color: rgba(43, 43, 43, 0.863);
+            color: rgba(43, 43, 43, 0.863);
+      }
+
+
+
+}
+
+.color-for-text {
+      color: rgba(43, 42, 42);
+}
+
+.test-perform-table-content {
+      text-align: center;
+      overflow: auto;
+}
+
+.test-perform-row {
+      color: rgba(43, 42, 42);
+      padding: 1%;
+}
+
+.wraping-the-text {
+      word-wrap: break-word;
+}
+
+.test-image {
+      width: 96%;
+}
+
+.next-prev-layout {
+      padding-top: 1%;
+      padding-bottom: 1%;
+}
+
+.next-prev-button {
+      background-color: rgba(43, 42, 42, 0.767);
+}
+
+.test-perform-row-content {
+      background-color: rgba(219, 216, 214, 0.664);
+}
+
+.test-perform-heading {
+      font-size: 100%;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 1%;
+      word-wrap: break-word;
+}
+
+.test-perform-content {
+      font-size: 100%;
+      font-weight: normal;
+      font-family: cursive;
+      padding: 1%;
+      word-wrap: break-word;
+}
+
+.confirm-button {
+      background-color: rgb(26, 197, 132);
+      color: rgba(43, 42, 42);
+      font-weight: 500;
+      margin: 1%;
+}
+
+.attempted-button {
+      background-color: rgb(26, 197, 132);
+      font-size: 100%;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 1%;
+      word-wrap: break-word;
+}
+
+.unattempted-button {
+      background-color: rgba(230, 35, 35, 0.788);
+      font-size: 100%;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 1%;
+      word-wrap: break-word;
+}
+
+.timer-success {
+      background-color: rgb(26, 197, 132);
+      font-size: 150%;
+      text-align: center;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 1%;
+      word-wrap: break-word;
+}
+
+.timer-danger {
+      background-color: rgba(230, 35, 35, 0.788);
+      font-size: 150%;
+      font-weight: bold;
+      font-family: cursive;
+      text-align: center;
+      padding: 1%;
+      word-wrap: break-word;
+}
+
+.submit-button {
+      background-color: rgb(26, 197, 132);
+      color: rgba(43, 42, 42);
+      font-weight: 500;
+      margin: 1%;
+}
+
+.skip-button {
+      background-color: rgba(230, 35, 35, 0.788);
+      color: rgba(43, 42, 42);
+      font-weight: 500;
+      margin: 1%;
+}
+
+.test-perform-question-heading {
+      font-size: 150%;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 1%;
+      word-wrap: break-word;
+}
+
+
+.test-perform-question-content {
+      font-size: 150%;
+      font-weight: normal;
+      font-family: cursive;
+      margin: 1%;
+      word-wrap: break-word;
+}
+
+.mat-button-toggle {
+      background: none;
+}
+
+.mat-button-toggle-checked {
+      background: rgb(26, 197, 132);
+      border-color: rgba(43, 43, 43, 0.863);
+      color: rgba(43, 43, 43, 0.863);
+}

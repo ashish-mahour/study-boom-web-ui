@@ -1,8 +1,134 @@
 <div fxLayoutAlign="center center">
   <mat-card class="perform-test-series-content">
     <mat-card-header>
-      <mat-card-title>Add Test Series</mat-card-title>
+      <mat-card-title>Performing Test</mat-card-title>
       <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
+    <mat-card-content fxLayout="column" fxLayout="row wrap">
+      <div fxFlex=100 fxLayout="column" *ngIf="!isConfirmed">
+        <div fxFlex=100 class="test-perform-row">
+          <div fxFlex=20>
+            <img src="assets/images/IT.png" class="test-image">
+          </div>
+          <div fxFlex=80 class="test-perform-row-content" fxLayout="column">
+            <div fxFlex=100>
+              <div fxFlex=25 fxLayout="column">
+                <span class="test-perform-heading">Test ID</span> <span
+                  class="test-perform-content">{{test.testId}}</span>
+              </div>
+              <div fxFlex=25 fxLayout="column">
+                <span class="test-perform-heading">Test Name</span><span
+                  class="test-perform-content">{{test.testName}}</span>
+              </div>
+              <div fxFlex=25 fxLayout="column">
+                <span class="test-perform-heading">Test Type</span><span
+                  class="test-perform-content">{{test.testType}}</span>
+              </div>
+              <div fxFlex=25 fxLayout="column">
+                <span class="test-perform-heading">No. of Questions </span><span
+                  class="test-perform-content">{{test.noOfQuestions}}</span>
+              </div>
+            </div>
+            <div fxFlex=100>
+              <div fxFlex=25 fxLayout="column">
+                <span class="test-perform-heading">Duration</span> <span class="test-perform-content">{{test.duration}}
+                  Minutes</span>
+              </div>
+              <div fxFlex=25 fxLayout="column">
+                <span class="test-perform-heading">Total Marks</span><span
+                  class="test-perform-content">{{test.totalMarks}}</span>
+              </div>
+              <div fxFlex=25 fxLayout="column">
+                <span class="test-perform-heading">Passing Marks</span><span
+                  class="test-perform-content">{{test.minMarks}}</span>
+              </div>
+              <div fxFlex=25 fxLayout="column">
+                <span class="test-perform-heading">Price </span><span
+                  class="test-perform-content">{{test.price | currency:'INR'}}</span>
+              </div>
+            </div>
+            <div fxFlex=100 fxLayout="row wrap">
+              <div fxFlex=25 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
+                <span class="test-perform-heading">Uploaded By </span><span
+                  class="test-perform-content">{{test.uploadedBy}}</span>
+              </div>
+              <div fxFlex=50 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
+                <span class="test-perform-heading">Ratings </span><span
+                  class="test-perform-content">{{test.uploadedBy}}</span>
+              </div>
+            </div>
+            <div fxFlex=100 fxLayout="row wrap">
+              <div fxFlex=100 fxLayoutAlign="end center">
+                <button mat-raised-button class="confirm-button" (click)="confirmTest()">Confirm</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div fxFlex=100 fxLayout="column" *ngIf="isConfirmed">
+        <div fxFlex=100 class="test-perform-row" fxLayoutAlign="end center" *ngIf="minutes && seconds">
+          <div fxFlex=25 fxFlex.sm=45 fxFlex.xs=50
+            [ngClass]="{'timer-success': (durationInSeconds > 9), 'timer-danger': (durationInSeconds <= 9)}">
+            {{minutes}} : {{seconds}}
+          </div>
+        </div>
+        <div fxFlex=100 class="test-perform-row">
+          <mat-grid-list [cols]="questionCols">
+            <mat-grid-tile *ngFor="let question of questions" fxFlex=20>
+              <button mat-fab
+                [ngClass]="{'unattempted-button': !question.attemped, 'attempted-button': question.attemped}"
+                (click)="goBack(question.question, question.attemped)">
+                {{question.question}}
+              </button>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+        <div fxFlex=100 class="test-perform-row test-perform-row-content" fxLayout="column">
+          <div class="test-perform-question-heading">
+            {{currentPosition + 1}}
+            {{questionsArray[currentPosition] && questionsArray[currentPosition].question ? '.': ''}}
+            {{questionsArray[currentPosition] && questionsArray[currentPosition].question ? questionsArray[currentPosition].question: ''}}
+          </div>
+          <div>
+            <mat-form-field appearance="outline" class="form-field-outline" fxFlex=100
+              *ngIf="questionsArray[currentPosition] && questionsArray[currentPosition].noOfChoices === 0">
+              <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5" class="color-for-text test-perform-question-content"
+                [(ngModel)]="inputAnswers[currentPosition]"></textarea>
+            </mat-form-field>
+            <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column"
+              [(ngModel)]="inputAnswers[currentPosition]" [value]="inputAnswers[currentPosition]"
+              *ngIf="questionsArray[currentPosition] && questionsArray[currentPosition].noOfChoices === 4" fxFlex=100>
+              <div>
+                <mat-button-toggle [value]="questionsArray[currentPosition].choice1" class="user-type-option" fxFlex=50
+                  selected>
+                  {{questionsArray[currentPosition].choice1}}
+                </mat-button-toggle>
+                <mat-button-toggle [value]="questionsArray[currentPosition].choice2" class="user-type-option" fxFlex=50>
+                  {{questionsArray[currentPosition].choice2}}
+                </mat-button-toggle>
+              </div>
+              <div>
+                <mat-button-toggle [value]="questionsArray[currentPosition].choice3" class="user-type-option" fxFlex=50>
+                  {{questionsArray[currentPosition].choice3}}
+                </mat-button-toggle>
+                <mat-button-toggle [value]="questionsArray[currentPosition].choice3" class="user-type-option" fxFlex=50>
+                  {{questionsArray[currentPosition].choice1}}
+                </mat-button-toggle>
+              </div>
+            </mat-button-toggle-group>
+          </div>
+          <div fxLayoutAlign="center center" fxLayout="row wrap">
+            <button mat-raised-button class="skip-button" fxFlex=30 fxFlex.xs=80>Skip the
+              Question</button>
+            <button mat-raised-button class="submit-button" fxFlex=25 fxFlex.xs=80 fxFlexOffset=3 fxFlexOffset.sm=0
+              fxFlexOffset.xs=0 (click)="questionSubmited()"
+              [disabled]="questionsArray[currentPosition] && (!inputAnswers[currentPosition] || inputAnswers[currentPosition] === '')">Submit</button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
   </mat-card>
+
 </div>
