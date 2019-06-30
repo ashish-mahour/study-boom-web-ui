@@ -9,7 +9,7 @@ export class TestSeriesListingComponent implements OnInit {
 
   userType: string = 'STUDENT';
 
-  height: string;
+  height: string = (window.innerHeight - 250) + 'px';
 
   testData: any[] = [
     {
@@ -94,12 +94,11 @@ export class TestSeriesListingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.height = (window.innerHeight - 200) + 'px';
   }
 
   @HostListener('window:resize')
-  onResizeScreen(){
-    this.height = (window.innerHeight - 200) + 'px';
+  onResizeScreen() {
+    this.height = (window.innerHeight - 250) + 'px';
   }
 
 }

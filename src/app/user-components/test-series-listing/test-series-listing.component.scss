@@ -20,16 +20,10 @@
 
       .ui-scrollpanel-bar-y {
             background-color: rgb(245, 154, 94);
-            border-radius: 0;
-            opacity: 1;
-            transition: background-color .3s;
       }
 
       .ui-scrollpanel-bar-x {
             background-color: rgb(245, 154, 94);
-            border-radius: 0;
-            opacity: 1;
-            transition: background-color .3s;
       }
 }
 
@@ -81,7 +75,7 @@
       word-wrap: break-word;
 }
 
-.purchase-button {
+.add-to-cart-perform-button {
       background-color: rgb(26, 197, 132);
       color: rgba(43, 42, 42);
       font-weight: 500;

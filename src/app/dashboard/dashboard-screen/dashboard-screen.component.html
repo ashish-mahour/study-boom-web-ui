@@ -20,57 +20,147 @@
           </span>
         </div>
       </div>
-      <div fxFlex=100 fxLayout="column" class="dashboard-screen-table-content" fxLayoutAlign="center center">
-        <table class="table publisher-table wraping-the-text" *ngIf="userType === 'PUBLISHER'">
-          <thead>
-            <tr>
-              <th scope="col" fxflex=5>#</th>
-              <th scope="col" fxflex=20>Name</th>
-              <th scope="col" fxflex=15>No. of Questions</th>
-              <th scope="col" fxflex=20>Time Duration</th>
-              <th scope="col" fxflex=20>Created Date/Time</th>
-              <th scope="col" fxflex=20>Sold Count</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="row">
-
-            </tr>
-          </tbody>
-        </table>
-        <table class="table student-table wraping-the-text" *ngIf="userType === 'STUDENT'">
-          <thead>
-            <tr>
-              <th scope="col" fxflex=5>#</th>
-              <th scope="col" fxflex=20>Name</th>
-              <th scope="col" fxflex=20>Time Duration</th>
-              <th scope="col" fxflex=20>Date/Time</th>
-              <th scope="col" fxflex=15>No. of Questions Attempted</th>
-              <th scope="col" fxflex=20>Result</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-
-            </tr>
-          </tbody>
-        </table>
-        <table class="table student-table wraping-the-text" *ngIf="userType === 'ADMIN'">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Request Type</th>
-              <th scope="col">To be Perform at</th>
-              <th scope="col">Request Date/Time</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-
-            </tr>
-          </tbody>
-        </table>
+      <div fxFlex=100>
+        <p-scrollPanel [style]="{width: '100%', height: height}">
+          <div fxFlex=100 fxLayout="column" *ngIf="userType === 'PUBLISHER'">
+            <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
+              <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
+                <div fxFlex=100>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Test ID</span> <span
+                      class="dashboard-listing-content">{{test.testId}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Test Name</span><span
+                      class="dashboard-listing-content">{{test.testName}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Test Type</span><span
+                      class="dashboard-listing-content">{{test.testType}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">No. of Questions </span><span
+                      class="dashboard-listing-content">{{test.noOfQuestions}}</span>
+                  </div>
+                </div>
+                <div fxFlex=100>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Time Duration</span> <span
+                      class="dashboard-listing-content">{{test.duration}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Total Marks</span><span
+                      class="dashboard-listing-content">{{test.totalMarks}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Created Date/Time</span><span
+                      class="dashboard-listing-content">{{test.minMarks}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Price </span><span
+                      class="dashboard-listing-content">{{test.price | currency:'INR'}}</span>
+                  </div>
+                </div>
+                <div fxFlex=100 fxLayout="row wrap">
+                  <div fxFlex=75 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
+                    <span class="dashboard-listing-heading">Sold Count </span><span
+                      class="dashboard-listing-content">{{test.uploadedBy}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxFlex=100 fxLayout="column" *ngIf="userType === 'STUDENT'">
+            <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
+              <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
+                <div fxFlex=100>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Test ID</span> <span
+                      class="dashboard-listing-content">{{test.testId}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Test Name</span><span
+                      class="dashboard-listing-content">{{test.testName}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Test Type</span><span
+                      class="dashboard-listing-content">{{test.testType}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">No. of Questions </span><span
+                      class="dashboard-listing-content">{{test.noOfQuestions}}</span>
+                  </div>
+                </div>
+                <div fxFlex=100>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Time Duration</span> <span
+                      class="dashboard-listing-content">{{test.duration}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Total Marks</span><span
+                      class="dashboard-listing-content">{{test.totalMarks}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Date/Time</span><span
+                      class="dashboard-listing-content">{{test.minMarks}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">No. of Questions Attempted </span><span
+                      class="dashboard-listing-content">{{test.price | currency:'INR'}}</span>
+                  </div>
+                </div>
+                <div fxFlex=100 fxLayout="row wrap">
+                  <div fxFlex=75 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
+                    <span class="dashboard-listing-heading">Result </span><span
+                      class="dashboard-listing-content">{{test.uploadedBy}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxFlex=100 fxLayout="column" *ngIf="userType === 'ADMIN'">
+            <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
+              <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
+                <div fxFlex=100>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Request Type</span> <span
+                      class="dashboard-listing-content">{{test.testId}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">To be Perform at</span><span
+                      class="dashboard-listing-content">{{test.testName}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Request Date/Time</span><span
+                      class="dashboard-listing-content">{{test.testType}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="dashboard-listing-heading">Status</span>
+                    <div fxLayout="row wrap">
+                      <button mat-raised-button class="add-to-cart-perform-button">ACCEPTED</button>
+                      <button mat-raised-button class="add-to-cart-perform-button">REJECTED</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-scrollPanel>
+      </div>
+      <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'STUDENT'">
+        <button mat-raised-button class="next-prev-button"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
+            aria-hidden="true"></i></button>
+      </div>
+      <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'PUBLISHER'">
+        <button mat-raised-button class="next-prev-button"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
+            aria-hidden="true"></i></button>
+      </div>
+      <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'ADMIN'">
+        <button mat-raised-button class="next-prev-button"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
+            aria-hidden="true"></i></button>
       </div>
     </mat-card-content>
   </mat-card>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,11 +10,95 @@ export class DashboardScreenComponent implements OnInit {
 
   userType: string = 'STUDENT';
   profileCompletion: number = 30;
+
+  height: string = (window.innerHeight - 250) + 'px';
+
+  testData: any[] = [
+    {
+      testId: 1,
+      testName: 'IT Test',
+      testType: 'MCQ',
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: 'Ashish'
+    },
+    {
+      testId: 1,
+      testName: 'IT Test',
+      testType: 'MCQ',
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: 'Ashish'
+    },
+    {
+      testId: 1,
+      testName: 'Test',
+      testType: 'MCQ',
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: 'Ashish'
+    },
+    {
+      testId: 1,
+      testName: 'AB',
+      testType: 'MCQ',
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: 'Ashish'
+    },
+    {
+      testId: 1,
+      testName: 'AB',
+      testType: 'MCQ',
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: 'Ashish'
+    },
+    {
+      testId: 1,
+      testName: 'AB',
+      testType: 'MCQ',
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: 'Ashish'
+    },
+    {
+      testId: 1,
+      testName: 'AB',
+      testType: 'MCQ',
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: 'Ashish'
+    }
+  ]
+
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
+
   }
 
   editProfile() {
@@ -24,6 +108,11 @@ export class DashboardScreenComponent implements OnInit {
       this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': ['admin-edit-details'] } }])
     if (this.userType === 'STUDENT')
       this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': 'user-edit-details' } }])
+  }
+
+  @HostListener('window:resize')
+  onResizeScreen() {
+    this.height = (window.innerHeight - 280) + 'px';
   }
 
 }
