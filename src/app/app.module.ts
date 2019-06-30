@@ -28,6 +28,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { UrlSerializer } from '@angular/router';
 import { GlobalUrlSerializerService } from './shared/global-url-serializer/global-url-serializer.service';
 import { FilterSubCategoriesPipe, FilterCategoriesPipe } from './shared/pipes/filter-pipe/filter-pipes.pipe';
@@ -95,7 +96,8 @@ import { ManageCategoriesComponent } from './admin-components/manage-categories/
     MatTooltipModule,
     MatSidenavModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    ScrollPanelModule
   ],
   providers: [
     Title,

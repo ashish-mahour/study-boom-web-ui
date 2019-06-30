@@ -1,16 +1,88 @@
 .test-series-listing-content {
       background-color: rgba(43, 42, 42, 0.644);
       width: 70%;
-      margin-top: 1%;
       padding: 0%;
       padding-top: 1%;
 
       @media only screen and (max-width: 800px) {
             width: 80%;
-            margin-top: 12%;
       }
 
       @media only screen and (max-width: 600px) {
             width: 80%;
       }
+}
+
+::ng-deep {
+      .test-series-listing-content .mat-ink-bar {
+            background: rgb(245, 154, 94) !important;
+      }
+
+      .ui-scrollpanel-bar-y {
+            background-color: rgb(245, 154, 94);
+            border-radius: 0;
+            opacity: 1;
+            transition: background-color .3s;
+      }
+
+      .ui-scrollpanel-bar-x {
+            background-color: rgb(245, 154, 94);
+            border-radius: 0;
+            opacity: 1;
+            transition: background-color .3s;
+      }
+}
+
+
+.test-listing-table-content {
+      text-align: center;
+      overflow: auto;
+}
+
+.test-listing-row {
+      color: rgba(43, 42, 42);
+      padding: 1%;
+}
+
+.wraping-the-text {
+      word-wrap: break-word;
+}
+
+.test-image {
+      width: 96%;
+}
+
+.next-prev-layout {
+      padding-top: 1%;
+      padding-bottom: 1%;
+}
+
+.next-prev-button {
+      background-color: rgba(43, 42, 42, 0.767);
+}
+
+.test-listing-row-content {
+      background-color: rgba(219, 216, 214, 0.664);
+}
+
+.test-listing-heading {
+      font-size: 100%;
+      font-weight: bold;
+      font-family: cursive;
+      padding: 1%;
+      word-wrap: break-word;
+}
+
+.test-listing-content {
+      font-size: 100%;
+      font-weight: normal;
+      font-family: cursive;
+      padding: 1%;
+      word-wrap: break-word;
+}
+
+.purchase-button {
+      background-color: rgb(26, 197, 132);
+      color: rgba(43, 42, 42);
+      font-weight: 500;
 }
