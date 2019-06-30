@@ -44,45 +44,52 @@
           </a>
           <mat-divider></mat-divider>
           <!-- STUDENTS -->
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'">
+          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
+            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-test-series-listings'}}]">
             <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             Test Series
           </a>
           <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'">
+          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
+            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-cart'}}]">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             Cart
           </a>
           <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
           <!-- PUBLISHERS -->
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'">
+          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
+            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
             <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             Add Test Series
           </a>
           <mat-divider *ngIf="userType === 'PUBLISHER'"></mat-divider>
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'">
+          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
+            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-upload-test-series'}}]">
             <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             Upload Test Series
           </a>
           <mat-divider *ngIf="userType === 'PUBLISHER'"></mat-divider>
           <!-- ADMIN -->
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
+          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
+            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-users'}}]">
             <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             Manage Users
           </a>
           <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
+          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
+            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-test-series'}}]">
             <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             Manage Test Series
           </a>
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
+          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
+            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-categories'}}]">
             <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             Manage Categories
           </a>
           <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
-          <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
           <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
-            <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+            <i class="fa fa-file-text-o" aria-hidden="true"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-reports'}}]"></i>&nbsp;&nbsp;&nbsp;
             Reports
           </a>
           <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
