@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class DashboardMainComponent implements OnInit {
 
   isMobile: boolean = false;
-  userType: string = 'STUDENT';
+  userType: string = 'ADMIN';
   userUploadedProfilePic: string;
 
   constructor(

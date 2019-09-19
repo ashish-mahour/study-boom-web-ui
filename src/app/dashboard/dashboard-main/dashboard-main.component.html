@@ -8,109 +8,111 @@
   <br>
   <span class="anim-loading-title"><b>Loading...</b></span>
 </div>
-<div fxLayoutWrap @routerInAnimation>
-  <div class="home-header" fxHide.lg fxHide.md fxHide.xl>
-    <div class="home-header-row" fxLayout="column" fxLayoutAlign="start start">
-      <span class="header-heading">
-        <i class="fa fa-bars nav-bar-menu" aria-hidden="true" (click)="navBar.toggle()"></i>&nbsp;&nbsp;&nbsp;
-        StudyBoom Application
-      </span>
-    </div>
-  </div>
-  <mat-sidenav-container autosize=true>
-    <mat-sidenav [mode]="isMobile? 'over':'side'" position="start" [opened]="!isMobile" fxFlex=20 fxFlex.xs=50
-      fxFlex.sm=30 fixedInViewport=true [fixedTopGap]="isMobile? 36 : 0" #navBar>
-      <mat-nav-list>
-        <div mat-list-item fxLayoutAlign="center start">
-          <img [src]="userUploadedProfilePic ? userUploadedProfilePic : 'assets/images/default-user-image.png'"
-            class="user-image" matTooltip="Change Profile Picture.." [matTooltipPosition]="'right'"
-            (click)="profilePic.click()">
-          <input type="file" hidden #profilePic accept="image/*" (change)="changeProfilePic($event)">
-        </div>
-        <div mat-list-item fxLayoutAlign="center start" class="user-name">
-          Ashish Mahour
-        </div>
-        <mat-nav-list>
-          <mat-divider></mat-divider>
-          <!-- ALL -->
-          <a mat-list-item routerLinkActive="active" [routerLink]="['/dashboard']">
-            <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            Dashboard
-          </a>
-          <mat-divider></mat-divider>
-          <a mat-list-item routerLinkActive="active" (click)="editProfile()">
-            <i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            Profile
-          </a>
-          <mat-divider></mat-divider>
-          <!-- STUDENTS -->
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
-            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-test-series-listings'}}]">
-            <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            Test Series
-          </a>
-          <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
-            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-cart'}}]">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            Cart
-          </a>
-          <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
-          <!-- PUBLISHERS -->
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
-            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
-            <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            Add Test Series
-          </a>
-          <mat-divider *ngIf="userType === 'PUBLISHER'"></mat-divider>
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
-            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-upload-test-series'}}]">
-            <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            Upload Test Series
-          </a>
-          <mat-divider *ngIf="userType === 'PUBLISHER'"></mat-divider>
-          <!-- ADMIN -->
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
-            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-users'}}]">
-            <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            Manage Users
-          </a>
-          <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
-            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-test-series'}}]">
-            <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            Manage Test Series
-          </a>
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
-            [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-categories'}}]">
-            <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            Manage Categories
-          </a>
-          <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
-          <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
-            <i class="fa fa-file-text-o" aria-hidden="true"
-              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-reports'}}]"></i>&nbsp;&nbsp;&nbsp;
-            Reports
-          </a>
-          <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
-          <!-- ALL -->
-          <a mat-list-item routerLinkActive="active">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            Logout
-          </a>
-          <mat-divider></mat-divider>
-        </mat-nav-list>
-      </mat-nav-list>
-      <div fxLayoutAlign="center start">
-        <span class="footer-bottom">
-          &copy; StudyBoom @ 2019
+<div fxLayoutWrap @routerInAnimation fxFlex=100 fxLayout="column">
+  <div fxFlex=100 class="dashboard-backgroud">
+    <div class="home-header" fxHide.lg fxHide.md fxHide.xl>
+      <div class="home-header-row" fxLayout="column" fxLayoutAlign="start start">
+        <span class="header-heading">
+          <i class="fa fa-bars nav-bar-menu" aria-hidden="true" (click)="navBar.toggle()"></i>&nbsp;&nbsp;&nbsp;
+          StudyBoom Application
         </span>
       </div>
-    </mat-sidenav>
-    <mat-sidenav-content class="dashboard-backgroud" fxFlex=100>
-      <div @routerInAnimation>
-        <router-outlet name="dashboard-page-router"></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+    </div>
+    <mat-sidenav-container autosize=true>
+      <mat-sidenav [mode]="isMobile? 'over':'side'" position="start" [opened]="!isMobile" fxFlex=20 fxFlex.xs=50
+        fxFlex.sm=30 fixedInViewport=true [fixedTopGap]="isMobile? 36 : 0" #navBar>
+        <mat-nav-list>
+          <div mat-list-item fxLayoutAlign="center start">
+            <img [src]="userUploadedProfilePic ? userUploadedProfilePic : 'assets/images/default-user-image.png'"
+              class="user-image" matTooltip="Change Profile Picture.." [matTooltipPosition]="'right'"
+              (click)="profilePic.click()">
+            <input type="file" hidden #profilePic accept="image/*" (change)="changeProfilePic($event)">
+          </div>
+          <div mat-list-item fxLayoutAlign="center start" class="user-name">
+            Ashish Mahour
+          </div>
+          <mat-nav-list>
+            <mat-divider></mat-divider>
+            <!-- ALL -->
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/dashboard']">
+              <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              Dashboard
+            </a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLinkActive="active" (click)="editProfile()">
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              Profile
+            </a>
+            <mat-divider></mat-divider>
+            <!-- STUDENTS -->
+            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-test-series-listings'}}]">
+              <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              Test Series
+            </a>
+            <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
+            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-cart'}}]">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              Cart
+            </a>
+            <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
+            <!-- PUBLISHERS -->
+            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
+              <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              Add Test Series
+            </a>
+            <mat-divider *ngIf="userType === 'PUBLISHER'"></mat-divider>
+            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-upload-test-series'}}]">
+              <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              Upload Test Series
+            </a>
+            <mat-divider *ngIf="userType === 'PUBLISHER'"></mat-divider>
+            <!-- ADMIN -->
+            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-users'}}]">
+              <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              Manage Users
+            </a>
+            <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
+            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-test-series'}}]">
+              <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              Manage Test Series
+            </a>
+            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-categories'}}]">
+              <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              Manage Categories
+            </a>
+            <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
+            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
+              <i class="fa fa-file-text-o" aria-hidden="true"
+                [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-reports'}}]"></i>&nbsp;&nbsp;&nbsp;
+              Reports
+            </a>
+            <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
+            <!-- ALL -->
+            <a mat-list-item routerLinkActive="active">
+              <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              Logout
+            </a>
+            <mat-divider></mat-divider>
+          </mat-nav-list>
+        </mat-nav-list>
+        <div fxLayoutAlign="center start">
+          <span class="footer-bottom">
+            &copy; StudyBoom @ 2019
+          </span>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content class="dashboard-sidebar-content">
+        <div @routerInAnimation>
+          <router-outlet name="dashboard-page-router"></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
 </div>
