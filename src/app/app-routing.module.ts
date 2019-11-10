@@ -19,6 +19,7 @@ import { CartComponent } from './user-components/cart/cart.component';
 import { PerformTestSeriesComponent } from './user-components/perform-test-series/perform-test-series.component';
 import { TestSeriesListingComponent } from './user-components/test-series-listing/test-series-listing.component';
 import { ManageCategoriesComponent } from './admin-components/manage-categories/manage-categories.component';
+import { AuthenticationGuard } from './guards/authentication/authentication.guard';
 
 export const childRouterOutlets: string[] = [
   'home-page-router',
@@ -37,7 +38,6 @@ const routes: Routes = [
     children: [
       {
         path: '**',
-        pathMatch: 'full',
         redirectTo: '/home'
       },
       {
@@ -65,10 +65,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardMainComponent,
+    canActivate: [AuthenticationGuard],
     children: [
       {
         path: '**',
-        pathMatch: 'full',
         redirectTo: '/dashboard'
       },
       {

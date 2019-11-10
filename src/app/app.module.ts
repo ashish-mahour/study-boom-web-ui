@@ -49,6 +49,8 @@ import { ManageUsersComponent } from './admin-components/manage-users/manage-use
 import { ManageTestSeriesComponent } from './admin-components/manage-test-series/manage-test-series.component';
 import { ReportsComponent } from './admin-components/reports/reports.component';
 import { ManageCategoriesComponent } from './admin-components/manage-categories/manage-categories.component';
+import { AuthenticationService } from './services/authentication/authentication.service';
+import { AuthenticationGuard } from './guards/authentication/authentication.guard';
 
 @NgModule({
   declarations: [
@@ -109,7 +111,9 @@ import { ManageCategoriesComponent } from './admin-components/manage-categories/
     // {
     //   provide: UrlSerializer,
     //   useClass: GlobalUrlSerializerService
-    // }
+    // },
+    AuthenticationService,
+    AuthenticationGuard
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlertBoxComponent]
