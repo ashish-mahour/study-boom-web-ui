@@ -37,10 +37,6 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: '**',
-        redirectTo: '/home'
-      },
-      {
         path: '',
         component: LoginRegisterComponent,
         outlet: childRouterOutlets[0]
@@ -59,6 +55,10 @@ const routes: Routes = [
         path: 'user-more-details',
         component: UserMoreDetailsComponent,
         outlet: childRouterOutlets[0]
+      },
+      {
+        path: '**',
+        redirectTo: '/home'
       }
     ]
   },
@@ -67,10 +67,6 @@ const routes: Routes = [
     component: DashboardMainComponent,
     canActivate: [AuthenticationGuard],
     children: [
-      {
-        path: '**',
-        redirectTo: '/dashboard'
-      },
       {
         path: '',
         component: DashboardScreenComponent,
@@ -135,8 +131,17 @@ const routes: Routes = [
         path: 'user-test-series-listings',
         component: TestSeriesListingComponent,
         outlet: childRouterOutlets[1]
+      },
+      {
+        path: '**',
+        redirectTo: '/dashboard'
       }
     ]
+  }, 
+  {
+    path: '**',
+    redirectTo: '/home',
+    pathMatch: 'full'
   }
 ];
 
