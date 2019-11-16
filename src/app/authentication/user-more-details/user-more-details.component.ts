@@ -72,10 +72,10 @@ export class UserMoreDetailsComponent implements OnInit {
   selectedSubCategories: any[] = [];
   selectedCategories: any[] = [];
 
-  @ViewChild("categoryList", {static: true})
+  @ViewChild("categoryList", { static: false })
   categoryList: MatAutocomplete;
 
-  @ViewChild("subCategoryList", {static: true})
+  @ViewChild("subCategoryList", { static: false })
   subCategoryList: MatAutocomplete;
 
   userMoreDetails: FormGroup = this.formBuilder.group
@@ -184,9 +184,10 @@ export class UserMoreDetailsComponent implements OnInit {
     this.dialog.open(AlertBoxComponent, {
       minWidth: '25%',
       maxWidth: '60%',
-      data: { 
-        type: 'success', 
-        message: 'IT (Java and C++) <br> Science (Physics, Chemistry and Biology) <br> Commerce (Accountancy and Principles of Management)' }
+      data: {
+        type: 'success',
+        message: 'IT (Java and C++) <br> Science (Physics, Chemistry and Biology) <br> Commerce (Accountancy and Principles of Management)'
+      }
     })
   }
 

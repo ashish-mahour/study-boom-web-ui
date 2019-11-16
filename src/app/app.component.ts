@@ -8,6 +8,8 @@ import {
   NavigationCancel,
   NavigationError
 } from '@angular/router'
+import { TranslateService } from '@ngx-translate/core';
+import * as config from './shared/config.json';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +21,16 @@ export class AppComponent {
 
   loading: boolean = true;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, translate: TranslateService) {
     router.events.subscribe((event: RouterEvent) => {
       this.routerNavigation(event)
     })
+
+    /*
+    * Default Language of Application
+     */
+    translate.setDefaultLang(config.defaultLanguage);
+
   }
 
 

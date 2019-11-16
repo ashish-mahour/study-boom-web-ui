@@ -51,6 +51,13 @@ import { ReportsComponent } from './admin-components/reports/reports.component';
 import { ManageCategoriesComponent } from './admin-components/manage-categories/manage-categories.component';
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { AuthenticationGuard } from './guards/authentication/authentication.guard';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -83,6 +90,14 @@ import { AuthenticationGuard } from './guards/authentication/authentication.guar
     BrowserAnimationsModule,
     FlexLayoutModule,
     AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     MatTabsModule,
     MatCardModule,
     MatFormFieldModule,

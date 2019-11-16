@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-register',
@@ -29,7 +30,8 @@ export class LoginRegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -50,7 +52,9 @@ export class LoginRegisterComponent implements OnInit {
   validateLogin(): boolean {
     if (this.loginForm.controls['username'].hasError('required') ||
       this.loginForm.controls['password'].hasError('required')) {
-      this.loginErrorText = 'All fields must be filled!'
+      this.translate.get('errors.allFields').subscribe(translations => {
+        this.loginErrorText = translations
+      })
       return false;
     }
     this.loginErrorText = undefined
@@ -62,7 +66,9 @@ export class LoginRegisterComponent implements OnInit {
       this.registerForm.controls['email'].hasError('required') ||
       this.registerForm.controls['username'].hasError('required') ||
       this.registerForm.controls['password'].hasError('required')) {
-      this.registrationErrorText = 'All fields must be filled!'
+      this.translate.get('errors.allFields').subscribe(translations => {
+        this.registrationErrorText = translations
+      })
       return false;
     }
     this.registrationErrorText = undefined

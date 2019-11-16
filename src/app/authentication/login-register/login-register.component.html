@@ -7,33 +7,38 @@
             <strong>Warning : </strong> {{loginErrorText}}
           </div>
           <mat-form-field appearance="outline" class="form-field-outline">
-            <mat-label class="color-for-text">Username / Email
+            <mat-label class="color-for-text">{{'labels.username' | translate}} / {{'labels.email' | translate}}
               <font color="red">*</font>
             </mat-label>
             <input matInput type="text" class="color-for-text" formControlName="username">
             <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
-            <mat-error class="error-color" *ngIf="this.loginForm.controls['username'].touched && this.loginForm.controls['username'].hasError('required')">
-              Username required!
+            <mat-error class="error-color"
+              *ngIf="this.loginForm.controls['username'].touched && this.loginForm.controls['username'].hasError('required')">
+              {{'errors.usernameRequired' | translate}}
             </mat-error>
-            <mat-error class="error-color" *ngIf="this.loginForm.controls['username'].touched && !this.loginForm.controls['username'].hasError('required') && this.loginForm.controls['username'].hasError('pattern')">
-              Invalid Username! Only alphanumeric and "@" allowed!
+            <mat-error class="error-color"
+              *ngIf="this.loginForm.controls['username'].touched && !this.loginForm.controls['username'].hasError('required') && this.loginForm.controls['username'].hasError('pattern')">
+              {{'errors.invalidUsername' | translate}}
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" class="form-field-outline">
-            <mat-label class="color-for-text">Password
+            <mat-label class="color-for-text">{{'labels.password' | translate}}
               <font color="red">*</font>
             </mat-label>
             <input matInput type="password" class="color-for-text" formControlName="password">
             <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
-            <mat-error class="error-color" *ngIf="this.loginForm.controls['password'].touched && this.loginForm.controls['password'].hasError('required')">
-              Password required!
+            <mat-error class="error-color"
+              *ngIf="this.loginForm.controls['password'].touched && this.loginForm.controls['password'].hasError('required')">
+              {{'errors.passwordRequired' | translate}}
             </mat-error>
           </mat-form-field>
           <div fxLayoutAlign="end center">
-            <span class="forgot-password-label" fxFlex="40" fxFlex.xs="60" (click)="openDialog()">Forgot Password?</span>
+            <span class="forgot-password-label" fxFlex="40" fxFlex.xs="60"
+              (click)="openDialog()">{{'labels.forgotPassword' | translate }}</span>
           </div>
           <div fxLayoutAlign="end center">
-            <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60" (click)="performLogin()">Login</button>
+            <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60"
+              (click)="performLogin()">{{'labels.login' | translate }}</button>
           </div>
         </form>
       </mat-tab>
@@ -43,56 +48,64 @@
             <strong>Warning : </strong> {{registrationErrorText}}
           </div>
           <mat-form-field appearance="outline" class="form-field-outline">
-            <mat-label class="color-for-text">Full Name
+            <mat-label class="color-for-text">{{'labels.fullName' | translate }}
               <font color="red">*</font>
             </mat-label>
             <input matInput type="text" class="color-for-text" formControlName="fullname">
             <mat-icon matSuffix class="color-for-text">person</mat-icon>
-            <mat-error class="error-color" *ngIf="this.registerForm.controls['fullname'].touched && this.registerForm.controls['fullname'].hasError('required')">
-              Full Name required!
+            <mat-error class="error-color"
+              *ngIf="this.registerForm.controls['fullname'].touched && this.registerForm.controls['fullname'].hasError('required')">
+              {{'errors.fullNameRequired' | translate}}
             </mat-error>
-            <mat-error class="error-color" *ngIf="this.registerForm.controls['fullname'].touched && !this.registerForm.controls['fullname'].hasError('required') && this.registerForm.controls['fullname'].hasError('pattern')">
-              Invalid Full Name! Only alphabets and space allowed!
+            <mat-error class="error-color"
+              *ngIf="this.registerForm.controls['fullname'].touched && !this.registerForm.controls['fullname'].hasError('required') && this.registerForm.controls['fullname'].hasError('pattern')">
+              {{'errors.invalidFullName' | translate}}
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" class="form-field-outline">
-            <mat-label class="color-for-text">Email
+            <mat-label class="color-for-text">{{'labels.email' | translate }}
               <font color="red">*</font>
             </mat-label>
             <input matInput type="text" class="color-for-text" formControlName="email">
             <mat-icon matSuffix class="color-for-text">mail</mat-icon>
-            <mat-error class="error-color" *ngIf="this.registerForm.controls['email'].touched && this.registerForm.controls['email'].hasError('required')">
-              Email required!
+            <mat-error class="error-color"
+              *ngIf="this.registerForm.controls['email'].touched && this.registerForm.controls['email'].hasError('required')">
+              {{'errors.emailRequired' | translate}}
             </mat-error>
-            <mat-error class="error-color" *ngIf="this.registerForm.controls['email'].touched && !this.registerForm.controls['email'].hasError('required') && this.registerForm.controls['email'].hasError('pattern')">
-              Invalid Email Address! Only alphanumeric and "@" allowed!
+            <mat-error class="error-color"
+              *ngIf="this.registerForm.controls['email'].touched && !this.registerForm.controls['email'].hasError('required') && this.registerForm.controls['email'].hasError('pattern')">
+              {{'errors.invalidEmail' | translate}}
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" class="form-field-outline">
-            <mat-label class="color-for-text">Username
+            <mat-label class="color-for-text">{{'labels.username' | translate }}
               <font color="red">*</font>
             </mat-label>
             <input matInput type="text" class="color-for-text" formControlName="username">
             <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
-            <mat-error class="error-color" *ngIf="this.registerForm.controls['username'].touched && this.registerForm.controls['username'].hasError('required')">
-              Username required!
+            <mat-error class="error-color"
+              *ngIf="this.registerForm.controls['username'].touched && this.registerForm.controls['username'].hasError('required')">
+              {{'errors.usernameRequired' | translate}}
             </mat-error>
-            <mat-error class="error-color" *ngIf="this.registerForm.controls['username'].touched && !this.registerForm.controls['username'].hasError('required') && this.registerForm.controls['username'].hasError('pattern')">
-              Invalid Username! Only alphanumeric allowed!
+            <mat-error class="error-color"
+              *ngIf="this.registerForm.controls['username'].touched && !this.registerForm.controls['username'].hasError('required') && this.registerForm.controls['username'].hasError('pattern')">
+              {{'errors.invalidUsername' | translate}}
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" class="form-field-outline">
-            <mat-label class="color-for-text">Password
+            <mat-label class="color-for-text">{{'labels.password' | translate }}
               <font color="red">*</font>
             </mat-label>
             <input matInput type="password" class="color-for-text" formControlName="password">
             <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
-            <mat-error class="error-color" *ngIf="this.registerForm.controls['password'].touched && this.registerForm.controls['password'].hasError('required')">
-              Password required!
+            <mat-error class="error-color"
+              *ngIf="this.registerForm.controls['password'].touched && this.registerForm.controls['password'].hasError('required')">
+              {{'errors.passwordRequired' | translate}}
             </mat-error>
           </mat-form-field>
           <div fxLayoutAlign="end start">
-            <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60" (click)="performRegistration()">Proceed</button>
+            <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60"
+              (click)="performRegistration()">{{'labels.proceed' | translate }}</button>
           </div>
         </form>
       </mat-tab>

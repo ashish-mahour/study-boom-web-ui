@@ -84,10 +84,10 @@ export class UserEditDetailsComponent implements OnInit {
 
   })
 
-  @ViewChild("categoryList")
+  @ViewChild("categoryList", { static: false })
   categoryList: MatAutocomplete;
 
-  @ViewChild("subCategoryList")
+  @ViewChild("subCategoryList", { static: false })
   subCategoryList: MatAutocomplete;
   constructor(
     private formBuilder: FormBuilder,

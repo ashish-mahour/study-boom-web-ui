@@ -1,0 +1,21 @@
+{
+    "labels": {
+        "username": "Username",
+        "email": "Email",
+        "password": "Password",
+        "login": "Login",
+        "forgotPassword": "Forgot Password?",
+        "fullName": "Full Name",
+        "proceed": "Proceed"
+    },
+    "errors": {
+        "allFields": "All fields must be filled!",
+        "usernameRequired": "Username required!",
+        "invalidUsername": "Invalid Username! Only alphanumeric and \"@\" allowed!",
+        "passwordRequired": "Password required!",
+        "fullNameRequired": "Full Name required!",
+        "invalidFullName": "Invalid Full Name! Only alphabets and space allowed!",
+        "emailRequired": "Email Required!",
+        "invalidEmail": "Invalid Email Address! Only alphanumeric and \"@\" allowed!"
+    }
+}
