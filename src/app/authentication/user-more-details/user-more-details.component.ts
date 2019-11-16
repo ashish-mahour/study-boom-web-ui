@@ -72,10 +72,10 @@ export class UserMoreDetailsComponent implements OnInit {
   selectedSubCategories: any[] = [];
   selectedCategories: any[] = [];
 
-  @ViewChild("categoryList", { static: false })
+  @ViewChild("categoryList", {static: true})
   categoryList: MatAutocomplete;
 
-  @ViewChild("subCategoryList", { static: false })
+  @ViewChild("subCategoryList", {static: true})
   subCategoryList: MatAutocomplete;
 
   userMoreDetails: FormGroup = this.formBuilder.group
