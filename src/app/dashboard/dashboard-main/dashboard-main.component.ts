@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
 import { Title } from '@angular/platform-browser';
 import { routerInAnimation } from 'src/app/shared/animations';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard-main',
@@ -13,22 +13,31 @@ import { Router } from '@angular/router';
 export class DashboardMainComponent implements OnInit {
 
   isMobile: boolean = false;
-  userType: string = 'STUDENT';
+  userType: string = 'ADMIN';
   userUploadedProfilePic: string;
+  currentDate: number = new Date().getFullYear();
 
   constructor(
     private titleService: Title,
-    private loadingService: LoadingAnimServiceService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
-    if (this.userType === 'ADMIN')
-      this.titleService.setTitle("Admin Dashboard - StudyBoom")
-    else if (this.userType === 'STUDENT')
-      this.titleService.setTitle("Student Dashboard - StudyBoom")
-    else if (this.userType === 'PUBLISHER')
-      this.titleService.setTitle("Publisher Dashboard - StudyBoom")
+    this.translate.get(
+      [
+        'pageTitles.dashboard.subDashboards.admin',
+        'pageTitles.dashboard.subDashboards.student',
+        'pageTitles.dashboard.subDashboards.publisher'
+      ]
+    ).subscribe(traslations => {
+      if (this.userType === 'ADMIN')
+        this.titleService.setTitle(traslations['pageTitles.dashboard.subDashboards.admin'])
+      else if (this.userType === 'STUDENT')
+        this.titleService.setTitle(traslations['pageTitles.dashboard.subDashboards.student'])
+      else if (this.userType === 'PUBLISHER')
+        this.titleService.setTitle(traslations['pageTitles.dashboard.subDashboards.publisher'])
+    })
     this.checkBrowser();
   }
 

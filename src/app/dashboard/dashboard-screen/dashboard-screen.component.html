@@ -1,176 +1,236 @@
 <div fxLayoutAlign="center center">
-  <mat-card class="dashboard-screen-content">
-    <mat-card-header>
-      <mat-card-title>Dashboard</mat-card-title>
-      <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content fxLayout="column" fxLayout="row wrap">
-      <div fxLayoutAlign="center center" fxLayout="column" fxFlex=100>
-        <div class="alert alert-success" role="alert" *ngIf="profileCompletion === 100">
-          <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-success-message">
-            Your Profile is completed...
-          </span>
-        </div>
-        <div class="alert alert-primary" role="alert" *ngIf="profileCompletion !== 100" fxLayout="row wrap">
-          <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-error-message">
-            Your profile is {{profileCompletion}}% completed...
-          </span>
-          <span fxLayoutAlign="end start" fxFlex="20" fxFlex.xs="50" fxFlex.sm="50">
-            <button mat-raised-button class="edit-profile-button" (click)="editProfile()">Edit profile</button>
-          </span>
-        </div>
-      </div>
-      <div fxFlex=100>
-        <p-scrollPanel [style]="{width: '100%', height: height, overflow:'hidden'}">
-          <div fxFlex=100 fxLayout="column" *ngIf="userType === 'PUBLISHER'">
-            <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
-              <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
-                <div fxFlex=100>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Test ID</span> <span
-                      class="dashboard-listing-content">{{test.testId}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Test Name</span><span
-                      class="dashboard-listing-content">{{test.testName}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Test Type</span><span
-                      class="dashboard-listing-content">{{test.testType}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">No. of Questions </span><span
-                      class="dashboard-listing-content">{{test.noOfQuestions}}</span>
-                  </div>
+    <mat-card class="dashboard-screen-content">
+        <mat-card-header>
+            <mat-card-title>{{ 'pageTitles.dashboard.title' | translate }}</mat-card-title>
+            <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content fxLayout="column" fxLayout="row wrap">
+            <div fxLayoutAlign="center center" fxLayout="column" fxFlex=100>
+                <div class="alert alert-success" role="alert" *ngIf="profileCompletion === 100">
+                    <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-success-message">
+                        {{ 'dashboardLabels.profileCompleted' | translate }}
+                    </span>
                 </div>
-                <div fxFlex=100>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Time Duration</span> <span
-                      class="dashboard-listing-content">{{test.duration}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Total Marks</span><span
-                      class="dashboard-listing-content">{{test.totalMarks}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Created Date/Time</span><span
-                      class="dashboard-listing-content">{{test.minMarks}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Price </span><span
-                      class="dashboard-listing-content">{{test.price | currency:'INR'}}</span>
-                  </div>
+                <div class="alert alert-primary" role="alert" *ngIf="profileCompletion !== 100" fxLayout="row wrap">
+                    <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-error-message">
+                        {{ 'dashboardLabels.profileNotCompleted' | translate: {
+                        profileCompletion: profileCompletion } }}
+                    </span>
+                    <span fxLayoutAlign="end start" fxFlex="20" fxFlex.xs="50" fxFlex.sm="50">
+                        <button mat-raised-button class="edit-profile-button" (click)="editProfile()">{{
+                            'dashboardLabels.editProfile' | translate }}</button>
+                    </span>
                 </div>
-                <div fxFlex=100 fxLayout="row wrap">
-                  <div fxFlex=75 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
-                    <span class="dashboard-listing-heading">Sold Count </span><span
-                      class="dashboard-listing-content">{{test.uploadedBy}}</span>
-                  </div>
-                </div>
-                <div fxFlex=100>
-                  &nbsp;&nbsp;
-                </div>
-              </div>
             </div>
-          </div>
-          <div fxFlex=100 fxLayout="column" *ngIf="userType === 'STUDENT'">
-            <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
-              <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
-                <div fxFlex=100>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Test ID</span> <span
-                      class="dashboard-listing-content">{{test.testId}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Test Name</span><span
-                      class="dashboard-listing-content">{{test.testName}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Test Type</span><span
-                      class="dashboard-listing-content">{{test.testType}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">No. of Questions </span><span
-                      class="dashboard-listing-content">{{test.noOfQuestions}}</span>
-                  </div>
-                </div>
-                <div fxFlex=100>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Time Duration</span> <span
-                      class="dashboard-listing-content">{{test.duration}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Total Marks</span><span
-                      class="dashboard-listing-content">{{test.totalMarks}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Date/Time</span><span
-                      class="dashboard-listing-content">{{test.minMarks}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">No. of Questions Attempted </span><span
-                      class="dashboard-listing-content">{{test.price | currency:'INR'}}</span>
-                  </div>
-                </div>
-                <div fxFlex=100 fxLayout="row wrap">
-                  <div fxFlex=75 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
-                    <span class="dashboard-listing-heading">Result </span><span
-                      class="dashboard-listing-content">{{test.uploadedBy}}</span>
-                  </div>
-                </div>
-                <div fxFlex=100>
-                  &nbsp;&nbsp;
-                </div>
-              </div>
-            </div>
-          </div>
-          <div fxFlex=100 fxLayout="column" *ngIf="userType === 'ADMIN'">
-            <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
-              <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
-                <div fxFlex=100>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Request Type</span> <span
-                      class="dashboard-listing-content">{{test.testId}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">To be Perform at</span><span
-                      class="dashboard-listing-content">{{test.testName}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Request Date/Time</span><span
-                      class="dashboard-listing-content">{{test.testType}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="dashboard-listing-heading">Status</span>
-                    <div fxLayout="row wrap">
-                      <button mat-raised-button class="add-to-cart-perform-button">ACCEPTED</button>
-                      <button mat-raised-button class="add-to-cart-perform-button">REJECTED</button>
+            <div fxFlex=100>
+                <p-scrollPanel [style]="{width: '100%', height: height,
+                    overflow:'hidden'}">
+                    <div fxFlex=100 fxLayout="column" *ngIf="userType ===
+                        'PUBLISHER'">
+                        <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
+                            <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
+                                <div fxFlex=100>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testId'
+                                            | translate }}</span>
+                                        <span class="dashboard-listing-content">{{test.testId}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testName'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.testName}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testType'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.testType}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.noOfQuestions'
+                                            | translate }}
+                                        </span><span class="dashboard-listing-content">{{test.noOfQuestions}}</span>
+                                    </div>
+                                </div>
+                                <div fxFlex=100>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.duration'
+                                            | translate }}</span>
+                                        <span class="dashboard-listing-content">{{test.duration}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.totalMarks'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.totalMarks}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.publisherDashboardLabels.createdDateTime'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.minMarks}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.price'
+                                            | translate }}</span><span class="dashboard-listing-content">{{test.price
+                                            | currency:'INR'}}</span>
+                                    </div>
+                                </div>
+                                <div fxFlex=100 fxLayout="row wrap">
+                                    <div fxFlex=75 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.publisherDashboardLabels.soldCount'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.uploadedBy}}</span>
+                                    </div>
+                                </div>
+                                <div fxFlex=100>
+                                    &nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-                <div fxFlex=100>
-                  &nbsp;&nbsp;
-                </div>
-              </div>
+                    <div fxFlex=100 fxLayout="column" *ngIf="userType ===
+                        'STUDENT'">
+                        <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
+                            <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
+                                <div fxFlex=100>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testId'
+                                            | translate }}</span>
+                                        <span class="dashboard-listing-content">{{test.testId}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testName'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.testName}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testType'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.testType}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.noOfQuestions'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.noOfQuestions}}</span>
+                                    </div>
+                                </div>
+                                <div fxFlex=100>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.duration'
+                                            | translate }}</span>
+                                        <span class="dashboard-listing-content">{{test.duration}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.totalMarks'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.totalMarks}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.studentDashboardLabels.dateTime'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.minMarks}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.studentDashboardLabels.noOfQuestionsAttempted'
+                                            | translate }}
+                                        </span><span class="dashboard-listing-content">{{test.price
+                                            | currency:'INR'}}</span>
+                                    </div>
+                                </div>
+                                <div fxFlex=100 fxLayout="row wrap">
+                                    <div fxFlex=75 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.studentDashboardLabels.result'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.uploadedBy}}</span>
+                                    </div>
+                                </div>
+                                <div fxFlex=100>
+                                    &nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxFlex=100 fxLayout="column" *ngIf="userType ===
+                        'ADMIN'">
+                        <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
+                            <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
+                                <div fxFlex=100>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.adminDashboardLabels.requestType'
+                                            | translate }}</span>
+                                        <span class="dashboard-listing-content">{{test.testId}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.adminDashboardLabels.performedAt'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.testName}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.adminDashboardLabels.requestDateTime'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{test.testType}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.adminDashboardLabels.status'
+                                            | translate }}</span>
+                                        <div fxLayout="row wrap">
+                                            <mat-button-toggle-group #requestStatus="matButtonToggleGroup"
+                                                fxLayout="column" [(ngModel)]="test.status">
+                                                <mat-button-toggle value="{{
+                                                    ('dashboardLabels.adminDashboardLabels.acceptedBtn'
+                                                    | translate) | uppercase
+                                                    }}"
+                                                    [ngClass]="{'request-accept-status': test.status === 'REJECTED', 'request-accept-status-checked': test.status === 'ACCEPTED'}">
+                                                    {{
+                                                    ('dashboardLabels.adminDashboardLabels.acceptedBtn'
+                                                    | translate) | uppercase }}
+                                                </mat-button-toggle>
+                                                <mat-button-toggle value="{{
+                                                    ('dashboardLabels.adminDashboardLabels.rejectBtn'
+                                                    | translate) | uppercase
+                                                    }}"
+                                                    [ngClass]="{'request-reject-status-checked': test.status === 'REJECTED', 'request-reject-status': test.status === 'ACCEPTED'}">
+                                                    {{
+                                                    ('dashboardLabels.adminDashboardLabels.rejectBtn'
+                                                    | translate) | uppercase }}
+                                                </mat-button-toggle>
+                                            </mat-button-toggle-group>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div fxFlex=100>
+                                    &nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p-scrollPanel>
             </div>
-          </div>
-        </p-scrollPanel>
-      </div>
-      <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'STUDENT'">
-        <button mat-raised-button class="next-prev-button"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-        <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
-            aria-hidden="true"></i></button>
-      </div>
-      <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'PUBLISHER'">
-        <button mat-raised-button class="next-prev-button"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-        <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
-            aria-hidden="true"></i></button>
-      </div>
-      <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'ADMIN'">
-        <button mat-raised-button class="next-prev-button"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-        <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
-            aria-hidden="true"></i></button>
-      </div>
-    </mat-card-content>
-  </mat-card>
+            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'STUDENT'">
+                <button mat-raised-button class="next-prev-button"><i class="fa
+                        fa-arrow-left" aria-hidden="true"></i></button>
+                <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
+                        aria-hidden="true"></i></button>
+            </div>
+            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'PUBLISHER'">
+                <button mat-raised-button class="next-prev-button"><i class="fa
+                        fa-arrow-left" aria-hidden="true"></i></button>
+                <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
+                        aria-hidden="true"></i></button>
+            </div>
+            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'ADMIN'">
+                <button mat-raised-button class="next-prev-button"><i class="fa
+                        fa-arrow-left" aria-hidden="true"></i></button>
+                <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
+                        aria-hidden="true"></i></button>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>

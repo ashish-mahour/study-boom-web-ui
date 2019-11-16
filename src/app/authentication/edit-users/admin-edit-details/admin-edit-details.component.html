@@ -1,75 +1,75 @@
 <div fxLayoutAlign="center center">
   <mat-card class="admin-edit-content">
     <mat-card-header>
-      <mat-card-title>Edit Profile</mat-card-title>
+      <mat-card-title>{{'pageTitles.authPages.editProfile' | translate }}</mat-card-title>
       <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <form class="mat-tab-content" fxLayout="column" [formGroup]="adminEditForm" (ngSubmit)="editProfile()">
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
-          <mat-label class="color-for-text">Full Name
+          <mat-label class="color-for-text">{{'labels.fullName' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="fullname">
           <mat-icon matSuffix class="color-for-text">person</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.adminEditForm.controls['fullname'].touched && this.adminEditForm.controls['fullname'].hasError('required')">
-            Full Name required!
+            {{'errors.fullNameRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="this.adminEditForm.controls['fullname'].touched && !this.adminEditForm.controls['fullname'].hasError('required') && this.adminEditForm.controls['fullname'].hasError('pattern')">
-            Invalid Full Name! Only alphabets and space allowed!
+            {{'errors.invalidFullName' | translate}}
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=50 fxFlex.sm=100 fxFlex.xs=100
           fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
-          <mat-label class="color-for-text">Email
+          <mat-label class="color-for-text">{{'labels.email' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="email">
           <mat-icon matSuffix class="color-for-text">mail</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.adminEditForm.controls['email'].touched && this.adminEditForm.controls['email'].hasError('required')">
-            Email required!
+            {{'errors.emailRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="this.adminEditForm.controls['email'].touched && !this.adminEditForm.controls['email'].hasError('required') && this.adminEditForm.controls['email'].hasError('pattern')">
-            Invalid Email Address! Only alphanumeric and "@" allowed!
+            {{'errors.invalidEmail' | translate}}
           </mat-error>
         </mat-form-field>
       </div>
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
-          <mat-label class="color-for-text">Username
+          <mat-label class="color-for-text">{{'labels.username' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="username">
           <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.adminEditForm.controls['username'].touched && this.adminEditForm.controls['username'].hasError('required')">
-            Username required!
+            {{'errors.usernameRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="this.adminEditForm.controls['username'].touched && !this.adminEditForm.controls['username'].hasError('required') && this.adminEditForm.controls['username'].hasError('pattern')">
-            Invalid Username! Only alphanumeric allowed!
+            {{'errors.invalidUsername' | translate}}
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=50 fxFlex.sm=100 fxFlex.xs=100
           fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
-          <mat-label class="color-for-text">Password
+          <mat-label class="color-for-text">{{'labels.password' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="password" class="color-for-text" formControlName="password">
           <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.adminEditForm.controls['password'].touched && this.adminEditForm.controls['password'].hasError('required')">
-            Password required!
+            {{'errors.passwordRequired' | translate}}
           </mat-error>
         </mat-form-field>
       </div>
       <div fxLayoutAlign="end start">
         <button type="button" mat-raised-button class="button-layout" fxFlex="20" fxFlex.xs="60"
-          (click)="editProfile()">Save</button>
+          (click)="editProfile()">{{'labels.save' | translate }}</button>
       </div>
     </form>
   </mat-card>

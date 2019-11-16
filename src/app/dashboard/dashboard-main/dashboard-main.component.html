@@ -1,20 +1,10 @@
-<div class="main-div-animation" fxLayout="column" fxLayoutAlign="center center" *ngIf="loadingService.loading">
-  <div class="cssload-thecube">
-    <div class="cssload-cube cssload-c1"></div>
-    <div class="cssload-cube cssload-c2"></div>
-    <div class="cssload-cube cssload-c4"></div>
-    <div class="cssload-cube cssload-c3"></div>
-  </div>
-  <br>
-  <span class="anim-loading-title"><b>Loading...</b></span>
-</div>
 <div fxLayoutWrap @routerInAnimation fxFlex=100 fxLayout="column">
   <div fxFlex=100 class="dashboard-backgroud">
     <div class="home-header" fxHide.lg fxHide.md fxHide.xl>
       <div class="home-header-row" fxLayout="column" fxLayoutAlign="start start">
         <span class="header-heading">
           <i class="fa fa-bars nav-bar-menu" aria-hidden="true" (click)="navBar.toggle()"></i>&nbsp;&nbsp;&nbsp;
-          StudyBoom Application
+          {{'appName' | translate }}
         </span>
       </div>
     </div>
@@ -36,75 +26,75 @@
             <!-- ALL -->
             <a mat-list-item routerLinkActive="active" [routerLink]="['/dashboard']">
               <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              Dashboard
+              {{'pageTitles.dashboard.title' | translate }}
             </a>
             <mat-divider></mat-divider>
             <a mat-list-item routerLinkActive="active" (click)="editProfile()">
               <i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              Profile
+              {{'pageTitles.profile' | translate }}
             </a>
             <mat-divider></mat-divider>
             <!-- STUDENTS -->
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-test-series-listings'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              Test Series
+              {{'pageTitles.studentPages.testSeries.title' | translate }}
             </a>
             <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-cart'}}]">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              Cart
+              {{'pageTitles.studentPages.cart' | translate }}
             </a>
             <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
             <!-- PUBLISHERS -->
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              Add Test Series
+              {{'pageTitles.publisherPages.addTestSeries' | translate }}
             </a>
             <mat-divider *ngIf="userType === 'PUBLISHER'"></mat-divider>
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-upload-test-series'}}]">
               <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              Upload Test Series
+              {{'pageTitles.publisherPages.uploadTestSeries' | translate }}
             </a>
             <mat-divider *ngIf="userType === 'PUBLISHER'"></mat-divider>
             <!-- ADMIN -->
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-users'}}]">
               <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              Manage Users
+              {{'pageTitles.adminPages.manageUsers' | translate }}
             </a>
             <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-test-series'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              Manage Test Series
+              {{'pageTitles.adminPages.manageTestSeries' | translate }}
             </a>
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-categories'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              Manage Categories
+              {{'pageTitles.adminPages.manageCategories' | translate }}
             </a>
             <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
               <i class="fa fa-file-text-o" aria-hidden="true"
                 [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-reports'}}]"></i>&nbsp;&nbsp;&nbsp;
-              Reports
+              {{'pageTitles.adminPages.reports' | translate }}
             </a>
             <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
             <!-- ALL -->
             <a mat-list-item routerLinkActive="active">
               <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              Logout
+              {{'pageTitles.logout' | translate }}
             </a>
             <mat-divider></mat-divider>
           </mat-nav-list>
         </mat-nav-list>
         <div fxLayoutAlign="center start">
           <span class="footer-bottom">
-            &copy; StudyBoom @ 2019
+            &copy; {{'appName' | translate }} @ {{currentDate}}
           </span>
         </div>
       </mat-sidenav>

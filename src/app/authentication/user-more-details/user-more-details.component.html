@@ -1,23 +1,23 @@
 <div fxLayoutAlign="center center">
   <mat-card class="user-more-details-content">
     <mat-card-header>
-      <mat-card-title class="user-more-details-title">Student Details</mat-card-title>
+      <mat-card-title class="user-more-details-title">{{'pageTitles.authPages.studentMoreDetails' | translate }}</mat-card-title>
     </mat-card-header>
     <div class="mat-card-content">
       <form fxLayout="column" [formGroup]="userMoreDetails">
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-for-text">Mobile No.
+          <mat-label class="color-for-text">{{'labels.mobileNo' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10">
           <mat-icon matSuffix class="color-for-text">phone</mat-icon>
           <mat-error class="error-color"
             *ngIf="userMoreDetails.controls['mobile'].touched && userMoreDetails.controls['mobile'].hasError('required')">
-            Mobile required!
+            {{'errors.mobileNoRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="userMoreDetails.controls['mobile'].touched && !userMoreDetails.controls['mobile'].hasError('required') && userMoreDetails.controls['mobile'].hasError('pattern')">
-            Invalid Mobile! Only 8 Numeric allowed!
+            {{'errors.invalidMobileNo' | translate}}
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="form-field-outline">
@@ -29,7 +29,7 @@
               </mat-icon>
             </mat-chip>
           </mat-chip-list>
-          <mat-label class="color-for-text">Choose Categories
+          <mat-label class="color-for-text">{{'labels.chooseCategories' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input [matAutocomplete]="categoryAutoComplete" type="text" [matChipInputFor]="categoryList"
@@ -57,7 +57,7 @@
               </mat-icon>
             </mat-chip>
           </mat-chip-list>
-          <mat-label class="color-for-text">Choose Sub-Categories
+          <mat-label class="color-for-text">{{'labels.chooseSubCategories' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input [matAutocomplete]="subCategoryAutoComplete" type="text" [matChipInputFor]="subCategoryList"
@@ -81,7 +81,7 @@
         </div>
         <div fxLayoutAlign="end start">
           <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60"
-            (click)="saveDetails()">Save</button>
+            (click)="saveDetails()">{{'labels.save' | translate }}</button>
         </div>
       </form>
     </div>

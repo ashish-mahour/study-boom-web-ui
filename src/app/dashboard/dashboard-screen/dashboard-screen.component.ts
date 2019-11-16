@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardScreenComponent implements OnInit {
 
-  userType: string = 'STUDENT';
+  userType: string = 'ADMIN';
   profileCompletion: number = 30;
 
   height: string = (window.innerHeight - 250) + 'px';
@@ -23,7 +23,8 @@ export class DashboardScreenComponent implements OnInit {
       totalMarks: 100,
       minMarks: 50,
       price: 0,
-      uploadedBy: 'Ashish'
+      uploadedBy: 'Ashish',
+      status: "ACCEPTED"
     },
     {
       testId: 1,
@@ -34,7 +35,8 @@ export class DashboardScreenComponent implements OnInit {
       totalMarks: 100,
       minMarks: 50,
       price: 0,
-      uploadedBy: 'Ashish'
+      uploadedBy: 'Ashish',
+      status: "REJECTED"
     },
     {
       testId: 1,
@@ -45,7 +47,8 @@ export class DashboardScreenComponent implements OnInit {
       totalMarks: 100,
       minMarks: 50,
       price: 0,
-      uploadedBy: 'Ashish'
+      uploadedBy: 'Ashish',
+      status: "ACCEPTED"
     },
     {
       testId: 1,
@@ -56,7 +59,8 @@ export class DashboardScreenComponent implements OnInit {
       totalMarks: 100,
       minMarks: 50,
       price: 0,
-      uploadedBy: 'Ashish'
+      uploadedBy: 'Ashish',
+      status: "REJECTED"
     },
     {
       testId: 1,
@@ -67,7 +71,8 @@ export class DashboardScreenComponent implements OnInit {
       totalMarks: 100,
       minMarks: 50,
       price: 0,
-      uploadedBy: 'Ashish'
+      uploadedBy: 'Ashish',
+      status: "ACCEPTED"
     },
     {
       testId: 1,
@@ -78,7 +83,8 @@ export class DashboardScreenComponent implements OnInit {
       totalMarks: 100,
       minMarks: 50,
       price: 0,
-      uploadedBy: 'Ashish'
+      uploadedBy: 'Ashish',
+      status: "ACCEPTED"
     },
     {
       testId: 1,
@@ -89,7 +95,8 @@ export class DashboardScreenComponent implements OnInit {
       totalMarks: 100,
       minMarks: 50,
       price: 0,
-      uploadedBy: 'Ashish'
+      uploadedBy: 'Ashish',
+      status: "REJECTED"
     }
   ]
 

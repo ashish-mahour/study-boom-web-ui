@@ -2,6 +2,7 @@ import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-type',
@@ -16,7 +17,8 @@ export class UserTypeComponent implements OnInit {
     private titleService: Title,
     private activateRoute: ActivatedRoute,
     private router: Router,
-    private loadingService: LoadingAnimServiceService
+    private loadingService: LoadingAnimServiceService,
+    private translate: TranslateService
   ) {
 
   }
@@ -34,12 +36,15 @@ export class UserTypeComponent implements OnInit {
 
   userTypeSelected() {
     this.registrationForm.usertype = this.userType;
-    if (this.userType === 'PUBLISHER')
-      this.registerPublisher();
-    else if (this.userType === 'STUDENT')
-      this.registerStudent();
-    else if (this.userType === 'ADMIN')
-      this.registerAdmin();
+    this.translate.get(['userTypes.publisher', 'userTypes.student', 'userTypes.admin']).subscribe(translations => {
+      if (this.userType === translations['userTypes.publisher'])
+        this.registerPublisher();
+      else if (this.userType === translations['userTypes.student'])
+        this.registerStudent();
+      else if (this.userType === translations['userTypes.admin'])
+        this.registerAdmin();
+    })
+
   }
 
   registerAdmin() {

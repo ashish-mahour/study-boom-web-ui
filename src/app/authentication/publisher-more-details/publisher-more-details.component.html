@@ -1,110 +1,110 @@
 <div fxLayoutAlign="center center">
   <mat-card class="publisher-more-details-content">
     <mat-card-header>
-      <mat-card-title class="publisher-more-details-title">Details for Money Transfer</mat-card-title>
+      <mat-card-title class="publisher-more-details-title">{{'pageTitles.authPages.publisherMoreDetails' | translate }}</mat-card-title>
     </mat-card-header>
     <div class="mat-card-content">
       <form fxLayout="column" [formGroup]="publisherMoreDetails">
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-for-text">Mobile No.
+          <mat-label class="color-for-text">{{'labels.mobileNo' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10">
           <mat-icon matSuffix class="color-for-text">phone</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['mobile'].touched && publisherMoreDetails.controls['mobile'].hasError('required')">
-            Mobile required!
+            {{'errors.mobileNoRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['mobile'].touched && !publisherMoreDetails.controls['mobile'].hasError('required') && publisherMoreDetails.controls['mobile'].hasError('pattern')">
-            Invalid Mobile! Only 8 Numeric allowed!
+            {{'errors.invalidMobileNo' | translate}}
           </mat-error>
         </mat-form-field>
         
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-for-text">Pan No.
+          <mat-label class="color-for-text">{{'labels.panNo' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="panNo" maxlength="10">
           <mat-icon matSuffix class="color-for-text">person_pin</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['panNo'].touched && publisherMoreDetails.controls['panNo'].hasError('required')">
-            Pan No required!
+            {{'errors.panNoRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['panNo'].touched && !publisherMoreDetails.controls['panNo'].hasError('required') && publisherMoreDetails.controls['panNo'].hasError('pattern')">
-            Invalid Pan No! Should be 5 letters followed by 4 digits followed by one letter!
+            {{'errors.invalidPanNo' | translate}}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-for-text">Bank Name
+          <mat-label class="color-for-text">{{'labels.bankName' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="bankName">
           <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['bankName'].touched && publisherMoreDetails.controls['bankName'].hasError('required')">
-            Bank Name required!
+            {{'errors.bankNameRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['bankName'].touched && !publisherMoreDetails.controls['bankName'].hasError('required') && publisherMoreDetails.controls['bankName'].hasError('pattern')">
-            Invalid Bank Name! Should be only letters!
+            {{'errors.invalidBankName' | translate}}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-for-text">Branch Name
+          <mat-label class="color-for-text">{{'labels.branchName' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="branchName">
           <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['branchName'].touched && publisherMoreDetails.controls['branchName'].hasError('required')">
-            Branch Name required!
+            {{'errors.branchNameRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['branchName'].touched && !publisherMoreDetails.controls['branchName'].hasError('required') && publisherMoreDetails.controls['branchName'].hasError('pattern')">
-            Invalid Branch Name! Should be only letters!
+            {{'errors.invalidBranchName' | translate}}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-for-text">Account No.
+          <mat-label class="color-for-text">{{'errors.invalidBranchName' | translate}}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="tel" class="color-for-text" formControlName="accountNo">
           <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['accountNo'].touched && publisherMoreDetails.controls['accountNo'].hasError('required')">
-            Account No. required!
+            {{'errors.accNoRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['accountNo'].touched && !publisherMoreDetails.controls['accountNo'].hasError('required') && publisherMoreDetails.controls['accountNo'].hasError('pattern')">
-            Invalid Account No.! Should be numeric only!
+            {{'errors.invalidAccNo' | translate}}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-for-text">IFSC Code
+          <mat-label class="color-for-text">{{'labels.ifscCode' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="ifscCode">
           <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['ifscCode'].touched && publisherMoreDetails.controls['ifscCode'].hasError('required')">
-            IFSC Code required!
+            {{'errors.ifscCodeRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['ifscCode'].touched && !publisherMoreDetails.controls['ifscCode'].hasError('required') && publisherMoreDetails.controls['ifscCode'].hasError('pattern')">
-            Invalid IFSC Code! Should be only alpha-numeric!
+            {{'errors.invalidIfscCode' | translate}}
           </mat-error>
         </mat-form-field>
         <div fxLayoutAlign="end start">
-          <span class="skip-this-step-label" fxFlex="40" fxFlex.xs="60" (click)="skipTheStepAction()">Skip this Step..</span>
+          <span class="skip-this-step-label" fxFlex="40" fxFlex.xs="60" (click)="skipTheStepAction()">{{'labels.skipTheStep' | translate }}</span>
         </div>
         <div fxLayoutAlign="end start">
-          <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60" (click)="saveDetails()">Save</button>
+          <button type="button" mat-raised-button class="button-layout" fxFlex="40" fxFlex.xs="60" (click)="saveDetails()">{{'labels.save' | translate }}</button>
         </div>
       </form>
     </div>

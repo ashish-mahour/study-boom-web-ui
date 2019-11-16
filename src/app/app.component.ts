@@ -10,6 +10,7 @@ import {
 } from '@angular/router'
 import { TranslateService } from '@ngx-translate/core';
 import * as config from './shared/config.json';
+import { LoadingAnimServiceService } from './shared/loading/loading-anim-service.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent {
 
   loading: boolean = true;
 
-  constructor(private router: Router, translate: TranslateService) {
+  constructor(private router: Router, translate: TranslateService, private loadingService: LoadingAnimServiceService) {
     router.events.subscribe((event: RouterEvent) => {
       this.routerNavigation(event)
     })

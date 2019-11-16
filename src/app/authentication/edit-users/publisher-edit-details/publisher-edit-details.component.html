@@ -1,177 +1,177 @@
 <div fxLayoutAlign="center center">
   <mat-card class="publisher-edit-content">
     <mat-card-header>
-      <mat-card-title>Edit Profile</mat-card-title>
+      <mat-card-title>{{'pageTitles.authPages.editProfile' | translate }}</mat-card-title>
       <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <form class="mat-tab-content" fxLayout="column" [formGroup]="publisherEditForm" (ngSubmit)="editProfile()">
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
-          <mat-label class="color-for-text">Full Name
+          <mat-label class="color-for-text">{{'labels.fullName' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="fullname">
           <mat-icon matSuffix class="color-for-text">person</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.publisherEditForm.controls['fullname'].touched && this.publisherEditForm.controls['fullname'].hasError('required')">
-            Full Name required!
+            {{'errors.fullNameRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="this.publisherEditForm.controls['fullname'].touched && !this.publisherEditForm.controls['fullname'].hasError('required') && this.publisherEditForm.controls['fullname'].hasError('pattern')">
-            Invalid Full Name! Only alphabets and space allowed!
+            {{'errors.invalidFullName' | translate}}
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=50 fxFlex.sm=100 fxFlex.xs=100
           fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
-          <mat-label class="color-for-text">Email
+          <mat-label class="color-for-text">{{'labels.email' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="email">
           <mat-icon matSuffix class="color-for-text">mail</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.publisherEditForm.controls['email'].touched && this.publisherEditForm.controls['email'].hasError('required')">
-            Email required!
+            {{'errors.emailRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="this.publisherEditForm.controls['email'].touched && !this.publisherEditForm.controls['email'].hasError('required') && this.publisherEditForm.controls['email'].hasError('pattern')">
-            Invalid Email Address! Only alphanumeric and "@" allowed!
+            {{'errors.invalidEmail' | translate}}
           </mat-error>
         </mat-form-field>
       </div>
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
-          <mat-label class="color-for-text">Username
+          <mat-label class="color-for-text">{{'labels.username' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="username">
           <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.publisherEditForm.controls['username'].touched && this.publisherEditForm.controls['username'].hasError('required')">
-            Username required!
+            {{'errors.usernameRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="this.publisherEditForm.controls['username'].touched && !this.publisherEditForm.controls['username'].hasError('required') && this.publisherEditForm.controls['username'].hasError('pattern')">
-            Invalid Username! Only alphanumeric allowed!
+            {{'errors.invalidUsername' | translate}}
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=50 fxFlex.sm=100 fxFlex.xs=100
           fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
-          <mat-label class="color-for-text">Password
+          <mat-label class="color-for-text">{{'labels.password' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="password" class="color-for-text" formControlName="password">
           <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.publisherEditForm.controls['password'].touched && this.publisherEditForm.controls['password'].hasError('required')">
-            Password required!
+            {{'errors.passwordRequired' | translate}}
           </mat-error>
         </mat-form-field>
       </div>
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
-          <mat-label class="color-for-text">Mobile No.
+          <mat-label class="color-for-text">{{'labels.mobileNo' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10">
           <mat-icon matSuffix class="color-for-text">phone</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['mobile'].touched && publisherEditForm.controls['mobile'].hasError('required')">
-            Mobile required!
+            {{'errors.mobileNoRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['mobile'].touched && !publisherEditForm.controls['mobile'].hasError('required') && publisherEditForm.controls['mobile'].hasError('pattern')">
-            Invalid Mobile! Only 8 Numeric allowed!
+            {{'errors.invalidMobileNo' | translate}}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=50 fxFlex.sm=100 fxFlex.xs=100
           fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
-          <mat-label class="color-for-text">Pan No.
+          <mat-label class="color-for-text">{{'labels.panNo' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="panNo" maxlength="10">
           <mat-icon matSuffix class="color-for-text">person_pin</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['panNo'].touched && publisherEditForm.controls['panNo'].hasError('required')">
-            Pan No required!
+            {{'errors.panNoRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['panNo'].touched && !publisherEditForm.controls['panNo'].hasError('required') && publisherEditForm.controls['panNo'].hasError('pattern')">
-            Invalid Pan No! Should be 5 letters followed by 4 digits followed by one letter!
+            {{'errors.invalidPanNo' | translate}}
           </mat-error>
         </mat-form-field>
       </div>
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
-          <mat-label class="color-for-text">Bank Name
+          <mat-label class="color-for-text">{{'labels.bankName' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="bankName">
           <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['bankName'].touched && publisherEditForm.controls['bankName'].hasError('required')">
-            Bank Name required!
+            {{'errors.bankNameRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['bankName'].touched && !publisherEditForm.controls['bankName'].hasError('required') && publisherEditForm.controls['bankName'].hasError('pattern')">
-            Invalid Bank Name! Should be only letters!
+            {{'errors.invalidBankName' | translate}}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=50 fxFlex.sm=100 fxFlex.xs=100
           fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
-          <mat-label class="color-for-text">Branch Name
+          <mat-label class="color-for-text">{{'labels.branchName' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="branchName">
           <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['branchName'].touched && publisherEditForm.controls['branchName'].hasError('required')">
-            Branch Name required!
+            {{'errors.branchNameRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['branchName'].touched && !publisherEditForm.controls['branchName'].hasError('required') && publisherEditForm.controls['branchName'].hasError('pattern')">
-            Invalid Branch Name! Should be only letters!
+            {{'errors.invalidBranchName' | translate}}
           </mat-error>
         </mat-form-field>
       </div>
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
-          <mat-label class="color-for-text">Account No.
+          <mat-label class="color-for-text">{{'labels.accNo' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="tel" class="color-for-text" formControlName="accountNo">
           <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['accountNo'].touched && publisherEditForm.controls['accountNo'].hasError('required')">
-            Account No. required!
+            {{'errors.accNoRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['accountNo'].touched && !publisherEditForm.controls['accountNo'].hasError('required') && publisherEditForm.controls['accountNo'].hasError('pattern')">
-            Invalid Account No.! Should be numeric only!
+            {{'errors.invalidAccNo' | translate}}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=50 fxFlex.sm=100 fxFlex.xs=100
           fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
-          <mat-label class="color-for-text">IFSC Code
+          <mat-label class="color-for-text">{{'labels.ifscCode' | translate }}
             <font color="red">*</font>
           </mat-label>
           <input matInput type="text" class="color-for-text" formControlName="ifscCode">
           <mat-icon matSuffix class="color-for-text">perm_identity</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['ifscCode'].touched && publisherEditForm.controls['ifscCode'].hasError('required')">
-            IFSC Code required!
+            {{'errors.ifscCodeRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['ifscCode'].touched && !publisherEditForm.controls['ifscCode'].hasError('required') && publisherEditForm.controls['ifscCode'].hasError('pattern')">
-            Invalid IFSC Code! Should be only alpha-numeric!
+            {{'errors.invalidIfscCode' | translate}}
           </mat-error>
         </mat-form-field>
       </div>
       <div fxLayoutAlign="end start">
         <button type="button" mat-raised-button class="button-layout" fxFlex="20" fxFlex.xs="60"
-          (click)="editProfile()">Save</button>
+          (click)="editProfile()">{{'labels.save' | translate }}</button>
       </div>
     </form>
   </mat-card>

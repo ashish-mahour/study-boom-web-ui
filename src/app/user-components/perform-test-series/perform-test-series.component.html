@@ -1,7 +1,7 @@
 <div fxLayoutAlign="center center">
   <mat-card class="perform-test-series-content">
     <mat-card-header>
-      <mat-card-title>Performing Test</mat-card-title>
+      <mat-card-title>{{'pageTitles.studentPages.performTest' | translate }}</mat-card-title>
       <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content fxLayout="column" fxLayout="row wrap">
@@ -13,53 +13,55 @@
           <div fxFlex=80 class="test-perform-row-content" fxLayout="column">
             <div fxFlex=100>
               <div fxFlex=25 fxLayout="column">
-                <span class="test-perform-heading">Test ID</span> <span
+                <span class="test-perform-heading">{{'testSeriesListingLabels.testId' | translate }}</span> <span
                   class="test-perform-content">{{test.testId}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
-                <span class="test-perform-heading">Test Name</span><span
+                <span class="test-perform-heading">{{'testSeriesListingLabels.testName' | translate }}</span><span
                   class="test-perform-content">{{test.testName}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
-                <span class="test-perform-heading">Test Type</span><span
+                <span class="test-perform-heading">{{'testSeriesListingLabels.testType' | translate }}</span><span
                   class="test-perform-content">{{test.testType}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
-                <span class="test-perform-heading">No. of Questions </span><span
+                <span class="test-perform-heading">{{'testSeriesListingLabels.noOfQuestions' | translate }}</span><span
                   class="test-perform-content">{{test.noOfQuestions}}</span>
               </div>
             </div>
             <div fxFlex=100>
               <div fxFlex=25 fxLayout="column">
-                <span class="test-perform-heading">Duration</span> <span class="test-perform-content">{{test.duration}}
+                <span class="test-perform-heading">{{'testSeriesListingLabels.duration' | translate }}</span> <span
+                  class="test-perform-content">{{test.duration}}
                   Minutes</span>
               </div>
               <div fxFlex=25 fxLayout="column">
-                <span class="test-perform-heading">Total Marks</span><span
+                <span class="test-perform-heading">{{'testSeriesListingLabels.totalMarks' | translate }}</span><span
                   class="test-perform-content">{{test.totalMarks}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
-                <span class="test-perform-heading">Passing Marks</span><span
+                <span class="test-perform-heading">{{'testSeriesListingLabels.minMarks' | translate }}</span><span
                   class="test-perform-content">{{test.minMarks}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
-                <span class="test-perform-heading">Price </span><span
+                <span class="test-perform-heading">{{'testSeriesListingLabels.price' | translate }}</span><span
                   class="test-perform-content">{{test.price | currency:'INR'}}</span>
               </div>
             </div>
             <div fxFlex=100 fxLayout="row wrap">
               <div fxFlex=25 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
-                <span class="test-perform-heading">Uploaded By </span><span
+                <span class="test-perform-heading">{{'testSeriesListingLabels.uploadedBy' | translate }}</span><span
                   class="test-perform-content">{{test.uploadedBy}}</span>
               </div>
               <div fxFlex=50 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
-                <span class="test-perform-heading">Ratings </span><span
+                <span class="test-perform-heading">{{'testSeriesListingLabels.ratings' | translate }}</span><span
                   class="test-perform-content">{{test.uploadedBy}}</span>
               </div>
             </div>
             <div fxFlex=100 fxLayout="row wrap">
               <div fxFlex=100 fxLayoutAlign="end center">
-                <button mat-raised-button class="confirm-button" (click)="confirmTest()">Confirm</button>
+                <button mat-raised-button class="confirm-button"
+                  (click)="confirmTest()">{{'testSeriesListingLabels.confirm' | translate }}</button>
               </div>
             </div>
           </div>
@@ -91,12 +93,6 @@
             {{questionsArray[currentPosition] && questionsArray[currentPosition].question ? questionsArray[currentPosition].question: ''}}
           </div>
           <div>
-            <mat-form-field appearance="outline" class="form-field-outline" fxFlex=100
-              *ngIf="questionsArray[currentPosition] && questionsArray[currentPosition].noOfChoices === 0">
-              <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-                cdkAutosizeMaxRows="5" class="color-for-text test-perform-question-content"
-                [(ngModel)]="inputAnswers[currentPosition]"></textarea>
-            </mat-form-field>
             <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column"
               [(ngModel)]="inputAnswers[currentPosition]" [value]="inputAnswers[currentPosition]"
               *ngIf="questionsArray[currentPosition] && questionsArray[currentPosition].noOfChoices === 4" fxFlex=100>
@@ -120,11 +116,11 @@
             </mat-button-toggle-group>
           </div>
           <div fxLayoutAlign="center center" fxLayout="row wrap">
-            <button mat-raised-button class="skip-button" fxFlex=30 fxFlex.xs=80>Skip the
-              Question</button>
+            <button mat-raised-button class="skip-button" fxFlex=30
+              fxFlex.xs=80>{{'testPerformLabels.skipTheQuestion' | translate }}</button>
             <button mat-raised-button class="submit-button" fxFlex=25 fxFlex.xs=80 fxFlexOffset=3 fxFlexOffset.sm=0
               fxFlexOffset.xs=0 (click)="questionSubmited()"
-              [disabled]="questionsArray[currentPosition] && (!inputAnswers[currentPosition] || inputAnswers[currentPosition] === '')">Submit</button>
+              [disabled]="questionsArray[currentPosition] && (!inputAnswers[currentPosition] || inputAnswers[currentPosition] === '')">{{'testPerformLabels.submit' | translate }}</button>
           </div>
         </div>
       </div>
