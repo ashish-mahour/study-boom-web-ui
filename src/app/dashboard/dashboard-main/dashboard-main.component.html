@@ -85,8 +85,8 @@
             <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
               <i class="fa fa-file-text-o" aria-hidden="true"
-                [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-reports'}}]"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.adminPages.reports' | translate }}
+                [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-requests'}}]"></i>&nbsp;&nbsp;&nbsp;
+              {{'pageTitles.adminPages.manageRequests' | translate }}
             </a>
             <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
             

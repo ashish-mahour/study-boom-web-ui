@@ -12,7 +12,7 @@ import { AdminEditDetailsComponent } from "./authentication/edit-users/admin-edi
 import { PublisherEditDetailsComponent } from "./authentication/edit-users/publisher-edit-details/publisher-edit-details.component";
 import { ManageTestSeriesComponent } from "./admin-components/manage-test-series/manage-test-series.component";
 import { ManageUsersComponent } from "./admin-components/manage-users/manage-users.component";
-import { ReportsComponent } from "./admin-components/reports/reports.component";
+import { ManageRequestsComponent } from "./admin-components/manage-requests/manage-requests.component";
 import { AddTestSeriesComponent } from "./publisher-components/add-test-series/add-test-series.component";
 import { CartComponent } from "./user-components/cart/cart.component";
 import { PerformTestSeriesComponent } from "./user-components/perform-test-series/perform-test-series.component";
@@ -103,8 +103,8 @@ const routes: Routes = [
         outlet: childRouterOutlets[1]
       },
       {
-        path: "admin-reports",
-        component: ReportsComponent,
+        path: "admin-manage-requests",
+        component: ManageRequestsComponent,
         outlet: childRouterOutlets[1]
       },
       {
