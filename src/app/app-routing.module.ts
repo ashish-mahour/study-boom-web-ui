@@ -14,7 +14,6 @@ import { ManageTestSeriesComponent } from './admin-components/manage-test-series
 import { ManageUsersComponent } from './admin-components/manage-users/manage-users.component';
 import { ReportsComponent } from './admin-components/reports/reports.component';
 import { AddTestSeriesComponent } from './publisher-components/add-test-series/add-test-series.component';
-import { UploadTestSeriesComponent } from './publisher-components/upload-test-series/upload-test-series.component';
 import { CartComponent } from './user-components/cart/cart.component';
 import { PerformTestSeriesComponent } from './user-components/perform-test-series/perform-test-series.component';
 import { TestSeriesListingComponent } from './user-components/test-series-listing/test-series-listing.component';
@@ -110,11 +109,6 @@ const routes: Routes = [
       {
         path: 'publisher-add-test-series',
         component: AddTestSeriesComponent,
-        outlet: childRouterOutlets[1]
-      },
-      {
-        path: 'publisher-upload-test-series',
-        component: UploadTestSeriesComponent,
         outlet: childRouterOutlets[1]
       },
       {

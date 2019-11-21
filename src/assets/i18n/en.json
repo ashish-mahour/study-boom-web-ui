@@ -79,7 +79,6 @@
             "performTest": "Performing Test"
         },
         "publisherPages": {
-            "uploadTestSeries": "Upload Test Series",
             "addTestSeries": "Add Test Series"
         },
         "logout": "Logout"
