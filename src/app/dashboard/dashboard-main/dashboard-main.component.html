@@ -23,6 +23,7 @@
           </div>
           <mat-nav-list>
             <mat-divider></mat-divider>
+            
             <!-- ALL -->
             <a mat-list-item routerLinkActive="active" [routerLink]="['/dashboard']">
               <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
@@ -34,6 +35,7 @@
               {{'pageTitles.profile' | translate }}
             </a>
             <mat-divider></mat-divider>
+            
             <!-- STUDENTS -->
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-test-series-listings'}}]">
@@ -47,19 +49,22 @@
               {{'pageTitles.studentPages.cart' | translate }}
             </a>
             <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
+           
             <!-- PUBLISHERS -->
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.publisherPages.addTestSeries' | translate }}
             </a>
-            <mat-divider *ngIf="userType === 'PUBLISHER'"></mat-divider>
-            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
-              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-upload-test-series'}}]">
-              <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.publisherPages.paymentHistory' | translate }}
+            
+            <!-- STUDENTS AND PUBLISHER -->
+            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER' || userType === 'STUDENT'"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'requests'}}]">
+              <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+              {{'pageTitles.requests' | translate }}
             </a>
-            <mat-divider *ngIf="userType === 'PUBLISHER'"></mat-divider>
+            <mat-divider *ngIf="userType === 'PUBLISHER' || userType === 'STUDENT'"></mat-divider>
+
             <!-- ADMIN -->
             <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-users'}}]">
@@ -84,6 +89,7 @@
               {{'pageTitles.adminPages.reports' | translate }}
             </a>
             <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
+            
             <!-- ALL -->
             <a mat-list-item routerLinkActive="active">
               <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;

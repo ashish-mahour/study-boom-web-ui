@@ -1,135 +1,136 @@
 {
-    "appName": "StudyBoom Application",
-    "appSubTitle": "A place where you can enhance your knowlegde and skills by performing various tests..",
-    "loading": "Loading...",
-    "labels": {
-        "username": "Username",
-        "email": "Email",
-        "password": "Password",
-        "login": "Login",
-        "forgotPassword": "Forgot Password?",
-        "fullName": "Full Name",
-        "mobileNo": "Mobile No.",
-        "panNo": "Pan No.",
-        "bankName": "Bank Name",
-        "branchName": "Branch Name",
-        "accNo": "Account No.",
-        "ifscCode": "IFSC Code",
-        "chooseCategories": "Choose Categories",
-        "chooseSubCategories": "Choose Sub-Categories",
-        "skipTheStep": "Skip the Steps...",
-        "proceed": "Proceed",
-        "save": "Save"
+  "appName": "StudyBoom Application",
+  "appSubTitle": "A place where you can enhance your knowlegde and skills by performing various tests..",
+  "loading": "Loading...",
+  "labels": {
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "forgotPassword": "Forgot Password?",
+    "fullName": "Full Name",
+    "mobileNo": "Mobile No.",
+    "panNo": "Pan No.",
+    "bankName": "Bank Name",
+    "branchName": "Branch Name",
+    "accNo": "Account No.",
+    "ifscCode": "IFSC Code",
+    "chooseCategories": "Choose Categories",
+    "chooseSubCategories": "Choose Sub-Categories",
+    "skipTheStep": "Skip the Steps...",
+    "proceed": "Proceed",
+    "save": "Save"
+  },
+  "errors": {
+    "allFields": "All fields must be filled!",
+    "usernameRequired": "Username required!",
+    "invalidUsername": "Invalid Username! Only alphanumeric and \"@\" allowed!",
+    "passwordRequired": "Password required!",
+    "fullNameRequired": "Full Name required!",
+    "invalidFullName": "Invalid Full Name! Only alphabets and space allowed!",
+    "emailRequired": "Email Required!",
+    "invalidEmail": "Invalid Email Address! Only alphanumeric and \"@\" allowed!",
+    "mobileNoRequired": "Mobile Number Required!",
+    "invalidMobileNo": "Invalid Mobile! Only 8 Numeric allowed!",
+    "panNoRequired": "Pan No required!",
+    "invalidPanNo": "Invalid Pan No! Should be 5 letters followed by 4 digits followed by one letter!",
+    "bankNameRequired": "Bank Name Required!",
+    "invalidBankName": "Invalid Bank Name! Should be only letters!",
+    "branchNameRequired": "Branch Name required!",
+    "invalidBranchName": "Invalid Branch Name! Should be only letters!",
+    "accNoRequired": "Account No. required!",
+    "invalidAccNo": "Invalid Account No.! Should be numeric only!",
+    "ifscCodeRequired": "IFSC Code required!",
+    "invalidIfscCode": "Invalid IFSC Code! Should be only alpha-numeric!"
+  },
+  "pageTitles": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subDashboards": {
+        "admin": "Admin Dashboard - StudyBoom",
+        "student": "Student Dashboard - StudyBoom",
+        "publisher": "Publisher Dashboard - StudyBoom"
+      }
     },
-    "errors": {
-        "allFields": "All fields must be filled!",
-        "usernameRequired": "Username required!",
-        "invalidUsername": "Invalid Username! Only alphanumeric and \"@\" allowed!",
-        "passwordRequired": "Password required!",
-        "fullNameRequired": "Full Name required!",
-        "invalidFullName": "Invalid Full Name! Only alphabets and space allowed!",
-        "emailRequired": "Email Required!",
-        "invalidEmail": "Invalid Email Address! Only alphanumeric and \"@\" allowed!",
-        "mobileNoRequired": "Mobile Number Required!",
-        "invalidMobileNo": "Invalid Mobile! Only 8 Numeric allowed!",
-        "panNoRequired": "Pan No required!",
-        "invalidPanNo": "Invalid Pan No! Should be 5 letters followed by 4 digits followed by one letter!",
-        "bankNameRequired": "Bank Name Required!",
-        "invalidBankName": "Invalid Bank Name! Should be only letters!",
-        "branchNameRequired": "Branch Name required!",
-        "invalidBranchName": "Invalid Branch Name! Should be only letters!",
-        "accNoRequired": "Account No. required!",
-        "invalidAccNo": "Invalid Account No.! Should be numeric only!",
-        "ifscCodeRequired": "IFSC Code required!",
-        "invalidIfscCode": "Invalid IFSC Code! Should be only alpha-numeric!"
+    "profile": "Profile",
+    "adminPages": {
+      "manageCategories": "Manage Categories",
+      "manageTestSeries": "Manage Test Series",
+      "manageUsers": "Manage Users",
+      "manageRequests": "Manage Requests"
     },
-    "pageTitles": {
-        "dashboard": {
-            "title": "Dashboard",
-            "subDashboards": {
-                "admin": "Admin Dashboard - StudyBoom",
-                "student": "Student Dashboard - StudyBoom",
-                "publisher": "Publisher Dashboard - StudyBoom"
-            }
-        },
-        "profile": "Profile",
-        "adminPages": {
-            "manageCategories": "Manage Categories",
-            "manageTestSeries": "Manage Test Series",
-            "manageUsers": "Manage Users",
-            "reports": "Reports"
-        },
-        "authPages": {
-            "editProfile": "Edit Profile",
-            "login": "Login",
-            "registration": "Registration",
-            "publisherMoreDetails": "Details for Money Transfer",
-            "studentMoreDetails": "Student Details",
-            "userType": "I'm a"
-        },
-        "studentPages": {
-            "testSeries": {
-                "title": "Test Series",
-                "subTabs": {
-                    "allTestSeries": "ALL TEST SERIES",
-                    "myTestSeries": "MY TEST SERIES"
-                }
-            },
-            "cart": "Cart",
-            "performTest": "Performing Test"
-        },
-        "publisherPages": {
-            "addTestSeries": "Add Test Series"
-        },
-        "logout": "Logout"
+    "authPages": {
+      "editProfile": "Edit Profile",
+      "login": "Login",
+      "registration": "Registration",
+      "publisherMoreDetails": "Details for Money Transfer",
+      "studentMoreDetails": "Student Details",
+      "userType": "I'm a"
     },
-    "userTypes": {
-        "publisher": "Publisher",
-        "student": "Student",
-        "admin": "Admin"
-    },
-    "dashboardLabels": {
-        "editProfile": "Edit Profile",
-        "profileCompleted": "Your Profile is completed...",
-        "profileNotCompleted": " Your profile is {{profileCompletion}}% completed...",
-        "publisherDashboardLabels": {
-            "createdDateTime": "Created Date/Time",
-            "soldCount": "Sold Count"
-        },
-        "studentDashboardLabels": {
-            "dateTime": "Date/Time",
-            "noOfQuestionsAttempted": "No. of Questions Attempted",
-            "result": "Result"
-        },
-        "adminDashboardLabels": {
-            "requestType": "Request Type",
-            "performedAt": "Perfromed At",
-            "requestDateTime": "Request Date/Time",
-            "status": "Status",
-            "acceptedBtn": "Accepted",
-            "rejectBtn": "Rejected"
+    "studentPages": {
+      "testSeries": {
+        "title": "Test Series",
+        "subTabs": {
+          "allTestSeries": "ALL TEST SERIES",
+          "myTestSeries": "MY TEST SERIES"
         }
+      },
+      "cart": "Cart",
+      "performTest": "Performing Test"
     },
-    "testSeriesListingLabels": {
-        "testId": "Test ID",
-        "testName": "Test Name",
-        "testType": "Test Type",
-        "noOfQuestions": "No. of Questions",
-        "duration": "Duration",
-        "totalMarks": "Total Marks",
-        "minMarks": "Passing Marks",
-        "price": "Price",
-        "uploadedBy": "Uploaded By",
-        "ratings": "Ratings",
-        "addToCarts": "Add to Carts",
-        "perform": "Perform",
-        "confirm": "Confirm"
+    "requests": "Requests",
+    "publisherPages": {
+      "addTestSeries": "Add Test Series"
     },
-    "testPerformLabels": {
-        "skipTheQuestion": "Skip the Question",
-        "submit": "Submit"
+    "logout": "Logout"
+  },
+  "userTypes": {
+    "publisher": "Publisher",
+    "student": "Student",
+    "admin": "Admin"
+  },
+  "dashboardLabels": {
+    "editProfile": "Edit Profile",
+    "profileCompleted": "Your Profile is completed...",
+    "profileNotCompleted": " Your profile is {{profileCompletion}}% completed...",
+    "publisherDashboardLabels": {
+      "createdDateTime": "Created Date/Time",
+      "soldCount": "Sold Count"
     },
-    "cartLabels": {
-        "buy": "Buy"
+    "studentDashboardLabels": {
+      "dateTime": "Date/Time",
+      "noOfQuestionsAttempted": "No. of Questions Attempted",
+      "result": "Result"
+    },
+    "adminDashboardLabels": {
+      "requestType": "Request Type",
+      "performedAt": "Perfromed At",
+      "requestDateTime": "Request Date/Time",
+      "status": "Status",
+      "acceptedBtn": "Accepted",
+      "rejectBtn": "Rejected"
     }
+  },
+  "testSeriesListingLabels": {
+    "testId": "Test ID",
+    "testName": "Test Name",
+    "testType": "Test Type",
+    "noOfQuestions": "No. of Questions",
+    "duration": "Duration",
+    "totalMarks": "Total Marks",
+    "minMarks": "Passing Marks",
+    "price": "Price",
+    "uploadedBy": "Uploaded By",
+    "ratings": "Ratings",
+    "addToCarts": "Add to Carts",
+    "perform": "Perform",
+    "confirm": "Confirm"
+  },
+  "testPerformLabels": {
+    "skipTheQuestion": "Skip the Question",
+    "submit": "Submit"
+  },
+  "cartLabels": {
+    "buy": "Buy"
+  }
 }
