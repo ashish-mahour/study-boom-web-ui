@@ -1,3 +1,10 @@
 {
-    "defaultLanguage": "en"
+    "defaultLanguage": "en",
+    "serverUrl": "http://localhost:9966",
+    "api": {
+        "authentication": "/authentication/api",
+        "admin": "/admin/api",
+        "publisher": "/publisher/api",
+        "student": "/student/api"
+    }
 }

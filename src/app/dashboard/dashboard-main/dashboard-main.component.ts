@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class DashboardMainComponent implements OnInit {
 
   isMobile: boolean = false;
-  userType: string = 'PUBLISHER';
+  userType: string = 'ADMIN';
   userUploadedProfilePic: string;
   currentDate: number = new Date().getFullYear();
 
