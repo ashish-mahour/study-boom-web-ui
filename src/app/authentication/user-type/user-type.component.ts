@@ -47,7 +47,6 @@ export class UserTypeComponent implements OnInit {
       )
       .subscribe(
         (data: any) => {
-          console.log(data);
           this.loadingService.showLoading(false);
           const alertBox = this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
@@ -66,15 +65,19 @@ export class UserTypeComponent implements OnInit {
           });
         },
         error => {
-          console.log(error);
           this.loadingService.showLoading(false);
-          this.dialog.open(AlertBoxComponent, {
+          const alertBox = this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
               type: "error",
               message: error.error.message
             }
+          });
+          alertBox.afterClosed().subscribe(data => {
+            this.translate.get(["userTypes.admin"]).subscribe(translations => {
+              if (data.status) this.router.navigateByUrl("/home");
+            });
           });
         }
       );
