@@ -85,9 +85,9 @@
     "logout": "Logout"
   },
   "userTypes": {
-    "publisher": "Publisher",
-    "student": "Student",
-    "admin": "Admin"
+    "publisher": "PUBLISHER",
+    "student": "STUDENT",
+    "admin": "ADMIN"
   },
   "dashboardLabels": {
     "editProfile": "Edit Profile",

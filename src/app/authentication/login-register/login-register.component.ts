@@ -43,6 +43,7 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   performRegistration() {
+    this.registerForm.controls["password"].setValue(btoa(this.registerForm.controls["password"].value))
     if (this.validateRegistration()) {
       this.router.navigate(['/home', { outlets: { 'home-page-router': ['usertype'] } }]
         , { queryParams: this.registerForm.value });
