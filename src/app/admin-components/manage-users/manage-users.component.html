@@ -4,5 +4,78 @@
       <mat-card-title>{{'pageTitles.adminPages.manageUsers' | translate }}</mat-card-title>
       <mat-card-subtitle>{{ authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
+    <mat-card-content fxLayout="column" fxLayout="row wrap">
+      <div fxFlex=100>
+        <p-scrollPanel [style]="{width: '100%', height: height,
+            overflow:'hidden'}">
+          <div fxFlex=100 fxLayout="column">
+            <div fxFlex=100 *ngFor="let test of authenticationService.allUsers" class="manage-users-listing-row">
+              <div fxFlex=100 class="manage-users-listing-row-content" fxLayout="column">
+                <div fxFlex=100>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-users-listing-heading">{{
+                                'dashboardLabels.adminDashboardLabels.requestType'
+                                | translate }}</span>
+                    <span class="manage-users-listing-content">{{test.testId}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-users-listing-heading">{{
+                                'dashboardLabels.adminDashboardLabels.performedAt'
+                                | translate }}</span><span
+                      class="manage-users-listing-content">{{test.testName}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-users-listing-heading">{{
+                                'dashboardLabels.adminDashboardLabels.requestDateTime'
+                                | translate }}</span><span
+                      class="manage-users-listing-content">{{test.testType}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-users-listing-heading">{{
+                                'dashboardLabels.adminDashboardLabels.status'
+                                | translate }}</span>
+                    <div fxLayout="row wrap">
+                      <mat-button-toggle-group #requestStatus="matButtonToggleGroup" fxLayout="column"
+                        [(ngModel)]="test.status">
+                        <mat-button-toggle value="{{
+                                        ('dashboardLabels.adminDashboardLabels.acceptedBtn'
+                                        | translate) | uppercase
+                                        }}"
+                          [ngClass]="{'user-activated-accept-status': test.status === 'REJECTED', 'user-activated-accept-status-checked': test.status === 'ACCEPTED'}">
+                          {{
+                                        ('dashboardLabels.adminDashboardLabels.acceptedBtn'
+                                        | translate) | uppercase }}
+                        </mat-button-toggle>
+                        <mat-button-toggle value="{{
+                                        ('dashboardLabels.adminDashboardLabels.rejectBtn'
+                                        | translate) | uppercase
+                                        }}"
+                          [ngClass]="{'user-activated-reject-status-checked': test.status === 'REJECTED', 'user-activated-reject-status': test.status === 'ACCEPTED'}">
+                          {{
+                                        ('dashboardLabels.adminDashboardLabels.rejectBtn'
+                                        | translate) | uppercase }}
+                        </mat-button-toggle>
+                      </mat-button-toggle-group>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div fxFlex=100>
+              &nbsp;&nbsp;
+            </div>
+            <div fxFlex=100>
+              &nbsp;&nbsp;
+            </div>
+          </div>
+        </p-scrollPanel>
+      </div>
+      <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
+        <button mat-raised-button class="next-prev-button"><i class="fa
+                  fa-arrow-left" aria-hidden="true"></i></button>
+        <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
+            aria-hidden="true"></i></button>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>

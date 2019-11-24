@@ -15,6 +15,68 @@ export class AuthenticationService {
   profileCompletion: number = 30;
   userDetails: any = {};
   mofifiedUserDetails: any = {};
+  allUsers: any[] = [
+    {
+      testId: 1,
+      testName: "AB",
+      testType: "MCQ",
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: "Ashish",
+      status: "ACCEPTED"
+    },
+    {
+      testId: 1,
+      testName: "AB",
+      testType: "MCQ",
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: "Ashish",
+      status: "REJECTED"
+    },
+    {
+      testId: 1,
+      testName: "AB",
+      testType: "MCQ",
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: "Ashish",
+      status: "ACCEPTED"
+    },
+    {
+      testId: 1,
+      testName: "AB",
+      testType: "MCQ",
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: "Ashish",
+      status: "ACCEPTED"
+    },
+    {
+      testId: 1,
+      testName: "AB",
+      testType: "MCQ",
+      noOfQuestions: 50,
+      duration: 60,
+      totalMarks: 100,
+      minMarks: 50,
+      price: 0,
+      uploadedBy: "Ashish",
+      status: "ACCEPTED"
+    }
+  ];
 
   constructor(
     private loadingService: LoadingAnimServiceService,

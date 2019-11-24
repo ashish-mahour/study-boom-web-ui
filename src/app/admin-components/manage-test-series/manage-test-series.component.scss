@@ -1,16 +1,100 @@
 .manage-test-series-content {
-      background-color: rgba(43, 42, 42, 0.644);
-      width: 70%;
-      margin-top: 1%;
-      padding: 0%;
-      padding-top: 1%;
+  background-color: rgba(43, 42, 42, 0.644);
+  width: 70%;
+  margin-top: 1%;
+  padding: 0%;
+  padding-top: 1%;
 
-      @media only screen and (max-width: 800px) {
-            width: 80%;
-            margin-top: 12%;
-      }
+  @media only screen and (max-width: 800px) {
+    width: 80%;
+    margin-top: 12%;
+  }
 
-      @media only screen and (max-width: 600px) {
-            width: 80%;
-      }
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+  }
+}
+
+::ng-deep {
+  .manage-test-content .mat-ink-bar {
+    background: rgb(245, 154, 94) !important;
+  }
+
+  .ui-scrollpanel-bar-y {
+    background-color: rgba(3, 171, 248, 0.863);
+  }
+
+  .ui-scrollpanel-bar-x {
+    background-color: rgba(3, 171, 248, 0.863);
+  }
+
+  .mat-button-toggle-label-content {
+    line-height: 2 !important;
+  }
+
+  .mat-button-toggle-label-content {
+    line-height: 2 !important;
+  }
+}
+
+.user-activated-accept-status {
+  cursor: pointer;
+  background: none;
+  color: rgb(17, 148, 56);
+  border: none !important;
+}
+
+.user-activated-reject-status {
+  cursor: pointer;
+  background: none;
+  color: rgba(199, 24, 18, 0.863);
+  border: none !important;
+}
+
+.user-activated-accept-status-checked {
+  cursor: pointer;
+  background: rgb(17, 148, 56);
+  color: rgba(255, 255, 255, 0.863);
+  border: none !important;
+}
+
+.user-activated-reject-status-checked {
+  cursor: pointer;
+  background: rgb(197, 52, 26);
+  color: rgba(255, 255, 255, 0.863);
+  border: none !important;
+}
+
+.manage-test-listing-row {
+  color: rgba(43, 42, 42);
+  padding: 1%;
+}
+
+.manage-test-listing-heading {
+  font-size: 100%;
+  font-weight: bold;
+  font-family: cursive;
+  padding: 1%;
+  word-wrap: break-word;
+}
+
+.manage-test-listing-content {
+  font-size: 100%;
+  font-weight: normal;
+  font-family: cursive;
+  padding: 1%;
+  word-wrap: break-word;
+}
+
+.manage-test-listing-row-content {
+  background-color: rgba(219, 216, 214, 0.664);
+}
+
+.next-prev-layout {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.next-prev-button {
+  background-color: rgba(43, 42, 42, 0.767);
 }
