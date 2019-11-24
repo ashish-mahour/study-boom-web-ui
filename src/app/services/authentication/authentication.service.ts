@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AuthenticationService {
 
   isAuthenticated: boolean = true;
+  userType: string = "ADMIN";
 
   constructor(
     private loadingService: LoadingAnimServiceService,
