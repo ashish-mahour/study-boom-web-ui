@@ -9,7 +9,7 @@ import { AlertBoxComponent } from "src/app/shared/alert-box/alert-box.component"
 @Injectable({
   providedIn: "root"
 })
-export class AuthenticationService implements OnInit {
+export class AuthenticationService {
   isAuthenticated: boolean = false;
   userType: string;
   profileCompletion: number = 30;
@@ -22,10 +22,6 @@ export class AuthenticationService implements OnInit {
     private dialog: MatDialog,
     private router: Router
   ) {}
-
-  ngOnInit(): void {
-    console.log("Method not implemented.");
-  }
 
   loginUser(loginDetails: any): void {
     this.loadingService.showLoading(true);
@@ -45,7 +41,7 @@ export class AuthenticationService implements OnInit {
           /**
            * SAVE DATA
            */
-
+          delete data.password;
           this.userDetails = data;
           this.userType = data.type;
           this.profileCompletion = 100;
@@ -104,6 +100,26 @@ export class AuthenticationService implements OnInit {
         if (command === config.modifiedCommands.changeProfilePic) {
           this.userDetails.profilePic = this.mofifiedUserDetails.profilePic;
           message = "Profile Pic Successfully changed!!";
+        } else if (command === config.modifiedCommands.updateStudent) {
+          this.userDetails.fullName = this.mofifiedUserDetails.fullName;
+          this.userDetails.username = this.mofifiedUserDetails.username;
+          this.userDetails.email = this.mofifiedUserDetails.email;
+          this.userDetails.password = this.mofifiedUserDetails.password;
+          this.userDetails.mobileNo = this.mofifiedUserDetails.mobileNo;
+          message = "Student Details Updated!!";
+        } else if (command === config.modifiedCommands.updatePublisher) {
+          this.userDetails.fullName = this.mofifiedUserDetails.fullName;
+          this.userDetails.username = this.mofifiedUserDetails.username;
+          this.userDetails.email = this.mofifiedUserDetails.email;
+          this.userDetails.password = this.mofifiedUserDetails.password;
+          this.userDetails.mobileNo = this.mofifiedUserDetails.mobileNo;
+          message = "Publisher Details Updated!!";
+        } else if (command === config.modifiedCommands.updateAdmin) {
+          this.userDetails.fullName = this.mofifiedUserDetails.fullName;
+          this.userDetails.username = this.mofifiedUserDetails.username;
+          this.userDetails.email = this.mofifiedUserDetails.email;
+          this.userDetails.password = this.mofifiedUserDetails.password;
+          message = "Admin Details Updated!!";
         }
         const alertBox = this.dialog.open(AlertBoxComponent, {
           minWidth: "25%",

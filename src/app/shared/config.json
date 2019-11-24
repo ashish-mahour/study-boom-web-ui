@@ -1,13 +1,16 @@
 {
-    "defaultLanguage": "en",
-    "serverUrl": "http://localhost:9966",
-    "api": {
-        "authentication": "/authentication/api",
-        "admin": "/admin/api",
-        "publisher": "/publisher/api",
-        "student": "/student/api"
-    }, 
-    "modifiedCommands": {
-        "changeProfilePic": 1
-    }
+  "defaultLanguage": "en",
+  "serverUrl": "http://localhost:9966",
+  "api": {
+    "authentication": "/authentication/api",
+    "admin": "/admin/api",
+    "publisher": "/publisher/api",
+    "student": "/student/api"
+  },
+  "modifiedCommands": {
+    "changeProfilePic": 1,
+    "updateAdmin": 2,
+    "updateStudent": 3,
+    "updatePublisher": 4
+  }
 }
