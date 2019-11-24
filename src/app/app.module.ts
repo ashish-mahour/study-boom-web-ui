@@ -46,7 +46,6 @@ import { PerformTestSeriesComponent } from './user-components/perform-test-serie
 import { AddTestSeriesComponent } from './publisher-components/add-test-series/add-test-series.component';
 import { ManageUsersComponent } from './admin-components/manage-users/manage-users.component';
 import { ManageTestSeriesComponent } from './admin-components/manage-test-series/manage-test-series.component';
-import { ManageRequestsComponent } from './admin-components/manage-requests/manage-requests.component';
 import { ManageCategoriesComponent } from './admin-components/manage-categories/manage-categories.component';
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { AuthenticationGuard } from './guards/authentication/authentication.guard';
@@ -81,7 +80,6 @@ export function createTranslateLoader(http: HttpClient) {
     AddTestSeriesComponent,
     ManageUsersComponent,
     ManageTestSeriesComponent,
-    ManageRequestsComponent,
     ManageCategoriesComponent,
     RequestsComponent
   ],

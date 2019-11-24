@@ -87,12 +87,6 @@
               {{'pageTitles.adminPages.manageCategories' | translate }}
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'ADMIN'"></mat-divider>
-            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'">
-              <i class="fa fa-file-text-o" aria-hidden="true"
-                [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-requests'}}]"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.adminPages.manageRequests' | translate }}
-            </a>
-            <mat-divider *ngIf="authenticationService.userType === 'ADMIN'"></mat-divider>
 
             <!-- ALL -->
             <a mat-list-item routerLinkActive="active" (click)="authenticationService.logoutUser()">
