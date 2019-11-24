@@ -126,6 +126,22 @@
     "perform": "Perform",
     "confirm": "Confirm"
   },
+  "manageUsersListingLabels": {
+    "fullName": "Full Name",
+    "username": "Username",
+    "email": "Email",
+    "type": "User Type",
+    "status": "Status",
+    "active": "Active",
+    "notActive": "Not Active"
+  },
+  "manageCategoriesLabels": {
+    "categoryName": "Category Name",
+    "subCategoryName": "Sub-Categories Name",
+    "addNewCategory": "Add New Category",
+    "updateCategory": "Update",
+    "deleteCategory": "Delete"
+  },
   "testPerformLabels": {
     "skipTheQuestion": "Skip the Question",
     "submit": "Submit"

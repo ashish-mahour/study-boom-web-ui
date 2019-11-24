@@ -9,50 +9,47 @@
         <p-scrollPanel [style]="{width: '100%', height: height,
             overflow:'hidden'}">
           <div fxFlex=100 fxLayout="column">
-            <div fxFlex=100 *ngFor="let test of authenticationService.allUsers" class="manage-users-listing-row">
+            <div fxFlex=100 *ngFor="let user of adminService.allUsers[currentPage]" class="manage-users-listing-row">
               <div fxFlex=100 class="manage-users-listing-row-content" fxLayout="column">
-                <div fxFlex=100>
-                  <div fxFlex=25 fxLayout="column">
+                <div fxFlex=100 fxLayout fxLayout.xs="column" fxLayout.sm="column">
+                  <div fxFlex=25 style="margin: 1%;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
                     <span class="manage-users-listing-heading">{{
-                                'dashboardLabels.adminDashboardLabels.requestType'
+                                'manageUsersListingLabels.fullName'
                                 | translate }}</span>
-                    <span class="manage-users-listing-content">{{test.testId}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-users-listing-content">{{ user.fullName }}</span>
                     <span class="manage-users-listing-heading">{{
-                                'dashboardLabels.adminDashboardLabels.performedAt'
+                        'manageUsersListingLabels.type'
+                        | translate }}</span>
+                    <span class="manage-users-listing-content">{{ user.type }}</span>
+                  </div>
+                  <div fxFlex=25 style="margin: 1%;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
+                    <span class="manage-users-listing-heading">{{
+                        'manageUsersListingLabels.username'
                                 | translate }}</span><span
-                      class="manage-users-listing-content">{{test.testName}}</span>
+                      class="manage-users-listing-content">{{ user.username }}</span>
                   </div>
-                  <div fxFlex=25 fxLayout="column">
+                  <div fxFlex=25 style="margin: 1%;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
                     <span class="manage-users-listing-heading">{{
-                                'dashboardLabels.adminDashboardLabels.requestDateTime'
-                                | translate }}</span><span
-                      class="manage-users-listing-content">{{test.testType}}</span>
+                        'manageUsersListingLabels.email'
+                                | translate }}</span><span class="manage-users-listing-content">{{ user.email }}</span>
                   </div>
-                  <div fxFlex=25 fxLayout="column">
+                  <div fxFlex=25 style="margin: 1%;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
                     <span class="manage-users-listing-heading">{{
-                                'dashboardLabels.adminDashboardLabels.status'
+                                'manageUsersListingLabels.status'
                                 | translate }}</span>
                     <div fxLayout="row wrap">
-                      <mat-button-toggle-group #requestStatus="matButtonToggleGroup" fxLayout="column"
-                        [(ngModel)]="test.status">
-                        <mat-button-toggle value="{{
-                                        ('dashboardLabels.adminDashboardLabels.acceptedBtn'
-                                        | translate) | uppercase
-                                        }}"
-                          [ngClass]="{'user-activated-accept-status': test.status === 'REJECTED', 'user-activated-accept-status-checked': test.status === 'ACCEPTED'}">
+                      <mat-button-toggle-group #requestStatus="matButtonToggleGroup" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row"
+                        [(ngModel)]="user.isActivated">
+                        <mat-button-toggle value="true"
+                          [ngClass]="{'user-activated-accept-status': !user.isActivated, 'user-activated-accept-status-checked': user.isActivated}">
                           {{
-                                        ('dashboardLabels.adminDashboardLabels.acceptedBtn'
+                                        ('manageUsersListingLabels.active'
                                         | translate) | uppercase }}
                         </mat-button-toggle>
-                        <mat-button-toggle value="{{
-                                        ('dashboardLabels.adminDashboardLabels.rejectBtn'
-                                        | translate) | uppercase
-                                        }}"
-                          [ngClass]="{'user-activated-reject-status-checked': test.status === 'REJECTED', 'user-activated-reject-status': test.status === 'ACCEPTED'}">
+                        <mat-button-toggle value="false"
+                          [ngClass]="{'user-activated-reject-status-checked': !user.isActivated, 'user-activated-reject-status': user.isActivated}">
                           {{
-                                        ('dashboardLabels.adminDashboardLabels.rejectBtn'
+                                        ('manageUsersListingLabels.notActive'
                                         | translate) | uppercase }}
                         </mat-button-toggle>
                       </mat-button-toggle-group>
@@ -71,9 +68,11 @@
         </p-scrollPanel>
       </div>
       <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
-        <button mat-raised-button class="next-prev-button"><i class="fa
+        <button mat-raised-button class="next-prev-button" (click)="prevPage()"
+          [disabled]="!adminService.allUsers[currentPage - 1]"><i class="fa
                   fa-arrow-left" aria-hidden="true"></i></button>
-        <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
+        <button mat-raised-button class="next-prev-button" fxFlexOffset=5
+          [disabled]="!adminService.allUsers[currentPage + 1]" (click)="nextPage()"><i class="fa fa-arrow-right"
             aria-hidden="true"></i></button>
       </div>
     </mat-card-content>

@@ -27,43 +27,43 @@
 
             <!-- ALL -->
             <a mat-list-item routerLinkActive="active" [routerLink]="['/dashboard']">
-              <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.dashboard.title' | translate }}
+              <div><i class="fa fa-sign-in" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.dashboard.title' | translate }}</div>
             </a>
             <mat-divider></mat-divider>
             <a mat-list-item routerLinkActive="active" (click)="editProfile()">
-              <i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.profile' | translate }}
+              <div><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.profile' | translate }}</div>
             </a>
             <mat-divider></mat-divider>
 
             <!-- STUDENTS -->
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-test-series-listings'}}]">
-              <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.studentPages.testSeries.title' | translate }}
+              <div><i class="fa fa-book" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.studentPages.testSeries.title' | translate }}</div>
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'STUDENT'"></mat-divider>
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-cart'}}]">
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.studentPages.cart' | translate }}
+              <div><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.studentPages.cart' | translate }}</div>
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'STUDENT'"></mat-divider>
 
             <!-- PUBLISHERS -->
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
-              <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.publisherPages.addTestSeries' | translate }}
+              <div><i class="fa fa-book" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.publisherPages.addTestSeries' | translate }}</div>
             </a>
 
             <!-- STUDENTS AND PUBLISHER -->
             <a mat-list-item routerLinkActive="active"
               *ngIf="authenticationService.userType === 'PUBLISHER' || authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'requests'}}]">
-              <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.requests' | translate }}
+              <div><i class="fa fa-book" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.requests' | translate }}</div>
             </a>
             <mat-divider
               *ngIf="authenticationService.userType === 'PUBLISHER' || authenticationService.userType === 'STUDENT'">
@@ -72,26 +72,26 @@
             <!-- ADMIN -->
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-users'}}]">
-              <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.adminPages.manageUsers' | translate }}
+              <div><i class="fa fa-users" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.adminPages.manageUsers' | translate }}</div>
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'ADMIN'"></mat-divider>
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-test-series'}}]">
-              <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.adminPages.manageTestSeries' | translate }}
+              <div><i class="fa fa-book" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.adminPages.manageTestSeries' | translate }}</div>
             </a>
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-categories'}}]">
-              <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.adminPages.manageCategories' | translate }}
+              <div><i class="fa fa-book" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.adminPages.manageCategories' | translate }}</div>
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'ADMIN'"></mat-divider>
 
             <!-- ALL -->
             <a mat-list-item routerLinkActive="active" (click)="authenticationService.logoutUser()">
-              <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              {{'pageTitles.logout' | translate }}
+              <div><i class="fa fa-sign-out" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.logout' | translate }}</div>
             </a>
             <mat-divider></mat-divider>
           </mat-nav-list>

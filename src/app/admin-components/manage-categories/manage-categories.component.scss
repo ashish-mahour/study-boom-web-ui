@@ -98,3 +98,36 @@
 .next-prev-button {
   background-color: rgba(43, 42, 42, 0.767);
 }
+
+.add-category-btn {
+  letter-spacing: 1px;
+  font-weight: 500;
+  padding: 1%;
+  margin: 2%;
+  cursor: pointer;
+}
+.add-category-btn:hover{
+  color: rgb(7, 119, 248);
+}
+
+.update-category-btn {
+  letter-spacing: 1px;
+  font-weight: 500;
+  background-image: radial-gradient(
+    circle,
+    rgb(89, 199, 199),
+    rgb(76, 179, 179)
+  );
+  color: rgb(44, 44, 44);
+}
+
+.delete-category-btn {
+  letter-spacing: 1px;
+  font-weight: 500;
+  background-image: radial-gradient(
+    circle,
+    rgb(219, 40, 27),
+    rgb(192, 62, 53)
+  );
+  color: rgb(44, 44, 44);
+}

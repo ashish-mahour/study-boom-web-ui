@@ -9,60 +9,32 @@
         <p-scrollPanel [style]="{width: '100%', height: height,
                 overflow:'hidden'}">
           <div fxFlex=100 fxLayout="column">
-            <div fxFlex=100 *ngFor="let test of authenticationService.allUsers" class="manage-categories-listing-row">
-              <div fxFlex=100 class="manage-categories-listing-row-content" fxLayout="column">
-                <div fxFlex=100>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="manage-categories-listing-heading">{{
-                                    'dashboardLabels.adminDashboardLabels.requestType'
-                                    | translate }}</span>
-                    <span class="manage-categories-listing-content">{{test.testId}}</span>
+            <div fxFlex=100 *ngFor="let category of adminService.allCategories[currentPage]"
+              class="manage-categories-listing-row">
+              <div class="manage-categories-listing-row-content" fxLayout="column">
+                <div fxLayout="column">
+                  <div fxLayout>
+                    <span class="manage-categories-listing-heading" fxFlex=50>{{
+                          'manageCategoriesLabels.categoryName'
+                          | translate }} : </span>
+                    <span class="manage-categories-listing-content" fxFlex=50>{{category.name}}</span>
                   </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="manage-categories-listing-heading">{{
-                                    'dashboardLabels.adminDashboardLabels.performedAt'
-                                    | translate }}</span><span
-                      class="manage-categories-listing-content">{{test.testName}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="manage-categories-listing-heading">{{
-                                    'dashboardLabels.adminDashboardLabels.requestDateTime'
-                                    | translate }}</span><span
-                      class="manage-categories-listing-content">{{test.testType}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="manage-categories-listing-heading">{{
-                                    'dashboardLabels.adminDashboardLabels.status'
-                                    | translate }}</span>
-                    <div fxLayout="row wrap">
-                      <mat-button-toggle-group #requestStatus="matButtonToggleGroup" fxLayout="column"
-                        [(ngModel)]="test.status">
-                        <mat-button-toggle value="{{
-                                            ('dashboardLabels.adminDashboardLabels.acceptedBtn'
-                                            | translate) | uppercase
-                                            }}"
-                          [ngClass]="{'user-activated-accept-status': test.status === 'REJECTED', 'user-activated-accept-status-checked': test.status === 'ACCEPTED'}">
-                          {{
-                                            ('dashboardLabels.adminDashboardLabels.acceptedBtn'
-                                            | translate) | uppercase }}
-                        </mat-button-toggle>
-                        <mat-button-toggle value="{{
-                                            ('dashboardLabels.adminDashboardLabels.rejectBtn'
-                                            | translate) | uppercase
-                                            }}"
-                          [ngClass]="{'user-activated-reject-status-checked': test.status === 'REJECTED', 'user-activated-reject-status': test.status === 'ACCEPTED'}">
-                          {{
-                                            ('dashboardLabels.adminDashboardLabels.rejectBtn'
-                                            | translate) | uppercase }}
-                        </mat-button-toggle>
-                      </mat-button-toggle-group>
-                    </div>
+                  <div fxLayout>
+                    <span class="manage-categories-listing-heading" fxFlex=50>{{
+                          'manageCategoriesLabels.subCategoryName'
+                          | translate }} : </span>
+                    <span class="manage-categories-listing-content" fxFlex=50
+                      *ngFor="let subCategory of category.subjectCategoryIdToSubCategory; let i = index">{{subCategory.name}}
+                    </span>
                   </div>
                 </div>
+                <div fxLayoutAlign="end center" style="padding: 2%;">
+                  <button type="button" mat-raised-button class="update-category-btn"
+                    (click)="performLogin()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;{{'manageCategoriesLabels.updateCategory' | translate }}</button>
+                  <button type="button" mat-raised-button class="delete-category-btn" (click)="performLogin()"
+                    fxFlexOffset=5><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;{{'manageCategoriesLabels.deleteCategory' | translate }}</button>
+                </div>
               </div>
-            </div>
-            <div fxFlex=100>
-              &nbsp;&nbsp;
             </div>
             <div fxFlex=100>
               &nbsp;&nbsp;
@@ -70,10 +42,16 @@
           </div>
         </p-scrollPanel>
       </div>
+      <div fxFlex=100 fxLayoutAlign="end center" class="next-prev-layout">
+        <span class="add-category-btn" (click)="performLogin()"
+          fxLayoutAlign="end center">{{'manageCategoriesLabels.addNewCategory' | translate }}</span>
+      </div>
       <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
-        <button mat-raised-button class="next-prev-button"><i class="fa
+        <button mat-raised-button class="next-prev-button" (click)="prevPage()" [disabled]="!adminService.allCategories[currentPage - 1]"><i
+            class="fa
                       fa-arrow-left" aria-hidden="true"></i></button>
-        <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
+        <button mat-raised-button class="next-prev-button" fxFlexOffset=5
+          [disabled]="!adminService.allCategories[currentPage + 1]" (click)="nextPage()"><i class="fa fa-arrow-right"
             aria-hidden="true"></i></button>
       </div>
     </mat-card-content>

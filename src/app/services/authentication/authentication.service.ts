@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import * as config from "src/app/shared/config.json";
 import { Router } from "@angular/router";
 import { AlertBoxComponent } from "src/app/shared/alert-box/alert-box.component";
+import { TranslateService } from "@ngx-translate/core";
 
 @Injectable({
   providedIn: "root"
@@ -15,74 +16,13 @@ export class AuthenticationService {
   profileCompletion: number = 30;
   userDetails: any = {};
   mofifiedUserDetails: any = {};
-  allUsers: any[] = [
-    {
-      testId: 1,
-      testName: "AB",
-      testType: "MCQ",
-      noOfQuestions: 50,
-      duration: 60,
-      totalMarks: 100,
-      minMarks: 50,
-      price: 0,
-      uploadedBy: "Ashish",
-      status: "ACCEPTED"
-    },
-    {
-      testId: 1,
-      testName: "AB",
-      testType: "MCQ",
-      noOfQuestions: 50,
-      duration: 60,
-      totalMarks: 100,
-      minMarks: 50,
-      price: 0,
-      uploadedBy: "Ashish",
-      status: "REJECTED"
-    },
-    {
-      testId: 1,
-      testName: "AB",
-      testType: "MCQ",
-      noOfQuestions: 50,
-      duration: 60,
-      totalMarks: 100,
-      minMarks: 50,
-      price: 0,
-      uploadedBy: "Ashish",
-      status: "ACCEPTED"
-    },
-    {
-      testId: 1,
-      testName: "AB",
-      testType: "MCQ",
-      noOfQuestions: 50,
-      duration: 60,
-      totalMarks: 100,
-      minMarks: 50,
-      price: 0,
-      uploadedBy: "Ashish",
-      status: "ACCEPTED"
-    },
-    {
-      testId: 1,
-      testName: "AB",
-      testType: "MCQ",
-      noOfQuestions: 50,
-      duration: 60,
-      totalMarks: 100,
-      minMarks: 50,
-      price: 0,
-      uploadedBy: "Ashish",
-      status: "ACCEPTED"
-    }
-  ];
 
   constructor(
     private loadingService: LoadingAnimServiceService,
     private http: HttpClient,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {}
 
   loginUser(loginDetails: any): void {
