@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-add-test-series',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTestSeriesComponent implements OnInit {
 
-  userType: string = 'PUBLISHER';
-
-  constructor() { }
+  constructor(
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit() {
   }

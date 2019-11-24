@@ -56,9 +56,9 @@ export class UserTypeComponent implements OnInit {
               message: data.message
             }
           });
-          alertBox.afterClosed().subscribe(data => {
+          alertBox.afterClosed().subscribe(alertData => {
             this.translate.get(["userTypes.admin"]).subscribe(translations => {
-              if (data.status)
+              if (alertData.status)
                 if (this.userType === translations["userTypes.admin"])
                   this.router.navigateByUrl("/home");
             });

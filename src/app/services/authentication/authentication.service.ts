@@ -13,6 +13,7 @@ export class AuthenticationService {
   constructor(
     private loadingService: LoadingAnimServiceService,
     private http: HttpClient,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authenticationService: AuthenticationService
   ) { }
 }

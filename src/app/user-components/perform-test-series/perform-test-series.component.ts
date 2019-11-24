@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-perform-test-series',
@@ -7,8 +8,6 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./perform-test-series.component.scss']
 })
 export class PerformTestSeriesComponent implements OnInit {
-
-  userType: string = 'STUDENT';
 
   isConfirmed: boolean = false;
 
@@ -51,7 +50,8 @@ export class PerformTestSeriesComponent implements OnInit {
   inputAnswers: string[] = [];
 
   constructor(
-    private title: Title
+    private title: Title,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {

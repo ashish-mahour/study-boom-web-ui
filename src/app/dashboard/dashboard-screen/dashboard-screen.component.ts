@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-dashboard-screen',
@@ -8,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class DashboardScreenComponent implements OnInit {
 
-  userType: string = 'ADMIN';
   profileCompletion: number = 30;
 
   height: string = (window.innerHeight - 250) + 'px';
@@ -101,7 +101,8 @@ export class DashboardScreenComponent implements OnInit {
   ]
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -109,11 +110,11 @@ export class DashboardScreenComponent implements OnInit {
   }
 
   editProfile() {
-    if (this.userType === 'PUBLISHER')
+    if (this.authenticationService.userType === 'PUBLISHER')
       this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': ['publisher-edit-details'] } }])
-    if (this.userType === 'ADMIN')
+    if (this.authenticationService.userType === 'ADMIN')
       this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': ['admin-edit-details'] } }])
-    if (this.userType === 'STUDENT')
+    if (this.authenticationService.userType === 'STUDENT')
       this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': 'user-edit-details' } }])
   }
 

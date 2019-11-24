@@ -4,6 +4,7 @@ import { MatAutocomplete } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { AlertBoxComponent } from 'src/app/shared/alert-box/alert-box.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-user-edit-details',
@@ -11,8 +12,6 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./user-edit-details.component.scss']
 })
 export class UserEditDetailsComponent implements OnInit {
-
-  userType: string = 'STUDENT';
 
   categoriesData: any[] = [
     {
@@ -91,7 +90,8 @@ export class UserEditDetailsComponent implements OnInit {
   subCategoryList: MatAutocomplete;
   constructor(
     private formBuilder: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {

@@ -2,7 +2,7 @@
   <mat-card class="cart-content">
     <mat-card-header>
       <mat-card-title>{{'pageTitles.studentPages.cart' | translate }}</mat-card-title>
-      <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content fxLayout="column" fxLayout="row wrap">
       <div fxFlex=100>

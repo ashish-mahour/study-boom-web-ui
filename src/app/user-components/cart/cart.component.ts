@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,8 +8,6 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
-  userType: string = 'STUDENT';
 
   height: string = (window.innerHeight - 250) + 'px';
 
@@ -93,7 +92,8 @@ export class CartComponent implements OnInit {
   ]
 
   constructor(
-    private title: Title
+    private title: Title,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-admin-edit-details',
@@ -7,8 +8,6 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./admin-edit-details.component.scss']
 })
 export class AdminEditDetailsComponent implements OnInit {
-
-  userType: string = 'ADMIN';
 
   adminEditForm: FormGroup = this.formBuilder.group({
     fullname: [null, [Validators.required, Validators.pattern("[A-Za-z ]+")]],
@@ -18,7 +17,8 @@ export class AdminEditDetailsComponent implements OnInit {
   })
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {

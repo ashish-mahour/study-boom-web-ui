@@ -1,6 +1,7 @@
 import { Component, OnInit, IterableDiffers, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-test-series-listing',
@@ -8,8 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./test-series-listing.component.scss']
 })
 export class TestSeriesListingComponent implements OnInit {
-
-  userType: string = 'STUDENT';
 
   height: string = (window.innerHeight - 250) + 'px';
 
@@ -95,7 +94,8 @@ export class TestSeriesListingComponent implements OnInit {
 
   constructor(
     private title: Title,
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {

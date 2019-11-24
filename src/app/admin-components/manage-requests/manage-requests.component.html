@@ -2,7 +2,7 @@
   <mat-card class="manage-requests-content">
     <mat-card-header>
       <mat-card-title>{{'pageTitles.adminPages.manageRequests' | translate }}</mat-card-title>
-      <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
   </mat-card>
 </div>

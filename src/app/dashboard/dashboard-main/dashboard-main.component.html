@@ -37,58 +37,58 @@
             <mat-divider></mat-divider>
             
             <!-- STUDENTS -->
-            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
+            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-test-series-listings'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.studentPages.testSeries.title' | translate }}
             </a>
-            <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
-            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'STUDENT'"
+            <mat-divider *ngIf="authenticationService.userType === 'STUDENT'"></mat-divider>
+            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-cart'}}]">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.studentPages.cart' | translate }}
             </a>
-            <mat-divider *ngIf="userType === 'STUDENT'"></mat-divider>
+            <mat-divider *ngIf="authenticationService.userType === 'STUDENT'"></mat-divider>
            
             <!-- PUBLISHERS -->
-            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER'"
+            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.publisherPages.addTestSeries' | translate }}
             </a>
             
             <!-- STUDENTS AND PUBLISHER -->
-            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'PUBLISHER' || userType === 'STUDENT'"
+            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER' || authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'requests'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.requests' | translate }}
             </a>
-            <mat-divider *ngIf="userType === 'PUBLISHER' || userType === 'STUDENT'"></mat-divider>
+            <mat-divider *ngIf="authenticationService.userType === 'PUBLISHER' || authenticationService.userType === 'STUDENT'"></mat-divider>
 
             <!-- ADMIN -->
-            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
+            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-users'}}]">
               <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.adminPages.manageUsers' | translate }}
             </a>
-            <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
-            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
+            <mat-divider *ngIf="authenticationService.userType === 'ADMIN'"></mat-divider>
+            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-test-series'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.adminPages.manageTestSeries' | translate }}
             </a>
-            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'"
+            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-categories'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.adminPages.manageCategories' | translate }}
             </a>
-            <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
-            <a mat-list-item routerLinkActive="active" *ngIf="userType === 'ADMIN'">
+            <mat-divider *ngIf="authenticationService.userType === 'ADMIN'"></mat-divider>
+            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'">
               <i class="fa fa-file-text-o" aria-hidden="true"
                 [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-requests'}}]"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.adminPages.manageRequests' | translate }}
             </a>
-            <mat-divider *ngIf="userType === 'ADMIN'"></mat-divider>
+            <mat-divider *ngIf="authenticationService.userType === 'ADMIN'"></mat-divider>
             
             <!-- ALL -->
             <a mat-list-item routerLinkActive="active">

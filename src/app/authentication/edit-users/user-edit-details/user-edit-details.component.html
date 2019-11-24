@@ -2,7 +2,7 @@
   <mat-card class="user-edit-content">
     <mat-card-header>
       <mat-card-title>{{'pageTitles.authPages.editProfile' | translate }}</mat-card-title>
-      <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <form class="mat-tab-content" fxLayout="column" [formGroup]="userEditForm" (ngSubmit)="editProfile()">
       <div fxLayout="row wrap">

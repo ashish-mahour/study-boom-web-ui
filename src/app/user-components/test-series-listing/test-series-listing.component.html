@@ -2,7 +2,7 @@
   <mat-card class="test-series-listing-content">
     <mat-card-header>
       <mat-card-title>{{'pageTitles.studentPages.testSeries.title' | translate }}</mat-card-title>
-      <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <mat-tab-group>
       <mat-tab label="{{'pageTitles.studentPages.testSeries.subTabs.allTestSeries' | translate }}">

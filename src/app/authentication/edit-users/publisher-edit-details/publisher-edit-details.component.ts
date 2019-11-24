@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-publisher-edit-details',
@@ -7,8 +8,6 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./publisher-edit-details.component.scss']
 })
 export class PublisherEditDetailsComponent implements OnInit {
-
-  userType: string = 'PUBLISHER';
 
   publisherEditForm: FormGroup = this.formBuilder.group({
     fullname: [null, [Validators.required, Validators.pattern("[A-Za-z ]+")]],
@@ -24,7 +23,8 @@ export class PublisherEditDetailsComponent implements OnInit {
   })
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {

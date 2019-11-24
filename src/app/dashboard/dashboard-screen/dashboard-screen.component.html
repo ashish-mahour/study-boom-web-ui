@@ -2,7 +2,7 @@
     <mat-card class="dashboard-screen-content">
         <mat-card-header>
             <mat-card-title>{{ 'pageTitles.dashboard.title' | translate }}</mat-card-title>
-            <mat-card-subtitle>{{userType | titlecase }}</mat-card-subtitle>
+            <mat-card-subtitle>{{authenticationService.userType | titlecase }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content fxLayout="column" fxLayout="row wrap">
             <div fxLayoutAlign="center center" fxLayout="column" fxFlex=100>
@@ -25,7 +25,7 @@
             <div fxFlex=100>
                 <p-scrollPanel [style]="{width: '100%', height: height,
                     overflow:'hidden'}">
-                    <div fxFlex=100 fxLayout="column" *ngIf="userType ===
+                    <div fxFlex=100 fxLayout="column" *ngIf="authenticationService.userType ===
                         'PUBLISHER'">
                         <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
                             <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
@@ -88,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-                    <div fxFlex=100 fxLayout="column" *ngIf="userType ===
+                    <div fxFlex=100 fxLayout="column" *ngIf="authenticationService.userType ===
                         'STUDENT'">
                         <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
                             <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
@@ -153,7 +153,7 @@
                             </div>
                         </div>
                     </div>
-                    <div fxFlex=100 fxLayout="column" *ngIf="userType ===
+                    <div fxFlex=100 fxLayout="column" *ngIf="authenticationService.userType ===
                         'ADMIN'">
                         <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
                             <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
@@ -213,19 +213,19 @@
                     </div>
                 </p-scrollPanel>
             </div>
-            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'STUDENT'">
+            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="authenticationService.userType === 'STUDENT'">
                 <button mat-raised-button class="next-prev-button"><i class="fa
                         fa-arrow-left" aria-hidden="true"></i></button>
                 <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
                         aria-hidden="true"></i></button>
             </div>
-            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'PUBLISHER'">
+            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="authenticationService.userType === 'PUBLISHER'">
                 <button mat-raised-button class="next-prev-button"><i class="fa
                         fa-arrow-left" aria-hidden="true"></i></button>
                 <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
                         aria-hidden="true"></i></button>
             </div>
-            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="userType === 'ADMIN'">
+            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="authenticationService.userType === 'ADMIN'">
                 <button mat-raised-button class="next-prev-button"><i class="fa
                         fa-arrow-left" aria-hidden="true"></i></button>
                 <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
