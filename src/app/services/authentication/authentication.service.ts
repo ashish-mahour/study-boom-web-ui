@@ -104,23 +104,32 @@ export class AuthenticationService {
           this.userDetails.fullName = this.mofifiedUserDetails.fullName;
           this.userDetails.username = this.mofifiedUserDetails.username;
           this.userDetails.email = this.mofifiedUserDetails.email;
-          this.userDetails.password = this.mofifiedUserDetails.password;
           this.userDetails.mobileNo = this.mofifiedUserDetails.mobileNo;
           message = "Student Details Updated!!";
         } else if (command === config.modifiedCommands.updatePublisher) {
           this.userDetails.fullName = this.mofifiedUserDetails.fullName;
           this.userDetails.username = this.mofifiedUserDetails.username;
           this.userDetails.email = this.mofifiedUserDetails.email;
-          this.userDetails.password = this.mofifiedUserDetails.password;
           this.userDetails.mobileNo = this.mofifiedUserDetails.mobileNo;
           message = "Publisher Details Updated!!";
         } else if (command === config.modifiedCommands.updateAdmin) {
           this.userDetails.fullName = this.mofifiedUserDetails.fullName;
           this.userDetails.username = this.mofifiedUserDetails.username;
           this.userDetails.email = this.mofifiedUserDetails.email;
-          this.userDetails.password = this.mofifiedUserDetails.password;
           message = "Admin Details Updated!!";
         }
+
+        /**
+         * SAVE THEM IN LOCAL STORAGE
+         */
+
+        localStorage.setItem("userDetails", JSON.stringify(this.userDetails));
+        localStorage.setItem(
+          "isAuthenticated",
+          this.isAuthenticated ? "true" : "false"
+        );
+        localStorage.setItem("userType", this.userType);
+
         const alertBox = this.dialog.open(AlertBoxComponent, {
           minWidth: "25%",
           maxWidth: "60%",

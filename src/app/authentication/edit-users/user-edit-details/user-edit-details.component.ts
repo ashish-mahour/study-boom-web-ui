@@ -215,9 +215,9 @@ export class UserEditDetailsComponent implements OnInit {
     this.authenticationService.mofifiedUserDetails.username = this.userEditForm.controls[
       "username"
     ].value;
-    this.authenticationService.mofifiedUserDetails.password = this.userEditForm.controls[
+    this.authenticationService.mofifiedUserDetails.password = btoa(this.userEditForm.controls[
       "password"
-    ].value;
+    ].value);
     this.authenticationService.mofifiedUserDetails.mobileNo = this.userEditForm.controls[
       "mobile"
     ].value;

@@ -72,9 +72,9 @@ export class PublisherEditDetailsComponent implements OnInit {
     this.authenticationService.mofifiedUserDetails.username = this.publisherEditForm.controls[
       "username"
     ].value;
-    this.authenticationService.mofifiedUserDetails.password = this.publisherEditForm.controls[
+    this.authenticationService.mofifiedUserDetails.password = btoa(this.publisherEditForm.controls[
       "password"
-    ].value;
+    ].value);
     this.authenticationService.mofifiedUserDetails.mobileNo = this.publisherEditForm.controls[
       "mobile"
     ].value;
