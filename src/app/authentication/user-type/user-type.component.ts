@@ -38,7 +38,7 @@ export class UserTypeComponent implements OnInit {
 
   userTypeSelected() {
     this.registrationForm.type = this.userType;
-    this.registrationForm.password = this.registrationForm.password;
+    this.registrationForm.password = btoa(this.registrationForm.password);
     this.loadingService.showLoading(true);
     this.http
       .post(

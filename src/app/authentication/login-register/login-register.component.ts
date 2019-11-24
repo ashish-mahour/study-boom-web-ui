@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-login-register',
@@ -31,7 +32,8 @@ export class LoginRegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -39,7 +41,7 @@ export class LoginRegisterComponent implements OnInit {
 
   performLogin() {
     if (this.validateLogin())
-      console.log(this.loginForm.value)
+      this.authenticationService.loginUser(this.loginForm.value)
   }
 
   performRegistration() {

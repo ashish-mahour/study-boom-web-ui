@@ -4,6 +4,7 @@ import { routerInAnimation } from "src/app/shared/animations";
 import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { AuthenticationService } from "src/app/services/authentication/authentication.service";
+import * as config from 'src/app/shared/config.json';
 
 @Component({
   selector: "app-dashboard-main",
@@ -13,7 +14,6 @@ import { AuthenticationService } from "src/app/services/authentication/authentic
 })
 export class DashboardMainComponent implements OnInit {
   isMobile: boolean = false;
-  userUploadedProfilePic: string;
   currentDate: number = new Date().getFullYear();
 
   constructor(
@@ -74,7 +74,8 @@ export class DashboardMainComponent implements OnInit {
 
   handleReaderEvent(event: any) {
     let reader: FileReader = event.target;
-    this.userUploadedProfilePic = reader.result.toString();
+    this.authenticationService.mofifiedUserDetails.profilePic = reader.result.toString();
+    this.authenticationService.modifyUsers(config.modifiedCommands.changeProfilePic)
   }
   editProfile() {
     if (this.authenticationService.userType === "PUBLISHER")

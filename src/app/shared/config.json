@@ -6,5 +6,8 @@
         "admin": "/admin/api",
         "publisher": "/publisher/api",
         "student": "/student/api"
+    }, 
+    "modifiedCommands": {
+        "changeProfilePic": 1
     }
 }

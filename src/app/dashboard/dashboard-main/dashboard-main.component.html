@@ -13,17 +13,18 @@
         fxFlex.sm=30 fixedInViewport=true [fixedTopGap]="isMobile? 36 : 0" #navBar>
         <mat-nav-list>
           <div mat-list-item fxLayoutAlign="center start">
-            <img [src]="userUploadedProfilePic ? userUploadedProfilePic : 'assets/images/default-user-image.png'"
+            <img
+              [src]="authenticationService.userDetails.profilePic && authenticationService.userDetails.profilePic !== null ? authenticationService.userDetails.profilePic : 'assets/images/default-user-image.png'"
               class="user-image" matTooltip="Change Profile Picture.." [matTooltipPosition]="'right'"
               (click)="profilePic.click()">
             <input type="file" hidden #profilePic accept="image/*" (change)="changeProfilePic($event)">
           </div>
           <div mat-list-item fxLayoutAlign="center start" class="user-name">
-            Ashish Mahour
+            {{ authenticationService.userDetails.fullName }}
           </div>
           <mat-nav-list>
             <mat-divider></mat-divider>
-            
+
             <!-- ALL -->
             <a mat-list-item routerLinkActive="active" [routerLink]="['/dashboard']">
               <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
@@ -35,7 +36,7 @@
               {{'pageTitles.profile' | translate }}
             </a>
             <mat-divider></mat-divider>
-            
+
             <!-- STUDENTS -->
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-test-series-listings'}}]">
@@ -49,21 +50,24 @@
               {{'pageTitles.studentPages.cart' | translate }}
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'STUDENT'"></mat-divider>
-           
+
             <!-- PUBLISHERS -->
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.publisherPages.addTestSeries' | translate }}
             </a>
-            
+
             <!-- STUDENTS AND PUBLISHER -->
-            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER' || authenticationService.userType === 'STUDENT'"
+            <a mat-list-item routerLinkActive="active"
+              *ngIf="authenticationService.userType === 'PUBLISHER' || authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'requests'}}]">
               <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.requests' | translate }}
             </a>
-            <mat-divider *ngIf="authenticationService.userType === 'PUBLISHER' || authenticationService.userType === 'STUDENT'"></mat-divider>
+            <mat-divider
+              *ngIf="authenticationService.userType === 'PUBLISHER' || authenticationService.userType === 'STUDENT'">
+            </mat-divider>
 
             <!-- ADMIN -->
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
@@ -89,9 +93,9 @@
               {{'pageTitles.adminPages.manageRequests' | translate }}
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'ADMIN'"></mat-divider>
-            
+
             <!-- ALL -->
-            <a mat-list-item routerLinkActive="active">
+            <a mat-list-item routerLinkActive="active" (click)="authenticationService.logoutUser()">
               <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
               {{'pageTitles.logout' | translate }}
             </a>

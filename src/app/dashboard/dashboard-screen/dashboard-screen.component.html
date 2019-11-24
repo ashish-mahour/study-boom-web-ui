@@ -14,7 +14,7 @@
                 <div class="alert alert-primary" role="alert" *ngIf="profileCompletion !== 100" fxLayout="row wrap">
                     <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-error-message">
                         {{ 'dashboardLabels.profileNotCompleted' | translate: {
-                        profileCompletion: profileCompletion } }}
+                        profileCompletion: authenticationService.profileCompletion } }}
                     </span>
                     <span fxLayoutAlign="end start" fxFlex="20" fxFlex.xs="50" fxFlex.sm="50">
                         <button mat-raised-button class="edit-profile-button" (click)="editProfile()">{{
