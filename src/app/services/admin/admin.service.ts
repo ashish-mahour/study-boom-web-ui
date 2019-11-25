@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import * as config from "src/app/shared/config.json";
 import { HttpClient } from "@angular/common/http";
+import { AddUpdateCategoriesComponent } from "src/app/admin-components/add-update-categories/add-update-categories.component";
 
 @Injectable({
   providedIn: "root"
@@ -92,4 +93,15 @@ export class AdminService {
         }
       );
   }
+
+  addUpdateCategories(category: any) {
+    const alertBox = this.dialog.open(AddUpdateCategoriesComponent, {
+      minWidth: "25%",
+      maxWidth: "60%",
+      data: {
+        category: category
+      }
+    });
+  }
+  deleteCategories(category: any){}
 }

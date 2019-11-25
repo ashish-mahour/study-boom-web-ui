@@ -30,8 +30,8 @@
                 </div>
                 <div fxLayoutAlign="end center" style="padding: 2%;">
                   <button type="button" mat-raised-button class="update-category-btn"
-                    (click)="performLogin()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;{{'manageCategoriesLabels.updateCategory' | translate }}</button>
-                  <button type="button" mat-raised-button class="delete-category-btn" (click)="performLogin()"
+                    (click)="adminService.deleteCategories(category)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;{{'manageCategoriesLabels.updateCategory' | translate }}</button>
+                  <button type="button" mat-raised-button class="delete-category-btn" (click)="adminService.addUpdateCategories(category)"
                     fxFlexOffset=5><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;{{'manageCategoriesLabels.deleteCategory' | translate }}</button>
                 </div>
               </div>
@@ -43,7 +43,7 @@
         </p-scrollPanel>
       </div>
       <div fxFlex=100 fxLayoutAlign="end center" class="next-prev-layout">
-        <span class="add-category-btn" (click)="performLogin()"
+        <span class="add-category-btn" (click)="adminService.addUpdateCategories(undefined)"
           fxLayoutAlign="end center">{{'manageCategoriesLabels.addNewCategory' | translate }}</span>
       </div>
       <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">

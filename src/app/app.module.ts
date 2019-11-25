@@ -57,6 +57,7 @@ import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { RequestsComponent } from "./requests/requests.component";
 import { AdminService } from "./services/admin/admin.service";
+import { AddUpdateCategoriesComponent } from "./admin-components/add-update-categories/add-update-categories.component";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -85,7 +86,8 @@ export function createTranslateLoader(http: HttpClient) {
     ManageUsersComponent,
     ManageTestSeriesComponent,
     ManageCategoriesComponent,
-    RequestsComponent
+    RequestsComponent,
+    AddUpdateCategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -134,6 +136,6 @@ export function createTranslateLoader(http: HttpClient) {
     AdminService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AlertBoxComponent]
+  entryComponents: [AlertBoxComponent, AddUpdateCategoriesComponent]
 })
 export class AppModule {}
