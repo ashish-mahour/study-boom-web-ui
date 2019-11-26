@@ -24,9 +24,10 @@
                           'manageCategoriesLabels.subCategoryName'
                           | translate }} : </span>
                     <div fxFlex=50>
-                      <span class="manage-categories-listing-content"
-                        *ngFor="let subCategory of category.subjectCategoryIdToSubCategory; let i = index">
-                        {{subCategory.name}}
+                      <span *ngFor="let subCategory of category.subjectCategoryIdToSubCategory; let i = index">
+                        <span class="manage-categories-listing-content" style="background: rgba(99, 99, 99, 0.63); color: rgba(255, 255, 255, 0.63);">
+                          {{subCategory.name}}
+                        </span> &nbsp;
                       </span>
                     </div>
 

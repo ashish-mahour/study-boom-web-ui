@@ -51,7 +51,7 @@ export class ManageCategoriesComponent implements OnInit {
       }
     });
     alertBox.afterClosed().subscribe((data: any) => {
-      if (data.status) this.currentPage = 0;
+      if (data && data.status) this.currentPage = 0;
     });
   }
   deleteCategories(category: any) {

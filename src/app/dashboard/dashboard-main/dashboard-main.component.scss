@@ -1,17 +1,16 @@
 .dashboard-sidebar-content {
-      width: 100%
+  width: 100%;
 }
-.mat-drawer-container{
-      background: none;
+.mat-drawer-container {
+  background: none;
 }
 .dashboard-backgroud {
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-image: url('/assets/images/background-image.jpg');
-      background-size: cover; 
-      background-position: right;
+  top: 0px;
+  bottom: 0px;
+  background-image: url("/assets/images/background-image.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 625px;
 }
 
 .user-image {
@@ -27,7 +26,7 @@
 .home-header {
   font-weight: bold;
   color: rgb(209, 206, 206);
-  background-image: url('/assets/images/header-image.jpg');
+  background-image: url("/assets/images/header-image.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
