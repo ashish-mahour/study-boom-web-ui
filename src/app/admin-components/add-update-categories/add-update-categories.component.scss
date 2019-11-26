@@ -1,27 +1,83 @@
-::ng-deep{
-    .mat-dialog-container{
-        padding: 0%;
-        background: none;
-        border-style: solid;
-        border-color: rgb(26, 25, 25);
-    }
+::ng-deep {
+  .mat-dialog-container {
+    padding: 0%;
+    background: none;
+    border-style: solid;
+    border-color: rgb(26, 25, 25);
+  }
 }
-.margin-zero{
-    margin: 0%;
+.margin-zero {
+  margin: 0%;
 }
-.dialog-content{
-    background-color: rgba(43, 42, 42, 0.884);
+.dialog-content {
+  background-color: rgba(43, 42, 42, 0.884);
 }
-.dialog-action{
-    margin-bottom: 0%;
-    background-color: rgba(43, 42, 42, 0.884);
+.dialog-action {
+  margin-bottom: 0%;
+  background-color: rgba(43, 42, 42, 0.884);
 }
-.dialog-title-icon{
-    padding: 2%;
+.dialog-title-icon {
+  padding: 2%;
 }
-.margin-right-2{
-    margin-right: 2%;
+.margin-right-2 {
+  margin-right: 2%;
 }
-.button-padding-2{
-    border-radius: 10%;
+.button-padding-2 {
+  border-radius: 10%;
+}
+
+.mat-tab-content {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5%;
+  overflow: hidden;
+}
+
+.form-field-outline {
+  font-size: 75%;
+}
+
+::ng-deep {
+  .form-field-outline .mat-form-field-outline {
+    color: rgba(230, 227, 227, 0.863) !important;
+  }
+
+  .mat-form-field-invalid .mat-form-field-outline {
+    color: rgb(255, 0, 0) !important;
+  }
+}
+
+.color-for-text {
+  color: rgba(230, 227, 227, 0.863);
+}
+
+.color-for-add-icon {
+  color: rgba(9, 133, 91, 0.863);
+  margin-top: 25%;
+}
+
+.color-for-remove-icon {
+  color: rgba(180, 37, 1, 0.863);
+  margin-top: 25%;
+}
+
+.button-layout {
+  letter-spacing: 1px;
+  font-weight: 500;
+  background-image: radial-gradient(
+    circle,
+    rgb(28, 192, 110),
+    rgb(19, 134, 77)
+  );
+}
+
+.button-layout:disabled {
+  background-image: radial-gradient(
+    circle,
+    rgb(139, 156, 163),
+    rgb(158, 163, 165)
+  );
+}
+
+.error-color {
+  color: rgb(250, 102, 102);
 }

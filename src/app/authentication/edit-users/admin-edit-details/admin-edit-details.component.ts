@@ -9,6 +9,7 @@ import * as config from "src/app/shared/config.json";
   styleUrls: ["./admin-edit-details.component.scss"]
 })
 export class AdminEditDetailsComponent implements OnInit {
+  
   adminEditForm: FormGroup = this.formBuilder.group({
     fullname: [
       this.authenticationService.userDetails.fullName,

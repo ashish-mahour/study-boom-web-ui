@@ -1,5 +1,64 @@
 <div mat-dialog-content class="margin-zero dialog-content" fxLayout="column" fxLayoutAlign="center center">
-    <div fxFlex="100" fxLayoutAlign="center center" fxLayout="column">
-        
+    <div fxFlex="100" fxLayoutAlign="center center" fxLayout="column" style="width: 100%;">
+        <form class="mat-tab-content" fxLayout="column" [formGroup]="categoryForm" fxFlex=100 style="width: 100%;">
+            <mat-form-field appearance="outline" class="form-field-outline" fxFlex=100>
+                <mat-label class="color-for-text">{{'labels.categoryName' | translate }}
+                    <font color="red">*</font>
+                </mat-label>
+                <input matInput type="text" class="color-for-text" formControlName="categoryName">
+                <mat-icon matSuffix class="color-for-text">category</mat-icon>
+                <mat-error class="error-color"
+                    *ngIf="this.categoryForm.controls['categoryName'].touched && this.categoryForm.controls['categoryName'].hasError('required')">
+                    {{'errors.categoryNameRequired' | translate}}
+                </mat-error>
+                <mat-error class="error-color"
+                    *ngIf="this.categoryForm.controls['categoryName'].touched && !this.categoryForm.controls['categoryName'].hasError('required') && this.categoryForm.controls['categoryName'].hasError('pattern')">
+                    {{'errors.invalidCategoryName' | translate}}
+                </mat-error>
+            </mat-form-field>
+            <div *ngIf="this.categoryForm.controls['categoryName'].valid" fxLayout="column">
+                <div formArrayName="subCategories"
+                    *ngFor="let subCategory of categoryForm.controls['subCategories'].controls; let i = index"
+                    fxFlex=100>
+                    <div [formGroupName]="i">
+                        <mat-form-field appearance="outline" class="form-field-outline" fxFlex=90>
+                            <mat-label class="color-for-text">{{'labels.subCategoryName' | translate }}
+                                <font color="red">*</font>
+                            </mat-label>
+                            <input matInput type="text" class="color-for-text" formControlName="subCategoryName">
+                            <mat-icon matSuffix class="color-for-text">category</mat-icon>
+                            <mat-error class="error-color"
+                                *ngIf="this.categoryForm.controls['subCategories'].controls[i].controls['subCategoryName'].touched && this.categoryForm.controls['subCategories'].controls[i].controls['subCategoryName'].hasError('required')">
+                                {{'errors.subCategoryNameRequired' | translate}}
+                            </mat-error>
+                            <mat-error class="error-color"
+                                *ngIf="this.categoryForm.controls['subCategories'].controls[i].controls['subCategoryName'].touched && !this.categoryForm.controls['subCategories'].controls[i].controls['subCategoryName'].hasError('required') && this.categoryForm.controls['subCategories'].controls[i].controls['subCategoryName'].hasError('pattern')">
+                                {{'errors.invalidSubCategoryName' | translate}}
+                            </mat-error>
+                        </mat-form-field>
+                        <div fxFlex=10 fxLayoutAlign="center">
+                            <mat-icon matSuffix class="color-for-add-icon"
+                                *ngIf="this.categoryForm.controls['subCategories'].controls[i].valid && i === (this.categoryForm.controls['subCategories'].length - 1)"
+                                (click)="addSubCategory()"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </mat-icon>
+                            <mat-icon matSuffix class="color-for-remove-icon"
+                                *ngIf="(this.categoryForm.controls['subCategories'].controls[i].invalid && i > 0 ) || i !== (this.categoryForm.controls['subCategories'].length - 1)"
+                                (click)="removeSubCategory(i)"><i class="fa fa-minus-circle" aria-hidden="true"></i>
+                            </mat-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
+</div>
+<div mat-dialog-actions class="dialog-action" fxLayoutAlign="end center">
+    <button mat-button class="button-padding-2 close-button-color"
+        [mat-dialog-close]="{ status: false }">{{'labels.cancel' | translate }}</button>
+    <button mat-button class="button-padding-2 button-layout margin-right-2" [disabled]="this.categoryForm.invalid"
+        (click)="adminService.addUpdateCategories(categoryForm.value, false, dialogRef)"
+        *ngIf="!matDialogData.category">{{'labels.submit' | translate }}</button>
+    <button mat-button class="button-padding-2 button-layout margin-right-2" [disabled]="this.categoryForm.invalid"
+        (click)="adminService.addUpdateCategories(categoryForm.value, true, dialogRef)"
+        *ngIf="matDialogData.category">{{'labels.update' | translate }}</button>
 </div>

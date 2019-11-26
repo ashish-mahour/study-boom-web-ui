@@ -19,6 +19,7 @@ export class ManageUsersComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.adminService.allUsers = [];
     this.adminService.getAllUsers(this.pageNo, this.limit);
   }
 

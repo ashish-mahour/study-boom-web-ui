@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from "@angular/core";
 import { AuthenticationService } from "src/app/services/authentication/authentication.service";
 import { AdminService } from "src/app/services/admin/admin.service";
+import { AddUpdateCategoriesComponent } from "src/app/admin-components/add-update-categories/add-update-categories.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-manage-categories",
@@ -15,10 +17,12 @@ export class ManageCategoriesComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
+    this.adminService.allCategories = [];
     this.adminService.getAllCategories(this.pageNo, this.limit);
   }
 
@@ -36,5 +40,24 @@ export class ManageCategoriesComponent implements OnInit {
 
   prevPage() {
     this.currentPage -= 1;
+  }
+
+  addUpdateCategoriesDialog(category: any, index: number) {
+    const alertBox = this.dialog.open(AddUpdateCategoriesComponent, {
+      minWidth: "40%",
+      maxWidth: "80%",
+      data: {
+        category: category
+      }
+    });
+    alertBox.afterClosed().subscribe((data: any) => {
+      if (data.status) this.currentPage = 0;
+    });
+  }
+  deleteCategories(category: any) {
+    this.adminService.deleteCategories(category);
+    let page: any[] = this.adminService.allCategories[this.currentPage];
+    page.splice(this.adminService.allCategories.indexOf(category), 1);
+    this.currentPage = 0;
   }
 }

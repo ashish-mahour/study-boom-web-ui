@@ -17,9 +17,14 @@
     "ifscCode": "IFSC Code",
     "chooseCategories": "Choose Categories",
     "chooseSubCategories": "Choose Sub-Categories",
+    "categoryName": "Category Name",
+    "subCategoryName": "Sub-Categories Name",
     "skipTheStep": "Skip the Steps...",
     "proceed": "Proceed",
-    "save": "Save"
+    "save": "Save",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "update": "Update"
   },
   "errors": {
     "allFields": "All fields must be filled!",
@@ -41,7 +46,11 @@
     "accNoRequired": "Account No. required!",
     "invalidAccNo": "Invalid Account No.! Should be numeric only!",
     "ifscCodeRequired": "IFSC Code required!",
-    "invalidIfscCode": "Invalid IFSC Code! Should be only alpha-numeric!"
+    "invalidIfscCode": "Invalid IFSC Code! Should be only alpha-numeric!",
+    "categoryNameRequired": "Category Name required!",
+    "invalidCategoryName": "Invalid Category Name! Only alphabets and space allowed!",
+    "subCategoryNameRequired": "Sub-Category Name required!",
+    "invalidSubCategoryName": "Invalid Sub-Category Name! Only alphabets and space allowed!"
   },
   "pageTitles": {
     "dashboard": {

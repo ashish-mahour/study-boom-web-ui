@@ -1,4 +1,4 @@
-<div fxLayoutAlign="center center">
+<div fxLayoutAlign="center center" fxFlex=100>
   <mat-card class="manage-categories-content">
     <mat-card-header>
       <mat-card-title>{{'pageTitles.adminPages.manageCategories' | translate }} </mat-card-title>
@@ -23,16 +23,22 @@
                     <span class="manage-categories-listing-heading" fxFlex=50>{{
                           'manageCategoriesLabels.subCategoryName'
                           | translate }} : </span>
-                    <span class="manage-categories-listing-content" fxFlex=50
-                      *ngFor="let subCategory of category.subjectCategoryIdToSubCategory; let i = index">{{subCategory.name}}
-                    </span>
+                    <div fxFlex=50>
+                      <span class="manage-categories-listing-content"
+                        *ngFor="let subCategory of category.subjectCategoryIdToSubCategory; let i = index">
+                        {{subCategory.name}}
+                      </span>
+                    </div>
+
                   </div>
                 </div>
                 <div fxLayoutAlign="end center" style="padding: 2%;">
                   <button type="button" mat-raised-button class="update-category-btn"
-                    (click)="adminService.deleteCategories(category)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;{{'manageCategoriesLabels.updateCategory' | translate }}</button>
-                  <button type="button" mat-raised-button class="delete-category-btn" (click)="adminService.addUpdateCategories(category)"
-                    fxFlexOffset=5><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;{{'manageCategoriesLabels.deleteCategory' | translate }}</button>
+                    (click)="addUpdateCategoriesDialog(category, i)"><i class="fa fa-pencil-square-o"
+                      aria-hidden="true"></i>&nbsp;{{'manageCategoriesLabels.updateCategory' | translate }}</button>
+                  <button type="button" mat-raised-button class="delete-category-btn"
+                    (click)="deleteCategories(category)" fxFlexOffset=5><i class="fa fa-trash-o"
+                      aria-hidden="true"></i>&nbsp;{{'manageCategoriesLabels.deleteCategory' | translate }}</button>
                 </div>
               </div>
             </div>
@@ -43,12 +49,12 @@
         </p-scrollPanel>
       </div>
       <div fxFlex=100 fxLayoutAlign="end center" class="next-prev-layout">
-        <span class="add-category-btn" (click)="adminService.addUpdateCategories(undefined)"
+        <span class="add-category-btn" (click)="addUpdateCategoriesDialog(undefined, undefined)"
           fxLayoutAlign="end center">{{'manageCategoriesLabels.addNewCategory' | translate }}</span>
       </div>
       <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
-        <button mat-raised-button class="next-prev-button" (click)="prevPage()" [disabled]="!adminService.allCategories[currentPage - 1]"><i
-            class="fa
+        <button mat-raised-button class="next-prev-button" (click)="prevPage()"
+          [disabled]="!adminService.allCategories[currentPage - 1]"><i class="fa
                       fa-arrow-left" aria-hidden="true"></i></button>
         <button mat-raised-button class="next-prev-button" fxFlexOffset=5
           [disabled]="!adminService.allCategories[currentPage + 1]" (click)="nextPage()"><i class="fa fa-arrow-right"

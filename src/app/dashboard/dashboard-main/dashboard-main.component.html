@@ -1,5 +1,5 @@
 <div fxLayoutWrap @routerInAnimation fxFlex=100 fxLayout="column">
-  <div fxFlex=100 class="dashboard-backgroud">
+  <div fxFlex=100>
     <div class="home-header" fxHide.lg fxHide.md fxHide.xl>
       <div class="home-header-row" fxLayout="column" fxLayoutAlign="start start">
         <span class="header-heading">
@@ -103,7 +103,7 @@
         </div>
       </mat-sidenav>
       <mat-sidenav-content class="dashboard-sidebar-content">
-        <div @routerInAnimation>
+        <div @routerInAnimation class="dashboard-backgroud" >
           <router-outlet name="dashboard-page-router"></router-outlet>
         </div>
       </mat-sidenav-content>
