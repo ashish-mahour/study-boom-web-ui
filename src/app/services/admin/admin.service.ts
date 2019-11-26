@@ -15,6 +15,7 @@ export class AdminService {
   allUsers: any[] = [];
   allTests: any[] = [];
   allCategories: any[] = [];
+  allRequests: any = [];
 
   constructor(
     private loadingService: LoadingAnimServiceService,
@@ -164,6 +165,41 @@ export class AdminService {
             data: {
               type: "error",
               message: "Error found in deleting categories!!"
+            }
+          });
+        }
+      );
+  }
+
+  getAllRequests(pageNo: number, limit: number) {
+    this.loadingService.showLoading(true);
+    this.http
+      .get(
+        config.serverUrl +
+          config.api.admin +
+          "/get/users/requests?pageNo=" +
+          pageNo +
+          "&limit=" +
+          limit
+      )
+      .subscribe(
+        (data: any[]) => {
+          this.loadingService.showLoading(false);
+          if (data.length > 10) {
+            this.allRequests.push(data.slice(0, 10));
+            this.allRequests.push(data.slice(10, data.length));
+          } else if (data.length > 0) {
+            this.allRequests.push(data);
+          }
+        },
+        (error: any) => {
+          this.loadingService.showLoading(false);
+          const alertBox = this.dialog.open(AlertBoxComponent, {
+            minWidth: "25%",
+            maxWidth: "60%",
+            data: {
+              type: "error",
+              message: "Error found in getting requests!!"
             }
           });
         }

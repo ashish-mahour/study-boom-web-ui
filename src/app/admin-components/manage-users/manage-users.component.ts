@@ -31,9 +31,10 @@ export class ManageUsersComponent implements OnInit {
 
   nextPage() {
     this.currentPage += 1;
-    this.pageNo += 1;
-    if (this.adminService.allUsers[this.pageNo + 1])
+    if (this.adminService.allUsers[this.pageNo + 1]) {
+      this.pageNo += 1;
       this.adminService.getAllUsers(this.pageNo, this.limit);
+    }
   }
 
   prevPage() {
@@ -41,7 +42,6 @@ export class ManageUsersComponent implements OnInit {
   }
 
   userStatusChanged(user: any) {
-    console.log(user);
     this.authenticationService.mofifiedUserDetails.type = user.type;
     this.authenticationService.mofifiedUserDetails.id = user.id;
     this.authenticationService.mofifiedUserDetails.isActivated =

@@ -154,40 +154,47 @@
                         </div>
                     </div>
                     <div fxFlex=100 fxLayout="column" *ngIf="authenticationService.userType ===
-                        'ADMIN'">
-                        <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
+                        ( 'userTypes.admin'| translate )">
+                        <div fxFlex=100 *ngFor="let request of adminService.allRequests" class="dashboard-listing-row">
                             <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
                                 <div fxFlex=100>
-                                    <div fxFlex=25 fxLayout="column">
+                                    <div fxFlex=30 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{
-                                            'dashboardLabels.adminDashboardLabels.requestType'
+                                            'dashboardLabels.adminDashboardLabels.requestText'
                                             | translate }}</span>
-                                        <span class="dashboard-listing-content">{{test.testId}}</span>
+                                        <span class="dashboard-listing-content">{{request.requestText}}</span>
                                     </div>
-                                    <div fxFlex=25 fxLayout="column">
+                                    <div fxFlex=20 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{
-                                            'dashboardLabels.adminDashboardLabels.performedAt'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.testName}}</span>
+                                            'dashboardLabels.adminDashboardLabels.requestedBy'
+                                            | translate }}</span>
+                                        <span
+                                            class="dashboard-listing-content">{{request.userIdToRequests.username}}</span>
                                     </div>
-                                    <div fxFlex=25 fxLayout="column">
+                                    <div fxFlex=20 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{
                                             'dashboardLabels.adminDashboardLabels.requestDateTime'
                                             | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.testType}}</span>
+                                            class="dashboard-listing-content">{{request.dateCreated}}</span>
                                     </div>
-                                    <div fxFlex=25 fxLayout="column">
+                                    <div fxFlex=15 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.adminDashboardLabels.processed'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{request.processed}}</span>
+                                    </div>
+                                    <div fxFlex=15 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{
                                             'dashboardLabels.adminDashboardLabels.status'
                                             | translate }}</span>
                                         <div fxLayout="row wrap">
                                             <mat-button-toggle-group #requestStatus="matButtonToggleGroup"
-                                                fxLayout="column" [(ngModel)]="test.status">
+                                                fxLayout="column" [(ngModel)]="request.status">
                                                 <mat-button-toggle value="{{
                                                     ('dashboardLabels.adminDashboardLabels.acceptedBtn'
                                                     | translate) | uppercase
                                                     }}"
-                                                    [ngClass]="{'request-accept-status': test.status === 'REJECTED', 'request-accept-status-checked': test.status === 'ACCEPTED'}">
+                                                    [ngClass]="{'request-accept-status': request.status === 'REJECTED', 'request-accept-status-checked': request.status === 'ACCEPTED'}">
                                                     {{
                                                     ('dashboardLabels.adminDashboardLabels.acceptedBtn'
                                                     | translate) | uppercase }}
@@ -196,7 +203,16 @@
                                                     ('dashboardLabels.adminDashboardLabels.rejectBtn'
                                                     | translate) | uppercase
                                                     }}"
-                                                    [ngClass]="{'request-reject-status-checked': test.status === 'REJECTED', 'request-reject-status': test.status === 'ACCEPTED'}">
+                                                    [ngClass]="{'request-reject-status-checked': request.status === 'REJECTED', 'request-reject-status': test.status === 'ACCEPTED'}">
+                                                    {{
+                                                    ('dashboardLabels.adminDashboardLabels.rejectBtn'
+                                                    | translate) | uppercase }}
+                                                </mat-button-toggle>
+                                                <mat-button-toggle value="{{
+                                                    ('dashboardLabels.adminDashboardLabels.rejectBtn'
+                                                    | translate) | uppercase
+                                                    }}"
+                                                    [ngClass]="{'request-reject-status-checked': request.status === 'REJECTED', 'request-reject-status': test.status === 'ACCEPTED'}">
                                                     {{
                                                     ('dashboardLabels.adminDashboardLabels.rejectBtn'
                                                     | translate) | uppercase }}
@@ -213,23 +229,28 @@
                     </div>
                 </p-scrollPanel>
             </div>
-            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="authenticationService.userType === 'STUDENT'">
+            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout"
+                *ngIf="authenticationService.userType === ( 'userTypes.student'| translate )">
                 <button mat-raised-button class="next-prev-button"><i class="fa
                         fa-arrow-left" aria-hidden="true"></i></button>
                 <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
                         aria-hidden="true"></i></button>
             </div>
-            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="authenticationService.userType === 'PUBLISHER'">
+            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout"
+                *ngIf="authenticationService.userType === ( 'userTypes.publisher'| translate )">
                 <button mat-raised-button class="next-prev-button"><i class="fa
                         fa-arrow-left" aria-hidden="true"></i></button>
                 <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
                         aria-hidden="true"></i></button>
             </div>
-            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout" *ngIf="authenticationService.userType === 'ADMIN'">
-                <button mat-raised-button class="next-prev-button"><i class="fa
+            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout"
+                *ngIf="authenticationService.userType === ( 'userTypes.admin'| translate )">
+                <button mat-raised-button class="next-prev-button" (click)="prevAdminRequestPage()"
+                    [disabled]="!adminService.allRequests[requestPageNo - 1]"><i class="fa
                         fa-arrow-left" aria-hidden="true"></i></button>
-                <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
-                        aria-hidden="true"></i></button>
+                <button mat-raised-button class="next-prev-button" fxFlexOffset=5
+                    [disabled]="!adminService.allRequests[requestPageNo + 1]" (click)="nextAdminRequestPage()"><i
+                        class="fa fa-arrow-right" aria-hidden="true"></i></button>
             </div>
         </mat-card-content>
     </mat-card>

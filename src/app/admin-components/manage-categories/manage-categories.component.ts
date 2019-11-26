@@ -33,9 +33,10 @@ export class ManageCategoriesComponent implements OnInit {
 
   nextPage() {
     this.currentPage += 1;
-    this.pageNo += 1;
-    if (this.adminService.allCategories[this.pageNo + 1])
+    if (this.adminService.allCategories[this.pageNo + 1]){
+      this.pageNo += 1;
       this.adminService.getAllCategories(this.pageNo, this.limit);
+    }
   }
 
   prevPage() {
