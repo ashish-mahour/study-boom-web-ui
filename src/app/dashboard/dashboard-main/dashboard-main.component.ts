@@ -75,6 +75,8 @@ export class DashboardMainComponent implements OnInit {
   handleReaderEvent(event: any) {
     let reader: FileReader = event.target;
     this.authenticationService.mofifiedUserDetails.profilePic = reader.result.toString();
+    this.authenticationService.mofifiedUserDetails.type = this.authenticationService.userDetails.type;
+    this.authenticationService.mofifiedUserDetails.id = this.authenticationService.userDetails.id;
     this.authenticationService.modifyUsers(config.modifiedCommands.changeProfilePic)
   }
   editProfile() {

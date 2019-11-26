@@ -221,7 +221,8 @@ export class UserEditDetailsComponent implements OnInit {
     this.authenticationService.mofifiedUserDetails.mobileNo = this.userEditForm.controls[
       "mobile"
     ].value;
-
+    this.authenticationService.mofifiedUserDetails.type = this.authenticationService.userDetails.type;
+    this.authenticationService.mofifiedUserDetails.id = this.authenticationService.userDetails.id;
     this.authenticationService.modifyUsers(config.modifiedCommands.updateStudent);
   }
 }

@@ -57,12 +57,40 @@ export class UserTypeComponent implements OnInit {
             }
           });
           alertBox.afterClosed().subscribe(alertData => {
-            this.translate.get(["userTypes.admin"]).subscribe(translations => {
-              if (alertData.status) {
-                if (this.userType === translations["userTypes.admin"])
-                  this.router.navigateByUrl("/home");
-              }
-            });
+            this.translate
+              .get([
+                "userTypes.admin",
+                "userTypes.student",
+                "userTypes.publisher"
+              ])
+              .subscribe(translations => {
+                if (alertData && alertData.status) {
+                  if (this.userType === translations["userTypes.admin"])
+                    this.router.navigateByUrl("/home");
+                  if (this.userType === translations["userTypes.student"])
+                    this.router.navigate(
+                      [
+                        "/home",
+                        {
+                          outlets: { "home-page-router": ["user-more-details"] }
+                        }
+                      ],
+                      { queryParams: { id: data.userId } }
+                    );
+                  if (this.userType === translations["userTypes.publisher"])
+                    this.router.navigate(
+                      [
+                        "/home",
+                        {
+                          outlets: {
+                            "home-page-router": ["publisher-more-details"]
+                          }
+                        }
+                      ],
+                      { queryParams: { id: data.userId } }
+                    );
+                }
+              });
           });
         },
         error => {
@@ -76,9 +104,9 @@ export class UserTypeComponent implements OnInit {
             }
           });
           alertBox.afterClosed().subscribe(data => {
-            this.translate.get(["userTypes.admin"]).subscribe(translations => {
-              if (data.status) this.router.navigateByUrl("/home");
-            });
+            if (data && data.status) {
+              this.router.navigateByUrl("/home");
+            }
           });
         }
       );

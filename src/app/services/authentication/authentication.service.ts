@@ -70,7 +70,7 @@ export class AuthenticationService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in Login User!!"
+              message: "Incorrect Username or Password!!"
             }
           });
         }
@@ -88,8 +88,6 @@ export class AuthenticationService {
 
   modifyUsers(command: number) {
     this.loadingService.showLoading(true);
-    this.mofifiedUserDetails.id = this.userDetails.id;
-    this.mofifiedUserDetails.type = this.userDetails.type;
     this.http
       .post(
         config.serverUrl + config.api.authentication + "/modify/account",
@@ -119,8 +117,11 @@ export class AuthenticationService {
           this.userDetails.username = this.mofifiedUserDetails.username;
           this.userDetails.email = this.mofifiedUserDetails.email;
           message = "Admin Details Updated!!";
+        } else if (command === config.modifiedCommands.addPublisherDetail) {
+          message = "Publisher Details Added!!";
         }
 
+        
         /**
          * SAVE THEM IN LOCAL STORAGE
          */
@@ -142,7 +143,7 @@ export class AuthenticationService {
         });
       })
       .catch((error: any) => {
-        console.log(error);
+        console.log(error)
         this.loadingService.showLoading(false);
         let message: string;
         if (command === config.modifiedCommands.changeProfilePic)

@@ -49,7 +49,8 @@ export class AdminEditDetailsComponent implements OnInit {
     this.authenticationService.mofifiedUserDetails.password = btoa(this.adminEditForm.controls[
       "password"
     ].value)
-
+    this.authenticationService.mofifiedUserDetails.type = this.authenticationService.userDetails.type;
+    this.authenticationService.mofifiedUserDetails.id = this.authenticationService.userDetails.id;
     this.authenticationService.modifyUsers(config.modifiedCommands.updateAdmin);
   }
 }

@@ -11,6 +11,7 @@
     "changeProfilePic": 1,
     "updateAdmin": 2,
     "updateStudent": 3,
-    "updatePublisher": 4
+    "updatePublisher": 4,
+    "addPublisherDetail": 5
   }
 }
