@@ -39,14 +39,14 @@
                                 | translate }}</span>
                     <div fxLayout="row wrap">
                       <mat-button-toggle-group #requestStatus="matButtonToggleGroup" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row"
-                        [(ngModel)]="user.isActivated">
-                        <mat-button-toggle value="true"
+                        [(ngModel)]="user.isActivated" (change)="userStatusChanged(user)">
+                        <mat-button-toggle [value]="true"
                           [ngClass]="{'user-activated-accept-status': !user.isActivated, 'user-activated-accept-status-checked': user.isActivated}">
                           {{
                                         ('manageUsersListingLabels.active'
                                         | translate) | uppercase }}
                         </mat-button-toggle>
-                        <mat-button-toggle value="false"
+                        <mat-button-toggle [value]="false"
                           [ngClass]="{'user-activated-reject-status-checked': !user.isActivated, 'user-activated-reject-status': user.isActivated}">
                           {{
                                         ('manageUsersListingLabels.notActive'

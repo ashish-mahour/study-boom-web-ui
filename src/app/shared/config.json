@@ -12,6 +12,7 @@
     "updateAdmin": 2,
     "updateStudent": 3,
     "updatePublisher": 4,
-    "addPublisherDetail": 5
+    "addPublisherDetail": 5,
+    "changeUserStatus": 6
   }
 }

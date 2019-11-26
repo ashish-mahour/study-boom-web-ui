@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from "@angular/core";
 import { AuthenticationService } from "src/app/services/authentication/authentication.service";
 import { AdminService } from "src/app/services/admin/admin.service";
+import * as config from "src/app/shared/config.json";
 
 @Component({
   selector: "app-manage-users",
@@ -37,5 +38,16 @@ export class ManageUsersComponent implements OnInit {
 
   prevPage() {
     this.currentPage -= 1;
+  }
+
+  userStatusChanged(user: any) {
+    console.log(user);
+    this.authenticationService.mofifiedUserDetails.type = user.type;
+    this.authenticationService.mofifiedUserDetails.id = user.id;
+    this.authenticationService.mofifiedUserDetails.isActivated =
+      user.isActivated;
+    this.authenticationService.modifyUsers(
+      config.modifiedCommands.changeUserStatus
+    );
   }
 }

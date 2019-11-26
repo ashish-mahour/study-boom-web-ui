@@ -119,9 +119,10 @@ export class AuthenticationService {
           message = "Admin Details Updated!!";
         } else if (command === config.modifiedCommands.addPublisherDetail) {
           message = "Publisher Details Added!!";
+        } else if (command === config.modifiedCommands.changeUserStatus) {
+          message = "Status Changed!!";
         }
 
-        
         /**
          * SAVE THEM IN LOCAL STORAGE
          */
@@ -143,7 +144,7 @@ export class AuthenticationService {
         });
       })
       .catch((error: any) => {
-        console.log(error)
+        console.log(error);
         this.loadingService.showLoading(false);
         let message: string;
         if (command === config.modifiedCommands.changeProfilePic)
