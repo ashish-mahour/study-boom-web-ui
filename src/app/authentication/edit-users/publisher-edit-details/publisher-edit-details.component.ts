@@ -25,24 +25,17 @@ export class PublisherEditDetailsComponent implements OnInit {
       this.authenticationService.userDetails.username,
       [Validators.required, Validators.pattern("[A-Za-z0-9]+")]
     ],
-    password: [null, [Validators.required]],
+    password: [atob(this.authenticationService.userDetails.password), [Validators.required]],
     mobile: [
-      this.authenticationService.userDetails.userIdFromPublisher.mobileNo,
+      this.authenticationService.userDetails.userIdFromPublisher.mobile,
       [Validators.required, Validators.pattern("[0-9]{10}")]
-    ],
-    panNo: [
-      this.authenticationService.userDetails.userIdFromPublisher.panNo,
-      [
-        Validators.required,
-        Validators.pattern("[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}")
-      ]
     ],
     bankName: [
       this.authenticationService.userDetails.userIdFromPublisher.bankName,
       [Validators.required, Validators.pattern("[a-zA-Z ]+")]
     ],
     branchName: [
-      this.authenticationService.userDetails.userIdFromPublisher.branchName,
+      this.authenticationService.userDetails.userIdFromPublisher.branch,
       [Validators.required, Validators.pattern("[a-zA-Z ]+")]
     ],
     accountNo: [
@@ -60,7 +53,8 @@ export class PublisherEditDetailsComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   editProfile() {
     this.authenticationService.mofifiedUserDetails.fullName = this.publisherEditForm.controls[
@@ -78,11 +72,11 @@ export class PublisherEditDetailsComponent implements OnInit {
     this.authenticationService.mofifiedUserDetails.mobileNo = this.publisherEditForm.controls[
       "mobile"
     ].value;
-    this.authenticationService.mofifiedUserDetails.panNo = this.publisherEditForm.controls[
-      "panNo"
-    ].value;
     this.authenticationService.mofifiedUserDetails.bankName = this.publisherEditForm.controls[
       "bankName"
+    ].value;
+    this.authenticationService.mofifiedUserDetails.branchName = this.publisherEditForm.controls[
+      "branchName"
     ].value;
     this.authenticationService.mofifiedUserDetails.accountNo = this.publisherEditForm.controls[
       "accountNo"

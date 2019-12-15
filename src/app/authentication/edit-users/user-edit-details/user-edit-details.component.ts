@@ -86,7 +86,7 @@ export class UserEditDetailsComponent implements OnInit {
       this.authenticationService.userDetails.username,
       [Validators.required, Validators.pattern("[A-Za-z0-9]+")]
     ],
-    password: [null, [Validators.required]],
+    password: [atob(this.authenticationService.userDetails.username), [Validators.required]],
     mobile: [
       this.authenticationService.userDetails.userIdFromStudent.mobileNo,
       [Validators.required, Validators.pattern("[0-9]{10}")]

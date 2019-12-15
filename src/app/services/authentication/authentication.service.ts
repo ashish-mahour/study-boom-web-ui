@@ -43,7 +43,6 @@ export class AuthenticationService {
           /**
            * SAVE DATA
            */
-          delete data.password;
           this.userDetails = data;
           this.userType = data.type;
           this.profileCompletion = 100;

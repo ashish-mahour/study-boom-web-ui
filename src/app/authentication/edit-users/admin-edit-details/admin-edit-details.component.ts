@@ -9,7 +9,6 @@ import * as config from "src/app/shared/config.json";
   styleUrls: ["./admin-edit-details.component.scss"]
 })
 export class AdminEditDetailsComponent implements OnInit {
-  
   adminEditForm: FormGroup = this.formBuilder.group({
     fullname: [
       this.authenticationService.userDetails.fullName,
@@ -26,7 +25,10 @@ export class AdminEditDetailsComponent implements OnInit {
       this.authenticationService.userDetails.username,
       [Validators.required, Validators.pattern("[A-Za-z0-9]+")]
     ],
-    password: [null, [Validators.required]]
+    password: [
+      atob(this.authenticationService.userDetails.password),
+      [Validators.required]
+    ]
   });
 
   constructor(
@@ -46,9 +48,9 @@ export class AdminEditDetailsComponent implements OnInit {
     this.authenticationService.mofifiedUserDetails.username = this.adminEditForm.controls[
       "username"
     ].value;
-    this.authenticationService.mofifiedUserDetails.password = btoa(this.adminEditForm.controls[
-      "password"
-    ].value)
+    this.authenticationService.mofifiedUserDetails.password = btoa(
+      this.adminEditForm.controls["password"].value
+    );
     this.authenticationService.mofifiedUserDetails.type = this.authenticationService.userDetails.type;
     this.authenticationService.mofifiedUserDetails.id = this.authenticationService.userDetails.id;
     this.authenticationService.modifyUsers(config.modifiedCommands.updateAdmin);

@@ -16,14 +16,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class PublisherMoreDetailsComponent implements OnInit {
   publisherId: number;
   publisherMoreDetails: FormGroup = this.formBuilder.group({
-    mobile: [null, [Validators.required, Validators.pattern("[0-9]{10}")]],
-    panNo: [
-      null,
-      [
-        Validators.required,
-        Validators.pattern("[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}")
-      ]
-    ],
+    mobileNo: [null, [Validators.required, Validators.pattern("[0-9]{10}")]],
     bankName: [null, [Validators.required, Validators.pattern("[a-zA-Z ]+")]],
     branchName: [null, [Validators.required, Validators.pattern("[a-zA-Z ]+")]],
     accountNo: [null, [Validators.required, Validators.pattern("[0-9]+")]],

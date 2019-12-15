@@ -9,31 +9,15 @@
           <mat-label class="color-for-text">{{'labels.mobileNo' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10">
+          <input matInput type="tel" class="color-for-text" formControlName="mobileNo" maxlength="10">
           <mat-icon matSuffix class="color-for-text">phone</mat-icon>
           <mat-error class="error-color"
-            *ngIf="publisherMoreDetails.controls['mobile'].touched && publisherMoreDetails.controls['mobile'].hasError('required')">
+            *ngIf="publisherMoreDetails.controls['mobileNo'].touched && publisherMoreDetails.controls['mobileNo'].hasError('required')">
             {{'errors.mobileNoRequired' | translate}}
           </mat-error>
           <mat-error class="error-color"
-            *ngIf="publisherMoreDetails.controls['mobile'].touched && !publisherMoreDetails.controls['mobile'].hasError('required') && publisherMoreDetails.controls['mobile'].hasError('pattern')">
+            *ngIf="publisherMoreDetails.controls['mobileNo'].touched && !publisherMoreDetails.controls['mobileNo'].hasError('required') && publisherMoreDetails.controls['mobileNo'].hasError('pattern')">
             {{'errors.invalidMobileNo' | translate}}
-          </mat-error>
-        </mat-form-field>
-        
-        <mat-form-field appearance="outline" class="form-field-outline">
-          <mat-label class="color-for-text">{{'labels.panNo' | translate }}
-            <font color="red">*</font>
-          </mat-label>
-          <input matInput type="text" class="color-for-text" formControlName="panNo" maxlength="10">
-          <mat-icon matSuffix class="color-for-text">person_pin</mat-icon>
-          <mat-error class="error-color"
-            *ngIf="publisherMoreDetails.controls['panNo'].touched && publisherMoreDetails.controls['panNo'].hasError('required')">
-            {{'errors.panNoRequired' | translate}}
-          </mat-error>
-          <mat-error class="error-color"
-            *ngIf="publisherMoreDetails.controls['panNo'].touched && !publisherMoreDetails.controls['panNo'].hasError('required') && publisherMoreDetails.controls['panNo'].hasError('pattern')">
-            {{'errors.invalidPanNo' | translate}}
           </mat-error>
         </mat-form-field>
 

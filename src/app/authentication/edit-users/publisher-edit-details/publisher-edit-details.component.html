@@ -83,23 +83,6 @@
             {{'errors.invalidMobileNo' | translate}}
           </mat-error>
         </mat-form-field>
-
-        <mat-form-field appearance="outline" class="form-field-outline" fxFlex=50 fxFlex.sm=100 fxFlex.xs=100
-          fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
-          <mat-label class="color-for-text">{{'labels.panNo' | translate }}
-            <font color="red">*</font>
-          </mat-label>
-          <input matInput type="text" class="color-for-text" formControlName="panNo" maxlength="10">
-          <mat-icon matSuffix class="color-for-text">person_pin</mat-icon>
-          <mat-error class="error-color"
-            *ngIf="publisherEditForm.controls['panNo'].touched && publisherEditForm.controls['panNo'].hasError('required')">
-            {{'errors.panNoRequired' | translate}}
-          </mat-error>
-          <mat-error class="error-color"
-            *ngIf="publisherEditForm.controls['panNo'].touched && !publisherEditForm.controls['panNo'].hasError('required') && publisherEditForm.controls['panNo'].hasError('pattern')">
-            {{'errors.invalidPanNo' | translate}}
-          </mat-error>
-        </mat-form-field>
       </div>
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
@@ -171,7 +154,7 @@
       </div>
       <div fxLayoutAlign="end start">
         <button type="button" mat-raised-button class="button-layout" fxFlex="20" fxFlex.xs="60"
-          (click)="editProfile()">{{'labels.save' | translate }}</button>
+          (click)="editProfile()" [disabled]="publisherEditForm.invalid">{{'labels.save' | translate }}</button>
       </div>
     </form>
   </mat-card>

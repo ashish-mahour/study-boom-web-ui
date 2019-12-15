@@ -69,7 +69,7 @@
       </div>
       <div fxLayoutAlign="end start">
         <button type="button" mat-raised-button class="button-layout" fxFlex="20" fxFlex.xs="60"
-          (click)="editProfile()">{{'labels.save' | translate }}</button>
+          (click)="editProfile()" [disabled]="adminEditForm.invalid">{{'labels.save' | translate }}</button>
       </div>
     </form>
   </mat-card>

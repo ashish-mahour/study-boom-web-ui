@@ -38,7 +38,7 @@ export class UserTypeComponent implements OnInit {
 
   userTypeSelected() {
     this.registrationForm.type = this.userType;
-    this.registrationForm.password = btoa(this.registrationForm.password);
+    this.registrationForm.password = this.registrationForm.password;
     this.loadingService.showLoading(true);
     this.http
       .post(
@@ -59,14 +59,11 @@ export class UserTypeComponent implements OnInit {
           alertBox.afterClosed().subscribe(alertData => {
             this.translate
               .get([
-                "userTypes.admin",
                 "userTypes.student",
                 "userTypes.publisher"
               ])
               .subscribe(translations => {
                 if (alertData && alertData.status) {
-                  if (this.userType === translations["userTypes.admin"])
-                    this.router.navigateByUrl("/home");
                   if (this.userType === translations["userTypes.student"])
                     this.router.navigate(
                       [
