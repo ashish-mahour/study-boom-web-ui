@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, Pipe, PipeTransform } from '@angular/core';
-import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
+import { LoadingAnimServiceService } from '../../shared/loading/loading-anim-service.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { AlertBoxComponent } from 'src/app/shared/alert-box/alert-box.component';
+import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

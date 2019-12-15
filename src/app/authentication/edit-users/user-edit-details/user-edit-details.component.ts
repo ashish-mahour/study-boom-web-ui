@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MatAutocomplete } from "@angular/material/autocomplete";
 import { MatChipInputEvent } from "@angular/material/chips";
-import { AlertBoxComponent } from "src/app/shared/alert-box/alert-box.component";
+import { AlertBoxComponent } from "../../../shared/alert-box/alert-box.component";
 import { MatDialog } from "@angular/material/dialog";
-import { AuthenticationService } from "src/app/services/authentication/authentication.service";
-import * as config from 'src/app/shared/config.json';
+import { AuthenticationService } from "../../../services/authentication/authentication.service";
+import * as config from '../../../shared/config.json';
 
 @Component({
   selector: "app-user-edit-details",

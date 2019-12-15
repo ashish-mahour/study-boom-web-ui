@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from "@angular/core";
-import { AuthenticationService } from "src/app/services/authentication/authentication.service";
-import { AdminService } from "src/app/services/admin/admin.service";
-import * as config from "src/app/shared/config.json";
+import { AuthenticationService } from "../../services/authentication/authentication.service";
+import { AdminService } from "../../services/admin/admin.service";
+import * as config from "../../shared/config.json";
 
 @Component({
   selector: "app-manage-users",

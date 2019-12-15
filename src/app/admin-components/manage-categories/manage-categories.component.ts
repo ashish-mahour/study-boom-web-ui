@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from "@angular/core";
-import { AuthenticationService } from "src/app/services/authentication/authentication.service";
-import { AdminService } from "src/app/services/admin/admin.service";
-import { AddUpdateCategoriesComponent } from "src/app/admin-components/add-update-categories/add-update-categories.component";
+import { AuthenticationService } from "../../services/authentication/authentication.service";
+import { AdminService } from "../../services/admin/admin.service";
+import { AddUpdateCategoriesComponent } from "../../admin-components/add-update-categories/add-update-categories.component";
 import { MatDialog } from "@angular/material/dialog";
 
 @Component({

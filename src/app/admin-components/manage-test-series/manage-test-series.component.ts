@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from "@angular/core";
-import { AuthenticationService } from "src/app/services/authentication/authentication.service";
+import { AuthenticationService } from "../../services/authentication/authentication.service";
 
 @Component({
   selector: "app-manage-test-series",

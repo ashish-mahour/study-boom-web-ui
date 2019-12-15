@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthenticationService } from "src/app/services/authentication/authentication.service";
+import { AuthenticationService } from "../../services/authentication/authentication.service";
 import { TranslateService } from "@ngx-translate/core";
-import { AdminService } from "src/app/services/admin/admin.service";
+import { AdminService } from "../../services/admin/admin.service";
 
 @Component({
   selector: "app-dashboard-screen",

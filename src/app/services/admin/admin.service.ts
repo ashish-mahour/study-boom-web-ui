@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { AlertBoxComponent } from "src/app/shared/alert-box/alert-box.component";
-import { LoadingAnimServiceService } from "src/app/shared/loading/loading-anim-service.service";
+import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
+import { LoadingAnimServiceService } from "../../shared/loading/loading-anim-service.service";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
-import * as config from "src/app/shared/config.json";
+import * as config from "../../shared/config.json";
 import { HttpClient } from "@angular/common/http";
-import { AddUpdateCategoriesComponent } from "src/app/admin-components/add-update-categories/add-update-categories.component";
+import { AddUpdateCategoriesComponent } from "../../admin-components/add-update-categories/add-update-categories.component";
 
 @Injectable({
   providedIn: "root"

@@ -1,10 +1,10 @@
 import { Component, OnInit, HostListener } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { routerInAnimation } from "src/app/shared/animations";
+import { routerInAnimation } from "../../shared/animations";
 import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
-import { AuthenticationService } from "src/app/services/authentication/authentication.service";
-import * as config from 'src/app/shared/config.json';
+import { AuthenticationService } from "../../services/authentication/authentication.service";
+import * as config from '../../shared/config.json';
 
 @Component({
   selector: "app-dashboard-main",

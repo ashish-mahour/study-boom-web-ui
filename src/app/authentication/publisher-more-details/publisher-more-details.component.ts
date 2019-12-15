@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { LoadingAnimServiceService } from "src/app/shared/loading/loading-anim-service.service";
+import { LoadingAnimServiceService } from "../../shared/loading/loading-anim-service.service";
 import { MatDialog } from "@angular/material/dialog";
-import { AlertBoxComponent } from "src/app/shared/alert-box/alert-box.component";
-import { AuthenticationService } from "src/app/services/authentication/authentication.service";
-import * as config from "src/app/shared/config.json";
+import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
+import { AuthenticationService } from "../../services/authentication/authentication.service";
+import * as config from "../../shared/config.json";
 import { TranslateService } from "@ngx-translate/core";
 import { ActivatedRoute, Router } from "@angular/router";
 

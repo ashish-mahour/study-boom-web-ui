@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
-import { AuthenticationService } from "src/app/services/authentication/authentication.service";
-import * as config from "src/app/shared/config.json";
+import { AuthenticationService } from "../../../services/authentication/authentication.service";
+import * as config from "../../../shared/config.json";
 
 @Component({
   selector: "app-publisher-edit-details",

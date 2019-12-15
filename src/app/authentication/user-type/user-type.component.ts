@@ -1,11 +1,11 @@
 import { Title } from "@angular/platform-browser";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { LoadingAnimServiceService } from "src/app/shared/loading/loading-anim-service.service";
+import { LoadingAnimServiceService } from "../../shared/loading/loading-anim-service.service";
 import { HttpClient } from "@angular/common/http";
-import * as Config from "src/app/shared/config.json";
+import * as Config from "../../shared/config.json";
 import { MatDialog } from "@angular/material/dialog";
-import { AlertBoxComponent } from "src/app/shared/alert-box/alert-box.component";
+import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({

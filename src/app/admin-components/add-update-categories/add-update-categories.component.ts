@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { AdminService } from "src/app/services/admin/admin.service";
+import { AdminService } from "../../services/admin/admin.service";
 
 @Component({
   selector: "app-add-update-categories",

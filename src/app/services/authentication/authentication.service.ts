@@ -1,10 +1,10 @@
 import { Injectable, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { LoadingAnimServiceService } from "src/app/shared/loading/loading-anim-service.service";
+import { LoadingAnimServiceService } from "../../shared/loading/loading-anim-service.service";
 import { HttpClient } from "@angular/common/http";
-import * as config from "src/app/shared/config.json";
+import * as config from "../../shared/config.json";
 import { Router } from "@angular/router";
-import { AlertBoxComponent } from "src/app/shared/alert-box/alert-box.component";
+import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { TranslateService } from "@ngx-translate/core";
 
 @Injectable({
@@ -27,7 +27,6 @@ export class AuthenticationService {
 
   loginUser(loginDetails: any): void {
     this.loadingService.showLoading(true);
-    loginDetails.password = btoa(loginDetails.password);
     this.http
       .get(
         config.serverUrl +
@@ -36,7 +35,7 @@ export class AuthenticationService {
           "?username=" +
           loginDetails.username +
           "&password=" +
-          loginDetails.password
+          btoa(loginDetails.password)
       )
       .subscribe(
         (data: any) => {

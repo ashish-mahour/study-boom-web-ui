@@ -31,6 +31,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatDividerModule } from "@angular/material/divider";
 import { ScrollPanelModule } from "primeng/scrollpanel";
 import { MatGridListModule } from "@angular/material/grid-list";
+import { MatStepperModule } from "@angular/material/stepper";
 import { UrlSerializer } from "@angular/router";
 import { GlobalUrlSerializerService } from "./shared/global-url-serializer/global-url-serializer.service";
 import {
@@ -58,6 +59,8 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { RequestsComponent } from "./requests/requests.component";
 import { AdminService } from "./services/admin/admin.service";
 import { AddUpdateCategoriesComponent } from "./admin-components/add-update-categories/add-update-categories.component";
+import { PublisherService } from "./services/publisher/publisher.service";
+import { UserService } from "./services/user/user.service";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -122,7 +125,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatDividerModule,
     ScrollPanelModule,
     PanelModule,
-    MatGridListModule
+    MatGridListModule,
+    MatStepperModule
   ],
   providers: [
     Title,
@@ -133,7 +137,9 @@ export function createTranslateLoader(http: HttpClient) {
     // },
     AuthenticationService,
     AuthenticationGuard,
-    AdminService
+    AdminService,
+    PublisherService,
+    UserService
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlertBoxComponent, AddUpdateCategoriesComponent]

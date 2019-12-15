@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
-import { AuthenticationService } from "src/app/services/authentication/authentication.service";
+import { AuthenticationService } from "../../services/authentication/authentication.service";
 
 @Component({
   selector: "app-login-register",
