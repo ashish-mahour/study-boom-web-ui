@@ -29,7 +29,14 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "/home"
+    redirectTo: "/dashboard",
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: "",
+    pathMatch: "full",
+    redirectTo: "/home",
+    canActivate: [AuthenticationGuard]
   },
   {
     path: "home",

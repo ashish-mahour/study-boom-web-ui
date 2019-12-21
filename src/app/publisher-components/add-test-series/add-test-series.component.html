@@ -1,11 +1,325 @@
 <div fxLayoutAlign="center center">
   <mat-card class="add-test-series-content">
     <mat-card-header>
-      <mat-card-title>{{'pageTitles.publisherPages.addTestSeries' | translate }}</mat-card-title>
+      <mat-card-title>{{'pageTitles.publisherPages.addTestSeries.title' | translate }}</mat-card-title>
       <mat-card-subtitle>{{authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      
+      <span class="total-no-of-questions">{{'addTestSeriesLabels.totalNoOfQuestions' | translate }}
+        {{testSeriesDetailsForm.controls['totalQuestions'].value}}</span>
+      <form fxLayout="column" [formGroup]="testSeriesDetailsForm">
+        <mat-horizontal-stepper linear="true" #stepper style="background: rgba(0, 0, 0, 0);">
+          <mat-step>
+            <ng-template matStepLabel>{{'pageTitles.publisherPages.addTestSeries.subTabs.testSeries' | translate }}
+            </ng-template>
+            <div fxLayout="row wrap">
+              <mat-form-field appearance="outline" class="form-field-outline" fxFlex=95 fxFlex.sm=100 fxFlex.xs=100>
+                <mat-label class="color-for-text">{{'labels.testSeriesName' | translate }}
+                  <font color="red">*</font>
+                </mat-label>
+                <input matInput type="text" class="color-for-text" formControlName="testSeriesName">
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['testSeriesName'].touched && this.testSeriesDetailsForm.controls['testSeriesName'].hasError('required')">
+                  {{'errors.testSeriesNameRequired' | translate}}
+                </mat-error>
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['testSeriesName'].touched && !this.testSeriesDetailsForm.controls['testSeriesName'].hasError('required') && this.testSeriesDetailsForm.controls['testSeriesName'].hasError('pattern')">
+                  {{'errors.invalidTestSeriesName' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row wrap">
+              <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
+                <mat-label class="color-for-text">{{'labels.choosedCategory' | translate }}
+                  <font color="red">*</font>
+                </mat-label>
+                <mat-select formControlName="categoryId" (selectionChange)="categorySelected($event.value)">
+                  <mat-option *ngFor="let category of publisherService.allCategories" [value]="category.id">
+                    {{category.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['categoryId'].touched && this.testSeriesDetailsForm.controls['categoryId'].hasError('required')">
+                  {{'errors.categoryRequired' | translate}}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100
+                fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
+                <mat-label class="color-for-text">{{'labels.choosedSubCategory' | translate }}
+                  <font color="red">*</font>
+                </mat-label>
+                <mat-select formControlName="subCategoryId">
+                  <mat-option *ngFor="let subCategory of selectedSubCategories" [value]="subCategory.id">
+                    {{subCategory.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['subCategoryId'].touched && this.testSeriesDetailsForm.controls['subCategoryId'].hasError('required')">
+                  {{'errors.subCategoryRequired' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row wrap">
+              <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
+                <mat-label class="color-for-text">{{'labels.durationMax' | translate }}
+                  <font color="red">*</font>
+                </mat-label>
+                <mat-select formControlName="durationMax">
+                  <mat-option *ngFor="let duration of ('addTestSeriesLabels.maxDurationData' | translate)"
+                    [value]="duration">
+                    {{ duration }}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['durationMax'].touched && this.testSeriesDetailsForm.controls['durationMax'].hasError('required')">
+                  {{'errors.subCategoryRequired' | translate}}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100
+                fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
+                <mat-label class="color-for-text">{{'labels.totalMarks' | translate }}
+                  <font color="red">*</font>
+                </mat-label>
+                <input matInput type="tel" class="color-for-text" formControlName="totalMarks" length=3>
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['totalMarks'].touched && this.testSeriesDetailsForm.controls['totalMarks'].hasError('required')">
+                  {{'errors.totalMarksRequired' | translate}}
+                </mat-error>
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['totalMarks'].touched && !this.testSeriesDetailsForm.controls['totalMarks'].hasError('required') && this.testSeriesDetailsForm.controls['totalMarks'].hasError('pattern')">
+                  {{'errors.invalidTotalMarks' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row wrap">
+              <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
+                <mat-label class="color-for-text">{{'labels.passingMarks' | translate }}
+                  <font color="red">*</font>
+                </mat-label>
+                <input matInput type="tel" class="color-for-text" formControlName="passingMarks" length=3>
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['passingMarks'].touched && this.testSeriesDetailsForm.controls['passingMarks'].hasError('required')">
+                  {{'errors.passingMarksRequired' | translate}}
+                </mat-error>
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['passingMarks'].touched && !this.testSeriesDetailsForm.controls['passingMarks'].hasError('required') && this.testSeriesDetailsForm.controls['passingMarks'].hasError('pattern')">
+                  {{'errors.invalidPassingMarks' | translate}}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100
+                fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
+                <mat-label class="color-for-text">{{'labels.price' | translate }}
+                  <font color="red">*</font>
+                </mat-label>
+                <input matInput type="tel" class="color-for-text" formControlName="price" length=3>
+                <mat-icon matSuffix class="color-for-text"><i class="fa fa-inr" aria-hidden="true"></i></mat-icon>
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['price'].touched && this.testSeriesDetailsForm.controls['price'].hasError('required')">
+                  {{'errors.priceRequired' | translate}}
+                </mat-error>
+                <mat-error class="error-color"
+                  *ngIf="this.testSeriesDetailsForm.controls['price'].touched && !this.testSeriesDetailsForm.controls['price'].hasError('required') && this.testSeriesDetailsForm.controls['price'].hasError('pattern')">
+                  {{'errors.invalidPrice' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxLayoutAlign="end start" fxFlex=95 fxFlex.sm=100 fxFlex.xs=100>
+              <button type="button" mat-raised-button class="button-layout" fxFlex="20" fxFlex.xs="60" matStepperNext>{{'labels.next' | translate }}</button>
+            </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>{{'pageTitles.publisherPages.addTestSeries.subTabs.questions' | translate }}
+            </ng-template>
+            <div formArrayName="testSeriesQuestions">
+              <div
+                *ngFor="let testSeriesQuestion of testSeriesDetailsForm.controls['testSeriesQuestions'].controls; let i = index">
+                <div *ngIf="i === questionPosition">
+
+                  <div [formGroupName]="questionPosition" fxLayout="column">
+                    <div fxLayout="row wrap">
+                      <mat-form-field appearance="outline" class="form-field-outline" fxFlex=95 fxFlex.sm=100
+                        fxFlex.xs=100>
+                        <mat-label class="color-for-text">{{'labels.questionText' | translate }}
+                          {{ questionPosition + 1 }}
+                          <font color="red">*</font>
+                        </mat-label>
+                        <input matInput type="text" class="color-for-text" formControlName="questionText">
+                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
+                      'testSeriesQuestions'].controls[questionPosition].controls['questionText'].touched && this.testSeriesDetailsForm.controls[
+                      'testSeriesQuestions'].controls[questionPosition].controls['questionText'].hasError('required')">
+                          {{'errors.questionRequired' | translate}}
+                        </mat-error>
+                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
+                      'testSeriesQuestions'].controls[questionPosition].controls['questionText'].touched && !this.testSeriesDetailsForm.controls[
+                      'testSeriesQuestions'].controls[questionPosition].controls['questionText'].hasError('required') && this.testSeriesDetailsForm.controls[
+                      'testSeriesQuestions'].controls[questionPosition].controls['questionText'].hasError('pattern')">
+                          {{'errors.invalidQuestion' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="row wrap">
+                      <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100
+                        fxFlex.xs=100>
+                        <mat-label class="color-for-text">{{'labels.choice1' | translate }}
+                          <font color="red">*</font>
+                        </mat-label>
+                        <input matInput type="text" class="color-for-text" formControlName="choice1">
+                        <mat-icon matSuffix
+                          [ngStyle]="{'color': this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== null && this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== '' && this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value === this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['choice1'].value ? 'rgb(26, 197, 132)':'black' }" (click)="this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].setValue(this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['choice1'].value)"
+                          style="cursor: pointer; font-size: 2.2em;">
+                          check_circle_outline</mat-icon>
+                        <mat-error class="error-color"
+                          *ngIf="this.testSeriesDetailsForm.controls[
+                              'testSeriesQuestions'].controls[questionPosition].controls['choice1'].touched && this.testSeriesDetailsForm.controls[
+                              'testSeriesQuestions'].controls[questionPosition].controls['choice1'].hasError('required')">
+                          {{'errors.choiceRequired' | translate}}
+                        </mat-error>
+                        <mat-error class="error-color"
+                          *ngIf="this.testSeriesDetailsForm.controls[
+                              'testSeriesQuestions'].controls[questionPosition].controls['choice1'].touched && !this.testSeriesDetailsForm.controls[
+                              'testSeriesQuestions'].controls[questionPosition].controls['choice1'].hasError('required') && this.testSeriesDetailsForm.controls[
+                              'testSeriesQuestions'].controls[questionPosition].controls['choice1'].hasError('pattern')">
+                          {{'errors.invalidChoice' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100
+                        fxFlex.xs=100 fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
+                        <mat-label class="color-for-text">{{'labels.choice2' | translate }}
+                          <font color="red">*</font>
+                        </mat-label>
+                        <input matInput type="text" class="color-for-text" formControlName="choice2">
+                        <mat-icon matSuffix
+                          [ngStyle]="{'color': this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== null && this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== '' && this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value === this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['choice2'].value ? 'rgb(26, 197, 132)':'black' }" (click)="this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].setValue(this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['choice2'].value)"
+                          style="cursor: pointer; font-size: 2.2em;">
+                          check_circle_outline</mat-icon>
+                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls[questionPosition].controls['choice2'].touched && this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls[questionPosition].controls['choice2'].hasError('required')">
+                          {{'errors.choiceRequired' | translate}}
+                        </mat-error>
+                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls[questionPosition].controls['choice2'].touched && !this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls[questionPosition].controls['choice2'].hasError('required') && this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls[questionPosition].controls['choice2'].hasError('pattern')">
+                          {{'errors.invalidChoice' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="row wrap">
+                      <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100
+                        fxFlex.xs=100>
+                        <mat-label class="color-for-text">{{'labels.choice3' | translate }}
+                          <font color="red">*</font>
+                        </mat-label>
+                        <input matInput type="text" class="color-for-text" formControlName="choice3">
+                        <mat-icon matSuffix
+                          [ngStyle]="{'color': this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== null && this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== '' && this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value === this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['choice3'].value ? 'rgb(26, 197, 132)':'black' }" (click)="this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].setValue(this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['choice3'].value)"
+                          style="cursor: pointer; font-size: 2.2em;">
+                          check_circle_outline</mat-icon>
+                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls[questionPosition].controls['choice3'].touched && this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls[questionPosition].controls['choice3'].hasError('required')">
+                          {{'errors.choiceRequired' | translate}}
+                        </mat-error>
+                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls[questionPosition].controls['choice3'].touched && !this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls[questionPosition].controls['choice3'].hasError('required') && this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls[questionPosition].controls['choice3'].hasError('pattern')">
+                          {{'errors.invalidChoice' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100
+                        fxFlex.xs=100 fxFlexOffset=5 fxFlexOffset.xs=0 fxFlexOffset.sm=0>
+                        <mat-label class="color-for-text">{{'labels.choice4' | translate }}
+                          <font color="red">*</font>
+                        </mat-label>
+                        <input matInput type="text" class="color-for-text" formControlName="choice4">
+                        <mat-icon matSuffix
+                          [ngStyle]="{'color': this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== null && this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== '' && this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value === this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['choice4'].value ? 'rgb(26, 197, 132)':'black' }" (click)="this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].setValue(this.testSeriesDetailsForm.controls[
+                    'testSeriesQuestions'].controls[questionPosition].controls['choice4'].value)"
+                          style="cursor: pointer; font-size: 2.2em;">
+                          check_circle_outline</mat-icon>
+                        <mat-error class="error-color"
+                          *ngIf="this.testSeriesDetailsForm.controls[
+                            'testSeriesQuestions'].controls[questionPosition].controls['choice4'].touched && this.testSeriesDetailsForm.controls[
+                            'testSeriesQuestions'].controls[questionPosition].controls['choice4'].hasError('required')">
+                          {{'errors.choiceRequired' | translate}}
+                        </mat-error>
+                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
+                            'testSeriesQuestions'].controls[questionPosition].controls['choice4'].touched && !this.testSeriesDetailsForm.controls[
+                            'testSeriesQuestions'].controls[questionPosition].controls['choice4'].hasError('required') && this.testSeriesDetailsForm.controls[
+                            'testSeriesQuestions'].controls[questionPosition].controls['choice4'].hasError('pattern')">
+                          {{'errors.invalidChoice' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="row wrap">
+                      <mat-form-field appearance="fill" class="form-field-outline" fxFlex=95 fxFlex.sm=100
+                        fxFlex.xs=100>
+                        <mat-label class="color-for-text">{{'labels.answerText' | translate }}
+                          <font color="red">*</font>
+                        </mat-label>
+                        <input matInput type="text" class="color-for-text" formControlName="answerText" readonly>
+                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
+                        'testSeriesQuestions'].controls[questionPosition].controls['answerText'].touched && this.testSeriesDetailsForm.controls[
+                        'testSeriesQuestions'].controls[questionPosition].controls['answerText'].hasError('required')">
+                          {{'errors.answerRequired' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="row wrap">
+                      <div fxLayout="row wrap" fxLayoutAlign="end end" fxFlex=95 fxFlex.sm=100 fxFlex.xs=100>
+                        <button type="button" mat-raised-button class="button-layout-for-remove-icon" [disabled]="this.testSeriesDetailsForm.controls[
+                          'testSeriesQuestions'].controls.length === 1" (click)="removeQuestion(questionPosition)"><i
+                            class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;</button>
+                        <button type="button" mat-raised-button class="button-layout-for-prev-icon" fxFlexOffset=2
+                          (click)="questionPosition = questionPosition - 1" [disabled]="questionPosition === 0"><i
+                            class="fa
+                      fa-arrow-left" aria-hidden="true"></i></button>
+                        <button type="button" mat-raised-button class="button-layout-for-next-icon" fxFlexOffset=2
+                          (click)="questionPosition = questionPosition + 1" [disabled]="questionPosition === this.testSeriesDetailsForm.controls[
+                      'testSeriesQuestions'].length - 1"> <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                        <button type="button" mat-raised-button class="button-layout-for-add-icon" fxFlexOffset=2
+                          (click)="addQuestion()" [disabled]="this.testSeriesDetailsForm.controls[
+                      'testSeriesQuestions'].controls[questionPosition].invalid"><i class="fa fa-plus"
+                            aria-hidden="true"></i>&nbsp;</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div fxLayoutAlign="end end" fxFlex=95 fxFlex.sm=100 fxFlex.xs=100>
+              <button type="button" mat-raised-button class="button-layout" fxFlex="25" fxFlex.xs="100" fxFlex.sm="60"
+                [disabled]="testSeriesDetailsForm.invalid">{{'labels.submit' | translate }}</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </form>
     </mat-card-content>
   </mat-card>
 </div>

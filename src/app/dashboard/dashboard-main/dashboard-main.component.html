@@ -55,7 +55,7 @@
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
               <div><i class="fa fa-book" aria-hidden="true"></i></div>
-              <div fxFlexOffset=5>{{'pageTitles.publisherPages.addTestSeries' | translate }}</div>
+              <div fxFlexOffset=5>{{'pageTitles.publisherPages.addTestSeries.title' | translate }}</div>
             </a>
 
             <!-- STUDENTS AND PUBLISHER -->

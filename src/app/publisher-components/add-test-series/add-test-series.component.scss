@@ -1,16 +1,115 @@
 .add-test-series-content {
-      background-color: rgba(43, 42, 42, 0.644);
-      width: 70%;
-      margin-top: 1%;
-      padding: 0%;
-      padding-top: 1%;
+  background-color: rgba(43, 42, 42, 0.644);
+  width: 70%;
+  margin-top: 1%;
+  padding: 0%;
+  padding-top: 1%;
 
-      @media only screen and (max-width: 800px) {
-            width: 80%;
-            margin-top: 12%;
-      }
+  @media only screen and (max-width: 800px) {
+    width: 80%;
+    margin-top: 12%;
+  }
 
-      @media only screen and (max-width: 600px) {
-            width: 80%;
-      }
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+  }
+}
+
+.mat-tab-content {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5%;
+  overflow: hidden;
+}
+
+.form-field-outline {
+  font-size: 75%;
+}
+
+::ng-deep {
+  .form-field-outline .mat-form-field-outline {
+    color: rgba(230, 227, 227, 0.863) !important;
+  }
+
+  .mat-form-field-invalid .mat-form-field-outline {
+    color: rgb(255, 0, 0) !important;
+  }
+  .add-test-series-content .mat-step-header .mat-step-icon-selected {
+    background-color: rgba(238, 147, 74, 0.89);
+  }
+  .add-test-series-content .mat-step-header .mat-step-icon-state-edit {
+    background-color: brown;
+  }
+}
+
+.color-for-text {
+  color: rgba(230, 227, 227, 0.863);
+}
+
+.button-layout {
+  letter-spacing: 1px;
+  font-weight: 500;
+  background-image: radial-gradient(
+    circle,
+    rgb(242, 183, 145),
+    rgb(245, 154, 94)
+  );
+  color: rgb(44, 44, 44);
+  margin-top: 1%;
+}
+.button-layout:disabled {
+  background-image: radial-gradient(
+    circle,
+    rgb(139, 156, 163),
+    rgb(158, 163, 165)
+  );
+  color: rgb(75, 75, 75);
+}
+
+.total-no-of-questions {
+  padding: 5%;
+}
+
+.button-layout-for-add-icon {
+  letter-spacing: 1px;
+  font-weight: 500;
+  background-color: rgba(20, 230, 149, 0.932);
+  color: rgb(194, 194, 194);
+  margin-top: 1%;
+  font-size: 1.5em;
+}
+.button-layout-for-add-icon:disabled {
+  color: rgb(75, 75, 75);
+}
+.button-layout-for-remove-icon {
+  letter-spacing: 1px;
+  font-weight: 500;
+  background-color: rgba(216, 25, 25, 0.863);
+  color: rgb(241, 241, 241);
+  margin-top: 1%;
+  font-size: 1.5em;
+}
+.button-layout-for-remove-icon:disabled {
+  color: rgb(75, 75, 75);
+}
+.button-layout-for-next-icon {
+  letter-spacing: 1px;
+  font-weight: 500;
+  background-color: rgb(32, 32, 32);
+  color: rgb(241, 241, 241);
+  margin-top: 1%;
+  font-size: 1.5em;
+}
+.button-layout-for-next-icon:disabled {
+  color: rgb(75, 75, 75);
+}
+.button-layout-for-prev-icon {
+  letter-spacing: 1px;
+  font-weight: 500;
+  background-color: rgb(32, 32, 32);
+  color: rgb(241, 241, 241);
+  margin-top: 1%;
+  font-size: 1.5em;
+}
+.button-layout-for-prev-icon:disabled {
+  color: rgb(75, 75, 75);
 }

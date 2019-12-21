@@ -24,7 +24,25 @@
     "save": "Save",
     "submit": "Submit",
     "cancel": "Cancel",
-    "update": "Update"
+    "update": "Update",
+    "next": "Next",
+    "addQuestion": "New",
+    "removeQuestion": "Remove",
+    "nextQuestion": "Next",
+    "prevQuestion": "Prev",
+    "testSeriesName": "Title",
+    "choosedCategory": "Category",
+    "choosedSubCategory": "Sub Category",
+    "durationMax": "Maximum Duration (Minutes)",
+    "totalMarks": "Total Marks",
+    "passingMarks": "Passing Masks",
+    "price": "Price",
+    "questionText": "Question",
+    "answerText": "Choose Any Choice",
+    "choice1": "Choice 1",
+    "choice2": "Choice 2",
+    "choice3": "Choice 3",
+    "choice4": "Choice 4"
   },
   "errors": {
     "allFields": "All fields must be filled!",
@@ -50,7 +68,23 @@
     "categoryNameRequired": "Category Name required!",
     "invalidCategoryName": "Invalid Category Name! Only alphabets and space allowed!",
     "subCategoryNameRequired": "Sub-Category Name required!",
-    "invalidSubCategoryName": "Invalid Sub-Category Name! Only alphabets and space allowed!"
+    "invalidSubCategoryName": "Invalid Sub-Category Name! Only alphabets and space allowed!",
+    "testSeriesNameRequired": "Test Series Name required!",
+    "invalidTestSeriesName": "Invalid Test Series Name! Only alphanumrics and space allowed!",
+    "categoryRequired": "Test Series Name required!",
+    "subCategoryRequired": "Test Series Name required!",
+    "durationMaxRequired": "Max. Duration required!",
+    "totalMarksRequired": "Total Marks required!",
+    "invalidTotalMarks": "Invalid Total Marks! Only numeric allowed!",
+    "passingMarksRequired": "Passing Marks required!",
+    "invalidPassingMarks": "Invalid Passing Marks! Only numeric allowed!",
+    "priceRequired": "Price required!",
+    "invalidPrice": "Invalid Price! Only numeric allowed!",
+    "questionRequired": "Question required!",
+    "invalidQuestion": "Invalid Question! Only alphabets and space allowed!",
+    "answerRequired": "Answer required!",
+    "choiceRequired": "Choice required!",
+    "invalidChoice": "Invalid Choice! Only alphabets and space allowed!"
   },
   "pageTitles": {
     "dashboard": {
@@ -89,7 +123,13 @@
     },
     "requests": "Requests",
     "publisherPages": {
-      "addTestSeries": "Add Test Series"
+      "addTestSeries": {
+        "title": "Add Test Series",
+        "subTabs": {
+          "testSeries": "Test Series",
+          "questions": "Questions"
+        }
+      }
     },
     "logout": "Logout"
   },
@@ -157,5 +197,9 @@
   },
   "cartLabels": {
     "buy": "Buy"
+  },
+  "addTestSeriesLabels": {
+    "totalNoOfQuestions": "Total No. of Questions :",
+    "maxDurationData": [5, 10, 15, 20, 30, 45, 60, 75, 90, 120]
   }
 }
