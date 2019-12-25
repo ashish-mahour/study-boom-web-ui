@@ -278,18 +278,18 @@
                       </mat-form-field>
                     </div>
                     <div fxLayout="row wrap">
-                      <mat-form-field appearance="fill" class="form-field-outline" fxFlex=95 fxFlex.sm=100
+                      <div class="form-field-outline choose-answer" fxFlex=95 fxFlex.sm=100
                         fxFlex.xs=100>
-                        <mat-label class="color-for-text">{{'labels.answerText' | translate }}
+                        <mat-label style="color: black;">{{'labels.answerText' | translate }}
                           <font color="red">*</font>
                         </mat-label>
-                        <input matInput type="text" class="color-for-text" formControlName="answerText" readonly>
+                        <input matInput type="text" style="color: black;" formControlName="answerText" readonly>
                         <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
                         'testSeriesQuestions'].controls[questionPosition].controls['answerText'].touched && this.testSeriesDetailsForm.controls[
                         'testSeriesQuestions'].controls[questionPosition].controls['answerText'].hasError('required')">
                           {{'errors.answerRequired' | translate}}
                         </mat-error>
-                      </mat-form-field>
+                      </div>
                     </div>
                     <div fxLayout="row wrap">
                       <div fxLayout="row wrap" fxLayoutAlign="end end" fxFlex=95 fxFlex.sm=100 fxFlex.xs=100>

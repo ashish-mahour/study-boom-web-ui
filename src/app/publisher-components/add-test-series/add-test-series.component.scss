@@ -113,3 +113,14 @@
 .button-layout-for-prev-icon:disabled {
   color: rgb(75, 75, 75);
 }
+
+.choose-answer {
+  padding: 1%;
+  background-image: radial-gradient(
+    circle,
+    rgb(139, 156, 163),
+    rgb(158, 163, 165)
+  );
+  border: 1px;
+  border-radius: 4px;
+}

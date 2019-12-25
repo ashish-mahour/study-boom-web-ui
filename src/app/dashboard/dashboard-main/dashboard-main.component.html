@@ -51,6 +51,14 @@
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'STUDENT'"></mat-divider>
 
+            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-requests'}}]">
+              <div><i class="fa fa-book" aria-hidden="true"></i></div>
+              <div fxFlexOffset=5>{{'pageTitles.studentPages.requests' | translate }}</div>
+            </a>
+            <mat-divider *ngIf="authenticationService.userType === 'STUDENT'">
+            </mat-divider>
+
             <!-- PUBLISHERS -->
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
@@ -58,15 +66,15 @@
               <div fxFlexOffset=5>{{'pageTitles.publisherPages.addTestSeries.title' | translate }}</div>
             </a>
 
-            <!-- STUDENTS AND PUBLISHER -->
-            <a mat-list-item routerLinkActive="active"
-              *ngIf="authenticationService.userType === 'PUBLISHER' || authenticationService.userType === 'STUDENT'"
-              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'requests'}}]">
+            <mat-divider *ngIf="authenticationService.userType === 'PUBLISHER'">
+            </mat-divider>
+
+            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER'"
+              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-requests'}}]">
               <div><i class="fa fa-book" aria-hidden="true"></i></div>
-              <div fxFlexOffset=5>{{'pageTitles.requests' | translate }}</div>
+              <div fxFlexOffset=5>{{'pageTitles.publisherPages.requests' | translate }}</div>
             </a>
-            <mat-divider
-              *ngIf="authenticationService.userType === 'PUBLISHER' || authenticationService.userType === 'STUDENT'">
+            <mat-divider *ngIf="authenticationService.userType === 'PUBLISHER'">
             </mat-divider>
 
             <!-- ADMIN -->
@@ -103,7 +111,7 @@
         </div>
       </mat-sidenav>
       <mat-sidenav-content class="dashboard-sidebar-content dashboard-backgroud" fxFlex="100">
-        <div @routerInAnimation >
+        <div @routerInAnimation>
           <router-outlet name="dashboard-page-router"></router-outlet>
         </div>
       </mat-sidenav-content>

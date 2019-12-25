@@ -1,7 +1,6 @@
 import { LoginRegisterComponent } from "./authentication/login-register/login-register.component";
 import { BrowserModule, Title } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -56,11 +55,14 @@ import { AuthenticationGuard } from "./guards/authentication/authentication.guar
 import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { RequestsComponent } from "./requests/requests.component";
 import { AdminService } from "./services/admin/admin.service";
 import { AddUpdateCategoriesComponent } from "./admin-components/add-update-categories/add-update-categories.component";
 import { PublisherService } from "./services/publisher/publisher.service";
 import { UserService } from "./services/user/user.service";
+import { PublisherRequestsComponent } from "./publisher-components/publisher-requests/publisher-requests/publisher-requests.component";
+import { UserRequestsComponent } from "./user-components/user-requests/user-requests/user-requests.component";
+import { AddUpdateRequestsComponent } from "./shared/add-update-requests/add-update-requests/add-update-requests.component";
+import { ForgotPasswordComponent } from "./shared/forgot-password/forgot-password/forgot-password.component";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -89,8 +91,11 @@ export function createTranslateLoader(http: HttpClient) {
     ManageUsersComponent,
     ManageTestSeriesComponent,
     ManageCategoriesComponent,
-    RequestsComponent,
-    AddUpdateCategoriesComponent
+    AddUpdateCategoriesComponent,
+    PublisherRequestsComponent,
+    UserRequestsComponent,
+    AddUpdateRequestsComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -142,6 +147,11 @@ export function createTranslateLoader(http: HttpClient) {
     UserService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AlertBoxComponent, AddUpdateCategoriesComponent]
+  entryComponents: [
+    AlertBoxComponent,
+    AddUpdateCategoriesComponent,
+    AddUpdateRequestsComponent,
+    ForgotPasswordComponent
+  ]
 })
 export class AppModule {}

@@ -18,7 +18,8 @@ import { PerformTestSeriesComponent } from "./user-components/perform-test-serie
 import { TestSeriesListingComponent } from "./user-components/test-series-listing/test-series-listing.component";
 import { ManageCategoriesComponent } from "./admin-components/manage-categories/manage-categories.component";
 import { AuthenticationGuard } from "./guards/authentication/authentication.guard";
-import { RequestsComponent } from "./requests/requests.component";
+import { PublisherRequestsComponent } from './publisher-components/publisher-requests/publisher-requests/publisher-requests.component';
+import { UserRequestsComponent } from './user-components/user-requests/user-requests/user-requests.component';
 
 export const childRouterOutlets: string[] = [
   "home-page-router",
@@ -114,6 +115,11 @@ const routes: Routes = [
         outlet: childRouterOutlets[1]
       },
       {
+        path: "publisher-requests",
+        component: PublisherRequestsComponent,
+        outlet: childRouterOutlets[1]
+      },
+      {
         path: "user-cart",
         component: CartComponent,
         outlet: childRouterOutlets[1]
@@ -129,8 +135,8 @@ const routes: Routes = [
         outlet: childRouterOutlets[1]
       },
       {
-        path: "requests",
-        component: RequestsComponent,
+        path: "user-requests",
+        component: UserRequestsComponent,
         outlet: childRouterOutlets[1]
       },
       {

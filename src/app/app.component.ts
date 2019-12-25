@@ -40,10 +40,10 @@ export class AppComponent {
 
   routerNavigation(event: RouterEvent): void {
     if (event instanceof NavigationStart) {
+      this.loadingService.showLoading(true)
       this.authenticationService.userDetails = JSON.parse(localStorage.getItem("userDetails"))
       this.authenticationService.isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated"))
       this.authenticationService.userType = localStorage.getItem("userType")
-      this.loadingService.showLoading(true)
     }
     if (event instanceof NavigationEnd) {
       this.loadingService.showLoading(false)

@@ -46,8 +46,8 @@
   },
   "errors": {
     "allFields": "All fields must be filled!",
-    "usernameRequired": "Username required!",
-    "invalidUsername": "Invalid Username! Only alphanumeric and \"@\" allowed!",
+    "usernameRequired": "Username / Email required!",
+    "invalidUsername": "Invalid Username / Email! Only alphanumeric and \"@\" allowed!",
     "passwordRequired": "Password required!",
     "fullNameRequired": "Full Name required!",
     "invalidFullName": "Invalid Full Name! Only alphabets and space allowed!",
@@ -119,9 +119,9 @@
         }
       },
       "cart": "Cart",
-      "performTest": "Performing Test"
+      "performTest": "Performing Test",
+      "requests": "Requests"
     },
-    "requests": "Requests",
     "publisherPages": {
       "addTestSeries": {
         "title": "Add Test Series",
@@ -129,7 +129,8 @@
           "testSeries": "Test Series",
           "questions": "Questions"
         }
-      }
+      },
+      "requests": "Requests"
     },
     "logout": "Logout"
   },
