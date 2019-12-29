@@ -1,10 +1,10 @@
-import { AlertBoxComponent } from "./../../shared/alert-box/alert-box.component";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { AuthenticationService } from "../../services/authentication/authentication.service";
+import { ForgotPasswordComponent } from 'src/app/shared/forgot-password/forgot-password/forgot-password.component';
 
 @Component({
   selector: "app-login-register",
@@ -93,7 +93,7 @@ export class LoginRegisterComponent implements OnInit {
     return true;
   }
   openDialog() {
-    this.dialog.open(AlertBoxComponent, {
+    this.dialog.open(ForgotPasswordComponent, {
       minWidth: "25%",
       maxWidth: "70%",
       data: {

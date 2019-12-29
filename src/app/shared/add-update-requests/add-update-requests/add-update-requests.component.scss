@@ -1,0 +1,30 @@
+::ng-deep{
+    .mat-dialog-container{
+        padding: 0%;
+        background: none;
+        border-style: solid;
+        border-color: rgb(26, 25, 25);
+    }
+}
+.margin-zero{
+    margin: 0%;
+}
+.dialog-content{
+    background-color: rgba(43, 42, 42, 0.884);
+}
+.dialog-action{
+    margin-bottom: 0%;
+    background-color: rgba(43, 42, 42, 0.884);
+}
+.dialog-title-icon{
+    padding: 2%;
+}
+.margin-right-2{
+    margin-right: 2%;
+}
+.button-padding-2{
+    border-radius: 10%;
+}
+.dialog-marginp-0{
+    margin: 0;
+}

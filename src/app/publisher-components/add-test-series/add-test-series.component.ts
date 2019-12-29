@@ -9,10 +9,13 @@ import { PublisherService } from "src/app/services/publisher/publisher.service";
   styleUrls: ["./add-test-series.component.scss"]
 })
 export class AddTestSeriesComponent implements OnInit {
-
   selectedSubCategories: any[] = [];
 
   testSeriesDetailsForm: FormGroup = this.formBuilder.group({
+    publisherId: [
+      this.authenticationService.userDetails.userIdFromPublisher.id
+    ],
+    testSeriesId: [null],
     testSeriesName: [
       null,
       [Validators.required, Validators.pattern("[A-Za-z0-9 ]+")]
@@ -36,27 +39,27 @@ export class AddTestSeriesComponent implements OnInit {
     return this.formBuilder.group({
       questionText: [
         null,
-        [Validators.required, Validators.pattern("[A-Za-z0-9 ]+")]
+        [Validators.required]
       ],
       answerText: [
         null,
-        [Validators.required, Validators.pattern("[A-Za-z0-9 ]+")]
+        [Validators.required]
       ],
       choice1: [
         null,
-        [Validators.required, Validators.pattern("[A-Za-z0-9 ]+")]
+        [Validators.required]
       ],
       choice2: [
         null,
-        [Validators.required, Validators.pattern("[A-Za-z0-9 ]+")]
+        [Validators.required]
       ],
       choice3: [
         null,
-        [Validators.required, Validators.pattern("[A-Za-z0-9 ]+")]
+        [Validators.required]
       ],
       choice4: [
         null,
-        [Validators.required, Validators.pattern("[A-Za-z0-9 ]+")]
+        [Validators.required]
       ]
     });
   }
@@ -81,6 +84,7 @@ export class AddTestSeriesComponent implements OnInit {
     this.testSeriesDetailsForm.controls["totalQuestions"].setValue(
       testSeriesQuestions.length
     );
+    this.questionPosition = this.questionPosition + 1;
   }
   removeQuestion(index: number) {
     if (this.questionPosition !== 0)
@@ -93,8 +97,10 @@ export class AddTestSeriesComponent implements OnInit {
       testSeriesQuestions.length
     );
   }
-  categorySelected(categoryID: number){
-    let category =  this.publisherService.allCategories.find(x => x.id === categoryID)
+  categorySelected(categoryID: number) {
+    let category = this.publisherService.allCategories.find(
+      x => x.id === categoryID
+    );
     this.selectedSubCategories = category.subjectCategoryIdToSubCategory;
   }
 }

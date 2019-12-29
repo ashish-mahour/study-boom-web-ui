@@ -7,7 +7,7 @@
     <mat-tab-group>
       <mat-tab label="{{'pageTitles.studentPages.testSeries.subTabs.allTestSeries' | translate }}">
         <div fxFlex=100>
-          <p-scrollPanel [style]="{width: '98%', height: height, overflow:'hidden'}">
+          <div [ngStyle]="{width: '100%', height: height, overflow:'auto'}">
             <div fxFlex=100 fxLayout="column">
               <div fxFlex=100 *ngFor="let test of testData" class="test-listing-row">
                 <div fxFlex=20>
@@ -66,15 +66,12 @@
                       <button mat-raised-button
                         class="add-to-cart-perform-button">{{'testSeriesListingLabels.addToCarts' | translate }}</button>
                     </div>
-                    <div fxFlex=100>
-                      &nbsp;&nbsp;
-                    </div>
                   </div>
                 </div>
 
               </div>
             </div>
-          </p-scrollPanel>
+          </div>
         </div>
         <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
           <button mat-raised-button class="next-prev-button"><i class="fa fa-arrow-left"
@@ -85,7 +82,7 @@
       </mat-tab>
       <mat-tab label="{{'pageTitles.studentPages.testSeries.subTabs.myTestSeries' | translate }}">
         <div fxFlex=100>
-          <p-scrollPanel [style]="{width: '100%', height: height, overflow:'hidden'}">
+          <div [ngStyle]="{width: '100%', height: height, overflow:'hidden'}">
             <div fxFlex=100 fxLayout="column">
               <div fxFlex=100 *ngFor="let test of testData" class="test-listing-row">
                 <div fxFlex=20>
@@ -141,15 +138,12 @@
                       <button mat-raised-button class="add-to-cart-perform-button"
                         (click)="performTestSeries()">{{'testSeriesListingLabels.perform' | translate }}</button>
                     </div>
-                    <div fxFlex=100>
-                      &nbsp;&nbsp;
-                    </div>
                   </div>
                 </div>
 
               </div>
             </div>
-          </p-scrollPanel>
+          </div>
         </div>
         <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
           <button mat-raised-button class="next-prev-button"><i class="fa fa-arrow-left"

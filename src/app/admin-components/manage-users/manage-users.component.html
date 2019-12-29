@@ -6,8 +6,8 @@
     </mat-card-header>
     <mat-card-content fxLayout="column" fxLayout="row wrap">
       <div fxFlex=100>
-        <p-scrollPanel [style]="{width: '100%', height: height,
-            overflow:'hidden'}">
+        <div [ngStyle]="{ width: '100%', height: height,
+            overflow:'auto' }">
           <div fxFlex=100 fxLayout="column">
             <div fxFlex=100 *ngFor="let user of adminService.allUsers[currentPage]" class="manage-users-listing-row">
               <div fxFlex=100 class="manage-users-listing-row-content" fxLayout="column">
@@ -58,14 +58,8 @@
                 </div>
               </div>
             </div>
-            <div fxFlex=100>
-              &nbsp;&nbsp;
-            </div>
-            <div fxFlex=100>
-              &nbsp;&nbsp;
-            </div>
           </div>
-        </p-scrollPanel>
+        </div>
       </div>
       <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
         <button mat-raised-button class="next-prev-button" (click)="prevPage()"

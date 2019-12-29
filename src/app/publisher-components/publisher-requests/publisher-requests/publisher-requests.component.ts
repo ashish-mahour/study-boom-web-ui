@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { AuthenticationService } from 'src/app/services/authentication/authentic
 })
 export class PublisherRequestsComponent implements OnInit {
 
+  height: string = window.innerHeight - 250 + "px";
+  
   constructor(
     public authenticationService: AuthenticationService
   ) { }
@@ -15,4 +17,8 @@ export class PublisherRequestsComponent implements OnInit {
   ngOnInit() {
   }
 
+  @HostListener("window:resize")
+  onResizeScreen() {
+    this.height = window.innerHeight - 280 + "px";
+  }
 }

@@ -22,7 +22,7 @@
 }
 
 .form-field-outline {
-  font-size: 75%;
+  font-size: 0.8em;
 }
 
 ::ng-deep {
@@ -34,7 +34,7 @@
     color: rgb(255, 0, 0) !important;
   }
   .add-test-series-content .mat-step-header .mat-step-icon-selected {
-    background-color: rgba(238, 147, 74, 0.89);
+    background-color: rgba(77, 54, 36, 0.89);
   }
   .add-test-series-content .mat-step-header .mat-step-icon-state-edit {
     background-color: brown;
@@ -43,6 +43,11 @@
 
 .color-for-text {
   color: rgba(230, 227, 227, 0.863);
+}
+
+.text-area-height-auto {
+  padding: 0;
+  margin: 0;
 }
 
 .button-layout {

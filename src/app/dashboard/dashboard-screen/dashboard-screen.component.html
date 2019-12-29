@@ -23,8 +23,8 @@
                 </div>
             </div>
             <div fxFlex=100>
-                <p-scrollPanel [style]="{width: '100%', height: height,
-                    overflow:'hidden'}">
+                <div [ngStyle]="{width: '100%', height: height,
+                    overflow:'auto'}">
                     <div fxFlex=100 fxLayout="column" *ngIf="authenticationService.userType ===
                         'PUBLISHER'">
                         <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
@@ -81,9 +81,6 @@
                                             | translate }}</span><span
                                             class="dashboard-listing-content">{{test.uploadedBy}}</span>
                                     </div>
-                                </div>
-                                <div fxFlex=100>
-                                    &nbsp;&nbsp;
                                 </div>
                             </div>
                         </div>
@@ -146,9 +143,6 @@
                                             | translate }}</span><span
                                             class="dashboard-listing-content">{{test.uploadedBy}}</span>
                                     </div>
-                                </div>
-                                <div fxFlex=100>
-                                    &nbsp;&nbsp;
                                 </div>
                             </div>
                         </div>
@@ -221,13 +215,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div fxFlex=100>
-                                    &nbsp;&nbsp;
-                                </div>
                             </div>
                         </div>
                     </div>
-                </p-scrollPanel>
+                </div>
             </div>
             <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout"
                 *ngIf="authenticationService.userType === ( 'userTypes.student'| translate )">

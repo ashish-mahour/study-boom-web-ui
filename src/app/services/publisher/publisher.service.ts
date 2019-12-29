@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import * as config from "../../shared/config.json";
 import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { MatDialog } from "@angular/material/dialog";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: "root"
@@ -14,7 +15,8 @@ export class PublisherService {
   constructor(
     private loadingService: LoadingAnimServiceService,
     private http: HttpClient,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   getAllCategories() {
@@ -36,6 +38,43 @@ export class PublisherService {
               message: "Error found in getting categories!!"
             }
           });
+        }
+      );
+  }
+  addTestSeries(testSeriesDetailsValue: any) {
+    console.log(testSeriesDetailsValue);
+    this.loadingService.showLoading(true);
+    this.http
+      .post(
+        config.serverUrl + config.api.publisher + "/create/test/series",
+        testSeriesDetailsValue
+      )
+      .subscribe(
+        success => {
+          console.log(success)
+          this.loadingService.showLoading(false);
+          this.dialog.open(AlertBoxComponent, {
+            minWidth: "25%",
+            maxWidth: "60%",
+            data: {
+              type: "success",
+              message: "Test Series Created!!"
+            }
+          });
+          this.router.navigateByUrl("/dashboard")
+        },
+        error => {
+          console.log(error)
+          this.loadingService.showLoading(false);
+          this.dialog.open(AlertBoxComponent, {
+            minWidth: "25%",
+            maxWidth: "60%",
+            data: {
+              type: "error",
+              message: "Error found in getting categories!!"
+            }
+          });
+          this.router.navigateByUrl("/dashboard")
         }
       );
   }

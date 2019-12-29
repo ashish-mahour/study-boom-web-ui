@@ -20,7 +20,6 @@ import { AlertBoxComponent } from "./shared/alert-box/alert-box.component";
 import { UserTypeComponent } from "./authentication/user-type/user-type.component";
 import { LoadingAnimServiceService } from "./shared/loading/loading-anim-service.service";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
-import { PanelModule } from "primeng/panel";
 import { PublisherMoreDetailsComponent } from "./authentication/publisher-more-details/publisher-more-details.component";
 import { UserMoreDetailsComponent } from "./authentication/user-more-details/user-more-details.component";
 import { MatChipsModule } from "@angular/material/chips";
@@ -28,7 +27,6 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { MatDividerModule } from "@angular/material/divider";
-import { ScrollPanelModule } from "primeng/scrollpanel";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatStepperModule } from "@angular/material/stepper";
 import { UrlSerializer } from "@angular/router";
@@ -128,8 +126,6 @@ export function createTranslateLoader(http: HttpClient) {
     MatSidenavModule,
     MatListModule,
     MatDividerModule,
-    ScrollPanelModule,
-    PanelModule,
     MatGridListModule,
     MatStepperModule
   ],
