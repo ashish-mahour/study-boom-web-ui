@@ -16,6 +16,7 @@ export class AuthenticationService {
   profileCompletion: number = 30;
   userDetails: any = {};
   mofifiedUserDetails: any = {};
+  allCategories: any[] = [];
 
   constructor(
     private loadingService: LoadingAnimServiceService,
@@ -99,10 +100,6 @@ export class AuthenticationService {
           this.userDetails.profilePic = this.mofifiedUserDetails.profilePic;
           message = "Profile Pic Successfully changed!!";
         } else if (command === config.modifiedCommands.updateStudent) {
-          this.userDetails.fullName = this.mofifiedUserDetails.fullName;
-          this.userDetails.username = this.mofifiedUserDetails.username;
-          this.userDetails.email = this.mofifiedUserDetails.email;
-          this.userDetails.mobileNo = this.mofifiedUserDetails.mobileNo;
           message = "Student Details Updated!!";
         } else if (command === config.modifiedCommands.updatePublisher) {
           this.userDetails.fullName = this.mofifiedUserDetails.fullName;
@@ -156,5 +153,27 @@ export class AuthenticationService {
           }
         });
       });
+  }
+  getAllCategories() {
+    this.loadingService.showLoading(true);
+    this.http
+      .get(config.serverUrl + config.api.authentication + "/get/subject/categories")
+      .subscribe(
+        (data: any[]) => {
+          this.loadingService.showLoading(false);
+          this.allCategories = data;
+        },
+        (error: any) => {
+          this.loadingService.showLoading(false);
+          this.dialog.open(AlertBoxComponent, {
+            minWidth: "25%",
+            maxWidth: "60%",
+            data: {
+              type: "error",
+              message: "Error found in getting categories!!"
+            }
+          });
+        }
+      );
   }
 }

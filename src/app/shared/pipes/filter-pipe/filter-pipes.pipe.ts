@@ -9,7 +9,7 @@ export class FilterCategoriesPipe implements PipeTransform {
     if (!args || args === null || args === ''|| typeof(args) !== 'string')
       return [];
     else
-      return list.filter(x => (x.categoryName as string).toLowerCase().includes(args.toLowerCase()))
+      return list.filter(x => (x.name as string).toLowerCase().includes(args.toLowerCase()))
   }
 
 }
@@ -23,7 +23,7 @@ export class FilterSubCategoriesPipe implements PipeTransform {
     if (!args || args === null || args === ''|| typeof(args) !== 'string')
       return [];
     else
-      return list.filter(x => (x.subCategoryName as string).toLowerCase().includes(args.toLowerCase()))
+      return list.filter(x => (x.name as string).toLowerCase().includes(args.toLowerCase()))
   }
 
 }

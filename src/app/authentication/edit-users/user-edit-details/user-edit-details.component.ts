@@ -6,6 +6,8 @@ import { AlertBoxComponent } from "../../../shared/alert-box/alert-box.component
 import { MatDialog } from "@angular/material/dialog";
 import { AuthenticationService } from "../../../services/authentication/authentication.service";
 import * as config from '../../../shared/config.json';
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: "app-user-edit-details",
@@ -13,62 +15,12 @@ import * as config from '../../../shared/config.json';
   styleUrls: ["./user-edit-details.component.scss"]
 })
 export class UserEditDetailsComponent implements OnInit {
-  categoriesData: any[] = [
-    {
-      categoryId: 1,
-      categoryName: "IT"
-    },
-    {
-      categoryId: 2,
-      categoryName: "Commerce"
-    },
-    {
-      categoryId: 3,
-      categoryName: "Science"
-    }
-  ];
-
-  subCategoriesData: any[] = [
-    {
-      categoryId: 1,
-      subCategoryId: 1,
-      subCategoryName: "JAVA"
-    },
-    {
-      categoryId: 1,
-      subCategoryId: 2,
-      subCategoryName: "C++"
-    },
-    {
-      categoryId: 2,
-      subCategoryId: 3,
-      subCategoryName: "Accountancy"
-    },
-    {
-      categoryId: 2,
-      subCategoryId: 3,
-      subCategoryName: "Principle of Management"
-    },
-    {
-      categoryId: 3,
-      subCategoryId: 5,
-      subCategoryName: "Physics"
-    },
-    {
-      categoryId: 3,
-      subCategoryId: 6,
-      subCategoryName: "Biology"
-    },
-    {
-      categoryId: 3,
-      subCategoryId: 7,
-      subCategoryName: "Chemistry"
-    }
-  ];
 
   filteredSubCategories: any[] = [];
   selectedSubCategories: any[] = [];
   selectedCategories: any[] = [];
+  selectedSubCategoriesObjects: any[] = [];
+  selectedCategoriesObjects: any[] = [];
 
   userEditForm: FormGroup = this.formBuilder.group({
     fullname: [
@@ -105,45 +57,60 @@ export class UserEditDetailsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService, 
+    private router: Router,
+    private title: Title
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle("Choose Categories - Student");
+    if (this.authenticationService.allCategories.length === 0)
+      this.authenticationService.getAllCategories();
+  }
 
   removeCategory(selectedCategory: any) {
-    this.selectedCategories.splice(
-      this.selectedCategories.indexOf(selectedCategory),
-      1
-    );
-    this.categoriesData.push(selectedCategory);
-    let filteredSubCategoriesById: any[] = this.subCategoriesData.filter(
-      x => x.categoryId == selectedCategory.categoryId
-    );
-    filteredSubCategoriesById.forEach(x => {
+    this.authenticationService.allCategories.push(selectedCategory);
+
+    let subCategories: any[] = selectedCategory.subjectCategoryIdToSubCategory;
+    subCategories.forEach(x => {
+      if (this.selectedSubCategories.includes(x.id)) {
+        this.selectedSubCategories.splice(
+          this.selectedSubCategories.indexOf(x.id),
+          1
+        );
+        this.selectedSubCategoriesObjects.splice(
+          this.selectedSubCategoriesObjects.indexOf(x),
+          1
+        );
+      }
       this.filteredSubCategories.splice(
         this.filteredSubCategories.indexOf(x),
         1
       );
     });
-    let filteredSelectedSubCategoriesById: any[] = this.selectedSubCategories.filter(
-      x => x.categoryId == selectedCategory.categoryId
+
+    this.selectedCategories.splice(
+      this.selectedCategories.indexOf(selectedCategory.id),
+      1
     );
-    filteredSelectedSubCategoriesById.forEach(x => {
-      this.selectedSubCategories.splice(
-        this.selectedSubCategories.indexOf(x),
-        1
-      );
-    });
+    this.selectedCategoriesObjects.splice(
+      this.selectedCategoriesObjects.indexOf(selectedCategory),
+      1
+    );
   }
 
   categorySelected(value: number) {
-    let category = this.categoriesData.find(x => x.categoryId == value);
-    this.selectedCategories.push(category);
-    this.categoriesData.splice(this.categoriesData.indexOf(category), 1);
-    let filteredSubCategoriesById: any[] = this.subCategoriesData.filter(
-      x => x.categoryId == value
+    let category = this.authenticationService.allCategories.find(
+      x => x.id == value
     );
-    filteredSubCategoriesById.forEach(x => this.filteredSubCategories.push(x));
+    this.selectedCategories.push(value);
+    this.selectedCategoriesObjects.push(category);
+    let subCategories: any[] = category.subjectCategoryIdToSubCategory;
+    subCategories.forEach(x => this.filteredSubCategories.push(x));
+    this.authenticationService.allCategories.splice(
+      this.authenticationService.allCategories.indexOf(category),
+      1
+    );
   }
 
   clearCategory(event: MatChipInputEvent) {
@@ -157,18 +124,21 @@ export class UserEditDetailsComponent implements OnInit {
   }
 
   removeSubCategory(selectedCategory: any) {
+    this.filteredSubCategories.push(selectedCategory);
     this.selectedSubCategories.splice(
-      this.selectedSubCategories.indexOf(selectedCategory),
+      this.selectedSubCategories.indexOf(selectedCategory.id),
       1
     );
-    this.filteredSubCategories.push(selectedCategory);
+    this.selectedSubCategoriesObjects.splice(
+      this.selectedSubCategoriesObjects.indexOf(selectedCategory),
+      1
+    );
   }
 
   subCategorySelected(value: number) {
-    let subCategory = this.filteredSubCategories.find(
-      x => x.subCategoryId == value
-    );
-    this.selectedSubCategories.push(subCategory);
+    this.selectedSubCategories.push(value);
+    let subCategory = this.filteredSubCategories.find(x => x.id == value);
+    this.selectedSubCategoriesObjects.push(subCategory);
     this.filteredSubCategories.splice(
       this.filteredSubCategories.indexOf(subCategory),
       1
@@ -184,6 +154,20 @@ export class UserEditDetailsComponent implements OnInit {
       }
     }
   }
+
+  skipTheStepAction() {
+    this.dialog.open(AlertBoxComponent, {
+      minWidth: "25%",
+      maxWidth: "60%",
+      data: {
+        type: "warn",
+        message:
+          "All the details is nessasary for getting results !<br> Skipping the step means you can enter it later for dashboard purpuses!!"
+      }
+    });
+    this.router.navigateByUrl("/home");
+  }
+
 
   availableCategories() {
     this.dialog.open(AlertBoxComponent, {
@@ -204,7 +188,6 @@ export class UserEditDetailsComponent implements OnInit {
       }
     });
   }
-
   editProfile() {
     this.authenticationService.mofifiedUserDetails.fullName = this.userEditForm.controls[
       "fullname"

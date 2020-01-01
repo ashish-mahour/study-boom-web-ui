@@ -22,9 +22,9 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="form-field-outline">
           <mat-chip-list #categoryList>
-            <mat-chip *ngFor="let category of selectedCategories" [selectable]="true" [removable]="true"
+            <mat-chip *ngFor="let category of selectedCategoriesObjects" [selectable]="true" [removable]="true"
               (removed)="removeCategory(category)" class="category-item">
-              {{category.categoryName}}
+              {{category.name}}
               <mat-icon matChipRemove class="close-button">cancel
               </mat-icon>
             </mat-chip>
@@ -41,18 +41,18 @@
           <mat-autocomplete #categoryAutoComplete="matAutocomplete"
             (optionSelected)="categorySelected($event.option.value)">
             <mat-option
-              *ngFor="let category of categoriesData | filterCategories : userMoreDetails.controls['choosedCategory'].value"
-              [value]="category.categoryId">
-              {{category.categoryName}}
+              *ngFor="let category of authenticationService.allCategories | filterCategories : userMoreDetails.controls['choosedCategory'].value"
+              [value]="category.id">
+              {{category.name}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field-outline">
           <mat-chip-list #subCategoryList>
-            <mat-chip *ngFor="let subCategory of selectedSubCategories" [selectable]="true" [removable]="true"
+            <mat-chip *ngFor="let subCategory of selectedSubCategoriesObjects" [selectable]="true" [removable]="true"
               (removed)="removeSubCategory(subCategory)" class="category-item">
-              {{subCategory.subCategoryName}}
+              {{subCategory.name}}
               <mat-icon matChipRemove class="close-button">cancel
               </mat-icon>
             </mat-chip>
@@ -70,8 +70,8 @@
             (optionSelected)="subCategorySelected($event.option.value)">
             <mat-option
               *ngFor="let subCategory of filteredSubCategories | filterSubCategories : userMoreDetails.controls['choosedSubCategory'].value"
-              [value]="subCategory.subCategoryId">
-              {{subCategory.subCategoryName}}
+              [value]="subCategory.id">
+              {{subCategory.name}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>

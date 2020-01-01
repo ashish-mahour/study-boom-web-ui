@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, NgZone } from "@angular/core";
 import { routerInAnimation } from "./shared/animations";
 import {
   Router,
@@ -24,9 +24,10 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    translate: TranslateService,
+    private translate: TranslateService,
     private loadingService: LoadingAnimServiceService,
-    private authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService,
+    private zone: NgZone
   ) {
     router.events.subscribe((event: RouterEvent) => {
       this.routerNavigation(event);
@@ -39,20 +40,22 @@ export class AppComponent {
   }
 
   routerNavigation(event: RouterEvent): void {
-    if (event instanceof NavigationStart) {
-      this.loadingService.showLoading(true)
-      this.authenticationService.userDetails = JSON.parse(localStorage.getItem("userDetails"))
-      this.authenticationService.isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated"))
-      this.authenticationService.userType = localStorage.getItem("userType")
-    }
-    if (event instanceof NavigationEnd) {
-      this.loadingService.showLoading(false)
-    }
-    if (event instanceof NavigationCancel) {
-      this.loadingService.showLoading(false)
-    }
-    if (event instanceof NavigationError) {
-      this.loadingService.showLoading(false)
-    }
+    this.zone.run(() => {
+      if (event instanceof NavigationStart) {
+        this.loadingService.showLoading(true)
+        this.authenticationService.userDetails = JSON.parse(localStorage.getItem("userDetails"))
+        this.authenticationService.isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated"))
+        this.authenticationService.userType = localStorage.getItem("userType")
+      }
+      if (event instanceof NavigationEnd) {
+        this.loadingService.showLoading(false)
+      }
+      if (event instanceof NavigationCancel) {
+        this.loadingService.showLoading(false)
+      }
+      if (event instanceof NavigationError) {
+        this.loadingService.showLoading(false)
+      }
+    })
   }
 }

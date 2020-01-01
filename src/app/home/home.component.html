@@ -1,4 +1,4 @@
-<div class="main-div-animation" fxLayout="column" fxLayoutAlign="center center" *ngIf="loadingService.loading">
+<div class="main-div-animation" fxLayout="column" fxLayoutAlign="center center" [hidden]="!loadingService.loading">
   <div class="cssload-thecube">
     <div class="cssload-cube cssload-c1"></div>
     <div class="cssload-cube cssload-c2"></div>
