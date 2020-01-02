@@ -33,7 +33,7 @@ export class AddTestSeriesComponent implements OnInit {
     testSeriesQuestions: this.formBuilder.array([], Validators.required)
   });
 
-  questionPosition: number = 0;
+  questionPosition: number = -1;
 
   testSeriesQuestion(): FormGroup {
     return this.formBuilder.group({
@@ -68,7 +68,7 @@ export class AddTestSeriesComponent implements OnInit {
     public publisherService: PublisherService,
     public authenticationService: AuthenticationService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     if (this.publisherService.allCategories.length === 0)

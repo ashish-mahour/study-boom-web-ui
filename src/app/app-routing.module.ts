@@ -13,7 +13,6 @@ import { PublisherEditDetailsComponent } from "./authentication/edit-users/publi
 import { ManageTestSeriesComponent } from "./admin-components/manage-test-series/manage-test-series.component";
 import { ManageUsersComponent } from "./admin-components/manage-users/manage-users.component";
 import { AddTestSeriesComponent } from "./publisher-components/add-test-series/add-test-series.component";
-import { CartComponent } from "./user-components/cart/cart.component";
 import { PerformTestSeriesComponent } from "./user-components/perform-test-series/perform-test-series.component";
 import { TestSeriesListingComponent } from "./user-components/test-series-listing/test-series-listing.component";
 import { ManageCategoriesComponent } from "./admin-components/manage-categories/manage-categories.component";
@@ -117,11 +116,6 @@ const routes: Routes = [
       {
         path: "publisher-requests",
         component: PublisherRequestsComponent,
-        outlet: childRouterOutlets[1]
-      },
-      {
-        path: "user-cart",
-        component: CartComponent,
         outlet: childRouterOutlets[1]
       },
       {

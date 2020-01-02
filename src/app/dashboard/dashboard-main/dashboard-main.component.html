@@ -44,12 +44,6 @@
               <div fxFlexOffset=5>{{'pageTitles.studentPages.testSeries.title' | translate }}</div>
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'STUDENT'"></mat-divider>
-            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
-              [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-cart'}}]">
-              <div><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
-              <div fxFlexOffset=5>{{'pageTitles.studentPages.cart' | translate }}</div>
-            </a>
-            <mat-divider *ngIf="authenticationService.userType === 'STUDENT'"></mat-divider>
 
             <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-requests'}}]">

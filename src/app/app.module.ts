@@ -41,7 +41,6 @@ import { DashboardScreenComponent } from "./dashboard/dashboard-screen/dashboard
 import { PublisherEditDetailsComponent } from "./authentication/edit-users/publisher-edit-details/publisher-edit-details.component";
 import { UserEditDetailsComponent } from "./authentication/edit-users/user-edit-details/user-edit-details.component";
 import { AdminEditDetailsComponent } from "./authentication/edit-users/admin-edit-details/admin-edit-details.component";
-import { CartComponent } from "./user-components/cart/cart.component";
 import { TestSeriesListingComponent } from "./user-components/test-series-listing/test-series-listing.component";
 import { PerformTestSeriesComponent } from "./user-components/perform-test-series/perform-test-series.component";
 import { AddTestSeriesComponent } from "./publisher-components/add-test-series/add-test-series.component";
@@ -82,7 +81,6 @@ export function createTranslateLoader(http: HttpClient) {
     PublisherEditDetailsComponent,
     UserEditDetailsComponent,
     AdminEditDetailsComponent,
-    CartComponent,
     TestSeriesListingComponent,
     PerformTestSeriesComponent,
     AddTestSeriesComponent,

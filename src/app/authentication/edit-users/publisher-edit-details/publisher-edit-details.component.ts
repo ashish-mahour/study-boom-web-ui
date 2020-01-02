@@ -25,7 +25,7 @@ export class PublisherEditDetailsComponent implements OnInit {
       this.authenticationService.userDetails.username,
       [Validators.required, Validators.pattern("[A-Za-z0-9]+")]
     ],
-    password: [atob(this.authenticationService.userDetails.password), [Validators.required]],
+    password: [null, [Validators.required]],
     mobile: [
       this.authenticationService.userDetails.userIdFromPublisher.mobile,
       [Validators.required, Validators.pattern("[0-9]{10}")]

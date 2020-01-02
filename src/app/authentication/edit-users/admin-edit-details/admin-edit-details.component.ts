@@ -26,7 +26,7 @@ export class AdminEditDetailsComponent implements OnInit {
       [Validators.required, Validators.pattern("[A-Za-z0-9]+")]
     ],
     password: [
-      atob(this.authenticationService.userDetails.password),
+      null,
       [Validators.required]
     ]
   });

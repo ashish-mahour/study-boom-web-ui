@@ -115,7 +115,7 @@
         "title": "Test Series",
         "subTabs": {
           "allTestSeries": "ALL TEST SERIES",
-          "myTestSeries": "MY TEST SERIES"
+          "myTestSeries": "TEST SERIES"
         }
       },
       "cart": "Cart",
@@ -173,7 +173,7 @@
     "uploadedBy": "Uploaded By",
     "ratings": "Ratings",
     "addToCarts": "Add to Carts",
-    "perform": "Perform",
+    "perform": "Perform / Purchase",
     "confirm": "Confirm"
   },
   "manageUsersListingLabels": {
