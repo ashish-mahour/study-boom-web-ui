@@ -29,7 +29,7 @@ export class PerformTestSeriesComponent implements OnInit {
   studentPerformedTest: any = {
     studentId: null,
     testSeriesId: null,
-    attemped: 0,
+    attempted: 0,
     unattemped: 0,
     timeTaken: 0,
     totalQuestions: 0,
@@ -58,7 +58,7 @@ export class PerformTestSeriesComponent implements OnInit {
     this.onResize();
     this.title.setTitle("Performing Test - StudyBoom")
     for (let i = 0; i < this.testData.totalQuestions; i++)
-      this.questions.push({ questionNo: i + 1, attemped: false })
+      this.questions.push({ questionNo: i + 1, attempted: false })
   }
 
   confirmTest() {
@@ -86,10 +86,10 @@ export class PerformTestSeriesComponent implements OnInit {
   }
 
   questionSubmited() {
-    this.questions[this.currentPosition].attemped = true
+    this.questions[this.currentPosition].attempted = true
     
-    if (this.studentPerformedTest.attemped > 0)
-      this.studentPerformedTest.attemped = this.studentPerformedTest.attemped + 1;
+    if (this.studentPerformedTest.attempted > 0)
+      this.studentPerformedTest.attempted = this.studentPerformedTest.attempted + 1;
 
     if (this.studentPerformedTest.unattemped > 0)
       this.studentPerformedTest.unattemped = this.studentPerformedTest.unattemped - 1;
@@ -99,8 +99,8 @@ export class PerformTestSeriesComponent implements OnInit {
     }
   }
 
-  goBack(position: number, attemped: boolean) {
-    if (attemped)
+  goBack(position: number, attempted: boolean) {
+    if (attempted)
       this.currentPosition = position - 1;
   }
 
@@ -118,7 +118,7 @@ export class PerformTestSeriesComponent implements OnInit {
   testPerformed() {
     this.questionSubmited()
     this.studentPerformedTest.timeTaken = Math.floor(this.testData.durationMin - Math.round(this.durationInSeconds / 60))
-    console.log(this.studentPerformedTest)
+    this.userService.testPerformed(this.studentPerformedTest)
   }
 
   answerSelected(answer: string) {

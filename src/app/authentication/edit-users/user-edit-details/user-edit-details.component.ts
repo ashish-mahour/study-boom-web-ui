@@ -71,6 +71,8 @@ export class UserEditDetailsComponent implements OnInit {
   }
 
   autoSelectCategories() {
+    if(this.authenticationService.allCategories.length === 0)
+      this.authenticationService.getAllCategories()
     let choosedCategories = this.authenticationService.userDetails.userIdFromStudent.studentIdToChoosenSubCategories as any[]
     if (choosedCategories.length > 0) {
       for (let category of choosedCategories) {

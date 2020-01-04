@@ -11,6 +11,7 @@ import { TranslateService } from "@ngx-translate/core";
   providedIn: "root"
 })
 export class AuthenticationService {
+
   isAuthenticated: boolean = false;
   userType: string;
   profileCompletion: number = 30;
@@ -211,5 +212,30 @@ export class AuthenticationService {
           });
         }
       );
+  }
+  changePassword(changePasswordForm: any) {
+    this.loadingService.showLoading(true);
+    this.http.post(config.serverUrl + config.api.authentication + "/change/password", changePasswordForm).subscribe(_success => {
+      this.loadingService.showLoading(false);
+      this.dialog.open(AlertBoxComponent, {
+        minWidth: "25%",
+        maxWidth: "60%",
+        data: {
+          type: "success",
+          message: "Password Successfully Changed!!"
+        }
+      });
+    }, error => {
+      
+      this.loadingService.showLoading(false);
+      this.dialog.open(AlertBoxComponent, {
+        minWidth: "25%",
+        maxWidth: "60%",
+        data: {
+          type: "error",
+          message: error.error.message
+        }
+      });
+    })
   }
 }

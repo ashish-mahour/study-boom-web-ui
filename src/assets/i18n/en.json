@@ -42,7 +42,9 @@
     "choice1": "Choice 1",
     "choice2": "Choice 2",
     "choice3": "Choice 3",
-    "choice4": "Choice 4"
+    "choice4": "Choice 4",
+    "oldPassword": "Old Password",
+    "newPassword": "New Password"
   },
   "errors": {
     "allFields": "All fields must be filled!",
@@ -114,8 +116,8 @@
       "testSeries": {
         "title": "Test Series",
         "subTabs": {
-          "allTestSeries": "ALL TEST SERIES",
-          "myTestSeries": "TEST SERIES"
+          "allTestSeries": "NEW TEST SERIES",
+          "myTestSeries": "PERFORMED TEST SERIES"
         }
       },
       "cart": "Cart",

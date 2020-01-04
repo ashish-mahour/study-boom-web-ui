@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,9 +10,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor() { }
+  changePasswordForm: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private dialogRef: MatDialogRef<ForgotPasswordComponent>
+  ) {
+    this.changePasswordForm = formBuilder.group({
+      email: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern("[A-Za-z0-9]+[@][A-Za-z]+[.][A-Za-z]{2,3}")
+        ]
+      ],
+      oldPassword: [
+        null,
+        [Validators.required]
+      ],
+      newPassword: [
+        null,
+        [Validators.required]
+      ]
+    })
+  }
 
   ngOnInit() {
   }
 
+  changePassword() {
+    this.dialogRef.close()
+    this.authenticationService.changePassword(this.changePasswordForm.value)
+  }
 }

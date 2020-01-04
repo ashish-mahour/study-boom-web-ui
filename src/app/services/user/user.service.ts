@@ -41,7 +41,7 @@ export class UserService {
         },
         (error: any) => {
           let message = "Error found in getting Test Series!!"
-          if(error.status === 400)
+          if (error.status === 400)
             message = "Please choose categories for Test Series"
           this.loadingService.showLoading(false);
           const alertBox = this.dialog.open(AlertBoxComponent, {
@@ -54,5 +54,32 @@ export class UserService {
           });
         }
       );
+  }
+
+  testPerformed(studentPerformedTest: any) {
+    this.loadingService.showLoading(true);
+    this.http.post(config.serverUrl +
+      config.api.student +
+      "/test/performed", studentPerformedTest).subscribe(_success => {
+        this.loadingService.showLoading(false);
+        const alertBox = this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "success",
+            message: "Test Performed!!"
+          }
+        });
+      }, _error => {
+        this.loadingService.showLoading(false);
+        const alertBox = this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "error",
+            message: "Error while performing test!!"
+          }
+        });
+      })
   }
 }
