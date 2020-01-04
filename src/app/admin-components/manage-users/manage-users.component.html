@@ -8,10 +8,10 @@
       <div fxFlex=100>
         <div [ngStyle]="{ width: '100%', height: height,
             overflow:'auto' }">
-          <div fxFlex=100 fxLayout="column">
-            <div fxFlex=100 *ngFor="let user of adminService.allUsers[currentPage]" class="manage-users-listing-row">
-              <div fxFlex=100 class="manage-users-listing-row-content" fxLayout="column">
-                <div fxFlex=100 fxLayout fxLayout.xs="column" fxLayout.sm="column">
+          <div fxLayout="column">
+            <div *ngFor="let user of adminService.allUsers[currentPage]" class="manage-users-listing-row">
+              <div class="manage-users-listing-row-content" fxLayout="column">
+                <div fxLayout fxLayout.xs="column" fxLayout.sm="column">
                   <div fxFlex=25 style="margin: 1%;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
                     <span class="manage-users-listing-heading">{{
                                 'manageUsersListingLabels.fullName'

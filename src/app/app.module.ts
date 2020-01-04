@@ -60,6 +60,7 @@ import { PublisherRequestsComponent } from "./publisher-components/publisher-req
 import { UserRequestsComponent } from "./user-components/user-requests/user-requests/user-requests.component";
 import { AddUpdateRequestsComponent } from "./shared/add-update-requests/add-update-requests/add-update-requests.component";
 import { ForgotPasswordComponent } from "./shared/forgot-password/forgot-password/forgot-password.component";
+import { RatingModule } from 'ng-starrating';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -125,7 +126,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatListModule,
     MatDividerModule,
     MatGridListModule,
-    MatStepperModule
+    MatStepperModule,
+    RatingModule
   ],
   providers: [
     Title,

@@ -30,13 +30,13 @@ const routes: Routes = [
     path: "",
     pathMatch: "full",
     redirectTo: "/dashboard",
-    canActivate: [AuthenticationGuard]
+    // canActivate: [AuthenticationGuard]
   },
   {
     path: "",
     pathMatch: "full",
     redirectTo: "/home",
-    canActivate: [AuthenticationGuard]
+    // canActivate: [AuthenticationGuard]
   },
   {
     path: "home",
@@ -64,6 +64,7 @@ const routes: Routes = [
       },
       {
         path: "**",
+        pathMatch:'full',
         redirectTo: "/home"
       }
     ]
@@ -135,6 +136,7 @@ const routes: Routes = [
       },
       {
         path: "**",
+        pathMatch: 'full',
         redirectTo: "/dashboard"
       }
     ]
@@ -150,4 +152,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

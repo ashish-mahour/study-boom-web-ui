@@ -8,9 +8,9 @@
       <div fxFlex=100>
         <div [ngStyle]="{width: '100%', height: height,
               overflow:'auto'}">
-          <div fxFlex=100 fxLayout="column">
-            <div fxFlex=100 *ngFor="let test of authenticationService.allUsers" class="manage-test-listing-row">
-              <div fxFlex=100 class="manage-test-listing-row-content" fxLayout="column">
+          <div fxLayout="column">
+            <div *ngFor="let test of authenticationService.allUsers" class="manage-test-listing-row">
+              <div class="manage-test-listing-row-content" fxLayout="column">
                 <div fxFlex=100>
                   <div fxFlex=25 fxLayout="column">
                     <span class="manage-test-listing-heading">{{

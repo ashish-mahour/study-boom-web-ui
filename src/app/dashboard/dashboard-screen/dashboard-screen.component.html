@@ -25,10 +25,10 @@
             <div fxFlex=100>
                 <div [ngStyle]="{width: '100%', height: height,
                     overflow:'auto'}">
-                    <div fxFlex=100 fxLayout="column" *ngIf="authenticationService.userType ===
+                    <div fxLayout="column" *ngIf="authenticationService.userType ===
                         'PUBLISHER'">
-                        <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
-                            <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
+                        <div *ngFor="let test of testData" class="dashboard-listing-row">
+                            <div class="dashboard-listing-row-content" fxLayout="column">
                                 <div fxFlex=100>
                                     <div fxFlex=25 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testId'

@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-perform-test-series',
@@ -18,52 +20,50 @@ export class PerformTestSeriesComponent implements OnInit {
   questions: any[] = [];
   questionCols: number = 25;
 
-  test: any = {
-    testId: 1,
-    testName: 'AB',
-    testType: 'MCQ',
-    noOfQuestions: 50,
-    duration: 0.3,
-    totalMarks: 100,
-    minMarks: 50,
-    price: 0,
-    uploadedBy: 'Ashish'
-  }
-
-  questionsArray: any[] = [
-    {
-      question: 'What is you name ? ',
-      noOfChoices: 4,
-      choice1: 'Abc',
-      choice2: 'hsh',
-      choice3: 'ashj',
-      choice4: 'asjajs'
-    },
-    {
-      question: 'What is you name ? ',
-      noOfChoices: 0
-    }
-  ]
+  testData: any = {}
 
   currentPosition: number = 0;
 
-  inputAnswers: string[] = [];
+  questionsArray: any[] = [];
+
+  studentPerformedTest: any = {
+    studentId: null,
+    testSeriesId: null,
+    attemped: 0,
+    unattemped: 0,
+    timeTaken: 0,
+    totalQuestions: 0,
+    studentChoosedAnswers: []
+  }
 
   constructor(
     private title: Title,
-    private authenticationService: AuthenticationService
-  ) { }
+    private authenticationService: AuthenticationService,
+    private activatedRoute: ActivatedRoute,
+    private userService: UserService
+  ) {
+
+  }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(response => {
+      this.testData = this.userService.testData[response.pageNo][response.selectedTestIndex]
+      this.questionsArray = this.testData.testSeriesIdToTestSeriesData
+      this.studentPerformedTest.studentId = this.authenticationService.userDetails.userIdFromStudent.id;
+      this.studentPerformedTest.testSeriesId = this.testData.id;
+      this.studentPerformedTest.unattemped = this.testData.totalQuestions
+      this.studentPerformedTest.totalQuestions = this.testData.totalQuestions
+      console.log(this.testData)
+    })
     this.onResize();
     this.title.setTitle("Performing Test - StudyBoom")
-    for (let i = 0; i < this.test.noOfQuestions; i++)
-      this.questions.push({ question: i + 1, attemped: false })
+    for (let i = 0; i < this.testData.totalQuestions; i++)
+      this.questions.push({ questionNo: i + 1, attemped: false })
   }
 
   confirmTest() {
     this.isConfirmed = true;
-    this.durationInSeconds = this.test.duration * 60
+    this.durationInSeconds = this.testData.durationMin * 60
     this.startTimer();
   }
 
@@ -87,14 +87,45 @@ export class PerformTestSeriesComponent implements OnInit {
 
   questionSubmited() {
     this.questions[this.currentPosition].attemped = true
+    
+    if (this.studentPerformedTest.attemped > 0)
+      this.studentPerformedTest.attemped = this.studentPerformedTest.attemped + 1;
+
+    if (this.studentPerformedTest.unattemped > 0)
+      this.studentPerformedTest.unattemped = this.studentPerformedTest.unattemped - 1;
+
     if (this.questionsArray[this.currentPosition + 1]) {
       this.currentPosition++;
     }
-
   }
+
   goBack(position: number, attemped: boolean) {
     if (attemped)
       this.currentPosition = position - 1;
   }
 
+  getRatings(testSeriesIdToRatings: any[]): number {
+    let totalRatings = 0;
+    if (testSeriesIdToRatings.length === 0)
+      return totalRatings;
+
+    for (let testRating of testSeriesIdToRatings)
+      totalRatings += testRating.overallRatings;
+
+    return (totalRatings / testSeriesIdToRatings.length);
+  }
+
+  testPerformed() {
+    this.questionSubmited()
+    this.studentPerformedTest.timeTaken = Math.floor(this.testData.durationMin - Math.round(this.durationInSeconds / 60))
+    console.log(this.studentPerformedTest)
+  }
+
+  answerSelected(answer: string) {
+    let studentChoosedAnswers = this.studentPerformedTest.studentChoosedAnswers as any[];
+    if (!studentChoosedAnswers[this.currentPosition])
+      studentChoosedAnswers.push({ questionId: this.questionsArray[this.currentPosition].id, choosedAnswer: answer })
+    else
+      studentChoosedAnswers[this.currentPosition].choosedAnswer = answer;
+  }
 }

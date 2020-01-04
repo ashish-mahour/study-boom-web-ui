@@ -24,19 +24,21 @@ export class AuthenticationService {
     private dialog: MatDialog,
     private router: Router,
     private translate: TranslateService
-  ) {}
+  ) {
+
+  }
 
   loginUser(loginDetails: any): void {
     this.loadingService.showLoading(true);
     this.http
       .get(
         config.serverUrl +
-          config.api.authentication +
-          "/perform/login" +
-          "?username=" +
-          loginDetails.username +
-          "&password=" +
-          btoa(loginDetails.password)
+        config.api.authentication +
+        "/perform/login" +
+        "?username=" +
+        loginDetails.username +
+        "&password=" +
+        btoa(loginDetails.password)
       )
       .subscribe(
         (data: any) => {
@@ -58,6 +60,9 @@ export class AuthenticationService {
             this.isAuthenticated ? "true" : "false"
           );
           localStorage.setItem("userType", this.userType);
+
+          if (this.allCategories.length === 0)
+            this.getAllCategories()
 
           this.router.navigateByUrl("/dashboard");
           this.loadingService.showLoading(false);
@@ -102,15 +107,8 @@ export class AuthenticationService {
         } else if (command === config.modifiedCommands.updateStudent) {
           message = "Student Details Updated!!";
         } else if (command === config.modifiedCommands.updatePublisher) {
-          this.userDetails.fullName = this.mofifiedUserDetails.fullName;
-          this.userDetails.username = this.mofifiedUserDetails.username;
-          this.userDetails.email = this.mofifiedUserDetails.email;
-          this.userDetails.mobileNo = this.mofifiedUserDetails.mobileNo;
           message = "Publisher Details Updated!!";
         } else if (command === config.modifiedCommands.updateAdmin) {
-          this.userDetails.fullName = this.mofifiedUserDetails.fullName;
-          this.userDetails.username = this.mofifiedUserDetails.username;
-          this.userDetails.email = this.mofifiedUserDetails.email;
           message = "Admin Details Updated!!";
         } else if (command === config.modifiedCommands.addPublisherDetail) {
           message = "Publisher Details Added!!";
@@ -119,15 +117,9 @@ export class AuthenticationService {
         }
 
         /**
-         * SAVE THEM IN LOCAL STORAGE
+         * Get User Again by ID
          */
-
-        localStorage.setItem("userDetails", JSON.stringify(this.userDetails));
-        localStorage.setItem(
-          "isAuthenticated",
-          this.isAuthenticated ? "true" : "false"
-        );
-        localStorage.setItem("userType", this.userType);
+        this.getUserById(this.userDetails.id)
 
         const alertBox = this.dialog.open(AlertBoxComponent, {
           minWidth: "25%",
@@ -171,6 +163,50 @@ export class AuthenticationService {
             data: {
               type: "error",
               message: "Error found in getting categories!!"
+            }
+          });
+        }
+      );
+  }
+
+  getUserById(id: number) {
+    this.loadingService.showLoading(true);
+    this.http
+      .get(
+        config.serverUrl +
+        config.api.authentication +
+        "/get/user/" + id
+      )
+      .subscribe(
+        (data: any) => {
+          /**
+           * SAVE DATA
+           */
+          this.userDetails = data;
+          this.userType = data.type;
+          this.profileCompletion = 100;
+          this.isAuthenticated = true;
+
+          /**
+           * SAVE THEM IN LOCAL STORAGE
+           */
+
+          localStorage.setItem("userDetails", JSON.stringify(this.userDetails));
+          localStorage.setItem(
+            "isAuthenticated",
+            this.isAuthenticated ? "true" : "false"
+          );
+          localStorage.setItem("userType", this.userType);
+          this.loadingService.showLoading(false);
+        },
+        (error: any) => {
+          this.loadingService.showLoading(false);
+          const alertBox = this.dialog.open(AlertBoxComponent, {
+            minWidth: "25%",
+            maxWidth: "60%",
+            data: {
+              type: "error",
+              message: "Error getting user details!!"
             }
           });
         }

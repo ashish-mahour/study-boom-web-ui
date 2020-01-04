@@ -8,6 +8,7 @@ import { AuthenticationService } from "../../../services/authentication/authenti
 import * as config from '../../../shared/config.json';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: "app-user-edit-details",
@@ -40,7 +41,7 @@ export class UserEditDetailsComponent implements OnInit {
     ],
     password: [null, [Validators.required]],
     mobile: [
-      this.authenticationService.userDetails.userIdFromStudent.mobileNo,
+      this.authenticationService.userDetails.userIdFromStudent.mobile,
       [Validators.required, Validators.pattern("[0-9]{10}")]
     ],
     choosedCategory: [null],
@@ -57,15 +58,32 @@ export class UserEditDetailsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
-    private authenticationService: AuthenticationService, 
+    private authenticationService: AuthenticationService,
     private router: Router,
-    private title: Title
-  ) {}
+    private title: Title,
+    private translateService: TranslateService
+  ) {
+  }
 
   ngOnInit() {
     this.title.setTitle("Choose Categories - Student");
-    if (this.authenticationService.allCategories.length === 0)
-      this.authenticationService.getAllCategories();
+    this.autoSelectCategories()
+  }
+
+  autoSelectCategories() {
+    let choosedCategories = this.authenticationService.userDetails.userIdFromStudent.studentIdToChoosenSubCategories as any[]
+    if (choosedCategories.length > 0) {
+      for (let category of choosedCategories) {
+        let subCategory = category.subjectSubCategoryIdToChoosenSubCategories;
+        this.authenticationService.allCategories.find(x => {
+          let subCategories = x.subjectCategoryIdToSubCategory as any[];
+          if (subCategories.find(y => y.id === subCategory.id)) {
+            this.categorySelected(x.id)
+            this.subCategorySelected(subCategory.id)
+          }
+        })
+      }
+    }
   }
 
   removeCategory(selectedCategory: any) {
@@ -189,23 +207,22 @@ export class UserEditDetailsComponent implements OnInit {
     });
   }
   editProfile() {
-    this.authenticationService.mofifiedUserDetails.fullName = this.userEditForm.controls[
-      "fullname"
-    ].value;
-    this.authenticationService.mofifiedUserDetails.email = this.userEditForm.controls[
-      "email"
-    ].value;
-    this.authenticationService.mofifiedUserDetails.username = this.userEditForm.controls[
-      "username"
-    ].value;
-    this.authenticationService.mofifiedUserDetails.password = btoa(this.userEditForm.controls[
-      "password"
-    ].value);
-    this.authenticationService.mofifiedUserDetails.mobileNo = this.userEditForm.controls[
-      "mobile"
-    ].value;
-    this.authenticationService.mofifiedUserDetails.type = this.authenticationService.userDetails.type;
+    let userAllDetails: any = this.userEditForm.value;
+    delete userAllDetails.choosedCategory;
+    delete userAllDetails.choosedSubCategory;
+    this.authenticationService.mofifiedUserDetails = userAllDetails;
+    this.authenticationService.mofifiedUserDetails.mobileNo = userAllDetails.mobile;
+    this.authenticationService.mofifiedUserDetails.password = btoa(userAllDetails.password)
+    this.translateService
+      .get("userTypes.student")
+      .subscribe(
+        (translation: string) =>
+          (this.authenticationService.mofifiedUserDetails.type = translation)
+      );
     this.authenticationService.mofifiedUserDetails.id = this.authenticationService.userDetails.id;
-    this.authenticationService.modifyUsers(config.modifiedCommands.updateStudent);
+    this.authenticationService.modifyUsers(
+      config.modifiedCommands.updateStudent
+    );
+    this.router.navigateByUrl("/dashboard");
   }
 }

@@ -14,48 +14,46 @@
             <div fxFlex=100>
               <div fxFlex=25 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.testId' | translate }}</span> <span
-                  class="test-perform-content">{{test.testId}}</span>
+                  class="test-perform-content">{{testData.id}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.testName' | translate }}</span><span
-                  class="test-perform-content">{{test.testName}}</span>
+                  class="test-perform-content">{{testData.name}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.testType' | translate }}</span><span
-                  class="test-perform-content">{{test.testType}}</span>
+                  class="test-perform-content">{{testData.subjectSubCategoryIdToTestSeries.name}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.noOfQuestions' | translate }}</span><span
-                  class="test-perform-content">{{test.noOfQuestions}}</span>
+                  class="test-perform-content">{{testData.totalQuestions}}</span>
               </div>
             </div>
             <div fxFlex=100>
               <div fxFlex=25 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.duration' | translate }}</span> <span
-                  class="test-perform-content">{{test.duration}}
-                  Minutes</span>
+                  class="test-perform-content">{{testData.durationMin}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.totalMarks' | translate }}</span><span
-                  class="test-perform-content">{{test.totalMarks}}</span>
+                  class="test-perform-content">{{testData.totalMarks}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.minMarks' | translate }}</span><span
-                  class="test-perform-content">{{test.minMarks}}</span>
+                  class="test-perform-content">{{testData.passingMarks}}</span>
               </div>
               <div fxFlex=25 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.price' | translate }}</span><span
-                  class="test-perform-content">{{test.price | currency:'INR'}}</span>
+                  class="test-perform-content">{{testData.price | currency:'INR'}}</span>
               </div>
             </div>
             <div fxFlex=100 fxLayout="row wrap">
               <div fxFlex=25 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
-                <span class="test-perform-heading">{{'testSeriesListingLabels.uploadedBy' | translate }}</span><span
-                  class="test-perform-content">{{test.uploadedBy}}</span>
-              </div>
-              <div fxFlex=50 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.ratings' | translate }}</span><span
-                  class="test-perform-content">{{test.uploadedBy}}</span>
+                  class="test-perform-content">
+                  <star-rating [value]="getRatings(testData.testSeriesIdToRatings)" totalstars="5" checkedcolor="green"
+                    uncheckedcolor="grey" size="14px" readonly="true"></star-rating>
+                </span>
               </div>
             </div>
             <div fxFlex=100 fxLayout="row wrap">
@@ -80,25 +78,22 @@
             <mat-grid-tile *ngFor="let question of questions" fxFlex=20>
               <button mat-fab
                 [ngClass]="{'unattempted-button': !question.attemped, 'attempted-button': question.attemped}"
-                (click)="goBack(question.question, question.attemped)">
-                {{question.question}}
+                (click)="goBack(question.questionNo, question.attemped)">
+                {{question.questionNo}}
               </button>
             </mat-grid-tile>
           </mat-grid-list>
         </div>
         <div fxFlex=100 class="test-perform-row test-perform-row-content" fxLayout="column">
           <div class="test-perform-question-heading">
-            {{currentPosition + 1}}
-            {{questionsArray[currentPosition] && questionsArray[currentPosition].question ? '.': ''}}
-            {{questionsArray[currentPosition] && questionsArray[currentPosition].question ? questionsArray[currentPosition].question: ''}}
+            {{currentPosition + 1}}.
+            {{questionsArray[currentPosition].questionText}}
           </div>
           <div>
-            <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column"
-              [(ngModel)]="inputAnswers[currentPosition]" [value]="inputAnswers[currentPosition]"
-              *ngIf="questionsArray[currentPosition] && questionsArray[currentPosition].noOfChoices === 4" fxFlex=100>
+            <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column" style="color: black;"
+              (change)="answerSelected($event.value)" fxFlex=100>
               <div>
-                <mat-button-toggle [value]="questionsArray[currentPosition].choice1" class="user-type-option" fxFlex=50
-                  selected>
+                <mat-button-toggle [value]="questionsArray[currentPosition].choice1" class="user-type-option" fxFlex=50>
                   {{questionsArray[currentPosition].choice1}}
                 </mat-button-toggle>
                 <mat-button-toggle [value]="questionsArray[currentPosition].choice2" class="user-type-option" fxFlex=50>
@@ -110,7 +105,7 @@
                   {{questionsArray[currentPosition].choice3}}
                 </mat-button-toggle>
                 <mat-button-toggle [value]="questionsArray[currentPosition].choice3" class="user-type-option" fxFlex=50>
-                  {{questionsArray[currentPosition].choice1}}
+                  {{questionsArray[currentPosition].choice4}}
                 </mat-button-toggle>
               </div>
             </mat-button-toggle-group>
@@ -120,7 +115,10 @@
               fxFlex.xs=80>{{'testPerformLabels.skipTheQuestion' | translate }}</button>
             <button mat-raised-button class="submit-button" fxFlex=25 fxFlex.xs=80 fxFlexOffset=3 fxFlexOffset.sm=0
               fxFlexOffset.xs=0 (click)="questionSubmited()"
-              [disabled]="questionsArray[currentPosition] && (!inputAnswers[currentPosition] || inputAnswers[currentPosition] === '')">{{'testPerformLabels.submit' | translate }}</button>
+              [disabled]="!questionsArray[currentPosition + 1] || (!studentPerformedTest.studentChoosedAnswers[currentPosition] || !studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer || studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer === '')">{{'testPerformLabels.next' | translate }}</button>
+            <button mat-raised-button class="submit-button" fxFlex=25 fxFlex.xs=80 fxFlexOffset=3 fxFlexOffset.sm=0
+              fxFlexOffset.xs=0 (click)="testPerformed()"
+              [disabled]="questionsArray[currentPosition + 1] || (!studentPerformedTest.studentChoosedAnswers[currentPosition] || !studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer || studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer === '')">{{'testPerformLabels.submit' | translate }}</button>
           </div>
         </div>
       </div>

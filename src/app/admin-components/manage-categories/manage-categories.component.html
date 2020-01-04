@@ -7,8 +7,8 @@
     <mat-card-content fxLayout="column" fxLayout="row wrap">
       <div fxFlex=100>
         <div [ngStyle]="{width: '100%', height: height, 'overflow': 'auto'}">
-          <div fxFlex=100 fxLayout="column">
-            <div fxFlex=100 *ngFor="let category of adminService.allCategories[currentPage]"
+          <div fxLayout="column">
+            <div *ngFor="let category of adminService.allCategories[currentPage]"
               class="manage-categories-listing-row">
               <div class="manage-categories-listing-row-content" fxLayout="column">
                 <div fxLayout="column">

@@ -174,7 +174,8 @@
     "ratings": "Ratings",
     "addToCarts": "Add to Carts",
     "perform": "Perform / Purchase",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "performed": "Performed"
   },
   "manageUsersListingLabels": {
     "fullName": "Full Name",
@@ -194,13 +195,25 @@
   },
   "testPerformLabels": {
     "skipTheQuestion": "Skip the Question",
-    "submit": "Submit"
+    "submit": "Submit",
+    "next": "Next"
   },
   "cartLabels": {
     "buy": "Buy"
   },
   "addTestSeriesLabels": {
     "totalNoOfQuestions": "Total No. of Questions :",
-    "maxDurationData": [5, 10, 15, 20, 30, 45, 60, 75, 90, 120]
+    "maxDurationData": [
+      5,
+      10,
+      15,
+      20,
+      30,
+      45,
+      60,
+      75,
+      90,
+      120
+    ]
   }
 }
