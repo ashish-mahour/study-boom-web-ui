@@ -37,38 +37,25 @@ export class AddTestSeriesComponent implements OnInit {
 
   testSeriesQuestion(): FormGroup {
     return this.formBuilder.group({
-      questionText: [
-        null,
-        [Validators.required]
-      ],
-      answerText: [
-        null,
-        [Validators.required]
-      ],
-      choice1: [
-        null,
-        [Validators.required]
-      ],
-      choice2: [
-        null,
-        [Validators.required]
-      ],
-      choice3: [
-        null,
-        [Validators.required]
-      ],
-      choice4: [
-        null,
-        [Validators.required]
-      ]
+      questionText: [null, [Validators.required]],
+      answerText: [null, [Validators.required]],
+      choice1: [null, [Validators.required]],
+      choice2: [null, [Validators.required]],
+      choice3: [null, [Validators.required]],
+      choice4: [null, [Validators.required]]
     });
   }
+
 
   constructor(
     public publisherService: PublisherService,
     public authenticationService: AuthenticationService,
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
+
+  
+  testSeriesQuestions = (): FormArray => this.testSeriesDetailsForm.controls["testSeriesQuestions"] as FormArray;
+  testSeriesQuestionsGroup = (i: number): FormGroup => this.testSeriesQuestions().controls[i] as FormGroup
 
   ngOnInit() {
     if (this.publisherService.allCategories.length === 0)

@@ -14,7 +14,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService,
+    public authenticationService: AuthenticationService,
     private dialogRef: MatDialogRef<ForgotPasswordComponent>
   ) {
     this.changePasswordForm = formBuilder.group({

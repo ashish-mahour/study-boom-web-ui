@@ -16,6 +16,7 @@ import { AuthenticationService } from "src/app/services/authentication/authentic
 import { TranslateService } from "@ngx-translate/core";
 import * as config from "../../shared/config.json";
 import { Title } from "@angular/platform-browser";
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 @Component({
   selector: "app-user-more-details",
@@ -29,11 +30,12 @@ export class UserMoreDetailsComponent implements OnInit {
   selectedCategories: any[] = [];
   selectedSubCategoriesObjects: any[] = [];
   selectedCategoriesObjects: any[] = [];
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  @ViewChild("categoryList", { static: false })
+  @ViewChild("categoryList")
   categoryList: MatAutocomplete;
 
-  @ViewChild("subCategoryList", { static: false })
+  @ViewChild("subCategoryList")
   subCategoryList: MatAutocomplete;
 
   userMoreDetails: FormGroup = this.formBuilder.group({

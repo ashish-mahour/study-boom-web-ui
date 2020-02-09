@@ -41,7 +41,7 @@ export class LoginRegisterComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private translate: TranslateService,
-    private authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService
   ) {}
 
   ngOnInit() {}

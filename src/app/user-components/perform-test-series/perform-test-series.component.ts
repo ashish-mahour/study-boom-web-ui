@@ -38,7 +38,7 @@ export class PerformTestSeriesComponent implements OnInit {
 
   constructor(
     private title: Title,
-    private authenticationService: AuthenticationService,
+    public authenticationService: AuthenticationService,
     private activatedRoute: ActivatedRoute,
     private userService: UserService
   ) {

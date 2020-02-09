@@ -30,7 +30,7 @@ export class PublisherMoreDetailsComponent implements OnInit {
     private loadingService: LoadingAnimServiceService,
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
-    private authenticationService: AuthenticationService,
+    public authenticationService: AuthenticationService,
     private tranlateService: TranslateService,
     private activateRoute: ActivatedRoute,
     private router: Router

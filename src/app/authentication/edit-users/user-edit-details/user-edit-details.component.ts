@@ -5,10 +5,11 @@ import { MatChipInputEvent } from "@angular/material/chips";
 import { AlertBoxComponent } from "../../../shared/alert-box/alert-box.component";
 import { MatDialog } from "@angular/material/dialog";
 import { AuthenticationService } from "../../../services/authentication/authentication.service";
-import * as config from '../../../shared/config.json';
-import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
+import * as config from "../../../shared/config.json";
+import { Router } from "@angular/router";
+import { Title } from "@angular/platform-browser";
+import { TranslateService } from "@ngx-translate/core";
+import { COMMA, ENTER } from "@angular/cdk/keycodes";
 
 @Component({
   selector: "app-user-edit-details",
@@ -16,7 +17,6 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ["./user-edit-details.component.scss"]
 })
 export class UserEditDetailsComponent implements OnInit {
-
   filteredSubCategories: any[] = [];
   selectedSubCategories: any[] = [];
   selectedCategories: any[] = [];
@@ -50,40 +50,43 @@ export class UserEditDetailsComponent implements OnInit {
     choosedSubCategories: [this.selectedSubCategories, Validators.minLength(1)]
   });
 
-  @ViewChild("categoryList", { static: false })
+  @ViewChild("categoryList")
   categoryList: MatAutocomplete;
 
-  @ViewChild("subCategoryList", { static: false })
+  @ViewChild("subCategoryList")
   subCategoryList: MatAutocomplete;
+
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
   constructor(
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
-    private authenticationService: AuthenticationService,
+    public authenticationService: AuthenticationService,
     private router: Router,
     private title: Title,
     private translateService: TranslateService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.title.setTitle("Choose Categories - Student");
-    this.autoSelectCategories()
+    this.autoSelectCategories();
   }
 
   autoSelectCategories() {
-    if(this.authenticationService.allCategories.length === 0)
-      this.authenticationService.getAllCategories()
-    let choosedCategories = this.authenticationService.userDetails.userIdFromStudent.studentIdToChoosenSubCategories as any[]
+    if (this.authenticationService.allCategories.length === 0)
+      this.authenticationService.getAllCategories();
+    let choosedCategories = this.authenticationService.userDetails
+      .userIdFromStudent.studentIdToChoosenSubCategories as any[];
     if (choosedCategories.length > 0) {
       for (let category of choosedCategories) {
         let subCategory = category.subjectSubCategoryIdToChoosenSubCategories;
         this.authenticationService.allCategories.find(x => {
           let subCategories = x.subjectCategoryIdToSubCategory as any[];
           if (subCategories.find(y => y.id === subCategory.id)) {
-            this.categorySelected(x.id)
-            this.subCategorySelected(subCategory.id)
+            this.categorySelected(x.id);
+            this.subCategorySelected(subCategory.id);
           }
-        })
+        });
       }
     }
   }
@@ -188,7 +191,6 @@ export class UserEditDetailsComponent implements OnInit {
     this.router.navigateByUrl("/home");
   }
 
-
   availableCategories() {
     this.dialog.open(AlertBoxComponent, {
       minWidth: "25%",
@@ -213,8 +215,11 @@ export class UserEditDetailsComponent implements OnInit {
     delete userAllDetails.choosedCategory;
     delete userAllDetails.choosedSubCategory;
     this.authenticationService.mofifiedUserDetails = userAllDetails;
-    this.authenticationService.mofifiedUserDetails.mobileNo = userAllDetails.mobile;
-    this.authenticationService.mofifiedUserDetails.password = btoa(userAllDetails.password)
+    this.authenticationService.mofifiedUserDetails.mobileNo =
+      userAllDetails.mobile;
+    this.authenticationService.mofifiedUserDetails.password = btoa(
+      userAllDetails.password
+    );
     this.translateService
       .get("userTypes.student")
       .subscribe(

@@ -20,7 +20,7 @@ export class DashboardMainComponent implements OnInit {
     private titleService: Title,
     private router: Router,
     private translate: TranslateService,
-    private authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService
   ) {}
 
   ngOnInit() {

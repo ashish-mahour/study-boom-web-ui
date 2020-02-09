@@ -36,8 +36,8 @@ export class AddUpdateCategoriesComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) private matDialogData: any,
-    private adminService: AdminService,
+    @Inject(MAT_DIALOG_DATA) public matDialogData: any,
+    public adminService: AdminService,
     private dialogRef: MatDialogRef<AddUpdateCategoriesComponent>
   ) {}
 

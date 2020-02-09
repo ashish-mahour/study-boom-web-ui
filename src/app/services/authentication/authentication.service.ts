@@ -18,6 +18,7 @@ export class AuthenticationService {
   userDetails: any = {};
   mofifiedUserDetails: any = {};
   allCategories: any[] = [];
+  allUsers: any[] = []
 
   constructor(
     private loadingService: LoadingAnimServiceService,

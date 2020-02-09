@@ -25,7 +25,7 @@ export class AppComponent {
   constructor(
     private router: Router,
     private translate: TranslateService,
-    private loadingService: LoadingAnimServiceService,
+    public loadingService: LoadingAnimServiceService,
     public authenticationService: AuthenticationService,
     private zone: NgZone
   ) {

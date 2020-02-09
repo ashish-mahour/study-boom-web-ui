@@ -20,9 +20,9 @@ export class DashboardScreenComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService,
+    public authenticationService: AuthenticationService,
     private translate: TranslateService,
-    private adminService: AdminService
+    public adminService: AdminService
   ) {}
 
   ngOnInit() {

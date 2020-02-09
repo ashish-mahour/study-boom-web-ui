@@ -15,8 +15,8 @@ export class ManageUsersComponent implements OnInit {
   limit: number = 20;
 
   constructor(
-    private authenticationService: AuthenticationService,
-    private adminService: AdminService
+    public authenticationService: AuthenticationService,
+    public adminService: AdminService
   ) {}
 
   ngOnInit() {

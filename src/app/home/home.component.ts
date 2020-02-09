@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    private loadingService: LoadingAnimServiceService) {
+    public loadingService: LoadingAnimServiceService) {
   }
 
 

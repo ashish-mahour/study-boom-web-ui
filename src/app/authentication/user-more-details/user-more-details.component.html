@@ -33,7 +33,7 @@
             <font color="red">*</font>
           </mat-label>
           <input style="padding: 1%; width: 100%;" [matAutocomplete]="categoryAutoComplete" type="text" [matChipInputFor]="categoryList"
-            [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
             formControlName="choosedCategory" (matChipInputTokenEnd)="clearCategory($event)">
           <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span aria-hidden="true"
               matTooltip="Available categories" [matTooltipPosition]="'below'"
@@ -61,7 +61,7 @@
             <font color="red">*</font>
           </mat-label>
           <input style="padding: 1%; width: 100%;" [matAutocomplete]="subCategoryAutoComplete" type="text" [matChipInputFor]="subCategoryList"
-            [matChipInputSeparatorKeyCodes]="[ENTER, COMMA]" [matChipInputAddOnBlur]="true"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
             formControlName="choosedSubCategory" (matChipInputTokenEnd)="clearSubCategory($event)">
           <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span aria-hidden="true"
               matTooltip="Available sub-categories" [matTooltipPosition]="'below'"

@@ -133,22 +133,20 @@
             </ng-template>
             <div formArrayName="testSeriesQuestions">
               <div
-                *ngFor="let testSeriesQuestion of testSeriesDetailsForm.controls['testSeriesQuestions'].controls; let i = index">
+                *ngFor="let testSeriesQ of testSeriesQuestions().controls; let i = index">
                 <div *ngIf="i === questionPosition">
 
                   <div [formGroupName]="questionPosition" fxLayout="column">
                     <div fxLayout="row wrap">
-                      <mat-form-field appearance="outline" class="form-field-outline" fxFlex=95 fxFlex.sm=100
-                        fxFlex.xs=100>
+                      <mat-form-field appearance="outline" class="form-field-outline" fxFlex="95" fxFlex.sm="100"
+                        fxFlex.xs="100">
                         <mat-label class="color-for-text">{{'labels.questionText' | translate }}
                           {{ questionPosition + 1 }}
                           <font color="red">*</font>
                         </mat-label>
                         <textarea matInput cdkTextareaAutosize
                           class="color-for-text text-area-height-auto" formControlName="questionText"></textarea>
-                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
-                      'testSeriesQuestions'].controls[questionPosition].controls['questionText'].touched && this.testSeriesDetailsForm.controls[
-                      'testSeriesQuestions'].controls[questionPosition].controls['questionText'].hasError('required')">
+                        <mat-error class="error-color" *ngIf="testSeriesQuestionsGroup(questionPosition).controls['questionText'].touched && testSeriesQuestionsGroup(questionPosition).controls['questionText'].hasError('required')">
                           {{'errors.questionRequired' | translate}}
                         </mat-error>
                       </mat-form-field>
@@ -162,19 +160,11 @@
                         <textarea matInput cdkTextareaAutosize
                           class="color-for-text text-area-height-auto" formControlName="choice1"></textarea>
                         <mat-icon matSuffix
-                          [ngStyle]="{'color': this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== null && this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== '' && this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value === this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['choice1'].value ? 'rgb(26, 197, 132)':'black' }" (click)="this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].setValue(this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['choice1'].value)"
+                          [ngStyle]="{'color': testSeriesQuestionsGroup(questionPosition).controls['answerText'].value !== null && testSeriesQuestionsGroup(questionPosition).controls['answerText'].value !== '' && testSeriesQuestionsGroup(questionPosition).controls['answerText'].value === testSeriesQuestionsGroup(questionPosition).controls['choice1'].value ? 'rgb(26, 197, 132)':'black' }" (click)="testSeriesQuestionsGroup(questionPosition).controls['answerText'].setValue(testSeriesQuestionsGroup(questionPosition).controls['choice1'].value)"
                           style="cursor: pointer; font-size: 2.2em;">
                           check_circle_outline</mat-icon>
                         <mat-error class="error-color"
-                          *ngIf="this.testSeriesDetailsForm.controls[
-                              'testSeriesQuestions'].controls[questionPosition].controls['choice1'].touched && this.testSeriesDetailsForm.controls[
-                              'testSeriesQuestions'].controls[questionPosition].controls['choice1'].hasError('required')">
+                          *ngIf="testSeriesQuestionsGroup(questionPosition).controls['choice1'].touched && testSeriesQuestionsGroup(questionPosition).controls['choice1'].hasError('required')">
                           {{'errors.choiceRequired' | translate}}
                         </mat-error>
                       </mat-form-field>
@@ -187,18 +177,10 @@
                         <textarea matInput cdkTextareaAutosize
                           class="color-for-text text-area-height-auto" formControlName="choice2"></textarea>
                         <mat-icon matSuffix
-                          [ngStyle]="{'color': this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== null && this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== '' && this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value === this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['choice2'].value ? 'rgb(26, 197, 132)':'black' }" (click)="this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].setValue(this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['choice2'].value)"
+                          [ngStyle]="{'color': testSeriesQuestionsGroup(questionPosition).controls['answerText'].value !== null && testSeriesQuestionsGroup(questionPosition).controls['answerText'].value !== '' && testSeriesQuestionsGroup(questionPosition).controls['answerText'].value === testSeriesQuestionsGroup(questionPosition).controls['choice2'].value ? 'rgb(26, 197, 132)':'black' }" (click)="testSeriesQuestionsGroup(questionPosition).controls['answerText'].setValue(testSeriesQuestionsGroup(questionPosition).controls['choice2'].value)"
                           style="cursor: pointer; font-size: 2.2em;">
                           check_circle_outline</mat-icon>
-                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
-                          'testSeriesQuestions'].controls[questionPosition].controls['choice2'].touched && this.testSeriesDetailsForm.controls[
-                          'testSeriesQuestions'].controls[questionPosition].controls['choice2'].hasError('required')">
+                        <mat-error class="error-color" *ngIf="testSeriesQuestionsGroup(questionPosition).controls['choice2'].touched && testSeriesQuestionsGroup(questionPosition).controls['choice2'].hasError('required')">
                           {{'errors.choiceRequired' | translate}}
                         </mat-error>
                       </mat-form-field>
@@ -212,24 +194,13 @@
                         <textarea matInput cdkTextareaAutosize
                           class="color-for-text text-area-height-auto" formControlName="choice3"></textarea>
                         <mat-icon matSuffix
-                          [ngStyle]="{'color': this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== null && this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== '' && this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value === this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['choice3'].value ? 'rgb(26, 197, 132)':'black' }" (click)="this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].setValue(this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['choice3'].value)"
+                          [ngStyle]="{'color': testSeriesQuestionsGroup(questionPosition).controls['answerText'].value !== null && testSeriesQuestionsGroup(questionPosition).controls['answerText'].value !== '' && testSeriesQuestionsGroup(questionPosition).controls['answerText'].value === testSeriesQuestionsGroup(questionPosition).controls['choice3'].value ? 'rgb(26, 197, 132)':'black' }" (click)="testSeriesQuestionsGroup(questionPosition).controls['answerText'].setValue(testSeriesQuestionsGroup(questionPosition).controls['choice3'].value)"
                           style="cursor: pointer; font-size: 2.2em;">
                           check_circle_outline</mat-icon>
-                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
-                          'testSeriesQuestions'].controls[questionPosition].controls['choice3'].touched && this.testSeriesDetailsForm.controls[
-                          'testSeriesQuestions'].controls[questionPosition].controls['choice3'].hasError('required')">
+                        <mat-error class="error-color" *ngIf="testSeriesQuestionsGroup(questionPosition).controls['choice3'].touched && testSeriesQuestionsGroup(questionPosition).controls['choice3'].hasError('required')">
                           {{'errors.choiceRequired' | translate}}
                         </mat-error>
-                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
-                          'testSeriesQuestions'].controls[questionPosition].controls['choice3'].touched && !this.testSeriesDetailsForm.controls[
-                          'testSeriesQuestions'].controls[questionPosition].controls['choice3'].hasError('required') && this.testSeriesDetailsForm.controls[
-                          'testSeriesQuestions'].controls[questionPosition].controls['choice3'].hasError('pattern')">
+                        <mat-error class="error-color" *ngIf="testSeriesQuestionsGroup(questionPosition).controls['choice3'].touched && !testSeriesQuestionsGroup(questionPosition).controls['choice3'].hasError('required') && testSeriesQuestionsGroup(questionPosition).controls['choice3'].hasError('pattern')">
                           {{'errors.invalidChoice' | translate}}
                         </mat-error>
                       </mat-form-field>
@@ -241,19 +212,11 @@
                         <textarea matInput cdkTextareaAutosize 
                           class="color-for-text text-area-height-auto" formControlName="choice4"></textarea>
                         <mat-icon matSuffix
-                          [ngStyle]="{'color': this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== null && this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value !== '' && this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].value === this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['choice4'].value ? 'rgb(26, 197, 132)':'black' }" (click)="this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['answerText'].setValue(this.testSeriesDetailsForm.controls[
-                    'testSeriesQuestions'].controls[questionPosition].controls['choice4'].value)"
+                          [ngStyle]="{'color': testSeriesQuestionsGroup(questionPosition).controls['answerText'].value !== null && testSeriesQuestionsGroup(questionPosition).controls['answerText'].value !== '' && testSeriesQuestionsGroup(questionPosition).controls['answerText'].value === testSeriesQuestionsGroup(questionPosition).controls['choice4'].value ? 'rgb(26, 197, 132)':'black' }" (click)="testSeriesQuestionsGroup(questionPosition).controls['answerText'].setValue(testSeriesQuestionsGroup(questionPosition).controls['choice4'].value)"
                           style="cursor: pointer; font-size: 2.2em;">
                           check_circle_outline</mat-icon>
                         <mat-error class="error-color"
-                          *ngIf="this.testSeriesDetailsForm.controls[
-                            'testSeriesQuestions'].controls[questionPosition].controls['choice4'].touched && this.testSeriesDetailsForm.controls[
-                            'testSeriesQuestions'].controls[questionPosition].controls['choice4'].hasError('required')">
+                          *ngIf="testSeriesQuestionsGroup(questionPosition).controls['choice4'].touched && testSeriesQuestionsGroup(questionPosition).controls['choice4'].hasError('required')">
                           {{'errors.choiceRequired' | translate}}
                         </mat-error>
                       </mat-form-field>
@@ -265,28 +228,23 @@
                         </mat-label>
                         <textarea matInput cdkTextareaAutosize 
                           style="color: black; " class="text-area-height-auto" formControlName="answerText" readonly></textarea>
-                        <mat-error class="error-color" *ngIf="this.testSeriesDetailsForm.controls[
-                        'testSeriesQuestions'].controls[questionPosition].controls['answerText'].touched && this.testSeriesDetailsForm.controls[
-                        'testSeriesQuestions'].controls[questionPosition].controls['answerText'].hasError('required')">
+                        <mat-error class="error-color" *ngIf="testSeriesQuestionsGroup(questionPosition).controls['answerText'].touched && testSeriesQuestionsGroup(questionPosition).controls['answerText'].hasError('required')">
                           {{'errors.answerRequired' | translate}}
                         </mat-error>
                       </div>
                     </div>
                     <div fxLayout="row wrap">
                       <div fxLayout="row wrap" fxLayoutAlign="end end" fxFlex=95 fxFlex.sm=100 fxFlex.xs=100>
-                        <button type="button" mat-raised-button class="button-layout-for-remove-icon" [disabled]="this.testSeriesDetailsForm.controls[
-                          'testSeriesQuestions'].controls.length === 1" (click)="removeQuestion(questionPosition)"><i
+                        <button type="button" mat-raised-button class="button-layout-for-remove-icon" [disabled]="testSeriesQuestions().controls.length === 1" (click)="removeQuestion(questionPosition)"><i
                             class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;</button>
                         <button type="button" mat-raised-button class="button-layout-for-prev-icon" fxFlexOffset=2
                           (click)="questionPosition = questionPosition - 1" [disabled]="questionPosition === 0"><i
                             class="fa
                       fa-arrow-left" aria-hidden="true"></i></button>
                         <button type="button" mat-raised-button class="button-layout-for-next-icon" fxFlexOffset=2
-                          (click)="questionPosition = questionPosition + 1" [disabled]="questionPosition === this.testSeriesDetailsForm.controls[
-                      'testSeriesQuestions'].length - 1"> <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                          (click)="questionPosition = questionPosition + 1" [disabled]="questionPosition === testSeriesQuestion.length - 1"> <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                         <button type="button" mat-raised-button class="button-layout-for-add-icon" fxFlexOffset=2
-                          (click)="addQuestion()" [disabled]="this.testSeriesDetailsForm.controls[
-                      'testSeriesQuestions'].controls[questionPosition].invalid"><i class="fa fa-plus"
+                          (click)="addQuestion()" [disabled]="testSeriesQuestionsGroup(questionPosition).invalid"><i class="fa fa-plus"
                             aria-hidden="true"></i>&nbsp;</button>
                       </div>
                     </div>

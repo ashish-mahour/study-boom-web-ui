@@ -8,7 +8,7 @@ import { AuthenticationService } from "../../services/authentication/authenticat
 })
 export class ManageTestSeriesComponent implements OnInit {
   height: string = window.innerHeight - 250 + "px";
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(public authenticationService: AuthenticationService) {}
 
   ngOnInit() {}
 
