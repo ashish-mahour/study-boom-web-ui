@@ -61,6 +61,7 @@ import { UserRequestsComponent } from "./user-components/user-requests/user-requ
 import { AddUpdateRequestsComponent } from "./shared/add-update-requests/add-update-requests/add-update-requests.component";
 import { ForgotPasswordComponent } from "./shared/forgot-password/forgot-password/forgot-password.component";
 import { RatingModule } from 'ng-starrating';
+import { FirebaseService } from './services/firebase/firebase.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -140,7 +141,8 @@ export function createTranslateLoader(http: HttpClient) {
     AuthenticationGuard,
     AdminService,
     PublisherService,
-    UserService
+    UserService, 
+    FirebaseService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

@@ -39,7 +39,7 @@ export class UserTypeComponent implements OnInit {
   userTypeSelected() {
     this.registrationForm.type = this.userType;
     this.registrationForm.password = this.registrationForm.password;
-    this.loadingService.showLoading(true);
+    this.loadingService.showLoading(true, "Selecting "+ this.userType);
     this.http
       .post(
         Config.serverUrl + Config.api.authentication + "/create/account",
@@ -47,7 +47,7 @@ export class UserTypeComponent implements OnInit {
       )
       .subscribe(
         (data: any) => {
-          this.loadingService.showLoading(false);
+          this.loadingService.showLoading(false, null);
           const alertBox = this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
@@ -91,7 +91,7 @@ export class UserTypeComponent implements OnInit {
           });
         },
         error => {
-          this.loadingService.showLoading(false);
+          this.loadingService.showLoading(false, null);
           const alertBox = this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",

@@ -6,7 +6,7 @@
     <div class="cssload-cube cssload-c3"></div>
   </div>
   <br>
-  <span class="anim-loading-title"><b>Loading...</b></span>
+  <span class="anim-loading-title"><b> {{loadingService.progress? loadingService.progress + "%": null}} {{loadingService.text}}</b></span>
 </div>
 <div class="home-backgroud" fxLayout="column">
   <div class="home-header">

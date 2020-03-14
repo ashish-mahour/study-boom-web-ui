@@ -14,5 +14,30 @@
     "updatePublisher": 4,
     "addPublisherDetail": 5,
     "changeUserStatus": 6
+  },
+  "firebaseConfig": {
+    "apiKey": "AIzaSyBA3wiLvtbdGwQGvKw1VbGoptwFN6Ovnto",
+    "authDomain": "study-boom-application.firebaseapp.com",
+    "databaseURL": "https://study-boom-application.firebaseio.com",
+    "projectId": "study-boom-application",
+    "storageBucket": "study-boom-application.appspot.com",
+    "messagingSenderId": "729734282894",
+    "appId": "1:729734282894:web:c1e7e094e5d8ff44a653df",
+    "measurementId": "G-XBRR3J6VCM"
+  },
+  "firebaseImageFolders": {
+    "student": "/images/student/",
+    "publisher": "/images/publisher/",
+    "admin": "/images/admin/"
+  },
+  "firebaseDocumentsFolders": {
+    "student": "/documents/student/",
+    "publisher": "/documents/publisher/",
+    "admin": "/documents/admin/"
+  },
+  "userTypes": {
+    "publisher": "PUBLISHER",
+    "student": "STUDENT",
+    "admin": "ADMIN"
   }
 }

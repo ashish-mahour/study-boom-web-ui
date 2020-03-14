@@ -1,11 +1,8 @@
 import {
   Component,
   OnInit,
-  ViewChild,
-  Pipe,
-  PipeTransform
+  ViewChild
 } from "@angular/core";
-import { LoadingAnimServiceService } from "../../shared/loading/loading-anim-service.service";
 import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MatAutocomplete } from "@angular/material/autocomplete";
@@ -47,7 +44,6 @@ export class UserMoreDetailsComponent implements OnInit {
   });
 
   constructor(
-    private loadingService: LoadingAnimServiceService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private dialog: MatDialog,

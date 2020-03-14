@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { LoadingAnimServiceService } from "../../shared/loading/loading-anim-service.service";
 import { MatDialog } from "@angular/material/dialog";
 import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { AuthenticationService } from "../../services/authentication/authentication.service";
@@ -27,7 +26,6 @@ export class PublisherMoreDetailsComponent implements OnInit {
   });
 
   constructor(
-    private loadingService: LoadingAnimServiceService,
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
     public authenticationService: AuthenticationService,

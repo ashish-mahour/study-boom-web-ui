@@ -19,7 +19,7 @@ export class UserService {
   ) { }
 
   getTestSeries(pageNo: number, limit: number, studentId: number) {
-    this.loadingService.showLoading(true);
+    this.loadingService.showLoading(true, "Getting test series...");
     this.http
       .get(
         config.serverUrl +
@@ -31,7 +31,7 @@ export class UserService {
       )
       .subscribe(
         (data: any[]) => {
-          this.loadingService.showLoading(false);
+          this.loadingService.showLoading(false, null);
           if (data.length > 10) {
             this.testData.push(data.slice(0, 10));
             this.testData.push(data.slice(10, data.length));
@@ -43,7 +43,7 @@ export class UserService {
           let message = "Error found in getting Test Series!!"
           if (error.status === 400)
             message = "Please choose categories for Test Series"
-          this.loadingService.showLoading(false);
+          this.loadingService.showLoading(false, null);
           const alertBox = this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
@@ -57,11 +57,11 @@ export class UserService {
   }
 
   testPerformed(studentPerformedTest: any) {
-    this.loadingService.showLoading(true);
+    this.loadingService.showLoading(true, null);
     this.http.post(config.serverUrl +
       config.api.student +
       "/test/performed", studentPerformedTest).subscribe(_success => {
-        this.loadingService.showLoading(false);
+        this.loadingService.showLoading(false, null);
         const alertBox = this.dialog.open(AlertBoxComponent, {
           minWidth: "25%",
           maxWidth: "60%",
@@ -71,7 +71,7 @@ export class UserService {
           }
         });
       }, _error => {
-        this.loadingService.showLoading(false);
+        this.loadingService.showLoading(false, null);
         const alertBox = this.dialog.open(AlertBoxComponent, {
           minWidth: "25%",
           maxWidth: "60%",

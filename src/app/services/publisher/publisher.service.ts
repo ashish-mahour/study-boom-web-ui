@@ -20,16 +20,16 @@ export class PublisherService {
   ) {}
 
   getAllCategories() {
-    this.loadingService.showLoading(true);
+    this.loadingService.showLoading(true, "Getting categories...");
     this.http
       .get(config.serverUrl + config.api.publisher + "/get/subject/categories")
       .subscribe(
         (data: any[]) => {
-          this.loadingService.showLoading(false);
+          this.loadingService.showLoading(false, null);
           this.allCategories = data;
         },
         (error: any) => {
-          this.loadingService.showLoading(false);
+          this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
@@ -43,7 +43,7 @@ export class PublisherService {
   }
   addTestSeries(testSeriesDetailsValue: any) {
     console.log(testSeriesDetailsValue);
-    this.loadingService.showLoading(true);
+    this.loadingService.showLoading(true, "Adding test series...");
     this.http
       .post(
         config.serverUrl + config.api.publisher + "/create/test/series",
@@ -52,7 +52,7 @@ export class PublisherService {
       .subscribe(
         success => {
           console.log(success)
-          this.loadingService.showLoading(false);
+          this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
@@ -65,7 +65,7 @@ export class PublisherService {
         },
         error => {
           console.log(error)
-          this.loadingService.showLoading(false);
+          this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",

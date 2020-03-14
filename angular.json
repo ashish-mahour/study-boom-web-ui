@@ -140,5 +140,8 @@
       }
     }
   },
-  "defaultProject": "study-boom-application"
+  "defaultProject": "study-boom-application",
+  "cli": {
+    "analytics": "59e952a8-d253-4584-b9b0-2da8fca281a3"
+  }
 }

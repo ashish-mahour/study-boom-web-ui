@@ -42,19 +42,19 @@ export class AppComponent {
   routerNavigation(event: RouterEvent): void {
     this.zone.run(() => {
       if (event instanceof NavigationStart) {
-        this.loadingService.showLoading(true)
+        this.loadingService.showLoading(true, "Loading...")
         this.authenticationService.userDetails = JSON.parse(localStorage.getItem("userDetails"))
         this.authenticationService.isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated"))
         this.authenticationService.userType = localStorage.getItem("userType")
       }
       if (event instanceof NavigationEnd) {
-        this.loadingService.showLoading(false)
+        this.loadingService.showLoading(false, null)
       }
       if (event instanceof NavigationCancel) {
-        this.loadingService.showLoading(false)
+        this.loadingService.showLoading(false, null)
       }
       if (event instanceof NavigationError) {
-        this.loadingService.showLoading(false)
+        this.loadingService.showLoading(false, null)
       }
     })
   }

@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { AuthenticationService } from "../../services/authentication/authentication.service";
 import * as config from '../../shared/config.json';
+import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 
 @Component({
   selector: "app-dashboard-main",
@@ -20,8 +21,9 @@ export class DashboardMainComponent implements OnInit {
     private titleService: Title,
     private router: Router,
     private translate: TranslateService,
-    public authenticationService: AuthenticationService
-  ) {}
+    public authenticationService: AuthenticationService,
+    private firebaseService: FirebaseService
+  ) { }
 
   ngOnInit() {
     this.translate
@@ -68,15 +70,26 @@ export class DashboardMainComponent implements OnInit {
   changeProfilePic(event: any) {
     let file: File = event.target.files[0];
     let fileReader = new FileReader();
-    fileReader.onload = this.handleReaderEvent.bind(this);
-    fileReader.readAsDataURL(file);
+    fileReader.readAsDataURL(file)
+    fileReader.onload = (event) => {
+      if (event && event.target && event.target.result)
+        this.uploadProfilePic(file.name, event.target.result.toString())
+    }
   }
 
-  handleReaderEvent(event: any) {
-    let reader: FileReader = event.target;
-    this.authenticationService.mofifiedUserDetails.profilePic = reader.result.toString();
+  async uploadProfilePic(fileName: string, dataURL: string) {
     this.authenticationService.mofifiedUserDetails.type = this.authenticationService.userDetails.type;
     this.authenticationService.mofifiedUserDetails.id = this.authenticationService.userDetails.id;
+    let location: string
+    if (this.authenticationService.userDetails.type === config.userTypes.admin)
+      location = config.firebaseImageFolders.admin + this.authenticationService.userDetails.id + "/" + fileName
+    else if (this.authenticationService.userDetails.type === config.userTypes.publisher)
+      location = config.firebaseImageFolders.publisher + this.authenticationService.userDetails.id + "/" + fileName
+    else if (this.authenticationService.userDetails.type === config.userTypes.student)
+      location = config.firebaseImageFolders.student + this.authenticationService.userDetails.id + "/" + fileName
+    if (!location)
+      return;
+    this.authenticationService.mofifiedUserDetails.profilePic = await this.firebaseService.uploadFile(location, dataURL, "data_url");
     this.authenticationService.modifyUsers(config.modifiedCommands.changeProfilePic)
   }
   editProfile() {

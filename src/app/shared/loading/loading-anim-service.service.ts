@@ -6,10 +6,14 @@ import { Injectable  } from '@angular/core';
 export class LoadingAnimServiceService {
 
   loading: boolean = false;
+  text: string = ""
+  progress: number
 
   constructor() { }
 
-  showLoading(loadingValue: boolean) {
+  showLoading(loadingValue: boolean, text: string, progress?: number) {
     this.loading = loadingValue;
+    this.text = text;
+    this.progress = progress
   }
 }
