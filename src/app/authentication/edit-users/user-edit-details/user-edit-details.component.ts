@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 import { Title } from "@angular/platform-browser";
 import { TranslateService } from "@ngx-translate/core";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
+import { SubjectSubCategory, SubjectCategory } from '../../../shared/interfaces/category.interface';
 
 @Component({
   selector: "app-user-edit-details",
@@ -17,11 +18,11 @@ import { COMMA, ENTER } from "@angular/cdk/keycodes";
   styleUrls: ["./user-edit-details.component.scss"]
 })
 export class UserEditDetailsComponent implements OnInit {
-  filteredSubCategories: any[] = [];
-  selectedSubCategories: any[] = [];
-  selectedCategories: any[] = [];
-  selectedSubCategoriesObjects: any[] = [];
-  selectedCategoriesObjects: any[] = [];
+  filteredSubCategories: SubjectSubCategory[] = [];
+  selectedSubCategories: number[] = [];
+  selectedCategories: number[] = [];
+  selectedSubCategoriesObjects: SubjectSubCategory[] = [];
+  selectedCategoriesObjects: SubjectCategory[] = [];
 
   userEditForm: FormGroup = this.formBuilder.group({
     fullname: [
@@ -81,7 +82,7 @@ export class UserEditDetailsComponent implements OnInit {
       for (let category of choosedCategories) {
         let subCategory = category.subjectSubCategoryIdToChoosenSubCategories;
         this.authenticationService.allCategories.find(x => {
-          let subCategories = x.subjectCategoryIdToSubCategory as any[];
+          let subCategories = x.subjectCategoryIdToSubCategory;
           if (subCategories.find(y => y.id === subCategory.id)) {
             this.categorySelected(x.id);
             this.subCategorySelected(subCategory.id);

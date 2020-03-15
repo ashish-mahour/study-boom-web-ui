@@ -10,7 +10,7 @@ export class GlobalUrlSerializerService extends DefaultUrlSerializer {
     childRouterOutlets.forEach(outlet => {
       url = url.replace("(" + outlet + ":", "")
     })
-    url = url.split("-").join("/")
+    url = url.replace("-", "/")
     url = url.replace(")", "")
     return super.parse(url.split("?")[0])
   }
@@ -19,7 +19,7 @@ export class GlobalUrlSerializerService extends DefaultUrlSerializer {
     childRouterOutlets.forEach(outlet => {
       url = url.replace("(" + outlet + ":", "")
     })
-    url = url.split("-").join("/")
+    url = url.replace("-", "/")
     url = url.replace(")", "")
     return url.split("?")[0]
   }

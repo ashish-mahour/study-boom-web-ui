@@ -23,7 +23,7 @@ export class DashboardScreenComponent implements OnInit {
     public authenticationService: AuthenticationService,
     private translate: TranslateService,
     public adminService: AdminService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.translate
@@ -34,8 +34,10 @@ export class DashboardScreenComponent implements OnInit {
           translations["userTypes.admin"]
         )
           this.adminService.getAllRequests(
-            this.requestPageNo,
-            this.requestLimit
+            {
+              pageNo: this.requestPageNo,
+              limit: this.requestLimit
+            }
           );
       });
   }
@@ -78,9 +80,9 @@ export class DashboardScreenComponent implements OnInit {
 
   nextAdminRequestPage() {
     this.currentRequestPage += 1;
-    if (this.adminService.allUsers[this.requestPageNo + 1]){
+    if (this.adminService.allUsers[this.requestPageNo + 1]) {
       this.requestPageNo += 1;
-      this.adminService.getAllUsers(this.requestPageNo, this.requestLimit);
+      this.adminService.getAllUsers({ pageNo: this.requestPageNo, limit: this.requestLimit });
     }
   }
 

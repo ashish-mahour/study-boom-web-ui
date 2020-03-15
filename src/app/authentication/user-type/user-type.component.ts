@@ -7,6 +7,7 @@ import * as Config from "../../shared/config.json";
 import { MatDialog } from "@angular/material/dialog";
 import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { TranslateService } from "@ngx-translate/core";
+import { UserDetails } from 'src/app/shared/interfaces/users.interfaces';
 
 @Component({
   selector: "app-user-type",
@@ -15,7 +16,23 @@ import { TranslateService } from "@ngx-translate/core";
 })
 export class UserTypeComponent implements OnInit {
   userType: string;
-  registrationForm: any = {};
+  registrationForm: UserDetails = {
+    id: null,
+    fullName: null,
+    username: null,
+    email: null,
+    password: null,
+    type: null,
+    profilePic: null,
+    mobileNo: null,
+    bankName: null,
+    branchName: null,
+    accountNo: null,
+    ifscCode: null,
+    isActivated: null,
+    choosedCategories: [],
+    choosedSubCategories: []
+  };
   constructor(
     private titleService: Title,
     private activateRoute: ActivatedRoute,

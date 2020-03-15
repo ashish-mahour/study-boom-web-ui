@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthenticationService } from "../../services/authentication/authentication.service";
 import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
-import { PublisherService } from "src/app/services/publisher/publisher.service";
+import { PublisherService } from "../../services/publisher/publisher.service";
+import { SubjectSubCategory } from '../../shared/interfaces/category.interface';
 
 @Component({
   selector: "app-add-test-series",
@@ -9,7 +10,7 @@ import { PublisherService } from "src/app/services/publisher/publisher.service";
   styleUrls: ["./add-test-series.component.scss"]
 })
 export class AddTestSeriesComponent implements OnInit {
-  selectedSubCategories: any[] = [];
+  selectedSubCategories: Array<SubjectSubCategory> = [];
 
   testSeriesDetailsForm: FormGroup = this.formBuilder.group({
     publisherId: [

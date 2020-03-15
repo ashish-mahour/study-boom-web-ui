@@ -5,6 +5,8 @@ import { HttpClient } from "@angular/common/http";
 import * as config from "../../shared/config.json";
 import { Router } from "@angular/router";
 import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
+import { UserDetails, Users, Login, ChangePassword } from '../../shared/interfaces/users.interfaces';
+import { SubjectCategory } from '../../shared/interfaces/category.interface';
 
 @Injectable({
   providedIn: "root"
@@ -14,10 +16,38 @@ export class AuthenticationService {
   isAuthenticated: boolean = false;
   userType: string;
   profileCompletion: number = 30;
-  userDetails: any = {};
-  mofifiedUserDetails: any = {};
-  allCategories: any[] = [];
-  allUsers: any[] = []
+  userDetails: Users = {
+    id: null,
+    fullName: null,
+    username: null,
+    email: null,
+    password: null,
+    type: null,
+    profilePic: null,
+    isActivated: null,
+    userIdFromAdmin: null,
+    userIdFromStudent: null,
+    userIdFromPublisher: null
+  };
+  mofifiedUserDetails: UserDetails = {
+    id: null,
+    fullName: null,
+    username: null,
+    email: null,
+    password: null,
+    type: null,
+    profilePic: null,
+    mobileNo: null,
+    bankName: null,
+    branchName: null,
+    accountNo: null,
+    ifscCode: null,
+    isActivated: null,
+    choosedCategories: [],
+    choosedSubCategories: []
+  };
+  allCategories: Array<SubjectCategory> = [];
+  allUsers: Array<Users> = []
 
   constructor(
     private loadingService: LoadingAnimServiceService,
@@ -28,7 +58,7 @@ export class AuthenticationService {
 
   }
 
-  loginUser(loginDetails: any): void {
+  loginUser(loginDetails: Login): void {
     this.loadingService.showLoading(true, "Logging in...");
     this.http
       .get(
@@ -41,7 +71,7 @@ export class AuthenticationService {
         btoa(loginDetails.password)
       )
       .subscribe(
-        (data: any) => {
+        (data: Users) => {
           /**
            * SAVE DATA
            */
@@ -69,7 +99,7 @@ export class AuthenticationService {
         },
         (error: any) => {
           this.loadingService.showLoading(false, null);
-          const alertBox = this.dialog.open(AlertBoxComponent, {
+          this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
@@ -151,7 +181,7 @@ export class AuthenticationService {
     this.http
       .get(config.serverUrl + config.api.authentication + "/get/subject/categories")
       .subscribe(
-        (data: any[]) => {
+        (data: Array<SubjectCategory>) => {
           this.loadingService.showLoading(false, null);
           this.allCategories = data;
         },
@@ -178,7 +208,7 @@ export class AuthenticationService {
         "/get/user/" + id
       )
       .subscribe(
-        (data: any) => {
+        (data: Users) => {
           /**
            * SAVE DATA
            */
@@ -212,7 +242,7 @@ export class AuthenticationService {
         }
       );
   }
-  changePassword(changePasswordForm: any) {
+  changePassword(changePasswordForm: ChangePassword) {
     this.loadingService.showLoading(true, "Changing Password...");
     this.http.post(config.serverUrl + config.api.authentication + "/change/password", changePasswordForm).subscribe(_success => {
       this.loadingService.showLoading(false, null);

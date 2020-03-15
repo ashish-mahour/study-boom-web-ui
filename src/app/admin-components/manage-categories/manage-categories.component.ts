@@ -3,6 +3,7 @@ import { AuthenticationService } from "../../services/authentication/authenticat
 import { AdminService } from "../../services/admin/admin.service";
 import { AddUpdateCategoriesComponent } from "../../admin-components/add-update-categories/add-update-categories.component";
 import { MatDialog } from "@angular/material/dialog";
+import { SubjectCategory } from '../../shared/interfaces/category.interface';
 
 @Component({
   selector: "app-manage-categories",
@@ -23,7 +24,7 @@ export class ManageCategoriesComponent implements OnInit {
 
   ngOnInit() {
     this.adminService.allCategories = [];
-    this.adminService.getAllCategories(this.pageNo, this.limit);
+    this.adminService.getAllCategories({pageNo: this.pageNo, limit: this.limit});
   }
 
   @HostListener("window:resize")
@@ -35,7 +36,7 @@ export class ManageCategoriesComponent implements OnInit {
     this.currentPage += 1;
     if (this.adminService.allCategories[this.pageNo + 1]){
       this.pageNo += 1;
-      this.adminService.getAllCategories(this.pageNo, this.limit);
+      this.adminService.getAllCategories({pageNo: this.pageNo, limit: this.limit});
     }
   }
 
@@ -43,7 +44,7 @@ export class ManageCategoriesComponent implements OnInit {
     this.currentPage -= 1;
   }
 
-  addUpdateCategoriesDialog(category: any, index: number) {
+  addUpdateCategoriesDialog(category: SubjectCategory, index: number) {
     const alertBox = this.dialog.open(AddUpdateCategoriesComponent, {
       minWidth: "40%",
       maxWidth: "80%",
@@ -55,10 +56,10 @@ export class ManageCategoriesComponent implements OnInit {
       if (data && data.status) this.currentPage = 0;
     });
   }
-  deleteCategories(category: any) {
+  deleteCategories(category: SubjectCategory) {
     this.adminService.deleteCategories(category);
-    let page: any[] = this.adminService.allCategories[this.currentPage];
-    page.splice(this.adminService.allCategories.indexOf(category), 1);
+    let page = this.adminService.allCategories[this.currentPage];
+    page.splice(page.indexOf(category), 1);
     this.currentPage = 0;
   }
 }

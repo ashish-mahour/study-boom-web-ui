@@ -8,7 +8,7 @@
       <div fxFlex=100>
         <div [ngStyle]="{width: '100%', height: height, 'overflow': 'auto'}">
           <div fxLayout="column">
-            <div *ngFor="let category of adminService.allCategories[currentPage]"
+            <div *ngFor="let category of adminService.allCategories[currentPage]; let i = index"
               class="manage-categories-listing-row">
               <div class="manage-categories-listing-row-content" fxLayout="column">
                 <div fxLayout="column">

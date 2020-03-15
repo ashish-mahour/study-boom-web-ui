@@ -133,10 +133,10 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     Title,
     LoadingAnimServiceService,
-    // {
-    //   provide: UrlSerializer,
-    //   useClass: GlobalUrlSerializerService
-    // },
+    {
+      provide: UrlSerializer,
+      useClass: GlobalUrlSerializerService
+    },
     AuthenticationService,
     AuthenticationGuard,
     AdminService,

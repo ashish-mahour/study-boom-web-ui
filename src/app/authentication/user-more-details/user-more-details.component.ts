@@ -14,6 +14,7 @@ import { TranslateService } from "@ngx-translate/core";
 import * as config from "../../shared/config.json";
 import { Title } from "@angular/platform-browser";
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { SubjectCategory, SubjectSubCategory } from '../../shared/interfaces/category.interface';
 
 @Component({
   selector: "app-user-more-details",
@@ -22,11 +23,11 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 })
 export class UserMoreDetailsComponent implements OnInit {
   userId: number;
-  filteredSubCategories: any[] = [];
-  selectedSubCategories: any[] = [];
-  selectedCategories: any[] = [];
-  selectedSubCategoriesObjects: any[] = [];
-  selectedCategoriesObjects: any[] = [];
+  filteredSubCategories: SubjectSubCategory[] = [];
+  selectedSubCategories: number[] = [];
+  selectedCategories: number[] = [];
+  selectedSubCategoriesObjects: SubjectSubCategory[] = [];
+  selectedCategoriesObjects: SubjectCategory[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   @ViewChild("categoryList")

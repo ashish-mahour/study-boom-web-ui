@@ -5,12 +5,13 @@ import * as config from "../../shared/config.json";
 import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from '@angular/router';
+import { SubjectCategory } from '../../shared/interfaces/category.interface';
 
 @Injectable({
   providedIn: "root"
 })
 export class PublisherService {
-  allCategories: any[] = [];
+  allCategories: Array<SubjectCategory> = [];
 
   constructor(
     private loadingService: LoadingAnimServiceService,

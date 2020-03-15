@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { AdminService } from "../../services/admin/admin.service";
+import { SubjectCategory, SubjectSubCategory } from '../../shared/interfaces/category.interface';
 
 @Component({
   selector: "app-add-update-categories",
@@ -21,7 +22,11 @@ export class AddUpdateCategoriesComponent implements OnInit {
     subCategories: this.formBuilder.array([this.subCategoryForm(undefined)])
   });
 
-  subCategoryForm(subCategory: any): FormGroup {
+  getSubCategoriesArray = (): FormArray => this.categoryForm.controls["subCategories"] as FormArray
+  getSubCategory = (i: number): FormGroup => this.getSubCategoriesArray().controls[i] as FormGroup
+  
+
+  subCategoryForm(subCategory: SubjectSubCategory): FormGroup {
     return this.formBuilder.group({
       subCategoryId: [subCategory ? subCategory.id : null],
       subCategoryName: [
@@ -38,19 +43,19 @@ export class AddUpdateCategoriesComponent implements OnInit {
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public matDialogData: any,
     public adminService: AdminService,
-    private dialogRef: MatDialogRef<AddUpdateCategoriesComponent>
-  ) {}
+    public dialogRef: MatDialogRef<AddUpdateCategoriesComponent>
+  ) { }
 
   ngOnInit() {
     this.setCategoryData();
   }
 
   setCategoryData() {
-    let categoryData = this.matDialogData.category;
+    let categoryData: SubjectCategory = this.matDialogData.category;
     if (!categoryData) return;
     this.categoryForm.controls["categoryId"].setValue(categoryData.id);
     this.categoryForm.controls["categoryName"].setValue(categoryData.name);
-    let subCategoriesData: any[] = categoryData.subjectCategoryIdToSubCategory as any[];
+    let subCategoriesData: SubjectSubCategory[] = categoryData.subjectCategoryIdToSubCategory;
     let subCategories: FormArray = this.categoryForm.controls[
       "subCategories"
     ] as FormArray;

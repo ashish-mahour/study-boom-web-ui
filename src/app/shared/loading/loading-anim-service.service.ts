@@ -1,4 +1,4 @@
-import { Injectable  } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,14 @@ export class LoadingAnimServiceService {
   text: string = ""
   progress: number
 
-  constructor() { }
+  constructor(
+  ) { }
 
   showLoading(loadingValue: boolean, text: string, progress?: number) {
-    this.loading = loadingValue;
-    this.text = text;
-    this.progress = progress
+    setTimeout(() => {
+      this.loading = loadingValue;
+      this.text = text;
+      this.progress = progress
+    }, 0)
   }
 }

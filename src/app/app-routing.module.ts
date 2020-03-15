@@ -29,14 +29,12 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "/dashboard",
-    // canActivate: [AuthenticationGuard]
+    redirectTo: "/dashboard"
   },
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "/home",
-    // canActivate: [AuthenticationGuard]
+    redirectTo: "/home"
   },
   {
     path: "home",
@@ -64,7 +62,7 @@ const routes: Routes = [
       },
       {
         path: "**",
-        pathMatch:'full',
+        pathMatch: "full",
         redirectTo: "/home"
       }
     ]
@@ -136,15 +134,15 @@ const routes: Routes = [
       },
       {
         path: "**",
-        pathMatch: 'full',
+        pathMatch: "full",
         redirectTo: "/dashboard"
       }
     ]
   },
   {
     path: "**",
-    redirectTo: "/home",
-    pathMatch: "full"
+    pathMatch: "full",
+    redirectTo: "/home"
   }
 ];
 

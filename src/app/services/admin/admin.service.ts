@@ -2,42 +2,43 @@ import { Injectable } from "@angular/core";
 import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { LoadingAnimServiceService } from "../../shared/loading/loading-anim-service.service";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { Router } from "@angular/router";
-import { TranslateService } from "@ngx-translate/core";
 import * as config from "../../shared/config.json";
 import { HttpClient } from "@angular/common/http";
 import { AddUpdateCategoriesComponent } from "../../admin-components/add-update-categories/add-update-categories.component";
+import { Users } from '../../shared/interfaces/users.interfaces';
+import { TestSeries } from '../../shared/interfaces/test-series.interface';
+import { SubjectCategory, CategoryDetails } from '../../shared/interfaces/category.interface';
+import { Requests } from '../../shared/interfaces/requests.interface';
+import { Page, CategoryStatus } from '../../shared/interfaces/status.interface';
 
 @Injectable({
   providedIn: "root"
 })
 export class AdminService {
-  allUsers: any[] = [];
-  allTests: any[] = [];
-  allCategories: any[] = [];
-  allRequests: any = [];
+  allUsers: Array<Array<Users>> = [];
+  allTests: Array<Array<TestSeries>> = [];
+  allCategories: Array<Array<SubjectCategory>> = [];
+  allRequests: Array<Array<Requests>> = [];
 
   constructor(
     private loadingService: LoadingAnimServiceService,
     private http: HttpClient,
-    private dialog: MatDialog,
-    private router: Router,
-    private translate: TranslateService
-  ) {}
+    private dialog: MatDialog
+  ) { }
 
-  getAllUsers(pageNo: number, limit: number) {
+  getAllUsers(page: Page) {
     this.loadingService.showLoading(true, "Getting all users..");
     this.http
       .get(
         config.serverUrl +
-          config.api.admin +
-          "/get/users?pageNo=" +
-          pageNo +
-          "&limit=" +
-          limit
+        config.api.admin +
+        "/get/users?pageNo=" +
+        page.pageNo +
+        "&limit=" +
+        page.limit
       )
       .subscribe(
-        (data: any[]) => {
+        (data: Array<Users>) => {
           this.loadingService.showLoading(false, null);
           if (data.length > 10) {
             this.allUsers.push(data.slice(0, 10));
@@ -46,9 +47,9 @@ export class AdminService {
             this.allUsers.push(data);
           }
         },
-        (error: any) => {
+        (_error: any) => {
           this.loadingService.showLoading(false, null);
-          const alertBox = this.dialog.open(AlertBoxComponent, {
+          this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
@@ -60,19 +61,19 @@ export class AdminService {
       );
   }
 
-  getAllCategories(pageNo: number, limit: number) {
+  getAllCategories(page: Page) {
     this.loadingService.showLoading(true, "Getting all categories...");
     this.http
       .get(
         config.serverUrl +
-          config.api.admin +
-          "/get/subject/categories?pageNo=" +
-          pageNo +
-          "&limit=" +
-          limit
+        config.api.admin +
+        "/get/subject/categories?pageNo=" +
+        page.pageNo +
+        "&limit=" +
+        page.limit
       )
       .subscribe(
-        (data: any[]) => {
+        (data: Array<SubjectCategory>) => {
           this.loadingService.showLoading(false, null);
           if (data.length > 10) {
             this.allCategories.push(data.slice(0, 10));
@@ -81,9 +82,9 @@ export class AdminService {
             this.allCategories.push(data);
           }
         },
-        (error: any) => {
+        (_error: any) => {
           this.loadingService.showLoading(false, null);
-          const alertBox = this.dialog.open(AlertBoxComponent, {
+          this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
@@ -96,12 +97,12 @@ export class AdminService {
   }
 
   addUpdateCategories(
-    categoryValue: any,
+    categoryValue: CategoryDetails,
     update: boolean,
     dialogRef: MatDialogRef<AddUpdateCategoriesComponent>
   ) {
     dialogRef.close({ status: true });
-    this.loadingService.showLoading(true, update? "Updating Categories...": "Adding Categories");
+    this.loadingService.showLoading(true, update ? "Updating Categories..." : "Adding Categories");
 
     let api: string;
     if (update) api = "/modify/subject/cateogories";
@@ -110,7 +111,7 @@ export class AdminService {
     this.http
       .post(config.serverUrl + config.api.admin + api, categoryValue)
       .subscribe(
-        (data: any[]) => {
+        (_data: CategoryStatus) => {
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
@@ -121,7 +122,7 @@ export class AdminService {
             }
           });
           this.allCategories = [];
-          this.getAllCategories(0, 20);
+          this.getAllCategories({ pageNo: 0, limit: 20 });
         },
         (error: any) => {
           this.loadingService.showLoading(false, null);
@@ -136,19 +137,19 @@ export class AdminService {
         }
       );
   }
-  deleteCategories(category: any) {
+  deleteCategories(category: SubjectCategory) {
     this.loadingService.showLoading(true, "Delete Category...");
     this.http
       .get(
         config.serverUrl +
-          config.api.admin +
-          "/delete/subject/cateogories?id=" +
-          category.id
+        config.api.admin +
+        "/delete/subject/cateogories?id=" +
+        category.id
       )
       .subscribe(
-        (data: any[]) => {
+        (_data: CategoryStatus) => {
           this.loadingService.showLoading(false, null);
-          const alertBox = this.dialog.open(AlertBoxComponent, {
+          this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
@@ -171,19 +172,19 @@ export class AdminService {
       );
   }
 
-  getAllRequests(pageNo: number, limit: number) {
+  getAllRequests(page: Page) {
     this.loadingService.showLoading(true, "Get all requests...");
     this.http
       .get(
         config.serverUrl +
-          config.api.admin +
-          "/get/users/requests?pageNo=" +
-          pageNo +
-          "&limit=" +
-          limit
+        config.api.admin +
+        "/get/users/requests?pageNo=" +
+        page.pageNo +
+        "&limit=" +
+        page.limit
       )
       .subscribe(
-        (data: any[]) => {
+        (data: Array<Requests>) => {
           this.loadingService.showLoading(false, null);
           if (data.length > 10) {
             this.allRequests.push(data.slice(0, 10));
@@ -192,7 +193,7 @@ export class AdminService {
             this.allRequests.push(data);
           }
         },
-        (error: any) => {
+        (_error: any) => {
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",

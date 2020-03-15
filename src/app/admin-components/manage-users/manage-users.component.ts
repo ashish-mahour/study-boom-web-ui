@@ -17,11 +17,11 @@ export class ManageUsersComponent implements OnInit {
   constructor(
     public authenticationService: AuthenticationService,
     public adminService: AdminService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.adminService.allUsers = [];
-    this.adminService.getAllUsers(this.pageNo, this.limit);
+    this.adminService.getAllUsers({ pageNo: this.pageNo, limit: this.limit });
   }
 
   @HostListener("window:resize")
@@ -33,7 +33,7 @@ export class ManageUsersComponent implements OnInit {
     this.currentPage += 1;
     if (this.adminService.allUsers[this.pageNo + 1]) {
       this.pageNo += 1;
-      this.adminService.getAllUsers(this.pageNo, this.limit);
+      this.adminService.getAllUsers({ pageNo: this.pageNo, limit: this.limit });
     }
   }
 
