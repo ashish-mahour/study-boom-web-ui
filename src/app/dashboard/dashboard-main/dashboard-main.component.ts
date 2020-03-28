@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from "@angular/core";
+import { Component, OnInit, HostListener, NgZone } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { routerInAnimation } from "../../shared/animations";
 import { Router } from "@angular/router";
@@ -6,6 +6,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { AuthenticationService } from "../../services/authentication/authentication.service";
 import * as config from '../../shared/config.json';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
 
 @Component({
   selector: "app-dashboard-main",
@@ -14,7 +15,7 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
   animations: [routerInAnimation]
 })
 export class DashboardMainComponent implements OnInit {
-  isMobile: boolean = false;
+  isMobile: boolean = true;
   currentDate: number = new Date().getFullYear();
 
   constructor(
@@ -22,8 +23,12 @@ export class DashboardMainComponent implements OnInit {
     private router: Router,
     private translate: TranslateService,
     public authenticationService: AuthenticationService,
-    private firebaseService: FirebaseService
-  ) { }
+    private firebaseService: FirebaseService,
+    private zone: NgZone,
+    public loadingService: LoadingAnimServiceService
+  ) {
+    this.loadingService.showLoading(true, "Logging in...")
+  }
 
   ngOnInit() {
     this.translate
@@ -51,7 +56,11 @@ export class DashboardMainComponent implements OnInit {
 
   @HostListener("window:resize")
   onResize() {
-    this.checkBrowser();
+    this.zone.run(() => {
+      this.loadingService.showLoading(true, "Loading...")
+      this.checkBrowser();
+      this.loadingService.showLoading(false, null)
+    })
   }
 
   checkBrowser() {

@@ -32,11 +32,6 @@ const routes: Routes = [
     redirectTo: "/dashboard"
   },
   {
-    path: "",
-    pathMatch: "full",
-    redirectTo: "/home"
-  },
-  {
     path: "home",
     component: HomeComponent,
     children: [

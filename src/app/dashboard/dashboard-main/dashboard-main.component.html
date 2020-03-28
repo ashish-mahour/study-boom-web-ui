@@ -13,7 +13,7 @@
         fxFlex.sm=30 fixedInViewport=true [fixedTopGap]="isMobile? 36 : 0" #navBar>
         <mat-nav-list>
           <div mat-list-item fxLayoutAlign="center start">
-            <img
+            <img (load)="loadingService.showLoading(false, null)"
               [src]="authenticationService.userDetails.profilePic && authenticationService.userDetails.profilePic !== null ? authenticationService.userDetails.profilePic : 'assets/images/default-user-image.png'"
               class="user-image" matTooltip="Change Profile Picture.." [matTooltipPosition]="'right'"
               (click)="profilePic.click()">
@@ -22,7 +22,6 @@
           <div mat-list-item fxLayoutAlign="center start" class="user-name">
             {{ authenticationService.userDetails.fullName }}
           </div>
-          <mat-nav-list>
             <mat-divider></mat-divider>
 
             <!-- ALL -->
@@ -96,7 +95,6 @@
               <div fxFlexOffset=5>{{'pageTitles.logout' | translate }}</div>
             </a>
             <mat-divider></mat-divider>
-          </mat-nav-list>
         </mat-nav-list>
         <div fxLayoutAlign="center start">
           <span class="footer-bottom">
