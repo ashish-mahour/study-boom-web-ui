@@ -9,11 +9,11 @@
         <div fxFlex=100>
           <div [ngStyle]="{width: '100%', height: height, overflow:'auto'}">
             <div fxLayout="column">
-              <div *ngFor="let testData of userService.testData[currentPage]; let i = index" class="test-listing-row">
-                <div fxFlex=20 *ngIf="(testData.testSeriesPerformedByStudents && testData.testSeriesPerformedByStudents === 0) || !findStudentsPerformedTest(testData.testSeriesPerformedByStudents)">
+              <div class="test-listing-row-content" *ngFor="let testData of userService.testData[currentPage]; let i = index">
+                <div fxFlex=20>
                   <img src="assets/images/IT.png" class="test-image">
                 </div>
-                <div fxFlex=80 class="test-listing-row-content" fxLayout="column" *ngIf="(testData.testSeriesPerformedByStudents && testData.testSeriesPerformedByStudents === 0) || !findStudentsPerformedTest(testData.testSeriesPerformedByStudents)">
+                <div fxFlex=80 fxLayout="column">
                   <div fxFlex=100>
                     <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.testId' | translate }}</span> <span
@@ -84,11 +84,11 @@
         <div fxFlex=100>
           <div [ngStyle]="{width: '100%', height: height, overflow:'auto'}">
             <div fxLayout="column">
-              <div *ngFor="let testData of userService.testData[currentPage]; let i = index" class="test-listing-row">
-                <div fxFlex=20 *ngIf="testData.testSeriesPerformedByStudents && testData.testSeriesPerformedByStudents.length > 0 && findStudentsPerformedTest(testData.testSeriesPerformedByStudents)">
+              <div class="test-listing-row-content" *ngFor="let testData of findStudentsPerformedTests(userService.testData[currentPage]); let i = index">
+                <div fxFlex=20>
                   <img src="assets/images/IT.png" class="test-image">
                 </div>
-                <div fxFlex=80 class="test-listing-row-content" fxLayout="column" *ngIf="testData.testSeriesPerformedByStudents && testData.testSeriesPerformedByStudents.length > 0 && findStudentsPerformedTest(testData.testSeriesPerformedByStudents)">
+                <div fxFlex=80 fxLayout="column">
                   <div fxFlex=100>
                     <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.testId' | translate }}</span> <span

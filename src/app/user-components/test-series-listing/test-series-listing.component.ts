@@ -1,8 +1,9 @@
 import { Component, OnInit, IterableDiffers, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
-import { UserService } from 'src/app/services/user/user.service';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { UserService } from '../../services/user/user.service';
+import { StudentPerfromedTest, TestSeries } from '../../shared/interfaces/test-series.interface';
 
 @Component({
   selector: 'app-test-series-listing',
@@ -53,16 +54,16 @@ export class TestSeriesListingComponent implements OnInit {
 
   getRatings(testSeriesIdToRatings: any[]): number {
     let totalRatings = 0;
-    if(testSeriesIdToRatings.length === 0)
+    if (testSeriesIdToRatings.length === 0)
       return totalRatings;
-    
-    for(let testRating of testSeriesIdToRatings)
+
+    for (let testRating of testSeriesIdToRatings)
       totalRatings += testRating.overallRatings;
-    
+
     return (totalRatings / testSeriesIdToRatings.length);
   }
 
-  findStudentsPerformedTest(testSeriesPerformedByStudents: any[]){
-    return testSeriesPerformedByStudents.find(x => x.performendByStudent && x.performendByStudent.id && x.performendByStudent.id === this.authenticationService.userDetails.userIdFromStudent.id)
+  findStudentsPerformedTests(testSeries: Array<TestSeries>): Array<TestSeries> {
+    return testSeries? testSeries.filter(x => x.testSeriesPerformedByStudents && x.testSeriesPerformedByStudents.find(y => y.performendByStudent && y.performendByStudent.id === this.authenticationService.userDetails.userIdFromStudent.id)) : []
   }
 }

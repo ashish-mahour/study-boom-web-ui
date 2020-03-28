@@ -4,13 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import * as config from '../../shared/config.json';
 import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
+import { TestSeries } from '../../shared/interfaces/test-series.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  testData: any[] = []
+  testData: Array<Array<TestSeries>> = []
 
   constructor(
     private loadingService: LoadingAnimServiceService,
@@ -30,7 +31,7 @@ export class UserService {
         limit
       )
       .subscribe(
-        (data: any[]) => {
+        (data: Array<TestSeries>) => {
           this.loadingService.showLoading(false, null);
           if (data.length > 10) {
             this.testData.push(data.slice(0, 10));

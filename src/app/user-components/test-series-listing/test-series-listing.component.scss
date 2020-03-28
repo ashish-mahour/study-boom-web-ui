@@ -1,9 +1,9 @@
 .test-series-listing-content {
   background-color: rgba(43, 42, 42, 0.644);
   width: 70%;
-  padding: 0%;
-  padding-top: 1%;
-  margin-top: 3%;
+  padding: 0px;
+  padding-top: 5px;
+  margin-top: 8px;
 
   @media only screen and (max-width: 800px) {
     width: 80%;
@@ -34,11 +34,6 @@
   overflow: auto;
 }
 
-.test-listing-row {
-  color: rgba(43, 42, 42);
-  padding: 1%;
-}
-
 .wraping-the-text {
   word-wrap: break-word;
 }
@@ -48,8 +43,8 @@
 }
 
 .next-prev-layout {
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .next-prev-button {
@@ -57,23 +52,26 @@
 }
 
 .test-listing-row-content {
-  background-color: rgba(219, 216, 214, 0.664);
-  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px;
+  border-color: rgb(245, 154, 94);
+  border-style: double;
+  padding: 8px;
 }
 
 .test-listing-heading {
-  font-size: 100%;
+  font-size: 1em;
   font-weight: bold;
   font-family: cursive;
-  padding: 1%;
+  padding: 1px;
   word-wrap: break-word;
 }
 
 .test-listing-content {
-  font-size: 100%;
+  font-size: 0.9em;
   font-weight: normal;
   font-family: cursive;
-  padding: 1%;
+  padding: 1px;
   word-wrap: break-word;
 }
 
