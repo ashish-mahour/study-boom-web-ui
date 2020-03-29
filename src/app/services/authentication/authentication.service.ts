@@ -176,27 +176,31 @@ export class AuthenticationService {
         });
       });
   }
-  getAllCategories() {
-    this.loadingService.showLoading(true, "Getting categories...");
-    this.http
-      .get(config.serverUrl + config.api.authentication + "/get/subject/categories")
-      .subscribe(
-        (data: Array<SubjectCategory>) => {
-          this.loadingService.showLoading(false, null);
-          this.allCategories = data;
-        },
-        (error: any) => {
-          this.loadingService.showLoading(false, null);
-          this.dialog.open(AlertBoxComponent, {
-            minWidth: "25%",
-            maxWidth: "60%",
-            data: {
-              type: "error",
-              message: "Error found in getting categories!!"
-            }
-          });
-        }
-      );
+  getAllCategories(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.loadingService.showLoading(true, "Getting categories...");
+      this.http
+        .get(config.serverUrl + config.api.authentication + "/get/subject/categories")
+        .subscribe(
+          (data: Array<SubjectCategory>) => {
+            this.loadingService.showLoading(false, null);
+            this.allCategories = data;
+            resolve(null)
+          },
+          (error: any) => {
+            this.loadingService.showLoading(false, null);
+            this.dialog.open(AlertBoxComponent, {
+              minWidth: "25%",
+              maxWidth: "60%",
+              data: {
+                type: "error",
+                message: "Error found in getting categories!!"
+              }
+            });
+            reject(null)
+          }
+        );
+    })
   }
 
   getUserById(id: number) {

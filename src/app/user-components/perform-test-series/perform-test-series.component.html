@@ -6,11 +6,10 @@
     </mat-card-header>
     <mat-card-content fxLayout="column" fxLayout="row wrap">
       <div fxFlex=100 fxLayout="column" *ngIf="!isConfirmed">
-        <div fxFlex=100 class="test-perform-row">
-          <div fxFlex=20>
-            <img src="assets/images/IT.png" class="test-image">
-          </div>
-          <div fxFlex=80 class="test-perform-row-content" fxLayout="column">
+        <div fxFlex=100 fxLayout="column" fxLayoutAlign="center center" class="test-perform-row-content">
+          <img src="assets/images/IT.png">
+          <br>
+          <div fxFlex=100 fxLayout="column" style="width: 100%;">
             <div fxFlex=100>
               <div fxFlex=25 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.testId' | translate }}</span> <span

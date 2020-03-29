@@ -22,12 +22,14 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="form-field-outline">
           <mat-chip-list #categoryList>
-            <mat-chip *ngFor="let category of selectedCategoriesObjects" [selectable]="true" [removable]="true"
+            <span *ngFor="let category of selectedCategoriesObjects">
+              <mat-chip *ngIf="category" [selectable]="true" [removable]="true"
               (removed)="removeCategory(category)" class="category-item">
               {{category.name}}
               <mat-icon matChipRemove class="close-button">cancel
               </mat-icon>
             </mat-chip>
+            </span>
           </mat-chip-list>
           <mat-label class="color-for-text">{{'labels.chooseCategories' | translate }}
             <font color="red">*</font>
@@ -50,12 +52,14 @@
 
         <mat-form-field appearance="outline" class="form-field-outline">
           <mat-chip-list #subCategoryList>
-            <mat-chip *ngFor="let subCategory of selectedSubCategoriesObjects" [selectable]="true" [removable]="true"
+            <span *ngFor="let subCategory of selectedSubCategoriesObjects" >
+              <mat-chip *ngIf="subCategory" [selectable]="true" [removable]="true"
               (removed)="removeSubCategory(subCategory)" class="category-item">
               {{subCategory.name}}
               <mat-icon matChipRemove class="close-button">cancel
               </mat-icon>
             </mat-chip>
+            </span>
           </mat-chip-list>
           <mat-label class="color-for-text">{{'labels.chooseSubCategories' | translate }}
             <font color="red">*</font>

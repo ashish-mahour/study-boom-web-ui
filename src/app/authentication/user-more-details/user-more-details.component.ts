@@ -1,7 +1,8 @@
 import {
   Component,
   OnInit,
-  ViewChild
+  ViewChild,
+  NgZone
 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -36,6 +37,8 @@ export class UserMoreDetailsComponent implements OnInit {
   @ViewChild("subCategoryList")
   subCategoryList: MatAutocomplete;
 
+  allCategories: SubjectCategory[] = []
+
   userMoreDetails: FormGroup = this.formBuilder.group({
     mobile: [null, [Validators.required, Validators.pattern("[0-9]{10}")]],
     choosedCategory: [null],
@@ -51,61 +54,48 @@ export class UserMoreDetailsComponent implements OnInit {
     public authenticationService: AuthenticationService,
     private tranlateService: TranslateService,
     private router: Router,
-    private title: Title
+    private title: Title,
+    private zone: NgZone
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.title.setTitle("Choose Categories - Student");
-    if (this.authenticationService.allCategories.length === 0)
-      this.authenticationService.getAllCategories();
+    await this.authenticationService.getAllCategories();
+    this.allCategories = JSON.parse(JSON.stringify(this.authenticationService.allCategories))
     this.activatedRoute.queryParams.subscribe((params: any) => {
       this.userId = params.id;
     });
   }
 
-  removeCategory(selectedCategory: any) {
-    this.authenticationService.allCategories.push(selectedCategory);
+  removeCategory(selectedCategory: SubjectCategory) {
+    this.allCategories.push(selectedCategory);
 
-    let subCategories: any[] = selectedCategory.subjectCategoryIdToSubCategory;
+    let subCategories = selectedCategory.subjectCategoryIdToSubCategory;
     subCategories.forEach(x => {
       if (this.selectedSubCategories.includes(x.id)) {
-        this.selectedSubCategories.splice(
-          this.selectedSubCategories.indexOf(x.id),
-          1
-        );
-        this.selectedSubCategoriesObjects.splice(
-          this.selectedSubCategoriesObjects.indexOf(x),
-          1
-        );
+        this.selectedSubCategories.splice(this.selectedSubCategories.indexOf(x.id), 1)
+        this.selectedSubCategoriesObjects.splice(this.selectedSubCategoriesObjects.indexOf(x), 1)
       }
-      this.filteredSubCategories.splice(
-        this.filteredSubCategories.indexOf(x),
-        1
-      );
+      this.filteredSubCategories.splice(this.filteredSubCategories.indexOf(x), 1)
     });
 
-    this.selectedCategories.splice(
-      this.selectedCategories.indexOf(selectedCategory.id),
-      1
-    );
-    this.selectedCategoriesObjects.splice(
-      this.selectedCategoriesObjects.indexOf(selectedCategory),
-      1
-    );
+    this.selectedCategories.splice(this.selectedCategories.indexOf(selectedCategory.id), 1)
+    this.selectedCategoriesObjects.splice(this.selectedCategoriesObjects.indexOf(selectedCategory), 1)
   }
 
   categorySelected(value: number) {
-    let category = this.authenticationService.allCategories.find(
-      x => x.id == value
+    let category = this.allCategories.find(
+      x => x && x.id === value
     );
-    this.selectedCategories.push(value);
-    this.selectedCategoriesObjects.push(category);
-    let subCategories: any[] = category.subjectCategoryIdToSubCategory;
-    subCategories.forEach(x => this.filteredSubCategories.push(x));
-    this.authenticationService.allCategories.splice(
-      this.authenticationService.allCategories.indexOf(category),
-      1
-    );
+    if(!category)
+      return;
+    this.zone.run(() => {
+      this.selectedCategories.push(value);
+      this.selectedCategoriesObjects.push(category);
+      let subCategories = category.subjectCategoryIdToSubCategory;
+      subCategories.forEach(x => this.filteredSubCategories.push(x));
+      this.allCategories.splice(this.allCategories.indexOf(category), 1)
+    })
   }
 
   clearCategory(event: MatChipInputEvent) {
@@ -118,26 +108,23 @@ export class UserMoreDetailsComponent implements OnInit {
     }
   }
 
-  removeSubCategory(selectedCategory: any) {
-    this.filteredSubCategories.push(selectedCategory);
-    this.selectedSubCategories.splice(
-      this.selectedSubCategories.indexOf(selectedCategory.id),
-      1
-    );
-    this.selectedSubCategoriesObjects.splice(
-      this.selectedSubCategoriesObjects.indexOf(selectedCategory),
-      1
-    );
+  removeSubCategory(selectedCategory: SubjectSubCategory) {
+    this.zone.run(() => {
+      this.filteredSubCategories.push(selectedCategory);
+      this.selectedSubCategories.splice(this.selectedSubCategories.indexOf(selectedCategory.id), 1)
+      this.selectedSubCategoriesObjects.splice(this.selectedSubCategoriesObjects.indexOf(selectedCategory), 1)
+    })
   }
 
   subCategorySelected(value: number) {
-    this.selectedSubCategories.push(value);
-    let subCategory = this.filteredSubCategories.find(x => x.id == value);
-    this.selectedSubCategoriesObjects.push(subCategory);
-    this.filteredSubCategories.splice(
-      this.filteredSubCategories.indexOf(subCategory),
-      1
-    );
+    this.zone.run(() => {
+      this.selectedSubCategories.push(value);
+      let subCategory = this.filteredSubCategories.find(x => x && x.id == value);
+      if(!subCategory)
+        return;
+      this.selectedSubCategoriesObjects.push(subCategory);
+      this.filteredSubCategories.splice(this.filteredSubCategories.indexOf(subCategory), 1)
+    })
   }
 
   clearSubCategory(event: MatChipInputEvent) {
@@ -148,6 +135,37 @@ export class UserMoreDetailsComponent implements OnInit {
         input.value = "";
       }
     }
+  }
+
+  availableCategories() {
+    let categoryMsg = "<span>"
+    this.authenticationService.allCategories.forEach((category, i) => {
+      categoryMsg += "<b>" + category.name + (i !== (this.authenticationService.allCategories.length - 1) ? " - " : " ") + "</b>"
+    })
+    categoryMsg += "</span>"
+    this.dialog.open(AlertBoxComponent, {
+      minWidth: "25%",
+      maxWidth: "60%",
+      data: { type: "success", message: categoryMsg }
+    });
+  }
+
+  availableSubCategories() {
+    let categoryMsg = "<span>"
+    this.authenticationService.allCategories.forEach(category => {
+      categoryMsg += "<b>" + category.name + "</b> ( "
+      category.subjectCategoryIdToSubCategory.forEach((subCategory, i) => categoryMsg += subCategory.name + (i !== (category.subjectCategoryIdToSubCategory.length - 1) ? " - " : " "))
+      categoryMsg += ") <br>"
+    })
+    categoryMsg += "</span>"
+    this.dialog.open(AlertBoxComponent, {
+      minWidth: "35%",
+      maxWidth: "60%",
+      data: {
+        type: "success",
+        message: categoryMsg
+      }
+    });
   }
 
   skipTheStepAction() {
@@ -179,25 +197,5 @@ export class UserMoreDetailsComponent implements OnInit {
       config.modifiedCommands.updateStudent
     );
     this.router.navigateByUrl("/home");
-  }
-
-  availableCategories() {
-    this.dialog.open(AlertBoxComponent, {
-      minWidth: "25%",
-      maxWidth: "60%",
-      data: { type: "success", message: "IT, Science and Commerce" }
-    });
-  }
-
-  availableSubCategories() {
-    this.dialog.open(AlertBoxComponent, {
-      minWidth: "25%",
-      maxWidth: "60%",
-      data: {
-        type: "success",
-        message:
-          "IT (Java and C++) <br> Science (Physics, Chemistry and Biology) <br> Commerce (Accountancy and Principles of Management)"
-      }
-    });
   }
 }

@@ -5,6 +5,9 @@
       <mat-card-subtitle>{{ authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <form class="mat-tab-content" fxLayout="column" [formGroup]="adminEditForm">
+      <div class="alert alert-primary" role="alert">
+        <strong>Note: </strong> {{"modifiyDetailsAlert" | translate}}
+      </div>
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
           <mat-label class="color-for-text">{{'labels.fullName' | translate }}
@@ -26,7 +29,7 @@
           <mat-label class="color-for-text">{{'labels.email' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="text" class="color-for-text" formControlName="email">
+          <input matInput type="text" class="color-for-text" formControlName="email" autocomplete="email">
           <mat-icon matSuffix class="color-for-text">mail</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.adminEditForm.controls['email'].touched && this.adminEditForm.controls['email'].hasError('required')">
@@ -43,7 +46,7 @@
           <mat-label class="color-for-text">{{'labels.username' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="text" class="color-for-text" formControlName="username">
+          <input matInput type="text" class="color-for-text" formControlName="username" autocomplete="username">
           <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.adminEditForm.controls['username'].touched && this.adminEditForm.controls['username'].hasError('required')">
@@ -59,7 +62,7 @@
           <mat-label class="color-for-text">{{'labels.password' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="password" class="color-for-text" formControlName="password">
+          <input matInput type="password" class="color-for-text" formControlName="password" autocomplete="current-password">
           <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.adminEditForm.controls['password'].touched && this.adminEditForm.controls['password'].hasError('required')">

@@ -5,6 +5,9 @@
       <mat-card-subtitle>{{authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <form class="mat-tab-content" fxLayout="column" [formGroup]="publisherEditForm" (ngSubmit)="editProfile()">
+      <div class="alert alert-primary" role="alert">
+        <strong>Note: </strong> {{"modifiyDetailsAlert" | translate}}
+      </div>
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
           <mat-label class="color-for-text">{{'labels.fullName' | translate }}
@@ -26,7 +29,7 @@
           <mat-label class="color-for-text">{{'labels.email' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="text" class="color-for-text" formControlName="email">
+          <input matInput type="text" class="color-for-text" formControlName="email" autocomplete="email">
           <mat-icon matSuffix class="color-for-text">mail</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.publisherEditForm.controls['email'].touched && this.publisherEditForm.controls['email'].hasError('required')">
@@ -43,7 +46,7 @@
           <mat-label class="color-for-text">{{'labels.username' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="text" class="color-for-text" formControlName="username">
+          <input matInput type="text" class="color-for-text" formControlName="username" autocomplete="username">
           <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.publisherEditForm.controls['username'].touched && this.publisherEditForm.controls['username'].hasError('required')">
@@ -59,7 +62,7 @@
           <mat-label class="color-for-text">{{'labels.password' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="password" class="color-for-text" formControlName="password">
+          <input matInput type="password" class="color-for-text" formControlName="password" autocomplete="current-password">
           <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.publisherEditForm.controls['password'].touched && this.publisherEditForm.controls['password'].hasError('required')">
@@ -72,7 +75,7 @@
           <mat-label class="color-for-text">{{'labels.mobileNo' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10">
+          <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10" autocomplete="mobile">
           <mat-icon matSuffix class="color-for-text">phone</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherEditForm.controls['mobile'].touched && publisherEditForm.controls['mobile'].hasError('required')">

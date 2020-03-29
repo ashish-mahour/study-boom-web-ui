@@ -9,7 +9,7 @@
           <mat-label class="color-for-text">{{'labels.mobileNo' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="tel" class="color-for-text" formControlName="mobileNo" maxlength="10">
+          <input matInput type="tel" class="color-for-text" formControlName="mobileNo" maxlength="10" autocomplete="mobile">
           <mat-icon matSuffix class="color-for-text">phone</mat-icon>
           <mat-error class="error-color"
             *ngIf="publisherMoreDetails.controls['mobileNo'].touched && publisherMoreDetails.controls['mobileNo'].hasError('required')">

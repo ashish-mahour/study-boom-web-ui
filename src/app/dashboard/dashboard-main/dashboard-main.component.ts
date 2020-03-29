@@ -7,6 +7,7 @@ import { AuthenticationService } from "../../services/authentication/authenticat
 import * as config from '../../shared/config.json';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: "app-dashboard-main",
@@ -57,7 +58,7 @@ export class DashboardMainComponent implements OnInit {
   @HostListener("window:resize")
   onResize() {
     this.zone.run(() => {
-      this.loadingService.showLoading(true, "Loading...")
+      this.translate.get("loading").subscribe(x => this.loadingService.showLoading(true, x))
       this.checkBrowser();
       this.loadingService.showLoading(false, null)
     })
@@ -76,6 +77,12 @@ export class DashboardMainComponent implements OnInit {
       this.isMobile = true;
     else this.isMobile = false;
   }
+
+  navBarToggle(navBar: MatSidenav) {
+    if(this.isMobile)
+      navBar.toggle()
+  }
+
   changeProfilePic(event: any) {
     let file: File = event.target.files[0];
     let fileReader = new FileReader();

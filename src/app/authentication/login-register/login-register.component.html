@@ -10,7 +10,7 @@
             <mat-label class="color-for-text">{{'labels.username' | translate}} / {{'labels.email' | translate}}
               <font color="red">*</font>
             </mat-label>
-            <input matInput type="text" class="color-for-text" formControlName="username">
+            <input matInput type="text" class="color-for-text" formControlName="username" autocomplete="username">
             <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
             <mat-error class="error-color"
               *ngIf="this.loginForm.controls['username'].touched && this.loginForm.controls['username'].hasError('required')">
@@ -25,7 +25,7 @@
             <mat-label class="color-for-text">{{'labels.password' | translate}}
               <font color="red">*</font>
             </mat-label>
-            <input matInput type="password" class="color-for-text" formControlName="password">
+            <input matInput type="password" class="color-for-text" formControlName="password" autocomplete="new-password">
             <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
             <mat-error class="error-color"
               *ngIf="this.loginForm.controls['password'].touched && this.loginForm.controls['password'].hasError('required')">
@@ -66,7 +66,7 @@
             <mat-label class="color-for-text">{{'labels.email' | translate }}
               <font color="red">*</font>
             </mat-label>
-            <input matInput type="text" class="color-for-text" formControlName="email">
+            <input matInput type="text" class="color-for-text" formControlName="email" autocomplete="email">
             <mat-icon matSuffix class="color-for-text">mail</mat-icon>
             <mat-error class="error-color"
               *ngIf="this.registerForm.controls['email'].touched && this.registerForm.controls['email'].hasError('required')">
@@ -81,7 +81,7 @@
             <mat-label class="color-for-text">{{'labels.username' | translate }}
               <font color="red">*</font>
             </mat-label>
-            <input matInput type="text" class="color-for-text" formControlName="username">
+            <input matInput type="text" class="color-for-text" formControlName="username" autocomplete="username">
             <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
             <mat-error class="error-color"
               *ngIf="this.registerForm.controls['username'].touched && this.registerForm.controls['username'].hasError('required')">
@@ -96,7 +96,7 @@
             <mat-label class="color-for-text">{{'labels.password' | translate }}
               <font color="red">*</font>
             </mat-label>
-            <input matInput type="password" class="color-for-text" formControlName="password">
+            <input matInput type="password" class="color-for-text" formControlName="password" autocomplete="new-password">
             <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
             <mat-error class="error-color"
               *ngIf="this.registerForm.controls['password'].touched && this.registerForm.controls['password'].hasError('required')">

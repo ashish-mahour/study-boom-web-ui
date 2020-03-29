@@ -2,6 +2,7 @@
   "appName": "StudyBoom Application",
   "appSubTitle": "A place where you can enhance your knowlegde and skills by performing various tests..",
   "loading": "Loading...",
+  "modifiyDetailsAlert": "Enter password again to modify profile...",
   "labels": {
     "username": "Username",
     "email": "Email",
@@ -116,7 +117,7 @@
       "testSeries": {
         "title": "Test Series",
         "subTabs": {
-          "allTestSeries": "NEW TEST SERIES",
+          "allTestSeries": "ALL TEST SERIES",
           "myTestSeries": "PERFORMED TEST SERIES"
         }
       },

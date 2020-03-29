@@ -5,6 +5,9 @@
       <mat-card-subtitle>{{ authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <form class="mat-tab-content" fxLayout="column" [formGroup]="userEditForm" (ngSubmit)="editProfile()">
+      <div class="alert alert-primary" role="alert">
+        <strong>Note: </strong> {{"modifiyDetailsAlert" | translate}}
+      </div>
       <div fxLayout="row wrap">
         <mat-form-field appearance="outline" class="form-field-outline" fxFlex=45 fxFlex.sm=100 fxFlex.xs=100>
           <mat-label class="color-for-text">{{'labels.fullName' | translate }}
@@ -26,7 +29,7 @@
           <mat-label class="color-for-text">{{'labels.email' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="text" class="color-for-text" formControlName="email">
+          <input matInput type="text" class="color-for-text" formControlName="email" autocomplete="email">
           <mat-icon matSuffix class="color-for-text">mail</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.userEditForm.controls['email'].touched && this.userEditForm.controls['email'].hasError('required')">
@@ -43,7 +46,7 @@
           <mat-label class="color-for-text">{{'labels.username' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="text" class="color-for-text" formControlName="username">
+          <input matInput type="text" class="color-for-text" formControlName="username" autocomplete="username">
           <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.userEditForm.controls['username'].touched && this.userEditForm.controls['username'].hasError('required')">
@@ -59,7 +62,7 @@
           <mat-label class="color-for-text">{{'labels.password' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="password" class="color-for-text" formControlName="password">
+          <input matInput type="password" class="color-for-text" formControlName="password" autocomplete="current-password">
           <mat-icon matSuffix class="color-for-text">vpn_key</mat-icon>
           <mat-error class="error-color"
             *ngIf="this.userEditForm.controls['password'].touched && this.userEditForm.controls['password'].hasError('required')">
@@ -72,7 +75,7 @@
           <mat-label class="color-for-text">{{'labels.mobileNo' | translate }}
             <font color="red">*</font>
           </mat-label>
-          <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10">
+          <input matInput type="tel" class="color-for-text" formControlName="mobile" maxlength="10" autocomplete="mobile">
           <mat-icon matSuffix class="color-for-text">phone</mat-icon>
           <mat-error class="error-color"
             *ngIf="userEditForm.controls['mobile'].touched && userEditForm.controls['mobile'].hasError('required')">
@@ -86,12 +89,14 @@
       </div>
       <mat-form-field appearance="outline" class="form-field-outline">
         <mat-chip-list #categoryList>
-          <mat-chip *ngFor="let category of selectedCategoriesObjects" [selectable]="true" [removable]="true"
+          <span *ngFor="let category of selectedCategoriesObjects">
+            <mat-chip *ngIf="category" [selectable]="true" [removable]="true"
             (removed)="removeCategory(category)" class="category-item">
             {{category.name}}
             <mat-icon matChipRemove class="close-button">cancel
             </mat-icon>
           </mat-chip>
+          </span>
         </mat-chip-list>
         <mat-label class="color-for-text">{{'labels.chooseCategories' | translate }}
           <font color="red">*</font>
@@ -114,12 +119,14 @@
 
       <mat-form-field appearance="outline" class="form-field-outline">
         <mat-chip-list #subCategoryList>
-          <mat-chip *ngFor="let subCategory of selectedSubCategoriesObjects" [selectable]="true" [removable]="true"
+          <span *ngFor="let subCategory of selectedSubCategoriesObjects" >
+            <mat-chip *ngIf="subCategory" [selectable]="true" [removable]="true"
             (removed)="removeSubCategory(subCategory)" class="category-item">
             {{subCategory.name}}
             <mat-icon matChipRemove class="close-button">cancel
             </mat-icon>
           </mat-chip>
+          </span>
         </mat-chip-list>
         <mat-label class="color-for-text">{{'labels.chooseSubCategories' | translate }}
           <font color="red">*</font>

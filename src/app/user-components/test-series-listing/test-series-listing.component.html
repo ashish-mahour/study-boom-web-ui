@@ -9,11 +9,11 @@
         <div fxFlex=100>
           <div [ngStyle]="{width: '100%', height: height, overflow:'auto'}">
             <div fxLayout="column">
-              <div class="test-listing-row-content" *ngFor="let testData of userService.testData[currentPage]; let i = index">
-                <div fxFlex=20>
+              <div fxLayout="row wrap" fxLayoutAlign="center center" class="test-listing-row-content" *ngFor="let testData of userService.testData[currentPage]; let i = index">
+                <div fxFlex=20 fxFlex.lg="20" fxFlex.xl="20" fxFlex.md="30" fxFlex.sm="40" fxFlex.xs="60">
                   <img src="assets/images/IT.png" class="test-image">
                 </div>
-                <div fxFlex=80 fxLayout="column">
+                <div fxFlex=80 fxFlex.lg="80" fxFlex.xl="80" fxFlex.md="70" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column">
                   <div fxFlex=100>
                     <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.testId' | translate }}</span> <span
@@ -84,11 +84,11 @@
         <div fxFlex=100>
           <div [ngStyle]="{width: '100%', height: height, overflow:'auto'}">
             <div fxLayout="column">
-              <div class="test-listing-row-content" *ngFor="let testData of findStudentsPerformedTests(userService.testData[currentPage]); let i = index">
-                <div fxFlex=20>
+              <div fxLayout="row wrap" class="test-listing-row-content" *ngFor="let testData of findStudentsPerformedTests(userService.testData[currentPage]); let i = index">
+                <div fxFlex=20 fxFlex.lg="20" fxFlex.xl="20" fxFlex.md="30" fxFlex.sm="40" fxFlex.xs="60">
                   <img src="assets/images/IT.png" class="test-image">
                 </div>
-                <div fxFlex=80 fxLayout="column">
+                <div fxFlex=80 fxFlex.lg="80" fxFlex.xl="80" fxFlex.md="70" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column">
                   <div fxFlex=100>
                     <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.testId' | translate }}</span> <span

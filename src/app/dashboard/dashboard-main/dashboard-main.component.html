@@ -10,7 +10,7 @@
     </div>
     <mat-sidenav-container autosize=true>
       <mat-sidenav [mode]="isMobile? 'over':'side'" position="start" [opened]="!isMobile" fxFlex=20 fxFlex.xs=50
-        fxFlex.sm=30 fixedInViewport=true [fixedTopGap]="isMobile? 36 : 0" #navBar>
+        fxFlex.sm=30 [fixedTopGap]="isMobile? 36 : 0" #navBar>
         <mat-nav-list>
           <div mat-list-item fxLayoutAlign="center start">
             <img (load)="loadingService.showLoading(false, null)"
@@ -22,29 +22,30 @@
           <div mat-list-item fxLayoutAlign="center start" class="user-name">
             {{ authenticationService.userDetails.fullName }}
           </div>
-            <mat-divider></mat-divider>
+          <br/>
+          <mat-divider></mat-divider>
 
             <!-- ALL -->
-            <a mat-list-item routerLinkActive="active" [routerLink]="['/dashboard']">
+            <a mat-list-item (click)="navBarToggle(navBar)" routerLinkActive="active" [routerLink]="['/dashboard']">
               <div><i class="fa fa-sign-in" aria-hidden="true"></i></div>
               <div fxFlexOffset=5>{{'pageTitles.dashboard.title' | translate }}</div>
             </a>
             <mat-divider></mat-divider>
-            <a mat-list-item routerLinkActive="active" (click)="editProfile()">
+            <a mat-list-item (click)="navBarToggle(navBar)" routerLinkActive="active" (click)="editProfile()">
               <div><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
               <div fxFlexOffset=5>{{'pageTitles.profile' | translate }}</div>
             </a>
             <mat-divider></mat-divider>
 
             <!-- STUDENTS -->
-            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
+            <a mat-list-item (click)="navBarToggle(navBar)" routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-test-series-listings'}}]">
               <div><i class="fa fa-book" aria-hidden="true"></i></div>
               <div fxFlexOffset=5>{{'pageTitles.studentPages.testSeries.title' | translate }}</div>
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'STUDENT'"></mat-divider>
 
-            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
+            <a mat-list-item (click)="navBarToggle(navBar)" routerLinkActive="active" *ngIf="authenticationService.userType === 'STUDENT'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'user-requests'}}]">
               <div><i class="fa fa-book" aria-hidden="true"></i></div>
               <div fxFlexOffset=5>{{'pageTitles.studentPages.requests' | translate }}</div>
@@ -53,7 +54,7 @@
             </mat-divider>
 
             <!-- PUBLISHERS -->
-            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER'"
+            <a mat-list-item (click)="navBarToggle(navBar)" routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-add-test-series'}}]">
               <div><i class="fa fa-book" aria-hidden="true"></i></div>
               <div fxFlexOffset=5>{{'pageTitles.publisherPages.addTestSeries.title' | translate }}</div>
@@ -62,7 +63,7 @@
             <mat-divider *ngIf="authenticationService.userType === 'PUBLISHER'">
             </mat-divider>
 
-            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER'"
+            <a mat-list-item (click)="navBarToggle(navBar)" routerLinkActive="active" *ngIf="authenticationService.userType === 'PUBLISHER'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'publisher-requests'}}]">
               <div><i class="fa fa-book" aria-hidden="true"></i></div>
               <div fxFlexOffset=5>{{'pageTitles.publisherPages.requests' | translate }}</div>
@@ -71,18 +72,18 @@
             </mat-divider>
 
             <!-- ADMIN -->
-            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
+            <a mat-list-item (click)="navBarToggle(navBar)" routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-users'}}]">
               <div><i class="fa fa-users" aria-hidden="true"></i></div>
               <div fxFlexOffset=5>{{'pageTitles.adminPages.manageUsers' | translate }}</div>
             </a>
             <mat-divider *ngIf="authenticationService.userType === 'ADMIN'"></mat-divider>
-            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
+            <a mat-list-item (click)="navBarToggle(navBar)" routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-test-series'}}]">
               <div><i class="fa fa-book" aria-hidden="true"></i></div>
               <div fxFlexOffset=5>{{'pageTitles.adminPages.manageTestSeries' | translate }}</div>
             </a>
-            <a mat-list-item routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
+            <a mat-list-item (click)="navBarToggle(navBar)" routerLinkActive="active" *ngIf="authenticationService.userType === 'ADMIN'"
               [routerLink]="['/dashboard', { outlets : {'dashboard-page-router':'admin-manage-categories'}}]">
               <div><i class="fa fa-book" aria-hidden="true"></i></div>
               <div fxFlexOffset=5>{{'pageTitles.adminPages.manageCategories' | translate }}</div>
@@ -90,7 +91,7 @@
             <mat-divider *ngIf="authenticationService.userType === 'ADMIN'"></mat-divider>
 
             <!-- ALL -->
-            <a mat-list-item routerLinkActive="active" (click)="authenticationService.logoutUser()">
+            <a mat-list-item (click)="navBarToggle(navBar)" routerLinkActive="active" (click)="authenticationService.logoutUser()">
               <div><i class="fa fa-sign-out" aria-hidden="true"></i></div>
               <div fxFlexOffset=5>{{'pageTitles.logout' | translate }}</div>
             </a>

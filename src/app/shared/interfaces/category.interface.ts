@@ -23,6 +23,6 @@ export interface SubjectSubCategory {
 
 export interface StudentChoosenSubjectSubCategory {
     id: number;
-    subjectSubCategoryIdToChoosenSubCategories: Array<SubjectSubCategory>;
+    subjectSubCategoryIdToChoosenSubCategories: SubjectSubCategory;
     priorityLevel: number;
 }
