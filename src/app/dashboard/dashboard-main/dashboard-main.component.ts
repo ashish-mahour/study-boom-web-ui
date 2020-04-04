@@ -18,6 +18,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class DashboardMainComponent implements OnInit {
   isMobile: boolean = true;
   currentDate: number = new Date().getFullYear();
+  height: number = window.innerHeight - 36
 
   constructor(
     private titleService: Title,
@@ -59,6 +60,7 @@ export class DashboardMainComponent implements OnInit {
   onResize() {
     this.zone.run(() => {
       this.translate.get("loading").subscribe(x => this.loadingService.showLoading(true, x))
+      this.height = window.innerHeight - 36
       this.checkBrowser();
       this.loadingService.showLoading(false, null)
     })
@@ -79,7 +81,7 @@ export class DashboardMainComponent implements OnInit {
   }
 
   navBarToggle(navBar: MatSidenav) {
-    if(this.isMobile)
+    if (this.isMobile)
       navBar.toggle()
   }
 

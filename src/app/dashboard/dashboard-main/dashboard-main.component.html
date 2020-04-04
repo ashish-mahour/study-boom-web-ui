@@ -8,13 +8,13 @@
         </span>
       </div>
     </div>
-    <mat-sidenav-container autosize=true>
+    <mat-sidenav-container autosize=true [ngStyle]="{ height: height + 'px' }">
       <mat-sidenav [mode]="isMobile? 'over':'side'" position="start" [opened]="!isMobile" fxFlex=20 fxFlex.xs=50
         fxFlex.sm=30 [fixedTopGap]="isMobile? 36 : 0" #navBar>
         <mat-nav-list>
           <div mat-list-item fxLayoutAlign="center start" @dropDownAnimation>
             <img (load)="loadingService.showLoading(false, null)"
-              [src]="authenticationService.userDetails.profilePic && authenticationService.userDetails.profilePic !== null ? authenticationService.userDetails.profilePic : 'assets/images/default-user-image.png'"
+              [src]="authenticationService.userDetails.profilePic && authenticationService.userDetails.profilePic !== null ? authenticationService.userDetails.profilePic : './assets/images/default-user-image.png'"
               class="user-image" matTooltip="Change Profile Picture.." [matTooltipPosition]="'right'"
               (click)="profilePic.click()">
             <input type="file" hidden #profilePic accept="image/*" (change)="changeProfilePic($event)">

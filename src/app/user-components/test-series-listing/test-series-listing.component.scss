@@ -76,7 +76,11 @@
 }
 
 .add-to-cart-perform-button {
-  background-color: rgb(26, 197, 132);
-  color: rgba(43, 42, 42);
+  letter-spacing: 1px;
   font-weight: 500;
+  background: transparent;
+  color: rgb(19, 255, 196);
+  border: 1px;
+  border-style: double;
+  border-color: rgb(19, 255, 196);
 }

@@ -1,13 +1,16 @@
 {
   "name": "study-boom-application",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "main": "./electron/main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron-start": "ng build --base-href ./ && electron .",
+    "electron-win-build": "ng build --base-href ./ && electron-builder build --windows"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +48,8 @@
     "@types/jasminewd2": "~2.0.8",
     "@types/node": "^12.12.30",
     "codelyzer": "^5.1.2",
+    "electron": "^8.2.0",
+    "electron-builder": "^22.4.1",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.4.1",

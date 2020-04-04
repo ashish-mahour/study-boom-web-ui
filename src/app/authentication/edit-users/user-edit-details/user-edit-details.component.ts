@@ -80,10 +80,8 @@ export class UserEditDetailsComponent implements OnInit {
     this.allCategories = JSON.parse(JSON.stringify(this.authenticationService.allCategories))
     const choosedSubCategories = this.authenticationService.userDetails
       .userIdFromStudent.studentIdToChoosenSubCategories;
-    console.log(choosedSubCategories)
     if (choosedSubCategories.length > 0) {
       choosedSubCategories.forEach(choosedSubCategory => {
-        console.log(choosedSubCategory)
         this.authenticationService.allCategories.forEach(x => {
           if (!x) {
             return;
