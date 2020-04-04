@@ -10,8 +10,6 @@ import { AdminService } from "../../services/admin/admin.service";
   styleUrls: ["./dashboard-screen.component.scss"]
 })
 export class DashboardScreenComponent implements OnInit {
-  profileCompletion: number = 30;
-
   height: string = window.innerHeight - 250 + "px";
   currentRequestPage: number = 0;
   requestPageNo: number = 0;

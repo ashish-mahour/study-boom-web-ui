@@ -1,101 +1,112 @@
 .user-more-details-content {
-      color: rgb(209, 206, 206);
-      background-color: rgba(43, 42, 42, 0.644);
-      width: 30%;
-      margin-top: 3%;
-      padding: 0%;
-      padding-top: 1%;
-      margin-left: 0%;
-      font-family: cursive;
+  color: rgb(209, 206, 206);
+  background-color: rgba(43, 42, 42, 0.644);
+  width: 30%;
+  margin-top: 3%;
+  padding: 0%;
+  padding-top: 1%;
+  margin-left: 0%;
+  font-family: Arial, Helvetica, sans-serif;
 
-      @media only screen and (max-width: 800px) {
-            width: 60%;
-      }
+  @media only screen and (max-width: 800px) {
+    width: 60%;
+  }
 
-      @media only screen and (max-width: 600px) {
-            width: 80%;
-      }
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+  }
 }
 
 .user-more-details-title {
-      font-size: 150%;
-      font-weight: bolder;
-      letter-spacing: 1px;
+  font-size: 150%;
+  font-weight: bolder;
+  letter-spacing: 1px;
 }
 
 .mat-card-content {
-      padding: 5%;
-      overflow: hidden;
+  padding: 5%;
+  overflow: hidden;
 }
 
 .form-field-outline {
-      font-size: 75%;
+  font-size: 0.75em;
 }
 
 ::ng-deep {
-      .form-field-outline .mat-form-field-outline {
-            color: rgba(230, 227, 227, 0.863) !important;
-      }
+  .form-field-outline .mat-form-field-outline {
+    color: rgba(230, 227, 227, 0.863) !important;
+  }
 
-      .form-field-outline .mat-select-value {
-            color: rgba(230, 227, 227, 0.863) !important;
-      }
+  .form-field-outline .mat-select-value {
+    color: rgba(230, 227, 227, 0.863) !important;
+  }
 
-      .form-field-outline .mat-select-arrow {
-            color: rgba(230, 227, 227, 0.863) !important;
-      }
+  .form-field-outline .mat-select-arrow {
+    color: rgba(230, 227, 227, 0.863) !important;
+  }
 
-      .mat-option-text {
-            color: rgb(209, 206, 206) !important;
-      }
+  .mat-option-text {
+    color: rgb(209, 206, 206) !important;
+  }
 
-      .mat-form-field-invalid .mat-form-field-outline {
-            color: rgb(165, 62, 62) !important;
-      }
-
+  .mat-form-field-invalid .mat-form-field-outline {
+    color: rgb(165, 62, 62) !important;
+  }
 }
 
 .color-for-text {
-      color: rgba(230, 227, 227, 0.863);
+  color: rgba(230, 227, 227, 0.863);
 }
 
 .question-icon-size {
-      font-size: 200%;
-      cursor: pointer;
+  font-size: 2em;
+  cursor: pointer;
 }
 
 .error-color {
-      color: crimson;
+  color: crimson;
 }
 
 .skip-this-step-label {
-      cursor: pointer;
-      padding: 1%;
-      color: rgb(32, 12, 12);
-      font-size: 80%;
+  cursor: pointer;
+  padding: 1%;
+  color: rgb(32, 12, 12);
+  font-size: 80%;
 }
 
 .skip-this-step-label:hover {
-      background-color: rgb(44, 44, 44);
-      color: rgb(209, 206, 206);
+  background-color: rgb(44, 44, 44);
+  color: rgb(209, 206, 206);
 }
 
 .button-layout {
-      letter-spacing: 1px;
-      font-weight: 500;
-      background-image: radial-gradient(circle, rgb(242, 183, 145), rgb(245, 154, 94));
-      color: rgb(44, 44, 44);
+  letter-spacing: 1px;
+  font-weight: 500;
+  background: transparent;
+  color: rgb(19, 255, 196);
+  border: 1px;
+  border-style: double;
+  border-color: rgb(19, 255, 196);
+}
+
+.button-layout:disabled {
+  color: rgb(201, 201, 201);
+  border-color: rgb(75, 75, 75);
 }
 
 .width-100 {
-      width: 100%;
+  width: 100%;
 }
 
 .category-item {
-      background-image: radial-gradient(circle, rgb(242, 183, 145), rgb(245, 154, 94));
-      color: rgb(44, 44, 44);
+  background-image: radial-gradient(
+    circle,
+    rgb(242, 183, 145),
+    rgb(245, 154, 94)
+  );
+  color: rgb(44, 44, 44);
 }
 
 .close-button {
-      color: rgb(44, 44, 44) !important;
+  color: rgb(44, 44, 44) !important;
 }

@@ -1,56 +1,59 @@
 .publisher-edit-content {
-      background-color: rgba(43, 42, 42, 0.644);
-      width: 70%;
-      margin-top: 1%;
-      padding: 0%;
-      padding-top: 1%;
+  background-color: rgba(43, 42, 42, 0.644);
+  width: 70%;
+  margin-top: 1%;
+  padding: 0%;
+  padding-top: 1%;
 
-      @media only screen and (max-width: 800px) {
-            width: 80%;
-            margin-top: 12%;
-      }
+  @media only screen and (max-width: 800px) {
+    width: 80%;
+    margin-top: 12%;
+  }
 
-      @media only screen and (max-width: 600px) {
-            width: 80%;
-      }
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+  }
 }
 
 .mat-tab-content {
-      background-color: rgba(0, 0, 0, 0);
-      padding: 5%;
-      overflow: hidden;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5%;
+  overflow: hidden;
 }
 
 .form-field-outline {
-      font-size: 75%;
+  font-size: 0.75em;
 }
 
 ::ng-deep {
-      .form-field-outline .mat-form-field-outline {
-            color: rgba(230, 227, 227, 0.863) !important;
-      }
+  .form-field-outline .mat-form-field-outline {
+    color: rgba(230, 227, 227, 0.863) !important;
+  }
 
-      .mat-form-field-invalid .mat-form-field-outline {
-            color: rgb(255, 0, 0) !important;
-      }
+  .mat-form-field-invalid .mat-form-field-outline {
+    color: rgb(255, 0, 0) !important;
+  }
 }
 
 .color-for-text {
-      color: rgba(230, 227, 227, 0.863)
+  color: rgba(230, 227, 227, 0.863);
 }
 
 .button-layout {
-      letter-spacing: 1px;
-      font-weight: 500;
-      background-image: radial-gradient(circle, rgb(242, 183, 145), rgb(245, 154, 94));
-      color: rgb(44, 44, 44);
+  letter-spacing: 1px;
+  font-weight: 500;
+  background: transparent;
+  color: rgb(19, 255, 196);
+  border: 1px;
+  border-style: double;
+  border-color: rgb(19, 255, 196);
 }
 
 .button-layout:disabled {
-      background-image: radial-gradient(circle, rgb(139, 156, 163), rgb(158, 163, 165));
-      color: lightgray;
+  color: rgb(201, 201, 201);
+  border-color: rgb(75, 75, 75);
 }
 
 .error-color {
-      color: rgb(250, 102, 102);
+  color: rgb(250, 102, 102);
 }

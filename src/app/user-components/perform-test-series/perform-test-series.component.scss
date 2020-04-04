@@ -16,7 +16,7 @@
 }
 
 .form-field-outline {
-  font-size: 75%;
+  font-size: 0.75em;;
 }
 
 ::ng-deep {
@@ -90,7 +90,7 @@
 .test-perform-heading {
   font-size: 1em;
   font-weight: bold;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 1px;
   word-wrap: break-word;
 }
@@ -98,7 +98,7 @@
 .test-perform-content {
   font-size: 1em;
   font-weight: normal;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 5px;
   word-wrap: break-word;
 }
@@ -114,7 +114,7 @@
   background-color: rgb(26, 197, 132);
   font-size: 1em;
   font-weight: bold;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 5px;
   word-wrap: break-word;
 }
@@ -123,7 +123,7 @@
   background-color: rgba(230, 35, 35, 0.788);
   font-size: 1em;
   font-weight: bold;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 5px;
   word-wrap: break-word;
 }
@@ -133,7 +133,7 @@
   font-size: 1.5em;
   text-align: center;
   font-weight: bold;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 5px;
   word-wrap: break-word;
 }
@@ -142,7 +142,7 @@
   background-color: rgba(230, 35, 35, 0.788);
   font-size: 1.5em;
   font-weight: bold;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   padding: 5px;
   word-wrap: break-word;
@@ -165,7 +165,7 @@
 .test-perform-question-heading {
   font-size: 1.5em;
   font-weight: bold;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 5px;
   word-wrap: break-word;
   color: rgba(10, 178, 245, 0.8);
@@ -174,7 +174,7 @@
 .test-perform-question-content {
   font-size: 1.5em;
   font-weight: normal;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 5px;
   word-wrap: break-word;
 }

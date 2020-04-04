@@ -33,7 +33,7 @@
 }
 
 .form-field-outline {
-  font-size: 75%;
+  font-size: 0.75em;
 }
 
 ::ng-deep {
@@ -63,19 +63,16 @@
 .button-layout {
   letter-spacing: 1px;
   font-weight: 500;
-  background-image: radial-gradient(
-    circle,
-    rgb(28, 192, 110),
-    rgb(19, 134, 77)
-  );
+  background: transparent;
+  color: rgb(25, 252, 176);
+  border: 1px;
+  border-style: double;
+  border-color: rgb(25, 252, 176);
 }
 
 .button-layout:disabled {
-  background-image: radial-gradient(
-    circle,
-    rgb(139, 156, 163),
-    rgb(158, 163, 165)
-  );
+  color: rgb(201, 201, 201);
+  border-color: rgb(75, 75, 75);
 }
 
 .error-color {

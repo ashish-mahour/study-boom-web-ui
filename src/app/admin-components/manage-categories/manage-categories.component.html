@@ -9,25 +9,29 @@
         <div [ngStyle]="{width: '100%', height: height, 'overflow': 'auto'}">
           <div fxLayout="column">
             <div *ngFor="let category of adminService.allCategories[currentPage]; let i = index"
-              class="manage-categories-listing-row">
-              <div class="manage-categories-listing-row-content" fxLayout="column">
+              class="manage-categories-listing-row-content">
+              <div fxLayout="column">
                 <div fxLayout="column">
                   <div fxLayout>
                     <span class="manage-categories-listing-heading" fxFlex=50>{{
                           'manageCategoriesLabels.categoryName'
                           | translate }} : </span>
-                    <span class="manage-categories-listing-content" fxFlex=50>{{category.name}}</span>
+                    <span class="manage-categories-listing-content" fxFlex=50>
+                      <mat-chip style="background-color: black;">
+                        {{category.name}}
+                      </mat-chip>
+                    </span>
                   </div>
                   <div fxLayout>
                     <span class="manage-categories-listing-heading" fxFlex=50>{{
                           'manageCategoriesLabels.subCategoryName'
                           | translate }} : </span>
                     <div fxFlex=50>
-                      <span *ngFor="let subCategory of category.subjectCategoryIdToSubCategory; let i = index">
-                        <span class="manage-categories-listing-content" style="background: rgba(99, 99, 99, 0.63); color: rgba(255, 255, 255, 0.63);">
+                      <mat-chip-list>
+                        <mat-chip *ngFor="let subCategory of category.subjectCategoryIdToSubCategory;" class="manage-categories-listing-content">
                           {{subCategory.name}}
-                        </span> &nbsp;
-                      </span>
+                        </mat-chip>
+                      </mat-chip-list>
                     </div>
 
                   </div>

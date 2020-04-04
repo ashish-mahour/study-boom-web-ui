@@ -1,13 +1,13 @@
 .manage-categories-content {
   background-color: rgba(43, 42, 42, 0.644);
   width: 70%;
-  margin-top: 1%;
+  margin-top: 3px;
   padding: 0%;
-  padding-top: 1%;
+  padding-top: 3px;
 
   @media only screen and (max-width: 800px) {
     width: 80%;
-    margin-top: 12%;
+    margin-top: 20px;
   }
 
   @media only screen and (max-width: 600px) {
@@ -60,40 +60,39 @@
 
 .user-activated-reject-status-checked {
   cursor: pointer;
-  background: rgb(197, 52, 26);
+  background: rgb(228, 89, 34);
   color: rgba(255, 255, 255, 0.863);
   border: none !important;
 }
 
-.manage-categories-listing-row {
-  color: rgba(43, 42, 42);
-  padding: 1%;
-}
-
 .manage-categories-listing-heading {
-  font-size: 100%;
+  font-size: 1em;
   font-weight: bold;
-  font-family: cursive;
-  padding: 1%;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 3px;
   word-wrap: break-word;
 }
 
 .manage-categories-listing-content {
-  font-size: 100%;
+  font-size: 1em;
   font-weight: normal;
-  font-family: cursive;
-  padding: 2%;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 4px;
   word-wrap: break-word;
   height: 100%;
 }
 
 .manage-categories-listing-row-content {
-  background-color: rgba(219, 216, 214, 0.664);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px;
+  border: 1px;
+  border-style: double;
+  border-color: rgb(245, 154, 94);
 }
 
 .next-prev-layout {
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .next-prev-button {
@@ -103,8 +102,8 @@
 .add-category-btn {
   letter-spacing: 1px;
   font-weight: 500;
-  padding: 1%;
-  margin: 2%;
+  padding: 3px;
+  margin: 5px;
   cursor: pointer;
 }
 .add-category-btn:hover{
@@ -114,21 +113,19 @@
 .update-category-btn {
   letter-spacing: 1px;
   font-weight: 500;
-  background-image: radial-gradient(
-    circle,
-    rgb(89, 199, 199),
-    rgb(76, 179, 179)
-  );
-  color: rgb(44, 44, 44);
+  background: transparent;
+  color: rgb(76, 179, 179);
+  border: 1px;
+  border-style: double;
+  border-color: rgb(76, 179, 179);
 }
 
 .delete-category-btn {
   letter-spacing: 1px;
   font-weight: 500;
-  background-image: radial-gradient(
-    circle,
-    rgb(221, 53, 53),
-    rgb(231, 31, 31)
-  );
-  color: rgb(44, 44, 44);
+  background: transparent;
+  color: rgb(245, 73, 4);
+  border: 1px;
+  border-style: double;
+  border-color: rgb(245, 73, 4);
 }

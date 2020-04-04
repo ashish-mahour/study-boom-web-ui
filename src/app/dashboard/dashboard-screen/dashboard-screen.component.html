@@ -5,30 +5,13 @@
             <mat-card-subtitle>{{authenticationService.userType | titlecase }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content fxLayout="column" fxLayout="row wrap">
-            <div fxLayoutAlign="center center" fxLayout="column" fxFlex=100>
-                <div class="alert alert-success" role="alert" *ngIf="profileCompletion === 100">
-                    <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-success-message">
-                        {{ 'dashboardLabels.profileCompleted' | translate }}
-                    </span>
-                </div>
-                <div class="alert alert-primary" role="alert" *ngIf="profileCompletion !== 100" fxLayout="row wrap">
-                    <span fxFlex="80" fxFlex.xs="50" fxFlex.sm="50" class="alert-error-message">
-                        {{ 'dashboardLabels.profileNotCompleted' | translate: {
-                        profileCompletion: authenticationService.profileCompletion } }}
-                    </span>
-                    <span fxLayoutAlign="end start" fxFlex="20" fxFlex.xs="50" fxFlex.sm="50">
-                        <button mat-raised-button class="edit-profile-button" (click)="editProfile()">{{
-                            'dashboardLabels.editProfile' | translate }}</button>
-                    </span>
-                </div>
-            </div>
             <div fxFlex=100>
                 <div [ngStyle]="{width: '100%', height: height,
                     overflow:'auto'}">
                     <div fxLayout="column" *ngIf="authenticationService.userType ===
                         'PUBLISHER'">
-                        <div *ngFor="let test of testData" class="dashboard-listing-row">
-                            <div class="dashboard-listing-row-content" fxLayout="column">
+                        <div *ngFor="let test of testData" class="dashboard-listing-row-content">
+                            <div fxLayout="column">
                                 <div fxFlex=100>
                                     <div fxFlex=25 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testId'
@@ -87,8 +70,8 @@
                     </div>
                     <div fxFlex=100 fxLayout="column" *ngIf="authenticationService.userType ===
                         'STUDENT'">
-                        <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row">
-                            <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
+                        <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row-content">
+                            <div fxFlex=100 fxLayout="column">
                                 <div fxFlex=100>
                                     <div fxFlex=25 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testId'
@@ -149,8 +132,8 @@
                     </div>
                     <div fxFlex=100 fxLayout="column" *ngIf="authenticationService.userType ===
                         ( 'userTypes.admin'| translate )">
-                        <div fxFlex=100 *ngFor="let request of adminService.allRequests[this.requestPageNo]" class="dashboard-listing-row">
-                            <div fxFlex=100 class="dashboard-listing-row-content" fxLayout="column">
+                        <div fxFlex=100 *ngFor="let request of adminService.allRequests[this.requestPageNo]" class="dashboard-listing-row-content">
+                            <div fxFlex=100 fxLayout="column">
                                 <div fxFlex=100>
                                     <div fxFlex=30 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{

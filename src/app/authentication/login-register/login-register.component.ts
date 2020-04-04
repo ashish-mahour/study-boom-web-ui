@@ -94,12 +94,8 @@ export class LoginRegisterComponent implements OnInit {
   }
   openDialog() {
     this.dialog.open(ForgotPasswordComponent, {
-      minWidth: "25%",
-      maxWidth: "70%",
-      data: {
-        type: "success",
-        message: "This is just a demo please do not get serious!"
-      }
+      minWidth: "30%",
+      maxWidth: "70%"
     });
   }
 }

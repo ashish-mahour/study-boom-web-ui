@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, NgZone } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { routerInAnimation } from "../../shared/animations";
+import { routerInAnimation, dropDownAnimation } from "../../shared/animations";
 import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { AuthenticationService } from "../../services/authentication/authentication.service";
@@ -13,7 +13,7 @@ import { MatSidenav } from '@angular/material/sidenav';
   selector: "app-dashboard-main",
   templateUrl: "./dashboard-main.component.html",
   styleUrls: ["./dashboard-main.component.scss"],
-  animations: [routerInAnimation]
+  animations: [routerInAnimation, dropDownAnimation]
 })
 export class DashboardMainComponent implements OnInit {
   isMobile: boolean = true;

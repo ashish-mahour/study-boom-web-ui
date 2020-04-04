@@ -15,7 +15,6 @@ export class AuthenticationService {
 
   isAuthenticated: boolean = false;
   userType: string;
-  profileCompletion: number = 30;
   userDetails: Users = {
     id: null,
     fullName: null,
@@ -77,7 +76,6 @@ export class AuthenticationService {
            */
           this.userDetails = data;
           this.userType = data.type;
-          this.profileCompletion = 100;
           this.isAuthenticated = true;
 
           /**
@@ -218,7 +216,6 @@ export class AuthenticationService {
            */
           this.userDetails = data;
           this.userType = data.type;
-          this.profileCompletion = 100;
           this.isAuthenticated = true;
 
           /**

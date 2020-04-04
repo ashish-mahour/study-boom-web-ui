@@ -144,8 +144,6 @@
   },
   "dashboardLabels": {
     "editProfile": "Edit Profile",
-    "profileCompleted": "Your Profile is completed...",
-    "profileNotCompleted": " Your profile is {{profileCompletion}}% completed...",
     "publisherDashboardLabels": {
       "createdDateTime": "Created Date/Time",
       "soldCount": "Sold Count"

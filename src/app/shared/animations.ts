@@ -1,16 +1,31 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 
-export let routerInAnimation = trigger('routerInAnimation',[
-    transition('void => *',[
+export const routerInAnimation = trigger('routerInAnimation',[
+    transition(':enter',[
         style({
-            opacity:0
+            opacity: 0
         }),
-        animate('0.5s')
+        animate('0.5s ease-out')
     ]),
-    transition('* => void',[
+    transition(':leave',[
         style({
-            opacity:1
+            opacity: 1
         }),
-        animate('0.5s')
+        animate('0.5s ease-out')
+    ])
+])
+
+export const dropDownAnimation = trigger('dropDownAnimation',[
+    transition(':enter',[
+        style({
+            height: "*"
+        }),
+        animate('0.5s ease-out')
+    ]),
+    transition(':leave',[
+        style({
+            height: 0
+        }),
+        animate('0.5s ease-out')
     ])
 ])
