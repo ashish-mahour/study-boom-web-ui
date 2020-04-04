@@ -1,6 +1,11 @@
 {
   "name": "study-boom-application",
   "version": "1.0.0",
+  "author": {
+    "name": "Ashish Mahour",
+    "email": "amashishmahour@gmail.com"
+  },
+  "description": "Angular Application!!",
   "main": "./electron/main.js",
   "scripts": {
     "ng": "ng",
@@ -10,7 +15,21 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron-start": "ng build --base-href ./ && electron .",
-    "electron-win-build": "ng build --base-href ./ && electron-builder build --windows"
+    "electron-win-build": "ng build --base-href ./ && electron-builder -w"
+  },
+  "build": {
+    "appId": "com.studyboom",
+    "win": {
+      "target": [
+        {
+          "target": "msi",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    }
   },
   "private": true,
   "dependencies": {
