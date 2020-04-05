@@ -18,7 +18,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class DashboardMainComponent implements OnInit {
   isMobile: boolean = true;
   currentDate: number = new Date().getFullYear();
-  height: number = window.innerHeight - 36
+  height: number = window.innerHeight - 16
 
   constructor(
     private titleService: Title,
@@ -60,7 +60,7 @@ export class DashboardMainComponent implements OnInit {
   onResize() {
     this.zone.run(() => {
       this.translate.get("loading").subscribe(x => this.loadingService.showLoading(true, x))
-      this.height = window.innerHeight - 36
+      this.height = window.innerHeight - 16
       this.checkBrowser();
       this.loadingService.showLoading(false, null)
     })

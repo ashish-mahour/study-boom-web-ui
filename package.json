@@ -15,20 +15,13 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron-start": "ng build --base-href ./ && electron .",
-    "electron-win-build": "ng build --base-href ./ && electron-builder -w"
+    "electron-win-build": "ng build --base-href ./ && electron-builder build -w"
   },
   "build": {
     "appId": "com.studyboom",
     "win": {
-      "target": [
-        {
-          "target": "msi",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ]
+      "icon": "dist/assets/app-icons/logo.png",
+      "target": "msi"
     }
   },
   "private": true,
