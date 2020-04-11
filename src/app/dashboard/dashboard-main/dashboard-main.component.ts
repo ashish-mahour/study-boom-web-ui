@@ -18,7 +18,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class DashboardMainComponent implements OnInit {
   isMobile: boolean = true;
   currentDate: number = new Date().getFullYear();
-  height: number = window.innerHeight - 16
+  height: number = window.innerHeight
 
   constructor(
     private titleService: Title,
@@ -60,21 +60,16 @@ export class DashboardMainComponent implements OnInit {
   onResize() {
     this.zone.run(() => {
       this.translate.get("loading").subscribe(x => this.loadingService.showLoading(true, x))
-      this.height = window.innerHeight - 16
       this.checkBrowser();
+      this.height = window.innerHeight - (this.isMobile ? 30: 0)
       this.loadingService.showLoading(false, null)
     })
   }
 
   checkBrowser() {
     if (
-      navigator.userAgent.match(/Android/i) ||
-      navigator.userAgent.match(/webOS/i) ||
-      navigator.userAgent.match(/iPhone/i) ||
-      navigator.userAgent.match(/iPad/i) ||
-      navigator.userAgent.match(/iPod/i) ||
-      navigator.userAgent.match(/BlackBerry/i) ||
-      navigator.userAgent.match(/Windows Phone/i)
+      window.matchMedia("screen and (max-width: 540px)").matches ||
+      window.matchMedia("screen and (max-width: 720px)").matches
     )
       this.isMobile = true;
     else this.isMobile = false;

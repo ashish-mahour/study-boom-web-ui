@@ -12,7 +12,7 @@
             <div *ngFor="let user of adminService.allUsers[currentPage]" class="manage-users-listing-row-content">
               <div fxLayout="column">
                 <div fxLayout fxLayout.xs="column" fxLayout.sm="column">
-                  <div fxFlex=25 style="margin: 1%;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
+                  <div fxFlex=25 style="margin: 3px;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
                     <span class="manage-users-listing-heading">{{
                                 'manageUsersListingLabels.fullName'
                                 | translate }}</span>
@@ -22,18 +22,18 @@
                         | translate }}</span>
                     <span class="manage-users-listing-content">{{ user.type }}</span>
                   </div>
-                  <div fxFlex=25 style="margin: 1%;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
+                  <div fxFlex=25 style="margin: 3px;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
                     <span class="manage-users-listing-heading">{{
                         'manageUsersListingLabels.username'
                                 | translate }}</span><span
                       class="manage-users-listing-content">{{ user.username }}</span>
                   </div>
-                  <div fxFlex=25 style="margin: 1%;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
+                  <div fxFlex=25 style="margin: 3px;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
                     <span class="manage-users-listing-heading">{{
                         'manageUsersListingLabels.email'
                                 | translate }}</span><span class="manage-users-listing-content">{{ user.email }}</span>
                   </div>
-                  <div fxFlex=25 style="margin: 1%;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
+                  <div fxFlex=25 style="margin: 3px;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
                     <span class="manage-users-listing-heading">{{
                                 'manageUsersListingLabels.status'
                                 | translate }}</span>

@@ -1,23 +1,23 @@
 .login-register-content {
   background-color: rgba(43, 42, 42, 0.644);
   width: 30%;
-  margin-top: 1%;
-  padding: 0%;
-  padding-top: 1%;
+  margin-top: 3px;
+  padding: 0px;
+  padding-top: 3px;
 
   @media only screen and (max-width: 1200px) {
     width: 40%;
-    margin-top: 8%;
+    margin-top: 12px;
   }
 
   @media only screen and (max-width: 1000px) {
     width: 50%;
-    margin-top: 10%;
+    margin-top: 15px;
   }
 
   @media only screen and (max-width: 800px) {
     width: 60%;
-    margin-top: 12%;
+    margin-top: 20px;
   }
 
   @media only screen and (max-width: 600px) {
@@ -27,7 +27,7 @@
 
 .mat-tab-content {
   background-color: rgba(0, 0, 0, 0);
-  padding: 5%;
+  padding: 8px;
   overflow: hidden;
 }
 
@@ -37,8 +37,8 @@
 
 ::ng-deep {
   .login-register-content .mat-tab-label {
-    padding: 0%;
-    font-size: 80%;
+    padding: 0px;
+    font-size: 0.8em;
     height: 35px;
   }
 
@@ -51,7 +51,7 @@
   }
 
   .form-field-outline .mat-form-field-wrapper {
-    padding-bottom: 4%;
+    padding-bottom: 7px;
   }
 
   .login-register-content .mat-ink-bar {
@@ -96,9 +96,9 @@
 
 .forgot-password-label {
   cursor: pointer;
-  padding: 1%;
+  padding: 3px;
   color: rgb(32, 12, 12);
-  font-size: 80%;
+  font-size: 0.8em;
   text-align: center;
 }
 

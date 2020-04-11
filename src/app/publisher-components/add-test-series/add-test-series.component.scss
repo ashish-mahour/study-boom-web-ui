@@ -1,13 +1,13 @@
 .add-test-series-content {
   background-color: rgba(43, 42, 42, 0.644);
   width: 70%;
-  margin-top: 1%;
-  padding: 0%;
-  padding-top: 1%;
+  margin-top: 5px;
+  padding: 0px;
+  padding-top: 3px;
 
   @media only screen and (max-width: 800px) {
     width: 80%;
-    margin-top: 12%;
+    margin-top: 20px;
   }
 
   @media only screen and (max-width: 600px) {
@@ -17,7 +17,7 @@
 
 .mat-tab-content {
   background-color: rgba(0, 0, 0, 0);
-  padding: 5%;
+  padding: 8px;
   overflow: hidden;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .total-no-of-questions {
-  padding: 5%;
+  padding: 8px;
 }
 
 .button-layout-for-add-icon {
@@ -74,7 +74,7 @@
   font-weight: 500;
   background-color: rgba(20, 230, 149, 0.932);
   color: rgb(194, 194, 194);
-  margin-top: 1%;
+  margin-top: 3px;
   font-size: 1.5em;
 }
 .button-layout-for-add-icon:disabled {
@@ -85,7 +85,7 @@
   font-weight: 500;
   background-color: rgba(216, 25, 25, 0.863);
   color: rgb(241, 241, 241);
-  margin-top: 1%;
+  margin-top: 3px;
   font-size: 1.5em;
 }
 .button-layout-for-remove-icon:disabled {
@@ -96,7 +96,7 @@
   font-weight: 500;
   background-color: rgb(32, 32, 32);
   color: rgb(241, 241, 241);
-  margin-top: 1%;
+  margin-top: 3px;
   font-size: 1.5em;
 }
 .button-layout-for-next-icon:disabled {
@@ -107,7 +107,7 @@
   font-weight: 500;
   background-color: rgb(32, 32, 32);
   color: rgb(241, 241, 241);
-  margin-top: 1%;
+  margin-top: 3px;
   font-size: 1.5em;
 }
 .button-layout-for-prev-icon:disabled {
@@ -115,7 +115,7 @@
 }
 
 .choose-answer {
-  padding: 1%;
+  padding: 3px;
   background-image: radial-gradient(
     circle,
     rgb(139, 156, 163),

@@ -18,7 +18,7 @@ html {
   height: 100%;
   position: fixed;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .cssload-thecube {
@@ -59,7 +59,7 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(78, 190, 255);
+  background-color: rgb(245, 154, 94) !important;
   animation: cssload-fold-thecube 2.4s infinite linear both;
   -o-animation: cssload-fold-thecube 2.4s infinite linear both;
   -ms-animation: cssload-fold-thecube 2.4s infinite linear both;

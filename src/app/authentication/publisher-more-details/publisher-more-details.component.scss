@@ -2,10 +2,10 @@
     color: rgb(209, 206, 206);
     background-color: rgba(43, 42, 42, 0.644);
     width: 30%;
-    margin-top: 0.5%;
-    padding: 0%;
-    padding-top: 1%;
-    margin-left: 0%;
+    margin-top: 1.5px;
+    padding: 0px;
+    padding-top: 3px;
+    margin-left: 0px;
     font-family: Arial, Helvetica, sans-serif;
     @media only screen and (max-width: 800px) {
         width: 60%;
@@ -17,13 +17,13 @@
 }
 
 .publisher-more-details-title {
-    font-size: 150%;
+    font-size: 1.5em;
     font-weight: bolder;
     letter-spacing: 1px;
 }
 
 .mat-card-content {
-    padding: 5%;
+    padding: 8px;
     overflow: hidden;
 }
 
@@ -51,9 +51,9 @@
 
 .skip-this-step-label {
     cursor: pointer;
-    padding: 1%;
+    padding: 3px;
     color: rgb(32, 12, 12);
-    font-size: 80%;
+    font-size: 0.8em;
 }
 
 .skip-this-step-label:hover {

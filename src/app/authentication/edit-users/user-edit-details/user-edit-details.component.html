@@ -101,7 +101,7 @@
         <mat-label class="color-for-text">{{'labels.chooseCategories' | translate }}
           <font color="red">*</font>
         </mat-label>
-        <input style="padding: 1%; width: 100%;" [matAutocomplete]="categoryAutoComplete" type="text" [matChipInputFor]="categoryList"
+        <input style="padding: 3px; width: 100%;" [matAutocomplete]="categoryAutoComplete" type="text" [matChipInputFor]="categoryList"
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
           formControlName="choosedCategory" (matChipInputTokenEnd)="clearCategory($event)">
         <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span aria-hidden="true"
@@ -131,7 +131,7 @@
         <mat-label class="color-for-text">{{'labels.chooseSubCategories' | translate }}
           <font color="red">*</font>
         </mat-label>
-        <input style="padding: 1%; width: 100%;" [matAutocomplete]="subCategoryAutoComplete" type="text" [matChipInputFor]="subCategoryList"
+        <input style="padding: 3px; width: 100%;" [matAutocomplete]="subCategoryAutoComplete" type="text" [matChipInputFor]="subCategoryList"
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
           formControlName="choosedSubCategory" (matChipInputTokenEnd)="clearSubCategory($event)">
         <mat-icon matSuffix class="question-icon-size" fxLayoutAlign="center center"><span aria-hidden="true"

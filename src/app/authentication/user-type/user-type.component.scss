@@ -2,10 +2,10 @@
     color: rgba(230, 227, 227, 0.863);
     background-color: rgba(43, 42, 42, 0.644);
     width: 30%;
-    margin-top: 3%;
-    padding: 0%;
-    padding-top: 1%;
-    margin-left: 0%;
+    margin-top: 6px;
+    padding: 0px;
+    padding-top: 3px;
+    margin-left: 0px;
     font-family: Arial, Helvetica, sans-serif;
 
     @media only screen and (max-width: 800px) {
@@ -18,16 +18,16 @@
 }
 
 .user-type-title {
-    font-size: 150%;
+    font-size: 1.5em;
     font-weight: bolder;
     letter-spacing: 1px;
 }
 
 ::ng-deep {
     .user-type-option .mat-button-toggle-button {
-        font-size: 120%;
-        padding-bottom: 2%;
-        padding-top: 2%;
+        font-size: 1.2em;
+        padding-bottom: 5px;
+        padding-top: 5px;
         cursor: pointer;
         letter-spacing: 2px;
         color: rgba(230, 227, 227, 0.863);
