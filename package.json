@@ -5,7 +5,7 @@
     "name": "Ashish Mahour",
     "email": "amashishmahour@gmail.com"
   },
-  "description": "Angular Application!!",
+  "description": "StudyBoom Application!!",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -13,7 +13,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-href": "ng build --base-href ./"
+    "build:href": "ng build --base-href ./",
+    "electron:start": "npm run build:href && cap copy electron && cd ./electron && npm run electron:start",
+    "electron:build": "npm run build:href && cap copy electron && cd ./electron && npm run electron:build",
+    "android:copy": "npm run build:href && cap copy android",
+    "ios:copy": "npm run build:href && cap copy ios"
   },
   "private": true,
   "dependencies": {
