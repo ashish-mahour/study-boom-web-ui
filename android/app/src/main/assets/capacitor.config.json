@@ -1,0 +1,8 @@
+{
+  "appId": "com.studyboom",
+  "appName": "study-boom-application",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "cordova": {}
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">study-boom-application</string>
+    <string name="title_activity_main">study-boom-application</string>
+    <string name="package_name">com.studyboom</string>
+    <string name="custom_url_scheme">com.studyboom</string>
+</resources>
