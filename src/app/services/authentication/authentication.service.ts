@@ -49,6 +49,7 @@ export class AuthenticationService {
     choosedSubCategories: []
   };
   allCategories: Array<SubjectCategory> = [];
+  allUsers: Array<Users> = []
   allRequestsByUser: Array<Array<Requests>> = []
 
   constructor(
