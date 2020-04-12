@@ -6,25 +6,24 @@
     padding-bottom: 1.5px;
     padding-top: 1.5pm;
     width: 100%;
+    height: 40px;
 }
 .header-heading {
     font-size: 1.5em;
     width: 100%;
     height: 100%;
+    white-space: nowrap;
     padding-left: 5px;
-    padding-top: 0.9px;
-    padding-bottom: 0.9px;
-    word-wrap: break-word;
 }
 .header-tagline {
+    width: 100%;
     padding: 0px;
     font-size: 0.8em;
     color: rgba(209, 206, 206, 0.623);
     font-weight: lighter;
-    word-wrap: break-word;
+    white-space: nowrap;
     padding-left: 5px;
-    padding-top: 0.9px;
-    padding-bottom: 0.9px;
+    padding-bottom: 5px;
 }
 .home-header-row{
     width: 100%;

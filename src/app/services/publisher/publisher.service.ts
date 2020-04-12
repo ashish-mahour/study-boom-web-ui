@@ -6,6 +6,7 @@ import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from '@angular/router';
 import { SubjectCategory } from '../../shared/interfaces/category.interface';
+import { TestSeriesStatus } from 'src/app/shared/interfaces/status.interface';
 
 @Injectable({
   providedIn: "root"
@@ -51,15 +52,14 @@ export class PublisherService {
         testSeriesDetailsValue
       )
       .subscribe(
-        success => {
-          console.log(success)
+        (data: TestSeriesStatus) => {
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
               type: "success",
-              message: "Test Series Created!!"
+              message: data.message
             }
           });
           this.router.navigateByUrl("/dashboard")

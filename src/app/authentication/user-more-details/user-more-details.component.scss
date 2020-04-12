@@ -64,9 +64,10 @@
 }
 
 .error-color {
-  color: crimson;
+  color: rgb(247, 95, 25);
+  padding-top: 4px;
+  font-weight: bold;
 }
-
 .skip-this-step-label {
   cursor: pointer;
   padding: 3px;

@@ -24,7 +24,7 @@ export class AddUpdateCategoriesComponent implements OnInit {
 
   getSubCategoriesArray = (): FormArray => this.categoryForm.controls["subCategories"] as FormArray
   getSubCategory = (i: number): FormGroup => this.getSubCategoriesArray().controls[i] as FormGroup
-  
+
 
   subCategoryForm(subCategory: SubjectSubCategory): FormGroup {
     return this.formBuilder.group({
@@ -41,7 +41,7 @@ export class AddUpdateCategoriesComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public matDialogData: any,
+    @Inject(MAT_DIALOG_DATA) public matDialogData: { category: SubjectCategory },
     public adminService: AdminService,
     public dialogRef: MatDialogRef<AddUpdateCategoriesComponent>
   ) { }

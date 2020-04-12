@@ -1,6 +1,5 @@
 {
   "appName": "StudyBoom Application",
-  "appSubTitle": "A place where you can enhance your knowlegde and skills by performing various tests..",
   "loading": "Loading...",
   "modifiyDetailsAlert": "Enter password again to modify profile...",
   "labels": {
@@ -21,6 +20,7 @@
     "categoryName": "Category Name",
     "subCategoryName": "Sub-Categories Name",
     "skipTheStep": "Skip the Steps...",
+    "requestText": "Request",
     "proceed": "Proceed",
     "save": "Save",
     "submit": "Submit",
@@ -87,7 +87,8 @@
     "invalidQuestion": "Invalid Question! Only alphabets and space allowed!",
     "answerRequired": "Answer required!",
     "choiceRequired": "Choice required!",
-    "invalidChoice": "Invalid Choice! Only alphabets and space allowed!"
+    "invalidChoice": "Invalid Choice! Only alphabets and space allowed!",
+    "requestRequired": "Request Required!"
   },
   "pageTitles": {
     "dashboard": {
@@ -194,6 +195,15 @@
     "updateCategory": "Update",
     "deleteCategory": "Delete"
   },
+  "requestsLabels": {
+    "addNewRequests": "Add New Request",
+    "requestType": "Request Type",
+    "performedAt": "Perfromed At",
+    "requestDateTime": "Request Date/Time",
+    "status": "Status",
+    "accepted": "Accepted",
+    "reject": "Rejected"
+  },
   "testPerformLabels": {
     "skipTheQuestion": "Skip the Question",
     "submit": "Submit",
@@ -204,17 +214,6 @@
   },
   "addTestSeriesLabels": {
     "totalNoOfQuestions": "Total No. of Questions :",
-    "maxDurationData": [
-      5,
-      10,
-      15,
-      20,
-      30,
-      45,
-      60,
-      75,
-      90,
-      120
-    ]
+    "maxDurationData": [5, 10, 15, 20, 30, 45, 60, 75, 90, 120]
   }
 }

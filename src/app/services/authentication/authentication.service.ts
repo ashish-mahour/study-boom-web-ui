@@ -7,6 +7,9 @@ import { Router } from "@angular/router";
 import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { UserDetails, Users, Login, ChangePassword } from '../../shared/interfaces/users.interfaces';
 import { SubjectCategory } from '../../shared/interfaces/category.interface';
+import { Requests, RequestDetails } from '../../shared/interfaces/requests.interface';
+import { RequestsStatus, AccountStatus } from '../../shared/interfaces/status.interface';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: "root"
@@ -46,13 +49,14 @@ export class AuthenticationService {
     choosedSubCategories: []
   };
   allCategories: Array<SubjectCategory> = [];
-  allUsers: Array<Users> = []
+  allRequestsByUser: Array<Array<Requests>> = []
 
   constructor(
     private loadingService: LoadingAnimServiceService,
     private http: HttpClient,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {
 
   }
@@ -245,18 +249,17 @@ export class AuthenticationService {
   }
   changePassword(changePasswordForm: ChangePassword) {
     this.loadingService.showLoading(true, "Changing Password...");
-    this.http.post(config.serverUrl + config.api.authentication + "/change/password", changePasswordForm).subscribe(_success => {
+    this.http.post(config.serverUrl + config.api.authentication + "/change/password", changePasswordForm).subscribe((data: AccountStatus) => {
       this.loadingService.showLoading(false, null);
       this.dialog.open(AlertBoxComponent, {
         minWidth: "25%",
         maxWidth: "60%",
         data: {
           type: "success",
-          message: "Password Successfully Changed!!"
+          message: data.message
         }
       });
     }, error => {
-
       this.loadingService.showLoading(false, null);
       this.dialog.open(AlertBoxComponent, {
         minWidth: "25%",
@@ -266,6 +269,102 @@ export class AuthenticationService {
           message: error.error.message
         }
       });
+    })
+  }
+  getRequestsByUser(pageNo: number, limit: number) {
+    this.loadingService.showLoading(true, "Getting Requests...");
+    let apiToCall: string = config.serverUrl
+    this.translate.get(["userTypes.student", "userTypes.publisher"]).subscribe(translations => {
+      if (this.userDetails.type === translations["userTypes.student"]) {
+        apiToCall += config.api.student + "/get/requests?userId=" + this.userDetails.id + "&pageNo=" + pageNo + "&limit=" + limit
+      } else if (this.userDetails.type === translations["userTypes.publisher"]) {
+        apiToCall += config.api.publisher + "/get/requests?userId=" + this.userDetails.id + "&pageNo=" + pageNo + "&limit=" + limit
+      }
+      this.http.get(apiToCall).subscribe((data: Array<Requests>) => {
+        this.loadingService.showLoading(false, null);
+        if (data.length > 10) {
+          this.allRequestsByUser.push(data.slice(0, 10));
+          this.allRequestsByUser.push(data.slice(10, data.length));
+        } else if (data.length > 0) {
+          this.allRequestsByUser.push(data);
+        }
+      }, error => {
+        this.loadingService.showLoading(false, null);
+        this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "error",
+            message: error.error.message
+          }
+        })
+      })
+    })
+  }
+
+  addRequest(request: RequestDetails) {
+    this.loadingService.showLoading(true, "Adding Request...");
+    let apiToCall: string = config.serverUrl
+    this.translate.get(["userTypes.student", "userTypes.publisher"]).subscribe(translations => {
+      if (this.userDetails.type === translations["userTypes.student"]) {
+        apiToCall += config.api.student + "/add/request"
+      } else if (this.userDetails.type === translations["userTypes.publisher"]) {
+        apiToCall += config.api.publisher + "/add/request"
+      }
+      this.http.post(apiToCall, request).subscribe((data: RequestsStatus) => {
+        this.loadingService.showLoading(false, null);
+        this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "success",
+            message: data.message
+          }
+        });
+      }, error => {
+        this.loadingService.showLoading(false, null);
+        this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "error",
+            message: error.error.message
+          }
+        })
+      })
+    })
+  }
+
+  modifyRequest(request: RequestDetails) {
+    this.loadingService.showLoading(true, "Modifing Request...");
+    let apiToCall: string = config.serverUrl
+    this.translate.get(["userTypes.student", "userTypes.publisher"]).subscribe(translations => {
+      if (this.userDetails.type === translations["userTypes.student"]) {
+        apiToCall += config.api.student + "/modify/request"
+      } else if (this.userDetails.type === translations["userTypes.publisher"]) {
+        apiToCall += config.api.publisher + "/modify/request"
+      }
+      this.http.post(apiToCall, request).subscribe((data: RequestsStatus) => {
+        this.loadingService.showLoading(false, null);
+        this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "success",
+            message: data.message
+          }
+        });
+      }, error => {
+        this.loadingService.showLoading(false, null);
+        this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "error",
+            message: error.error.message
+          }
+        })
+      })
     })
   }
 }

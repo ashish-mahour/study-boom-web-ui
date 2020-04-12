@@ -14,4 +14,29 @@
       width: 80%;
     }
   }
+
+  .form-field-outline {
+    font-size: 0.75em;
+  }
+
+  ::ng-deep {
+    .form-field-outline .mat-form-field-outline {
+      color: rgba(230, 227, 227, 0.863) !important;
+    }
   
+    .mat-form-field-invalid .mat-form-field-outline {
+      color: rgb(255, 0, 0) !important;
+    }
+  }
+
+  .next-prev-layout {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  
+  .add-requests-btn {
+    letter-spacing: 1px;
+    font-weight: 500;
+    padding: 8px;
+    margin-right: 10px;
+  }

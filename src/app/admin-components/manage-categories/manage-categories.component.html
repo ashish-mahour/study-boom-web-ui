@@ -4,7 +4,11 @@
       <mat-card-title>{{'pageTitles.adminPages.manageCategories' | translate }} </mat-card-title>
       <mat-card-subtitle>{{ authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content fxLayout="column" fxLayout="row wrap">
+    <mat-card-content fxLayout="column">
+      <div fxFlex=100 fxLayoutAlign="end center" class="next-prev-layout">
+        <button mat-button class="add-category-btn" (click)="addUpdateCategoriesDialog(undefined, undefined)"
+          fxLayoutAlign="end center">{{'manageCategoriesLabels.addNewCategory' | translate }}</button>
+      </div>
       <div fxFlex=100>
         <div [ngStyle]="{width: '100%', height: height, 'overflow': 'auto'}">
           <div fxLayout="column">
@@ -48,10 +52,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div fxFlex=100 fxLayoutAlign="end center" class="next-prev-layout">
-        <span class="add-category-btn" (click)="addUpdateCategoriesDialog(undefined, undefined)"
-          fxLayoutAlign="end center">{{'manageCategoriesLabels.addNewCategory' | translate }}</span>
       </div>
       <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
         <button mat-raised-button class="next-prev-button" (click)="prevPage()"

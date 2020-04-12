@@ -1,27 +1,28 @@
 .login-register-content {
   background-color: rgba(43, 42, 42, 0.644);
-  width: 30%;
-  margin-top: 3px;
-  padding: 0px;
-  padding-top: 3px;
+  padding: 5px;
 
-  @media only screen and (max-width: 1200px) {
-    width: 40%;
-    margin-top: 12px;
-  }
-
-  @media only screen and (max-width: 1000px) {
-    width: 50%;
-    margin-top: 15px;
-  }
-
-  @media only screen and (max-width: 800px) {
-    width: 60%;
-    margin-top: 20px;
-  }
-
-  @media only screen and (max-width: 600px) {
+  @media only screen and (min-width: 0px) {
     width: 80%;
+  }
+
+  @media only screen and (min-width: 576px) {
+    width: 60%;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 45%;
+    margin-top: 80px;
+  }
+
+  @media only screen and (min-width: 992px) {
+    width: 30%;
+    margin-top: 100px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 30%;
+    margin-top: 120px;
   }
 }
 
@@ -38,7 +39,7 @@
 ::ng-deep {
   .login-register-content .mat-tab-label {
     padding: 0px;
-    font-size: 0.8em;
+    font-size: 0.7em;
     height: 35px;
   }
 
@@ -56,6 +57,7 @@
 
   .login-register-content .mat-ink-bar {
     background: rgb(245, 154, 94) !important;
+    padding-bottom: 2px;
   }
 
   .login-register-content .mat-tab-label-content {
@@ -108,5 +110,7 @@
 }
 
 .error-color {
-  color: rgb(250, 102, 102);
+  color: rgb(247, 95, 25);
+  padding-top: 4px;
+  font-weight: bold;
 }

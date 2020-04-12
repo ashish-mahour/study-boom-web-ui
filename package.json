@@ -7,17 +7,16 @@
   },
   "description": "StudyBoom Application!!",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:href": "ng build --base-href ./",
-    "electron:start": "npm run build:href && cap sync electron && cd ./electron && npm run electron:start",
+    "electron:start": "npm run build:href && cap sync electron && cap open electron",
     "electron:build": "npm run build:href && cap sync electron && cd ./electron && npm run electron:build",
-    "android:sync": "npm run build:href && cap sync android",
-    "ios:sync": "npm run build:href && cap sync ios"
+    "android:build": "npm run build:href && cap sync android",
+    "ios:build": "npm run build:href && cap sync ios"
   },
   "private": true,
   "dependencies": {

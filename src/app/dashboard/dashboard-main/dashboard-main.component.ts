@@ -68,11 +68,12 @@ export class DashboardMainComponent implements OnInit {
 
   checkBrowser() {
     if (
-      window.matchMedia("screen and (max-width: 540px)").matches ||
-      window.matchMedia("screen and (max-width: 720px)").matches
+      window.matchMedia("screen and (min-width: 1200px)").matches ||
+      window.matchMedia("screen and (min-width: 992px)").matches 
     )
+      this.isMobile = false;
+    else 
       this.isMobile = true;
-    else this.isMobile = false;
   }
 
   navBarToggle(navBar: MatSidenav) {

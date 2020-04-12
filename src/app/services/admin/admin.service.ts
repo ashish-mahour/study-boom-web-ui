@@ -111,14 +111,14 @@ export class AdminService {
     this.http
       .post(config.serverUrl + config.api.admin + api, categoryValue)
       .subscribe(
-        (_data: CategoryStatus) => {
+        (data: CategoryStatus) => {
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
               type: "success",
-              message: "Category " + update ? "Updated!!" : "Added!!"
+              message: data.message
             }
           });
           this.allCategories = [];
@@ -147,18 +147,18 @@ export class AdminService {
         category.id
       )
       .subscribe(
-        (_data: CategoryStatus) => {
+        (data: CategoryStatus) => {
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
               type: "success",
-              message: "Category Deleted!!"
+              message: data.message
             }
           });
         },
-        (error: any) => {
+        (_error: any) => {
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",

@@ -15,12 +15,9 @@
         <i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;
         {{'appName' | translate }}
       </span>
-      <span class="header-tagline" fxFelx="100">
-        {{'appSubTitle' | translate }}
-      </span>
     </div>
   </div>
-  <div @routerInAnimation>
+  <div @routerInAnimation [ngStyle]="{ height: height + 'px'}">
     <router-outlet name="home-page-router"></router-outlet>
   </div>
 </div>

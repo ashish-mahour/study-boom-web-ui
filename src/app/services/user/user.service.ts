@@ -73,7 +73,7 @@ export class UserService {
         });
       }, _error => {
         this.loadingService.showLoading(false, null);
-        const alertBox = this.dialog.open(AlertBoxComponent, {
+        this.dialog.open(AlertBoxComponent, {
           minWidth: "25%",
           maxWidth: "60%",
           data: {

@@ -1,5 +1,24 @@
 <div mat-dialog-content class="margin-zero dialog-content" fxLayout="column" fxLayoutAlign="center center">
-    <div fxFlex="100" fxLayoutAlign="center center" fxLayout="column">
-       
+    <div fxFlex="100" fxLayoutAlign="center center" fxLayout="column" style="width: 100%;">
+        <form class="mat-tab-content" fxLayout="column" [formGroup]="requestData" style="width: 100%;">
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="outline" class="form-field-outline" fxFlex=100>
+                    <mat-label class="color-for-text">{{'labels.requestText' | translate }}
+                      <font color="red">*</font>
+                    </mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3"
+                        cdkAutosizeMaxRows="8" formControlName="requestText"></textarea>
+                    <mat-icon matSuffix class="color-for-text">account_circle</mat-icon>
+                    <mat-error class="error-color"
+                      *ngIf="requestData.controls['requestText'].touched && requestData.controls['requestText'].hasError('required')">
+                      {{'errors.requestRequired' | translate}}
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+        </form>
     </div>
+</div>
+<div mat-dialog-actions class="dialog-action" fxLayoutAlign="end center">
+    <button mat-button class="button-padding-2" [mat-dialog-close]="null">{{'labels.cancel' | translate }}</button>
+    <button mat-button class="button-padding-2 button-layout" (click)="submitRequest()">{{'labels.submit' | translate }}</button>
 </div>

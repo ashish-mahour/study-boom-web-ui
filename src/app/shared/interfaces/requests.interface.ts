@@ -3,8 +3,8 @@ import { Users } from './users.interfaces';
 export interface Requests {
     id: number;
     requestText: string;
-    processed: string;
-    status: string;
+    processed: boolean;
+    status: "NOT_STARTED" | "ACCEPTED" | "NOT_ACCEPTED";
     lastModified: Date;
     dateCreated: Date;
     userIdToRequests: Users
@@ -13,7 +13,7 @@ export interface Requests {
 export interface RequestDetails {
     userId: number;
 	requestId: number;
-	requestText: number;
-	processed: number;
-	status: number;
+	requestText: string;
+	processed: boolean;
+	status: "NOT_STARTED" | "ACCEPTED" | "NOT_ACCEPTED";
 }
