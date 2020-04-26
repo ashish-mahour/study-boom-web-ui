@@ -81,3 +81,18 @@ export interface Student {
     studentIdToChoosenSubCategories: Array<StudentChoosenSubjectSubCategory>;
     testSeriesPerformendByStudent: Array<StudentPerfromedTest>;
 }
+
+export interface StudentPerformedTestRequest {
+    studentId: number;
+	testSeriesId: number;
+	attempted: number;
+	unattemped: number;
+	timeTaken: number;
+	totalQuestions: number;
+	studentChoosedAnswers: Array<StudentChoosedAnswers>;
+} 
+
+export interface StudentChoosedAnswers {
+    questionId: number;
+	choosedAnswer: string;
+}

@@ -11,7 +11,6 @@ import * as config from "../../shared/config.json";
 export class ManageUsersComponent implements OnInit {
   height: string = window.innerHeight - 250 + "px";
   currentPage: number = 0;
-  pageNo: number = 0;
   limit: number = 20;
 
   constructor(
@@ -21,7 +20,7 @@ export class ManageUsersComponent implements OnInit {
 
   ngOnInit() {
     this.adminService.allUsers = [];
-    this.adminService.getAllUsers({ pageNo: this.pageNo, limit: this.limit });
+    this.adminService.getAllUsers({ pageNo: this.currentPage, limit: this.limit });
   }
 
   @HostListener("window:resize")
@@ -31,9 +30,8 @@ export class ManageUsersComponent implements OnInit {
 
   nextPage() {
     this.currentPage += 1;
-    if (this.adminService.allUsers[this.pageNo + 1]) {
-      this.pageNo += 1;
-      this.adminService.getAllUsers({ pageNo: this.pageNo, limit: this.limit });
+    if (this.adminService.allUsers[this.currentPage]) {
+      this.adminService.getAllUsers({ pageNo: this.currentPage, limit: this.limit });
     }
   }
 

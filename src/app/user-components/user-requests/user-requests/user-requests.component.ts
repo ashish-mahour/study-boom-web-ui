@@ -47,8 +47,7 @@ export class UserRequestsComponent implements OnInit {
 
   nextPage() {
     this.pageNo += 1;
-    if (this.authenticationService.allRequestsByUser[this.pageNo + 1]){
-      this.pageNo += 1;
+    if (this.authenticationService.allRequestsByUser[this.pageNo]){
       this.authenticationService.getRequestsByUser({ pageNo: this.pageNo, limit: this.limit });
     }
   }

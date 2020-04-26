@@ -7,7 +7,7 @@
     <mat-card-content fxLayout="column" fxLayout="row wrap">
       <div fxFlex=100 fxLayout="column" *ngIf="!isConfirmed">
         <div fxFlex=100 fxLayout="column" fxLayoutAlign="center center" class="test-perform-row-content">
-          <img src="../../../assets/images/IT.png">
+          <img src="../../../assets/images/Test.png">
           <br>
           <div fxFlex=100 fxLayout="column" style="width: 100%;">
             <div fxFlex=100>
@@ -76,8 +76,8 @@
           <mat-grid-list [cols]="questionCols">
             <mat-grid-tile *ngFor="let question of questions" fxFlex=20>
               <button mat-fab
-                [ngClass]="{'unattempted-button': !question.attemped, 'attempted-button': question.attemped}"
-                (click)="goBack(question.questionNo, question.attemped)">
+                [ngClass]="{'unattempted-button': !question.attempted, 'attempted-button': question.attempted}"
+                (click)="goToQuestion(question.questionNo)">
                 {{question.questionNo}}
               </button>
             </mat-grid-tile>
@@ -89,7 +89,7 @@
             {{questionsArray[currentPosition].questionText}}
           </div>
           <div>
-            <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column" style="color: black;"
+            <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column" style="color: black;" [value]="studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer"
               (change)="answerSelected($event.value)" fxFlex=100>
               <div>
                 <mat-button-toggle [value]="questionsArray[currentPosition].choice1" class="user-type-option" fxFlex=50>
@@ -110,14 +110,13 @@
             </mat-button-toggle-group>
           </div>
           <div fxLayoutAlign="center center" fxLayout="row wrap">
-            <button mat-raised-button class="skip-button" fxFlex=30
+            <button mat-raised-button class="skip-button" fxFlex=30 (click)="questionSubmited(false)"
               fxFlex.xs=80>{{'testPerformLabels.skipTheQuestion' | translate }}</button>
             <button mat-raised-button class="submit-button" fxFlex=25 fxFlex.xs=80 fxFlexOffset=3 fxFlexOffset.sm=0
-              fxFlexOffset.xs=0 (click)="questionSubmited()"
+              fxFlexOffset.xs=0 (click)="questionSubmited(false)"
               [disabled]="!questionsArray[currentPosition + 1] || (!studentPerformedTest.studentChoosedAnswers[currentPosition] || !studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer || studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer === '')">{{'testPerformLabels.next' | translate }}</button>
             <button mat-raised-button class="submit-button" fxFlex=25 fxFlex.xs=80 fxFlexOffset=3 fxFlexOffset.sm=0
-              fxFlexOffset.xs=0 (click)="testPerformed()"
-              [disabled]="questionsArray[currentPosition + 1] || (!studentPerformedTest.studentChoosedAnswers[currentPosition] || !studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer || studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer === '')">{{'testPerformLabels.submit' | translate }}</button>
+              fxFlexOffset.xs=0 (click)="testPerformed()">{{'testPerformLabels.submit' | translate }}</button>
           </div>
         </div>
       </div>

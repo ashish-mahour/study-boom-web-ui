@@ -13,7 +13,6 @@ import { SubjectCategory } from '../../shared/interfaces/category.interface';
 export class ManageCategoriesComponent implements OnInit {
   height: string = window.innerHeight - 250 + "px";
   currentPage: number = 0;
-  pageNo: number = 0;
   limit: number = 20;
 
   constructor(
@@ -24,7 +23,7 @@ export class ManageCategoriesComponent implements OnInit {
 
   ngOnInit() {
     this.adminService.allCategories = [];
-    this.adminService.getAllCategories({pageNo: this.pageNo, limit: this.limit});
+    this.adminService.getAllCategories({pageNo: this.currentPage, limit: this.limit});
   }
 
   @HostListener("window:resize")
@@ -34,9 +33,8 @@ export class ManageCategoriesComponent implements OnInit {
 
   nextPage() {
     this.currentPage += 1;
-    if (this.adminService.allCategories[this.pageNo + 1]){
-      this.pageNo += 1;
-      this.adminService.getAllCategories({pageNo: this.pageNo, limit: this.limit});
+    if (this.adminService.allCategories[this.currentPage]){
+      this.adminService.getAllCategories({pageNo: this.currentPage, limit: this.limit});
     }
   }
 

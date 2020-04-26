@@ -3,7 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 import { UserService } from '../../services/user/user.service';
-import { StudentPerfromedTest, TestSeries } from '../../shared/interfaces/test-series.interface';
+import { TestSeries, TestSeriesRatings } from '../../shared/interfaces/test-series.interface';
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-test-series-listing',
@@ -13,8 +14,8 @@ import { StudentPerfromedTest, TestSeries } from '../../shared/interfaces/test-s
 export class TestSeriesListingComponent implements OnInit {
 
   height: string = (window.innerHeight - 250) + 'px';
-  currentPage: number = 0;
-  pageNo: number = 0;
+  allTestCurrentPageNo: number = 0;
+  performedTestCurrentPageNo: number = 0;
   limit: number = 20;
 
   constructor(
@@ -27,7 +28,7 @@ export class TestSeriesListingComponent implements OnInit {
   ngOnInit() {
     this.title.setTitle("Test Series - StudyBoom")
     this.userService.testData = [];
-    this.userService.getTestSeries(this.pageNo, this.limit, this.authenticationService.userDetails.userIdFromStudent.id);
+    this.userService.getAllTestSeries({ pageNo: this.allTestCurrentPageNo, limit: this.limit }, this.authenticationService.userDetails.userIdFromStudent.id);
   }
 
   @HostListener('window:resize')
@@ -35,24 +36,42 @@ export class TestSeriesListingComponent implements OnInit {
     this.height = (window.innerHeight - 250) + 'px';
   }
 
-  performTestSeries(selectedTestIndex: number) {
-    this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': 'user-perform-test-series' } }]
-      , { queryParams: { pageNo: this.pageNo, selectedTestIndex: selectedTestIndex } })
-  }
-  F
-  nextPage() {
-    this.currentPage += 1;
-    if (this.userService.testData[this.pageNo + 1]) {
-      this.pageNo += 1;
-      this.userService.getTestSeries(this.pageNo, this.limit, this.authenticationService.userDetails.userIdFromStudent.id);
+  tabChange(tabIndex: number) {
+    if (tabIndex === 1) {
+      this.performedTestCurrentPageNo = 0;
+      this.userService.performedTestData = [];
+      this.userService.getPerformedTestSeries({ pageNo: this.performedTestCurrentPageNo, limit: this.limit }, this.authenticationService.userDetails.userIdFromStudent.id)
     }
   }
 
-  prevPage() {
-    this.currentPage -= 1;
+  performTestSeries(selectedTestIndex: number) {
+    this.router.navigate(['/dashboard', { outlets: { 'dashboard-page-router': 'user-perform-test-series' } }]
+      , { queryParams: { pageNo: this.allTestCurrentPageNo, selectedTestIndex: selectedTestIndex } })
   }
 
-  getRatings(testSeriesIdToRatings: any[]): number {
+  nextAllTestPage() {
+    this.allTestCurrentPageNo += 1;
+    if (this.userService.testData[this.allTestCurrentPageNo]) {
+      this.userService.getAllTestSeries({ pageNo: this.allTestCurrentPageNo, limit: this.limit }, this.authenticationService.userDetails.userIdFromStudent.id);
+    }
+  }
+
+  prevPerformTestPage() {
+    this.performedTestCurrentPageNo -= 1;
+  }
+
+  nextPerformTestPage() {
+    this.performedTestCurrentPageNo += 1;
+    if (this.userService.performedTestData[this.performedTestCurrentPageNo]) {
+      this.userService.getAllTestSeries({ pageNo: this.performedTestCurrentPageNo, limit: this.limit }, this.authenticationService.userDetails.userIdFromStudent.id);
+    }
+  }
+
+  prevAllTestPage() {
+    this.allTestCurrentPageNo -= 1;
+  }
+
+  getRatings(testSeriesIdToRatings: TestSeriesRatings[]): number {
     let totalRatings = 0;
     if (testSeriesIdToRatings.length === 0)
       return totalRatings;
@@ -62,8 +81,5 @@ export class TestSeriesListingComponent implements OnInit {
 
     return (totalRatings / testSeriesIdToRatings.length);
   }
-
-  findStudentsPerformedTests(testSeries: Array<TestSeries>): Array<TestSeries> {
-    return testSeries? testSeries.filter(x => x.testSeriesPerformedByStudents && x.testSeriesPerformedByStudents.find(y => y.performendByStudent && y.performendByStudent.id === this.authenticationService.userDetails.userIdFromStudent.id)) : []
-  }
+  
 }

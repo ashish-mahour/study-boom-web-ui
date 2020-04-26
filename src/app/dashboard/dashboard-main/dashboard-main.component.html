@@ -9,7 +9,7 @@
       </div>
     </div>
     <mat-sidenav-container autosize=true [ngStyle]="{ height: height + 'px' }">
-      <mat-sidenav [mode]="isMobile? 'over':'side'" position="start" [opened]="!isMobile" fxFlex=20 fxFlex.xs=50
+      <mat-sidenav style="width: 100%;" [mode]="isMobile? 'over':'side'" position="start" [opened]="!isMobile" fxFlex=20 fxFlex.xs=50
         fxFlex.sm=30 [fixedTopGap]="isMobile? 36 : 0" #navBar>
         <mat-nav-list>
           <div mat-list-item fxLayoutAlign="center start" @dropDownAnimation>

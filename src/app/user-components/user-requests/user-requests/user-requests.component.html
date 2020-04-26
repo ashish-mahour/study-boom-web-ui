@@ -11,7 +11,7 @@
             <div fxFlex=100>
                 <div [ngStyle]="{ width: '100%', height: height, overflow:'auto'}">
                     <div fxLayout="column">
-                        <div *ngFor="let request of authenticationService.allRequestsByUser[pageNo]; let i = index" class="manage-requests-listing-row-content">
+                        <div fxLayout="column" *ngFor="let request of authenticationService.allRequestsByUser[pageNo]; let i = index" class="manage-requests-listing-row-content">
                             <div fxFlex=100 fxLayout>
                                 <div fxLayout="column" fxFlex=50>
                                     <span class="manage-requests-listing-heading">{{'requestsLabels.requestText'| translate }} : </span>

@@ -4,21 +4,17 @@
       <mat-card-title>{{'pageTitles.studentPages.testSeries.title' | translate }}</mat-card-title>
       <mat-card-subtitle>{{ authenticationService.userType | titlecase }}</mat-card-subtitle>
     </mat-card-header>
-    <mat-tab-group>
+    <mat-tab-group (selectedTabChange)="tabChange($event.index)">
       <mat-tab label="{{'pageTitles.studentPages.testSeries.subTabs.allTestSeries' | translate }}">
         <div fxFlex=100>
           <div [ngStyle]="{width: '100%', height: height, overflow:'auto'}">
             <div fxLayout="column">
-              <div fxLayout="row wrap" fxLayoutAlign="center center" class="test-listing-row-content" *ngFor="let testData of userService.testData[currentPage]; let i = index">
-                <div fxFlex=20 fxFlex.lg="20" fxFlex.xl="20" fxFlex.md="30" fxFlex.sm="40" fxFlex.xs="60">
-                  <img src="../../../assets/images/IT.png" class="test-image">
+              <div fxLayout="row wrap" fxLayoutAlign="center center" class="test-listing-row-content" *ngFor="let testData of userService.testData[allTestCurrentPageNo]; let i = index">
+                <div style="padding-bottom: 8px;" fxFlex=20 fxFlex.lg="20" fxFlex.xl="20" fxFlex.md="30" fxFlex.sm="40" fxFlex.xs="60">
+                  <img src="../../../assets/images/Test.png" class="test-image">
                 </div>
                 <div fxFlex=80 fxFlex.lg="80" fxFlex.xl="80" fxFlex.md="70" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column">
                   <div fxFlex=100>
-                    <div fxFlex=25 fxLayout="column">
-                      <span class="test-listing-heading">{{'testSeriesListingLabels.testId' | translate }}</span> <span
-                        class="test-listing-content">{{testData.id}}</span>
-                    </div>
                     <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.testName' | translate }}</span><span
                         class="test-listing-content">{{testData.name}}</span>
@@ -31,6 +27,13 @@
                       <span
                         class="test-listing-heading">{{'testSeriesListingLabels.noOfQuestions' | translate }}</span><span
                         class="test-listing-content">{{testData.totalQuestions}}</span>
+                    </div>
+                    <div fxFlex=25 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
+                      <span class="test-listing-heading">{{'testSeriesListingLabels.ratings' | translate }}</span><span
+                        class="test-listing-content">
+                        <star-rating [value]="getRatings(testData.testSeriesIdToRatings)" totalstars="5"
+                          checkedcolor="green" uncheckedcolor="grey" size="24px" [readonly]="true"></star-rating>
+                      </span>
                     </div>
                   </div>
                   <div fxFlex=100>
@@ -53,12 +56,9 @@
                     </div>
                   </div>
                   <div fxFlex=100 fxLayout="row wrap">
-                    <div fxFlex=25 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
-                      <span class="test-listing-heading">{{'testSeriesListingLabels.ratings' | translate }}</span><span
-                        class="test-listing-content">
-                        <star-rating [value]="getRatings(testData.testSeriesIdToRatings)" totalstars="5"
-                          checkedcolor="green" uncheckedcolor="grey" size="24px" readonly="true"></star-rating>
-                      </span>
+                    <div fxFlex=25 fxLayout="column">
+                      <span class="test-listing-heading">{{'testSeriesListingLabels.uploadedBy' | translate }}</span><span
+                        class="test-listing-content">{{testData.uploadedByPublisher.fullName}}</span>
                     </div>
                     <div fxFlex=50 fxFlex.sm=100 fxFlex.xs=100 fxLayoutAlign="start center">
                       <button mat-raised-button class="add-to-cart-perform-button"
@@ -72,10 +72,10 @@
           </div>
         </div>
         <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
-          <button mat-raised-button class="next-prev-button" [disabled]="!userService.testData[currentPage - 1]"><i
+          <button mat-raised-button class="next-prev-button" [disabled]="!userService.testData[allTestCurrentPageNo - 1]"><i
               class="fa fa-arrow-left" aria-hidden="true"></i></button>
           <button mat-raised-button class="next-prev-button" fxFlexOffset=5
-            [disabled]="!userService.testData[currentPage + 1]"><i class="fa fa-arrow-right"
+            [disabled]="!userService.testData[allTestCurrentPageNo + 1]"><i class="fa fa-arrow-right"
               aria-hidden="true"></i></button>
         </div>
       </mat-tab>
@@ -84,58 +84,77 @@
         <div fxFlex=100>
           <div [ngStyle]="{width: '100%', height: height, overflow:'auto'}">
             <div fxLayout="column">
-              <div fxLayout="row wrap" class="test-listing-row-content" *ngFor="let testData of findStudentsPerformedTests(userService.testData[currentPage]); let i = index">
-                <div fxFlex=20 fxFlex.lg="20" fxFlex.xl="20" fxFlex.md="30" fxFlex.sm="40" fxFlex.xs="60">
-                  <img src="../../../assets/images/IT.png" class="test-image">
+              <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutAlign.lg="start start" fxLayoutAlign.md="start start" fxLayoutAlign.xl="start start" class="test-listing-row-content" *ngFor="let performedTestData of userService.performedTestData[performedTestCurrentPageNo]; let i = index">
+                <div style="padding-bottom: 8px;" fxFlex=20 fxFlex.lg="20" fxFlex.xl="20" fxFlex.md="30" fxFlex.sm="40" fxFlex.xs="60">
+                  <img src="../../../assets/images/Test.png" class="test-image">
                 </div>
                 <div fxFlex=80 fxFlex.lg="80" fxFlex.xl="80" fxFlex.md="70" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column">
                   <div fxFlex=100>
                     <div fxFlex=25 fxLayout="column">
-                      <span class="test-listing-heading">{{'testSeriesListingLabels.testId' | translate }}</span> <span
-                        class="test-listing-content">{{testData.id}}</span>
-                    </div>
-                    <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.testName' | translate }}</span><span
-                        class="test-listing-content">{{testData.name}}</span>
+                        class="test-listing-content">{{performedTestData.testSeriesPerformed.name}}</span>
                     </div>
                     <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.testType' | translate }}</span><span
-                        class="test-listing-content">{{testData.subjectSubCategoryIdToTestSeries.name}}</span>
+                        class="test-listing-content">{{performedTestData.testSeriesPerformed.subjectSubCategoryIdToTestSeries.name}}</span>
                     </div>
                     <div fxFlex=25 fxLayout="column">
                       <span
                         class="test-listing-heading">{{'testSeriesListingLabels.noOfQuestions' | translate }}</span><span
-                        class="test-listing-content">{{testData.totalQuestions}}</span>
+                        class="test-listing-content">{{performedTestData.testSeriesPerformed.totalQuestions}}</span>
+                    </div>
+                    <div fxFlex=25 fxLayout="column">
+                      <span class="test-listing-heading">{{'testSeriesListingLabels.duration' | translate }}</span>
+                      <span class="test-listing-content">{{performedTestData.testSeriesPerformed.durationMin}}</span>
                     </div>
                   </div>
                   <div fxFlex=100>
                     <div fxFlex=25 fxLayout="column">
-                      <span class="test-listing-heading">{{'testSeriesListingLabels.duration' | translate }}</span>
-                      <span class="test-listing-content">{{testData.durationMin}}</span>
-                    </div>
-                    <div fxFlex=25 fxLayout="column">
                       <span
                         class="test-listing-heading">{{'testSeriesListingLabels.totalMarks' | translate }}</span><span
-                        class="test-listing-content">{{testData.totalMarks}}</span>
+                        class="test-listing-content">{{performedTestData.testSeriesPerformed.totalMarks}}</span>
                     </div>
                     <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.minMarks' | translate }}</span><span
-                        class="test-listing-content">{{testData.passingMarks}}</span>
+                        class="test-listing-content">{{performedTestData.testSeriesPerformed.passingMarks}}</span>
                     </div>
                     <div fxFlex=25 fxLayout="column">
-                      <span class="test-listing-heading">{{'testSeriesListingLabels.price' | translate }}</span><span
-                        class="test-listing-content">{{testData.price | currency:'INR'}}</span>
+                      <span class="test-listing-heading">{{'testSeriesListingLabels.attemped' | translate }}</span><span
+                        class="test-listing-content">{{performedTestData.attemped}}</span>
+                    </div>
+                    <div fxFlex=25 fxLayout="column">
+                      <span class="test-listing-heading">{{'testSeriesListingLabels.unattemped' | translate }}</span><span
+                        class="test-listing-content">{{performedTestData.unattemped}}</span>
+                    </div>
+                  </div>
+                  <div fxFlex=100>
+                    <div fxFlex=25 fxLayout="column">
+                      <span
+                        class="test-listing-heading">{{'testSeriesListingLabels.totalScore' | translate }}</span><span
+                        class="test-listing-content">{{performedTestData.totalScore}}</span>
+                    </div>
+                    <div fxFlex=25 fxLayout="column">
+                      <span class="test-listing-heading">{{'testSeriesListingLabels.timeTaken' | translate }}</span><span
+                        class="test-listing-content">{{performedTestData.timeTaken}}</span>
+                    </div>
+                    <div fxFlex=50 fxLayout="column">
+                      <span class="test-listing-heading">{{'testSeriesListingLabels.performedAt' | translate }}</span><span
+                        class="test-listing-content">{{performedTestData.performedAt | date:"medium"}}</span>
                     </div>
                   </div>
                   <div fxFlex=100 fxLayout="row wrap">
-                    <div fxFlex=25 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
+                    <div fxFlex=25 fxLayout="column">
+                      <span class="test-listing-heading">{{'testSeriesListingLabels.uploadedBy' | translate }}</span><span
+                        class="test-listing-content">{{performedTestData.testSeriesPerformed.uploadedByPublisher.fullName }}</span>
+                    </div>
+                    <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.ratings' | translate }}</span><span
                         class="test-listing-content">
-                        <star-rating [value]="getRatings(testData.testSeriesIdToRatings)" totalstars="5"
+                        <star-rating [value]="getRatings(performedTestData.testSeriesPerformed.testSeriesIdToRatings)" totalstars="5"
                           checkedcolor="green" uncheckedcolor="grey" size="24px" readonly="true"></star-rating>
                       </span>
                     </div>
-                    <div fxFlex=50 fxFlex.sm=100 fxFlex.xs=100 fxLayoutAlign="start center">
+                    <div fxFlex=50 fxLayoutAlign="start center">
                       <button mat-raised-button class="add-to-cart-perform-button">{{'testSeriesListingLabels.performed' | translate }}</button>
                     </div>
                   </div>
@@ -146,10 +165,10 @@
           </div>
         </div>
         <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
-          <button mat-raised-button class="next-prev-button" [disabled]="!userService.testData[currentPage - 1]"><i
+          <button mat-raised-button class="next-prev-button" (click)="prevPerformTestPage()" [disabled]="!userService.testData[performedTestCurrentPageNo - 1]"><i
               class="fa fa-arrow-left" aria-hidden="true"></i></button>
-          <button mat-raised-button class="next-prev-button" fxFlexOffset=5
-            [disabled]="!userService.testData[currentPage + 1]"><i class="fa fa-arrow-right"
+          <button mat-raised-button class="next-prev-button" fxFlexOffset=5 (click)="nextPerformTestPage()"
+            [disabled]="!userService.testData[performedTestCurrentPageNo + 1]"><i class="fa fa-arrow-right"
               aria-hidden="true"></i></button>
         </div>
       </mat-tab>

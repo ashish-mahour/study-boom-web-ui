@@ -171,7 +171,7 @@
   "testSeriesListingLabels": {
     "testId": "Test ID",
     "testName": "Test Name",
-    "testType": "Test Type",
+    "testType": "Category",
     "noOfQuestions": "No. of Questions",
     "duration": "Duration",
     "totalMarks": "Total Marks",
@@ -182,7 +182,12 @@
     "addToCarts": "Add to Carts",
     "perform": "Perform / Purchase",
     "confirm": "Confirm",
-    "performed": "Performed"
+    "performed": "Performed",
+    "attemped": "Question Attemped.",
+    "unattemped": "Question Unattempted",
+    "totalScore": "Total Score",
+    "timeTaken": "Time taken",
+    "performedAt": "Performed At."
   },
   "manageUsersListingLabels": {
     "fullName": "Full Name",
