@@ -4,8 +4,54 @@
             <mat-card-title>{{'pageTitles.studentPages.requests' | translate }}</mat-card-title>
             <mat-card-subtitle>{{ authenticationService.userType | titlecase }}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content>
-
+        <mat-card-content fxLayout="column">
+            <div fxFlex=100 fxLayoutAlign="end center" class="next-prev-layout">
+                <button mat-button class="add-requests-btn" (click)="addUpdateRequest(null)" fxLayoutAlign="end center">{{'requestsLabels.addNewRequests' | translate }}</button>
+            </div>
+            <div fxFlex=100>
+                <div [ngStyle]="{ width: '100%', height: height, overflow:'auto'}">
+                    <div fxLayout="column">
+                        <div *ngFor="let request of authenticationService.allRequestsByUser[pageNo]; let i = index" class="manage-requests-listing-row-content">
+                            <div fxFlex=100 fxLayout>
+                                <div fxLayout="column" fxFlex=50>
+                                    <span class="manage-requests-listing-heading">{{'requestsLabels.requestText'| translate }} : </span>
+                                    <span class="manage-requests-listing-content">{{request.requestText}}</span>
+                                </div>
+                                <div fxLayout="column" fxFlex=25>
+                                    <span class="manage-requests-listing-heading">{{'requestsLabels.processed'| translate }} : </span>
+                                    <span class="manage-requests-listing-content">{{request.processed ? ("requestsLabels.processedTrue" | translate): ("requestsLabels.processedFalse" | translate)}}</span>
+                                </div>
+                                <div fxLayout="column" fxFlex=25>
+                                    <span class="manage-requests-listing-heading">{{'requestsLabels.status'| translate }} : </span>
+                                    <span class="manage-requests-listing-content">{{request.status}}</span>
+                                </div>
+                            </div>
+                            <div fxFlex=100 fxLayout>
+                                <div fxLayout="column" fxFlex=50>
+                                    <span class="manage-requests-listing-heading">{{'requestsLabels.requestCreatedDateTime'| translate }} : </span>
+                                    <span class="manage-requests-listing-content">{{request.dateCreated | date:"medium"}}</span>
+                                </div>
+                                <div fxLayout="column" fxFlex=50>
+                                    <span class="manage-requests-listing-heading">{{'requestsLabels.requestModifyDateTime'| translate }} : </span>
+                                    <span class="manage-requests-listing-content">{{request.lastModified | date:"medium"}}</span>
+                                </div>
+                            </div>
+                            <div fxFlex=100 fxLayoutAlign="end center" style="padding: 5px;">
+                                <button type="button" mat-raised-button class="update-request-btn" (click)="addUpdateRequest(request)"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i>&nbsp;{{'requestsLabels.updateRequest' | translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
+                <button mat-raised-button class="next-prev-button" (click)="prevPage()"
+                  [disabled]="!authenticationService.allRequestsByUser[pageNo - 1]"><i class="fa
+                              fa-arrow-left" aria-hidden="true"></i></button>
+                <button mat-raised-button class="next-prev-button" fxFlexOffset=5
+                  [disabled]="!authenticationService.allRequestsByUser[pageNo + 1]" (click)="nextPage()"><i class="fa fa-arrow-right"
+                    aria-hidden="true"></i></button>
+              </div>
         </mat-card-content>
     </mat-card>
 </div>

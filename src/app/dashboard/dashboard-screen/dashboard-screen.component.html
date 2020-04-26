@@ -135,49 +135,64 @@
                         <div fxFlex=100 *ngFor="let request of adminService.allRequests[this.requestPageNo]" class="dashboard-listing-row-content">
                             <div fxFlex=100 fxLayout="column">
                                 <div fxFlex=100>
-                                    <div fxFlex=30 fxLayout="column">
+                                    <div fxFlex=50 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{
                                             'dashboardLabels.adminDashboardLabels.requestText'
                                             | translate }}</span>
                                         <span class="dashboard-listing-content">{{request.requestText}}</span>
                                     </div>
-                                    <div fxFlex=20 fxLayout="column">
+                                    <div fxFlex=25 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{
                                             'dashboardLabels.adminDashboardLabels.requestedBy'
                                             | translate }}</span>
                                         <span
-                                            class="dashboard-listing-content">{{request.userIdToRequests.username}}</span>
+                                            class="dashboard-listing-content">{{request.userIdToRequests.fullName}}</span>
                                     </div>
-                                    <div fxFlex=20 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{
-                                            'dashboardLabels.adminDashboardLabels.requestDateTime'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{request.dateCreated | date:"medium"}}</span>
-                                    </div>
-                                    <div fxFlex=15 fxLayout="column">
+                                    <div fxFlex=25 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{
                                             'dashboardLabels.adminDashboardLabels.processed'
                                             | translate }}</span>
                                         <span
-                                            class="dashboard-listing-content">{{request.processed ? "Yes": "No"}}</span>
+                                            class="dashboard-listing-content">{{request.processed ? ("dashboardLabels.adminDashboardLabels.processedTrue" | translate): ("dashboardLabels.adminDashboardLabels.processedFalse" | translate)}}</span>
                                     </div>
-                                    <div fxFlex=15 fxLayout="column">
+                                </div>
+                                <div fxFlex=100>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.adminDashboardLabels.requestCreatedDateTime'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{request.dateCreated | date:"medium"}}</span>
+                                    </div>
+                                    <div fxFlex=25 fxLayout="column">
+                                        <span class="dashboard-listing-heading">{{
+                                            'dashboardLabels.adminDashboardLabels.requestModifyDateTime'
+                                            | translate }}</span><span
+                                            class="dashboard-listing-content">{{request.lastModified | date:"medium"}}</span>
+                                    </div>
+                                   
+                                    <div fxFlex=50 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{
                                             'dashboardLabels.adminDashboardLabels.status'
                                             | translate }}</span>
                                         <div fxLayout="row wrap">
                                             <mat-button-toggle-group #requestStatus="matButtonToggleGroup"
-                                                fxLayout="column" [(ngModel)]="request.status">
+                                                fxLayout="row" [value]="request.status" (change)="changeStatus($event.value, request)">
                                                 <mat-button-toggle value="ACCEPTED"
-                                                    [ngClass]="{'request-accept-status': request.status === 'NOT_ACCEPTED', 'request-accept-status-checked': request.status === 'ACCEPTED'}">
+                                                    [ngClass]="{'request-accept-status': (request.status === 'NOT_ACCEPTED' || request.status === 'NOT_STARTED'), 'request-accept-status-checked': request.status === 'ACCEPTED'}">
                                                     {{
                                                     ('dashboardLabels.adminDashboardLabels.acceptedBtn'
                                                     | translate) | uppercase }}
                                                 </mat-button-toggle>
                                                 <mat-button-toggle value="NOT_ACCEPTED"
-                                                    [ngClass]="{'request-reject-status-checked': request.status === 'NOT_ACCEPTED', 'request-reject-status': request.status === 'ACCEPTED'}">
+                                                    [ngClass]="{'request-reject-status-checked': request.status === 'NOT_ACCEPTED', 'request-reject-status': (request.status === 'ACCEPTED' || request.status === 'NOT_STARTED')}">
                                                     {{
                                                     ('dashboardLabels.adminDashboardLabels.rejectBtn'
+                                                    | translate) | uppercase }}
+                                                </mat-button-toggle>
+                                                <mat-button-toggle value="NOT_STARTED" disabled=true
+                                                    [ngClass]="{'request-reject-status-checked': (request.status === 'NOT_STARTED'), 'request-reject-status': (request.status === 'ACCEPTED' || request.status === 'NOT_ACCEPTED')}">
+                                                    {{
+                                                    ('dashboardLabels.adminDashboardLabels.notStartedBtn'
                                                     | translate) | uppercase }}
                                                 </mat-button-toggle>
                                             </mat-button-toggle-group>

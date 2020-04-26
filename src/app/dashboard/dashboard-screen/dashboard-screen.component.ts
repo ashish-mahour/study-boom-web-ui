@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { AuthenticationService } from "../../services/authentication/authentication.service";
 import { TranslateService } from "@ngx-translate/core";
 import { AdminService } from "../../services/admin/admin.service";
+import { Requests, RequestDetails } from 'src/app/shared/interfaces/requests.interface';
 
 @Component({
   selector: "app-dashboard-screen",
@@ -30,13 +31,15 @@ export class DashboardScreenComponent implements OnInit {
         if (
           this.authenticationService.userType ===
           translations["userTypes.admin"]
-        )
+        ) {
+          this.adminService.allRequests = []
           this.adminService.getAllRequests(
             {
               pageNo: this.requestPageNo,
               limit: this.requestLimit
             }
           );
+        }
       });
   }
 
@@ -86,5 +89,17 @@ export class DashboardScreenComponent implements OnInit {
 
   prevAdminRequestPage() {
     this.currentRequestPage -= 1;
+  }
+
+  changeStatus(status: "NOT_STARTED" | "ACCEPTED" | "NOT_ACCEPTED", request: Requests) {
+    const requestDetails: RequestDetails = {
+      userId: request.userIdToRequests.id,
+      requestId: request.id,
+      requestText: request.requestText,
+      processed: true,
+      status:status
+    }
+    this.requestPageNo = 0;
+    this.adminService.modifyRequest(requestDetails);
   }
 }

@@ -155,12 +155,17 @@
       "result": "Result"
     },
     "adminDashboardLabels": {
-      "requestType": "Request Type",
-      "performedAt": "Perfromed At",
-      "requestDateTime": "Request Date/Time",
+      "requestText": "Request",
+      "requestedBy": "Requested By",
+      "requestCreatedDateTime": "Created",
+      "requestModifyDateTime": "Modified",
+      "processed": "Processed",
+      "processedTrue": "Yes",
+      "processedFalse": "No",
       "status": "Status",
       "acceptedBtn": "Accepted",
-      "rejectBtn": "Rejected"
+      "rejectBtn": "Rejected",
+      "notStartedBtn": "Not Started"
     }
   },
   "testSeriesListingLabels": {
@@ -197,12 +202,14 @@
   },
   "requestsLabels": {
     "addNewRequests": "Add New Request",
-    "requestType": "Request Type",
-    "performedAt": "Perfromed At",
-    "requestDateTime": "Request Date/Time",
+    "requestText": "Request",
+    "requestCreatedDateTime": "Created",
+    "requestModifyDateTime": "Modified",
+    "processed": "Processed",
+    "processedTrue": "Yes",
+    "processedFalse": "No",
     "status": "Status",
-    "accepted": "Accepted",
-    "reject": "Rejected"
+    "updateRequest": "Update"
   },
   "testPerformLabels": {
     "skipTheQuestion": "Skip the Question",
@@ -214,6 +221,17 @@
   },
   "addTestSeriesLabels": {
     "totalNoOfQuestions": "Total No. of Questions :",
-    "maxDurationData": [5, 10, 15, 20, 30, 45, 60, 75, 90, 120]
+    "maxDurationData": [
+      5,
+      10,
+      15,
+      20,
+      30,
+      45,
+      60,
+      75,
+      90,
+      120
+    ]
   }
 }

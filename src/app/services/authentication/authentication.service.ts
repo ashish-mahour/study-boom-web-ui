@@ -8,7 +8,7 @@ import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { UserDetails, Users, Login, ChangePassword } from '../../shared/interfaces/users.interfaces';
 import { SubjectCategory } from '../../shared/interfaces/category.interface';
 import { Requests, RequestDetails } from '../../shared/interfaces/requests.interface';
-import { RequestsStatus, AccountStatus } from '../../shared/interfaces/status.interface';
+import { RequestsStatus, AccountStatus, Page } from '../../shared/interfaces/status.interface';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
@@ -237,7 +237,7 @@ export class AuthenticationService {
         },
         (error: any) => {
           this.loadingService.showLoading(false, null);
-          const alertBox = this.dialog.open(AlertBoxComponent, {
+          this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
@@ -272,14 +272,14 @@ export class AuthenticationService {
       });
     })
   }
-  getRequestsByUser(pageNo: number, limit: number) {
+  getRequestsByUser(page: Page) {
     this.loadingService.showLoading(true, "Getting Requests...");
     let apiToCall: string = config.serverUrl
     this.translate.get(["userTypes.student", "userTypes.publisher"]).subscribe(translations => {
       if (this.userDetails.type === translations["userTypes.student"]) {
-        apiToCall += config.api.student + "/get/requests?userId=" + this.userDetails.id + "&pageNo=" + pageNo + "&limit=" + limit
+        apiToCall += config.api.student + "/get/requests?userId=" + this.userDetails.id + "&pageNo=" + page.pageNo + "&limit=" + page.limit
       } else if (this.userDetails.type === translations["userTypes.publisher"]) {
-        apiToCall += config.api.publisher + "/get/requests?userId=" + this.userDetails.id + "&pageNo=" + pageNo + "&limit=" + limit
+        apiToCall += config.api.publisher + "/get/requests?userId=" + this.userDetails.id + "&pageNo=" + page.pageNo + "&limit=" + page.limit
       }
       this.http.get(apiToCall).subscribe((data: Array<Requests>) => {
         this.loadingService.showLoading(false, null);
@@ -322,6 +322,8 @@ export class AuthenticationService {
             message: data.message
           }
         });
+        this.allRequestsByUser = []
+        this.getRequestsByUser({ pageNo: 0, limit: 20 })
       }, error => {
         this.loadingService.showLoading(false, null);
         this.dialog.open(AlertBoxComponent, {
@@ -355,6 +357,8 @@ export class AuthenticationService {
             message: data.message
           }
         });
+        this.allRequestsByUser = []
+        this.getRequestsByUser({ pageNo: 0, limit: 20 })
       }, error => {
         this.loadingService.showLoading(false, null);
         this.dialog.open(AlertBoxComponent, {

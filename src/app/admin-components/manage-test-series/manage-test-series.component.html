@@ -10,56 +10,6 @@
               overflow:'auto'}">
           <div fxLayout="column">
             <div *ngFor="let test of authenticationService.allUsers" class="manage-test-listing-row-content">
-              <!-- <div fxLayout="column">
-                <div fxFlex=100>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="manage-test-listing-heading">{{
-                                  'dashboardLabels.adminDashboardLabels.requestType'
-                                  | translate }}</span>
-                    <span class="manage-test-listing-content">{{test.testId}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="manage-test-listing-heading">{{
-                                  'dashboardLabels.adminDashboardLabels.performedAt'
-                                  | translate }}</span><span
-                      class="manage-test-listing-content">{{test.testName}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="manage-test-listing-heading">{{
-                                  'dashboardLabels.adminDashboardLabels.requestDateTime'
-                                  | translate }}</span><span
-                      class="manage-test-listing-content">{{test.testType}}</span>
-                  </div>
-                  <div fxFlex=25 fxLayout="column">
-                    <span class="manage-test-listing-heading">{{
-                                  'dashboardLabels.adminDashboardLabels.status'
-                                  | translate }}</span>
-                    <div fxLayout="row wrap">
-                      <mat-button-toggle-group #requestStatus="matButtonToggleGroup" fxLayout="column"
-                        [(ngModel)]="test.status">
-                        <mat-button-toggle value="{{
-                                          ('dashboardLabels.adminDashboardLabels.acceptedBtn'
-                                          | translate) | uppercase
-                                          }}"
-                          [ngClass]="{'user-activated-accept-status': test.status === 'REJECTED', 'user-activated-accept-status-checked': test.status === 'ACCEPTED'}">
-                          {{
-                                          ('dashboardLabels.adminDashboardLabels.acceptedBtn'
-                                          | translate) | uppercase }}
-                        </mat-button-toggle>
-                        <mat-button-toggle value="{{
-                                          ('dashboardLabels.adminDashboardLabels.rejectBtn'
-                                          | translate) | uppercase
-                                          }}"
-                          [ngClass]="{'user-activated-reject-status-checked': test.status === 'REJECTED', 'user-activated-reject-status': test.status === 'ACCEPTED'}">
-                          {{
-                                          ('dashboardLabels.adminDashboardLabels.rejectBtn'
-                                          | translate) | uppercase }}
-                        </mat-button-toggle>
-                      </mat-button-toggle-group>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
             </div>
           </div>
         </div>

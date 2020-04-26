@@ -8,8 +8,8 @@ import { AddUpdateCategoriesComponent } from "../../admin-components/add-update-
 import { Users } from '../../shared/interfaces/users.interfaces';
 import { TestSeries } from '../../shared/interfaces/test-series.interface';
 import { SubjectCategory, CategoryDetails } from '../../shared/interfaces/category.interface';
-import { Requests } from '../../shared/interfaces/requests.interface';
-import { Page, CategoryStatus } from '../../shared/interfaces/status.interface';
+import { Requests, RequestDetails } from '../../shared/interfaces/requests.interface';
+import { Page, CategoryStatus, RequestsStatus } from '../../shared/interfaces/status.interface';
 
 @Injectable({
   providedIn: "root"
@@ -205,5 +205,33 @@ export class AdminService {
           });
         }
       );
+  }
+  modifyRequest(request: RequestDetails) {
+    this.loadingService.showLoading(true, "Modifing Request...");
+    this.http.post(config.serverUrl +
+      config.api.admin +
+      "/modify/users/request", request).subscribe((data: RequestsStatus) => {
+        this.loadingService.showLoading(false, null);
+        this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "success",
+            message: data.message
+          }
+        });
+        this.allRequests = []
+        this.getAllRequests({ pageNo: 0, limit: 20 })
+      }, error => {
+        this.loadingService.showLoading(false, null);
+        this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "error",
+            message: error.error.message
+          }
+        })
+      })
   }
 }
