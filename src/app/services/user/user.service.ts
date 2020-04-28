@@ -8,6 +8,7 @@ import { TestSeries, StudentPerfromedTest } from '../../shared/interfaces/test-s
 import { Page } from 'src/app/shared/interfaces/status.interface';
 import { Router } from '@angular/router';
 import { StudentPerformedTestRequest } from 'src/app/shared/interfaces/users.interfaces';
+import { UserReport } from 'src/app/shared/interfaces/reports.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class UserService {
 
   testData: Array<Array<TestSeries>> = []
   performedTestData: Array<Array<StudentPerfromedTest>> = []
+  dashboardReports: Array<UserReport> = []
 
   constructor(
     private loadingService: LoadingAnimServiceService,
@@ -134,5 +136,28 @@ export class UserService {
         });
         this.router.navigateByUrl("/dashboard")
       })
+  }
+
+  getDashboardReports() {
+    this.loadingService.showLoading(true, "Getting Student Dashboard");
+    this.http
+      .get(
+        config.serverUrl + config.api.student + "/get/reports"
+      ).subscribe((data: Array<UserReport>) => {
+        this.dashboardReports = data;
+      },
+        error => {
+          console.log(error)
+          this.loadingService.showLoading(false, null);
+          this.dialog.open(AlertBoxComponent, {
+            minWidth: "25%",
+            maxWidth: "60%",
+            data: {
+              type: "error",
+              message: "Error found in getting user dashboard!!"
+            }
+          });
+        }
+      );
   }
 }

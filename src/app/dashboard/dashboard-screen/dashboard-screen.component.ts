@@ -4,6 +4,8 @@ import { AuthenticationService } from "../../services/authentication/authenticat
 import { TranslateService } from "@ngx-translate/core";
 import { AdminService } from "../../services/admin/admin.service";
 import { Requests, RequestDetails } from 'src/app/shared/interfaces/requests.interface';
+import { PublisherService } from 'src/app/services/publisher/publisher.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: "app-dashboard-screen",
@@ -15,30 +17,30 @@ export class DashboardScreenComponent implements OnInit {
   currentRequestPage: number = 0;
   requestPageNo: number = 0;
   requestLimit: number = 20;
-  testData: any[] = [];
 
   constructor(
     private router: Router,
     public authenticationService: AuthenticationService,
     private translate: TranslateService,
-    public adminService: AdminService
+    public adminService: AdminService,
+    public publisherService: PublisherService,
+    public userService: UserService
   ) { }
 
   ngOnInit() {
     this.translate
       .get(["userTypes.admin", "userTypes.student", "userTypes.publisher"])
-      .subscribe((translations: any) => {
-        if (
-          this.authenticationService.userType ===
-          translations["userTypes.admin"]
-        ) {
+      .subscribe((translations) => {
+        if (this.authenticationService.userType === translations["userTypes.admin"]) {
           this.adminService.allRequests = []
-          this.adminService.getAllRequests(
-            {
-              pageNo: this.requestPageNo,
-              limit: this.requestLimit
-            }
-          );
+          this.adminService.getAllRequests({
+            pageNo: this.requestPageNo,
+            limit: this.requestLimit
+          });
+        } else if (this.authenticationService.userType === translations["userTypes.student"]) {
+          this.userService.getDashboardReports()
+        } else if (this.authenticationService.userType === translations["userTypes.publisher"]) {
+          this.publisherService.getDashboardReports()
         }
       });
   }
@@ -46,7 +48,7 @@ export class DashboardScreenComponent implements OnInit {
   editProfile() {
     this.translate
       .get(["userTypes.admin", "userTypes.student", "userTypes.publisher"])
-      .subscribe((translations: any) => {
+      .subscribe((translations) => {
         if (
           this.authenticationService.userType ===
           translations["userTypes.publisher"]
@@ -97,7 +99,7 @@ export class DashboardScreenComponent implements OnInit {
       requestId: request.id,
       requestText: request.requestText,
       processed: true,
-      status:status
+      status: status
     }
     this.requestPageNo = 0;
     this.adminService.modifyRequest(requestDetails);

@@ -10,125 +10,11 @@
                     overflow:'auto'}">
                     <div fxLayout="column" *ngIf="authenticationService.userType ===
                         'PUBLISHER'">
-                        <div *ngFor="let test of testData" class="dashboard-listing-row-content">
-                            <div fxLayout="column">
-                                <div fxFlex=100>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testId'
-                                            | translate }}</span>
-                                        <span class="dashboard-listing-content">{{test.testId}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testName'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.testName}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testType'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.testType}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.noOfQuestions'
-                                            | translate }}
-                                        </span><span class="dashboard-listing-content">{{test.noOfQuestions}}</span>
-                                    </div>
-                                </div>
-                                <div fxFlex=100>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.duration'
-                                            | translate }}</span>
-                                        <span class="dashboard-listing-content">{{test.duration}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.totalMarks'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.totalMarks}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{
-                                            'dashboardLabels.publisherDashboardLabels.createdDateTime'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.minMarks}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.price'
-                                            | translate }}</span><span class="dashboard-listing-content">{{test.price
-                                            | currency:'INR'}}</span>
-                                    </div>
-                                </div>
-                                <div fxFlex=100 fxLayout="row wrap">
-                                    <div fxFlex=75 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{
-                                            'dashboardLabels.publisherDashboardLabels.soldCount'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.uploadedBy}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div fxFlex=100 fxLayout="column" *ngIf="authenticationService.userType ===
                         'STUDENT'">
-                        <div fxFlex=100 *ngFor="let test of testData" class="dashboard-listing-row-content">
-                            <div fxFlex=100 fxLayout="column">
-                                <div fxFlex=100>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testId'
-                                            | translate }}</span>
-                                        <span class="dashboard-listing-content">{{test.testId}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testName'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.testName}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.testType'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.testType}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.noOfQuestions'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.noOfQuestions}}</span>
-                                    </div>
-                                </div>
-                                <div fxFlex=100>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.duration'
-                                            | translate }}</span>
-                                        <span class="dashboard-listing-content">{{test.duration}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{'testSeriesListingLabels.totalMarks'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.totalMarks}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{
-                                            'dashboardLabels.studentDashboardLabels.dateTime'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.minMarks}}</span>
-                                    </div>
-                                    <div fxFlex=25 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{
-                                            'dashboardLabels.studentDashboardLabels.noOfQuestionsAttempted'
-                                            | translate }}
-                                        </span><span class="dashboard-listing-content">{{test.price
-                                            | currency:'INR'}}</span>
-                                    </div>
-                                </div>
-                                <div fxFlex=100 fxLayout="row wrap">
-                                    <div fxFlex=75 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
-                                        <span class="dashboard-listing-heading">{{
-                                            'dashboardLabels.studentDashboardLabels.result'
-                                            | translate }}</span><span
-                                            class="dashboard-listing-content">{{test.uploadedBy}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                     <div fxFlex=100 fxLayout="column" *ngIf="authenticationService.userType ===
                         ( 'userTypes.admin'| translate )">
@@ -203,20 +89,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout"
-                *ngIf="authenticationService.userType === ( 'userTypes.student'| translate )">
-                <button mat-raised-button class="next-prev-button"><i class="fa
-                        fa-arrow-left" aria-hidden="true"></i></button>
-                <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
-                        aria-hidden="true"></i></button>
-            </div>
-            <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout"
-                *ngIf="authenticationService.userType === ( 'userTypes.publisher'| translate )">
-                <button mat-raised-button class="next-prev-button"><i class="fa
-                        fa-arrow-left" aria-hidden="true"></i></button>
-                <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
-                        aria-hidden="true"></i></button>
             </div>
             <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout"
                 *ngIf="authenticationService.userType === ( 'userTypes.admin'| translate )">

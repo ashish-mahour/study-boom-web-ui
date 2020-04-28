@@ -6,13 +6,16 @@ import { AlertBoxComponent } from "../../shared/alert-box/alert-box.component";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from '@angular/router';
 import { SubjectCategory } from '../../shared/interfaces/category.interface';
-import { TestSeriesStatus } from 'src/app/shared/interfaces/status.interface';
+import { TestSeriesStatus } from '../../shared/interfaces/status.interface';
+import { PublisherReport } from '../../shared/interfaces/reports.interface';
+import {TestSeriesDetails} from '../../shared/interfaces/test-series.interface';
 
 @Injectable({
   providedIn: "root"
 })
 export class PublisherService {
   allCategories: Array<SubjectCategory> = [];
+  dashboardReports: Array<PublisherReport> = []
 
   constructor(
     private loadingService: LoadingAnimServiceService,
@@ -43,8 +46,8 @@ export class PublisherService {
         }
       );
   }
-  addTestSeries(testSeriesDetailsValue: any) {
-    console.log(testSeriesDetailsValue);
+
+  addTestSeries(testSeriesDetailsValue: TestSeriesDetails) {
     this.loadingService.showLoading(true, "Adding test series...");
     this.http
       .post(
@@ -72,10 +75,33 @@ export class PublisherService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in getting categories!!"
+              message: "Error found in adding test series!!"
             }
           });
           this.router.navigateByUrl("/dashboard")
+        }
+      );
+  }
+
+  getDashboardReports() {
+    this.loadingService.showLoading(true, "Getting Publisher Dashboard");
+    this.http
+      .get(
+        config.serverUrl + config.api.publisher + "/get/reports"
+      ).subscribe((data: Array<PublisherReport>) => {
+        this.dashboardReports = data;
+      },
+        error => {
+          console.log(error)
+          this.loadingService.showLoading(false, null);
+          this.dialog.open(AlertBoxComponent, {
+            minWidth: "25%",
+            maxWidth: "60%",
+            data: {
+              type: "error",
+              message: "Error found in getting publisher dashboard!!"
+            }
+          });
         }
       );
   }
