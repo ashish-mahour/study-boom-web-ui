@@ -6,6 +6,7 @@ import { AdminService } from "../../services/admin/admin.service";
 import { Requests, RequestDetails } from 'src/app/shared/interfaces/requests.interface';
 import { PublisherService } from 'src/app/services/publisher/publisher.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { Chart } from "chart.js";
 
 @Component({
   selector: "app-dashboard-screen",
@@ -39,10 +40,20 @@ export class DashboardScreenComponent implements OnInit {
           });
         } else if (this.authenticationService.userType === translations["userTypes.student"]) {
           this.userService.getDashboardReports()
+          this.generateUserDashboard()
         } else if (this.authenticationService.userType === translations["userTypes.publisher"]) {
           this.publisherService.getDashboardReports()
+          this.generatePublisherDashboard()
         }
       });
+  }
+
+  generatePublisherDashboard() {
+    console.log(this.publisherService.dashboardReports)
+  }
+
+  generateUserDashboard() {
+    console.log(this.userService.dashboardReports)
   }
 
   editProfile() {
