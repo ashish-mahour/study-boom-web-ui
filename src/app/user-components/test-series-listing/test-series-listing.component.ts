@@ -40,6 +40,10 @@ export class TestSeriesListingComponent implements OnInit {
       this.performedTestCurrentPageNo = 0;
       this.userService.performedTestData = [];
       this.userService.getPerformedTestSeries({ pageNo: this.performedTestCurrentPageNo, limit: this.limit }, this.authenticationService.userDetails.userIdFromStudent.id)
+    } else if (tabIndex === 0) {
+      this.allTestCurrentPageNo = 0;
+      this.userService.testData = [];
+      this.userService.getAllTestSeries({ pageNo: this.allTestCurrentPageNo, limit: this.limit }, this.authenticationService.userDetails.userIdFromStudent.id);
     }
   }
 
@@ -78,7 +82,7 @@ export class TestSeriesListingComponent implements OnInit {
     for (let testRating of testSeriesIdToRatings)
       totalRatings += testRating.overallRatings;
 
-    return (totalRatings / testSeriesIdToRatings.length);
+    return Math.round(totalRatings / testSeriesIdToRatings.length);
   }
 
 }

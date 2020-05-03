@@ -53,9 +53,9 @@ export class AddTestSeriesComponent implements OnInit {
     public publisherService: PublisherService,
     public authenticationService: AuthenticationService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
-  
+
   testSeriesQuestions = (): FormArray => this.testSeriesDetailsForm.controls["testSeriesQuestions"] as FormArray;
   testSeriesQuestionsGroup = (i: number): FormGroup => this.testSeriesQuestions().controls[i] as FormGroup
 

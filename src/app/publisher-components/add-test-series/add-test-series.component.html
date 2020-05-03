@@ -233,7 +233,7 @@
                         </mat-error>
                       </div>
                     </div>
-                    <div fxLayout="row wrap">
+                    <div fxLayout="row wrap" style="margin-top: 5px;">
                       <div fxLayout="row wrap" fxLayoutAlign="end end" fxFlex=95 fxFlex.sm=100 fxFlex.xs=100>
                         <button type="button" mat-raised-button class="button-layout-for-remove-icon" [disabled]="testSeriesQuestions().controls.length === 1" (click)="removeQuestion(questionPosition)"><i
                             class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;</button>
@@ -252,7 +252,7 @@
                 </div>
               </div>
             </div>
-            <div fxLayoutAlign="end end" fxFlex=95 fxFlex.sm=100 fxFlex.xs=100>
+            <div fxLayoutAlign="end end" style="margin-top: 5px;" fxFlex=95 fxFlex.sm=100 fxFlex.xs=100>
               <button type="button" mat-raised-button class="button-layout" fxFlex="25" fxFlex.xs="100" fxFlex.sm="60"
                 [disabled]="testSeriesDetailsForm.invalid"
                 (click)="publisherService.addTestSeries(testSeriesDetailsForm.value)">{{'labels.submit' | translate }}</button>

@@ -83,6 +83,7 @@ export class PerformTestSeriesComponent implements OnInit {
       this.minutes = this.minutes < 10 ? "0" + this.minutes : this.minutes;
       this.seconds = this.seconds < 10 ? "0" + this.seconds : this.seconds;
       if (--this.durationInSeconds < 0) {
+        this.testPerformed()
         clearInterval(timer);
       }
     }, 1000);
@@ -113,7 +114,7 @@ export class PerformTestSeriesComponent implements OnInit {
     for (let testRating of testSeriesIdToRatings)
       totalRatings += testRating.overallRatings;
 
-    return (totalRatings / testSeriesIdToRatings.length);
+    return Math.round(totalRatings / testSeriesIdToRatings.length);
   }
 
   testPerformed() {
@@ -131,14 +132,13 @@ export class PerformTestSeriesComponent implements OnInit {
     })
   }
 
-  answerSelected(answer: string) {
-    if (this.studentPerformedTest.studentChoosedAnswers[this.currentPosition].choosedAnswer === null) {
+  answerSelected() {
+    if (this.studentPerformedTest.studentChoosedAnswers[this.currentPosition].choosedAnswer !== null) {
       this.questions[this.currentPosition].attempted = true
       this.studentPerformedTest.attempted = this.studentPerformedTest.attempted + 1;
       if (this.studentPerformedTest.unattemped > 0) {
         this.studentPerformedTest.unattemped = this.studentPerformedTest.unattemped - 1;
       }
     }
-    this.studentPerformedTest.studentChoosedAnswers[this.currentPosition].choosedAnswer = answer
   }
 }

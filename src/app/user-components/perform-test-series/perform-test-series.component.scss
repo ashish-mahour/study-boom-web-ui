@@ -40,8 +40,12 @@
     color: rgb(255, 0, 0) !important;
   }
 
+  .mat-button-toggle-button {
+    white-space: pre-wrap !important;
+  }
+
   .user-type-option .mat-button-toggle-button {
-    font-size: 1.2em;
+    font-size: 1em;
     cursor: pointer;
     letter-spacing: 2px;
     color: rgba(238, 247, 247, 0.863);

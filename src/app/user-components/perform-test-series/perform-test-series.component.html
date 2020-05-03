@@ -88,7 +88,7 @@
             {{questionsArray[currentPosition].questionText}}
           </div>
           <div>
-            <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column" style="color: black;" [value]="studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer"
+            <mat-button-toggle-group #group="matButtonToggleGroup" fxLayout="column" style="color: black;" [(ngModel)]="studentPerformedTest.studentChoosedAnswers[currentPosition].choosedAnswer"
               (change)="answerSelected($event.value)" fxFlex=100>
               <div>
                 <mat-button-toggle [value]="questionsArray[currentPosition].choice1" class="user-type-option" fxFlex=50>
@@ -102,7 +102,7 @@
                 <mat-button-toggle [value]="questionsArray[currentPosition].choice3" class="user-type-option" fxFlex=50>
                   {{questionsArray[currentPosition].choice3}}
                 </mat-button-toggle>
-                <mat-button-toggle [value]="questionsArray[currentPosition].choice3" class="user-type-option" fxFlex=50>
+                <mat-button-toggle [value]="questionsArray[currentPosition].choice4" class="user-type-option" fxFlex=50>
                   {{questionsArray[currentPosition].choice4}}
                 </mat-button-toggle>
               </div>
