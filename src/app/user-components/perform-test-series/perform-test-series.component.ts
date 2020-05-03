@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { TestSeries, TestSeriesData } from 'src/app/shared/interfaces/test-series.interface';
 import { StudentPerformedTestRequest } from 'src/app/shared/interfaces/users.interfaces';
+import { MatDialog } from '@angular/material/dialog';
+import { SubmitRatingsComponent } from 'src/app/shared/submit-ratings/submit-ratings.component';
 
 @Component({
   selector: 'app-perform-test-series',
@@ -42,7 +44,8 @@ export class PerformTestSeriesComponent implements OnInit {
     private title: Title,
     public authenticationService: AuthenticationService,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private matDialog: MatDialog
   ) {
 
   }
@@ -116,7 +119,16 @@ export class PerformTestSeriesComponent implements OnInit {
   testPerformed() {
     this.questionSubmited(true)
     this.studentPerformedTest.timeTaken = this.testData.durationMin - Math.floor(this.durationInSeconds / 60)
-    this.userService.testPerformed(this.studentPerformedTest)
+    this.userService.testPerformed(this.studentPerformedTest).then(()=> {
+      this.matDialog.open(SubmitRatingsComponent, {
+        minWidth: "20%",
+        maxWidth: "40%",
+        data: {
+          testSeriesId: this.studentPerformedTest.testSeriesId,
+          studentId: this.studentPerformedTest.studentId
+        }
+      })
+    })
   }
 
   answerSelected(answer: string) {

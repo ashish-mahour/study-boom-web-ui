@@ -60,8 +60,10 @@ import { PublisherRequestsComponent } from "./publisher-components/publisher-req
 import { UserRequestsComponent } from "./user-components/user-requests/user-requests/user-requests.component";
 import { AddUpdateRequestsComponent } from "./shared/add-update-requests/add-update-requests/add-update-requests.component";
 import { ForgotPasswordComponent } from "./shared/forgot-password/forgot-password/forgot-password.component";
-import { RatingModule } from 'ng-starrating';
 import { FirebaseService } from './services/firebase/firebase.service';
+import { SubmitRatingsComponent } from './shared/submit-ratings/submit-ratings.component';
+import { TitleCasePipe } from '@angular/common';
+import { RatingsComponent } from "./shared/ratings/ratings.component"
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -93,7 +95,9 @@ export function createTranslateLoader(http: HttpClient) {
     PublisherRequestsComponent,
     UserRequestsComponent,
     AddUpdateRequestsComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    SubmitRatingsComponent,
+    RatingsComponent
   ],
   imports: [
     BrowserModule,
@@ -127,8 +131,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatListModule,
     MatDividerModule,
     MatGridListModule,
-    MatStepperModule,
-    RatingModule
+    MatStepperModule
   ],
   providers: [
     Title,
@@ -141,15 +144,17 @@ export function createTranslateLoader(http: HttpClient) {
     AuthenticationGuard,
     AdminService,
     PublisherService,
-    UserService, 
-    FirebaseService
+    UserService,
+    FirebaseService,
+    TitleCasePipe
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     AlertBoxComponent,
     AddUpdateCategoriesComponent,
     AddUpdateRequestsComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    SubmitRatingsComponent
   ]
 })
-export class AppModule {}
+export class AppModule { }

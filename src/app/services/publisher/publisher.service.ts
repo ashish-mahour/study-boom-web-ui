@@ -40,7 +40,7 @@ export class PublisherService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in getting categories!!"
+              message: error && error.error? error.error.message: "Error found in getting categories!!"
             }
           });
         }
@@ -68,14 +68,13 @@ export class PublisherService {
           this.router.navigateByUrl("/dashboard")
         },
         error => {
-          console.log(error)
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in adding test series!!"
+              message: error && error.error? error.error.message: "Error found in adding test series!!"
             }
           });
           this.router.navigateByUrl("/dashboard")
@@ -83,13 +82,44 @@ export class PublisherService {
       );
   }
 
-  getDashboardReports() {
+  getDashboardReports(publisherId: number) {
     this.loadingService.showLoading(true, "Getting Publisher Dashboard");
+    return new Promise<void>((resolve, reject) => {
     this.http
       .get(
-        config.serverUrl + config.api.publisher + "/get/reports"
+        config.serverUrl + config.api.publisher + "/get/reports?publisherId=" + publisherId
       ).subscribe((data: Array<PublisherReport>) => {
+        this.loadingService.showLoading(false, null);
         this.dashboardReports = data;
+        resolve()
+      },
+        error => {
+          this.loadingService.showLoading(false, null);
+          this.dialog.open(AlertBoxComponent, {
+            minWidth: "25%",
+            maxWidth: "60%",
+            data: {
+              type: "error",
+              message: error && error.error? error.error.message: "Error found in getting publisher dashboard!!"
+            }
+          });
+          reject()
+        }
+      );
+    })
+  }
+  generateReports(publisherId: number) {
+    this.loadingService.showLoading(true, "Getting Publisher Report...");
+    this.http
+      .get(
+        config.serverUrl + config.api.publisher + "/generate/reports?publisherId=" + publisherId, { responseType: "blob" as "json", observe: "response" }
+      ).subscribe(response => {
+        this.loadingService.showLoading(false, null);
+        const url = URL.createObjectURL(response.body)
+        const a = document.createElement("a")
+        a.href = url
+        a.download = response.headers.get('FILE_NAME')
+        a.click()
       },
         error => {
           console.log(error)
@@ -99,7 +129,7 @@ export class PublisherService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in getting publisher dashboard!!"
+              message: "Error found in generating User Report!!"
             }
           });
         }

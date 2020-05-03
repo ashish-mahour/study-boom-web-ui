@@ -31,8 +31,7 @@
                     <div fxFlex=25 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.ratings' | translate }}</span><span
                         class="test-listing-content">
-                        <star-rating [value]="getRatings(testData.testSeriesIdToRatings)" totalstars="5"
-                          checkedcolor="green" uncheckedcolor="grey" size="24px" [readonly]="true"></star-rating>
+                        <ratings [rating]= "getRatings(testData.testSeriesIdToRatings)" [type]="'r'" [sizeInEm]="1.2"></ratings>
                       </span>
                     </div>
                   </div>
@@ -146,13 +145,6 @@
                     <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.uploadedBy' | translate }}</span><span
                         class="test-listing-content">{{performedTestData.testSeriesPerformed.uploadedByPublisher.fullName }}</span>
-                    </div>
-                    <div fxFlex=25 fxLayout="column">
-                      <span class="test-listing-heading">{{'testSeriesListingLabels.ratings' | translate }}</span><span
-                        class="test-listing-content">
-                        <star-rating [value]="getRatings(performedTestData.testSeriesPerformed.testSeriesIdToRatings)" totalstars="5"
-                          checkedcolor="green" uncheckedcolor="grey" size="24px" readonly="true"></star-rating>
-                      </span>
                     </div>
                     <div fxFlex=50 fxLayoutAlign="start center">
                       <button mat-raised-button class="add-to-cart-perform-button">{{'testSeriesListingLabels.performed' | translate }}</button>

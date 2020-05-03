@@ -47,14 +47,14 @@ export class AdminService {
             this.allUsers.push(data);
           }
         },
-        (_error: any) => {
+        (error: any) => {
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in getting users!!"
+              message: error && error.error? error.error.message: "Error found in getting users!!"
             }
           });
         }
@@ -82,14 +82,14 @@ export class AdminService {
             this.allCategories.push(data);
           }
         },
-        (_error: any) => {
+        (error: any) => {
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in getting categories!!"
+              message: error && error.error? error.error.message: "Error found in getting categories!!"
             }
           });
         }
@@ -131,7 +131,7 @@ export class AdminService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in adding/updating categories!!"
+              message: error && error.error? error.error.message: "Error found in adding/updating categories!!"
             }
           });
         }
@@ -158,14 +158,14 @@ export class AdminService {
             }
           });
         },
-        (_error: any) => {
+        (error: any) => {
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in deleting categories!!"
+              message: error && error.error? error.error.message: "Error found in deleting categories!!"
             }
           });
         }
@@ -193,14 +193,14 @@ export class AdminService {
             this.allRequests.push(data);
           }
         },
-        (_error: any) => {
+        (error: any) => {
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in getting requests!!"
+              message: error && error.error? error.error.message: "Error found in getting requests!!"
             }
           });
         }
@@ -229,7 +229,7 @@ export class AdminService {
           maxWidth: "60%",
           data: {
             type: "error",
-            message: error.error.message
+            message: error && error.error? error.error.message: "Error modifing request."
           }
         })
       })

@@ -50,8 +50,7 @@
               <div fxFlex=25 fxFlex.sm=100 fxFlex.xs=100 fxLayout="column">
                 <span class="test-perform-heading">{{'testSeriesListingLabels.ratings' | translate }}</span><span
                   class="test-perform-content">
-                  <star-rating [value]="getRatings(testData.testSeriesIdToRatings)" totalstars="5" checkedcolor="green"
-                    uncheckedcolor="grey" size="14px" readonly="true"></star-rating>
+                  <ratings [rating]= "getRatings(testData.testSeriesIdToRatings)" [type]="'r'" [sizeInEm]="1.2"></ratings>
                 </span>
               </div>
             </div>

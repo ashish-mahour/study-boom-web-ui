@@ -1,0 +1,4 @@
+<span (mouseleave)="mouseLeave()">
+  <i *ngFor="let i of [1,2,3,4,5]" [class]="iconClass" (click)="rate(i)"
+  [ngStyle]="{'color': getColor(i),'font-size.em': sizeInEm }" (mouseover)="mouseOver(i)"></i> &nbsp;
+</span>

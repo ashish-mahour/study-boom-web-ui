@@ -146,13 +146,12 @@
   "dashboardLabels": {
     "editProfile": "Edit Profile",
     "publisherDashboardLabels": {
-      "createdDateTime": "Created Date/Time",
-      "soldCount": "Sold Count"
+      "publisherReport": "Publisher Report (Last 10 Records)",
+      "generateReportFile": "Download Full Report"
     },
     "studentDashboardLabels": {
-      "dateTime": "Date/Time",
-      "noOfQuestionsAttempted": "No. of Questions Attempted",
-      "result": "Result"
+      "studentReport": "Student Report (Last 10 Records)",
+      "generateReportFile": "Download Full Report"
     },
     "adminDashboardLabels": {
       "requestText": "Request",
@@ -185,7 +184,7 @@
     "performed": "Performed",
     "attemped": "Question Attemped.",
     "unattemped": "Question Unattempted",
-    "totalScore": "Total Score",
+    "totalScore": "Marks Scored",
     "timeTaken": "Time taken",
     "performedAt": "Performed At."
   },
@@ -220,6 +219,13 @@
     "skipTheQuestion": "Skip the Question",
     "submit": "Submit",
     "next": "Next"
+  },
+  "ratingsLabels": {
+    "difficulty": "Difficulty Level",
+    "questionQuality": "Questions Quality",
+    "answerQuality": "Answers Quality",
+    "priceRating": "Price",
+    "overAllRatings": "Overall Ratings"
   },
   "cartLabels": {
     "buy": "Buy"

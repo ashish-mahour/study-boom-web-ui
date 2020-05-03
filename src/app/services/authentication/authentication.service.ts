@@ -107,7 +107,7 @@ export class AuthenticationService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Incorrect Username or Password!!"
+              message: error && error.error? error.error.message: "Incorrect Username or Password!!"
             }
           });
         }
@@ -164,11 +164,10 @@ export class AuthenticationService {
         });
       })
       .catch((error: any) => {
-        console.log(error);
         this.loadingService.showLoading(false, null);
         let message: string;
         if (command === config.modifiedCommands.changeProfilePic)
-          message = "Unable to change profile pic!!";
+          message = error && error.error? error.error.message: "Unable to change profile pic!!";
         const alertBox = this.dialog.open(AlertBoxComponent, {
           minWidth: "25%",
           maxWidth: "60%",
@@ -197,7 +196,7 @@ export class AuthenticationService {
               maxWidth: "60%",
               data: {
                 type: "error",
-                message: "Error found in getting categories!!"
+                message: error && error.error? error.error.message: "Error found in getting categories!!"
               }
             });
             reject(null)
@@ -242,7 +241,7 @@ export class AuthenticationService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error getting user details!!"
+              message: error && error.error? error.error.message: "Error getting user details!!"
             }
           });
         }
@@ -296,7 +295,7 @@ export class AuthenticationService {
           maxWidth: "60%",
           data: {
             type: "error",
-            message: error.error.message
+            message: error && error.error? error.error.message: "Error getting request of user."
           }
         })
       })

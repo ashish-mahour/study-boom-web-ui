@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoadingAnimServiceService } from '../../shared/loading/loading-anim-service.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import * as config from '../../shared/config.json';
 import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
@@ -9,6 +9,7 @@ import { Page } from 'src/app/shared/interfaces/status.interface';
 import { Router } from '@angular/router';
 import { StudentPerformedTestRequest } from 'src/app/shared/interfaces/users.interfaces';
 import { UserReport } from 'src/app/shared/interfaces/reports.interface';
+import { TestSeriesRatings, TestSeriesRatingsStatus } from 'src/app/shared/interfaces/test-series-ratings.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +60,7 @@ export class UserService {
           }
         },
         (error: any) => {
-          const message = "Error found in getting All Test Series!!"
+          const message = error && error.error ? error.error.message : "Error found in getting All Test Series!!"
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
@@ -74,7 +75,7 @@ export class UserService {
   }
 
   getPerformedTestSeries(page: Page, studentId: number) {
-    this.loadingService.showLoading(true, "Getting test series...");
+    this.loadingService.showLoading(true, "Getting Test Series...");
     this.http
       .get(
         config.serverUrl +
@@ -95,7 +96,7 @@ export class UserService {
           }
         },
         (error: any) => {
-          let message = "Error found in getting Performed Test Series!!"
+          let message = error && error.error ? error.error.message : "Error found in getting Performed Test Series!!"
           this.loadingService.showLoading(false, null);
           this.dialog.open(AlertBoxComponent, {
             minWidth: "25%",
@@ -110,41 +111,94 @@ export class UserService {
   }
 
   testPerformed(studentPerformedTest: StudentPerformedTestRequest) {
-    this.loadingService.showLoading(true, null);
-    this.http.post(config.serverUrl +
-      config.api.student +
-      "/test/performed", studentPerformedTest).subscribe(_success => {
-        this.loadingService.showLoading(false, null);
-        this.dialog.open(AlertBoxComponent, {
-          minWidth: "25%",
-          maxWidth: "60%",
-          data: {
-            type: "success",
-            message: "Test Performed!!"
-          }
-        });
-        this.router.navigateByUrl("/dashboard")
-      }, _error => {
-        this.loadingService.showLoading(false, null);
-        this.dialog.open(AlertBoxComponent, {
-          minWidth: "25%",
-          maxWidth: "60%",
-          data: {
-            type: "error",
-            message: "Error while performing test!!"
-          }
-        });
-        this.router.navigateByUrl("/dashboard")
-      })
+    this.loadingService.showLoading(true, "Performing Test Series...");
+    return new Promise<void>((resolve, reject) => {
+      this.http.post(config.serverUrl +
+        config.api.student +
+        "/test/performed", studentPerformedTest).subscribe(_success => {
+          this.loadingService.showLoading(false, null);
+          this.router.navigateByUrl("/dashboard")
+          resolve()
+        }, error => {
+          this.loadingService.showLoading(false, null);
+          this.dialog.open(AlertBoxComponent, {
+            minWidth: "25%",
+            maxWidth: "60%",
+            data: {
+              type: "error",
+              message: error && error.error ? error.error.message : "Error while performing test!!"
+            }
+          });
+          this.router.navigateByUrl("/dashboard")
+          reject()
+        })
+    })
   }
 
-  getDashboardReports() {
-    this.loadingService.showLoading(true, "Getting Student Dashboard");
+  submitRatings(testSeriesRatings: TestSeriesRatings) {
+    this.loadingService.showLoading(true, "Submitting Ratings...");
+    this.http.post(config.serverUrl + config.api.student + "/submit/ratings", testSeriesRatings).subscribe((success: TestSeriesRatingsStatus) => {
+      this.loadingService.showLoading(false, null);
+      this.dialog.open(AlertBoxComponent, {
+        minWidth: "25%",
+        maxWidth: "60%",
+        data: {
+          type: "success",
+          message: "Thanks for submitting your valuable ratings."
+        }
+      });
+    }, error => {
+      this.loadingService.showLoading(false, null);
+      this.dialog.open(AlertBoxComponent, {
+        minWidth: "25%",
+        maxWidth: "60%",
+        data: {
+          type: "error",
+          message: error && error.error ? error.error.message : "Error while performing test!!"
+        }
+      });
+    })
+  }
+
+  getDashboardReports(studentId: number) {
+    this.loadingService.showLoading(true, "Getting Student Dashboard...");
+    return new Promise<void>((resolve, reject) => {
+      this.http
+        .get(
+          config.serverUrl + config.api.student + "/get/reports?studentId=" + studentId
+        ).subscribe((data: Array<UserReport>) => {
+          this.loadingService.showLoading(false, null);
+          this.dashboardReports = data;
+          resolve()
+        },
+          error => {
+            this.loadingService.showLoading(false, null);
+            this.dialog.open(AlertBoxComponent, {
+              minWidth: "25%",
+              maxWidth: "60%",
+              data: {
+                type: "error",
+                message: error && error.error ? error.error.message : "Error found in getting user dashboard!!"
+              }
+            });
+            reject()
+          }
+        );
+    })
+
+  }
+  generateReports(studentId: number) {
+    this.loadingService.showLoading(true, "Getting Student Report...");
     this.http
       .get(
-        config.serverUrl + config.api.student + "/get/reports"
-      ).subscribe((data: Array<UserReport>) => {
-        this.dashboardReports = data;
+        config.serverUrl + config.api.student + "/generate/reports?studentId=" + studentId, { responseType: "blob" as "json", observe: "response" }
+      ).subscribe(response => {
+        this.loadingService.showLoading(false, null);
+        const url = URL.createObjectURL(response.body)
+        const a = document.createElement("a")
+        a.href = url
+        a.download = response.headers.get('FILE_NAME')
+        a.click()
       },
         error => {
           console.log(error)
@@ -154,7 +208,7 @@ export class UserService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: "Error found in getting user dashboard!!"
+              message: "Error found in generating User Report!!"
             }
           });
         }

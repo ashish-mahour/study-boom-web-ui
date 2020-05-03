@@ -3,8 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 import { UserService } from '../../services/user/user.service';
-import { TestSeries, TestSeriesRatings } from '../../shared/interfaces/test-series.interface';
-import { StarRatingComponent } from 'ng-starrating';
+import { TestSeriesRatings } from '../../shared/interfaces/test-series.interface';
 
 @Component({
   selector: 'app-test-series-listing',
@@ -81,5 +80,5 @@ export class TestSeriesListingComponent implements OnInit {
 
     return (totalRatings / testSeriesIdToRatings.length);
   }
-  
+
 }
