@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { SubjectCategory } from '../../shared/interfaces/category.interface';
 import { TestSeriesStatus } from '../../shared/interfaces/status.interface';
 import { PublisherReport } from '../../shared/interfaces/reports.interface';
-import {TestSeriesDetails} from '../../shared/interfaces/test-series.interface';
+import {TestSeriesDetailsForPublisher} from '../../shared/interfaces/test-series.interface';
 
 @Injectable({
   providedIn: "root"
@@ -47,7 +47,7 @@ export class PublisherService {
       );
   }
 
-  addTestSeries(testSeriesDetailsValue: TestSeriesDetails) {
+  addTestSeries(testSeriesDetailsValue: TestSeriesDetailsForPublisher) {
     this.loadingService.showLoading(true, "Adding test series...");
     this.http
       .post(

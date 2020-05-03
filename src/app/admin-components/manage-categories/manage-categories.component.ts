@@ -4,6 +4,7 @@ import { AdminService } from "../../services/admin/admin.service";
 import { AddUpdateCategoriesComponent } from "../../admin-components/add-update-categories/add-update-categories.component";
 import { MatDialog } from "@angular/material/dialog";
 import { SubjectCategory } from '../../shared/interfaces/category.interface';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: "app-manage-categories",
@@ -18,10 +19,12 @@ export class ManageCategoriesComponent implements OnInit {
   constructor(
     public authenticationService: AuthenticationService,
     public adminService: AdminService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private title: Title
   ) {}
 
   ngOnInit() {
+    
     this.adminService.allCategories = [];
     this.adminService.getAllCategories({pageNo: this.currentPage, limit: this.limit});
   }

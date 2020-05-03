@@ -20,80 +20,65 @@
     background: rgb(245, 154, 94) !important;
   }
 
-  .ui-scrollpanel-bar-y {
-    background-color: rgba(3, 171, 248, 0.863);
-  }
-
-  .ui-scrollpanel-bar-x {
-    background-color: rgba(3, 171, 248, 0.863);
-  }
-
-  .mat-button-toggle-label-content {
-    line-height: 2 !important;
-  }
-
-  .mat-button-toggle-label-content {
-    line-height: 2 !important;
-  }
 }
 
-.user-activated-accept-status {
+.next-prev-layout {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.next-prev-button {
+  background-color: rgba(43, 42, 42, 0.767);
+}
+
+.manage-test-series-row-content {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px;
+  border-color: rgb(245, 154, 94);
+  border-style: double;
+  padding: 8px;
+}
+
+.manage-test-series-heading {
+  font-size: 1em;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1px;
+  word-wrap: break-word;
+}
+
+.manage-test-series-text-content {
+  font-size: 0.9em;
+  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1px;
+  word-wrap: break-word;
+}
+
+.is-visible-status {
   cursor: pointer;
   background: none;
   color: rgb(17, 148, 56);
   border: none !important;
 }
 
-.user-activated-reject-status {
+.is-not-visible-status {
   cursor: pointer;
   background: none;
   color: rgba(199, 24, 18, 0.863);
   border: none !important;
 }
 
-.user-activated-accept-status-checked {
+.is-visible-status-checked {
   cursor: pointer;
   background: rgb(17, 148, 56);
   color: rgba(255, 255, 255, 0.863);
   border: none !important;
 }
 
-.user-activated-reject-status-checked {
+.is-not-visible-status-checked {
   cursor: pointer;
   background: rgb(197, 52, 26);
   color: rgba(255, 255, 255, 0.863);
   border: none !important;
-}
-
-.manage-test-listing-heading {
-  font-size: 1em;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 3px;
-  word-wrap: break-word;
-}
-
-.manage-test-listing-content {
-  font-size: 1em;
-  font-weight: normal;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 5px;
-  word-wrap: break-word;
-}
-
-.manage-test-listing-row-content {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 8px;
-  border: 1px;
-  border-style: double;
-  border-color: rgb(245, 154, 94);
-}
-
-.next-prev-layout {
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
-.next-prev-button {
-  background-color: rgba(43, 42, 42, 0.767);
 }

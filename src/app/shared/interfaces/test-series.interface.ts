@@ -1,7 +1,7 @@
 import { Publisher, Student } from './users.interfaces';
 import { SubjectSubCategory } from './category.interface';
 
-export interface TestSeriesDetails {
+export interface TestSeriesDetailsForPublisher {
     testSeriesId: number;
     testSeriesName: string;
     categoryId: number;
@@ -11,7 +11,23 @@ export interface TestSeriesDetails {
     durationMax: number;
     passingMarks: number;
     price: number;
+    isVisible: boolean,
     publisherId: number;
+    testSeriesQuestions: Array<TestSeriesQuestion>;
+}
+
+export interface TestSeriesDetailsForAdmin {
+    testSeriesId: number;
+    testSeriesName: string;
+    categoryId: number;
+    subCategoryId: number;
+    totalQuestions: number;
+    totalMarks: number;
+    durationMax: number;
+    passingMarks: number;
+    price: number;
+    isVisible: boolean,
+    adminId: number;
     testSeriesQuestions: Array<TestSeriesQuestion>;
 }
 
@@ -35,6 +51,7 @@ export interface TestSeries {
     totalMarks: number;
     passingMarks: number;
     price: number;
+    isVisible: boolean,
     createdDate: Date;
     modifiedDate: Date;
     testSeriesIdToTestSeriesData: Array<TestSeriesData>;

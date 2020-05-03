@@ -38,7 +38,7 @@
                   <div fxFlex=100>
                     <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.duration' | translate }}</span>
-                      <span class="test-listing-content">{{testData.durationMin}}</span>
+                      <span class="test-listing-content">{{testData.durationMin + " Min."}}</span>
                     </div>
                     <div fxFlex=25 fxLayout="column">
                       <span
@@ -58,6 +58,10 @@
                     <div fxFlex=25 fxLayout="column">
                       <span class="test-listing-heading">{{'testSeriesListingLabels.uploadedBy' | translate }}</span><span
                         class="test-listing-content">{{testData.uploadedByPublisher.fullName}}</span>
+                    </div>
+                    <div fxFlex=25 fxLayout="column">
+                      <span class="test-listing-heading">{{'testSeriesListingLabels.createdDate' | translate }}</span><span
+                        class="test-listing-content">{{testData.createdDate.toLocaleString() | date :"medium"}}</span>
                     </div>
                     <div fxFlex=50 fxFlex.sm=100 fxFlex.xs=100 fxLayoutAlign="start center">
                       <button mat-raised-button class="add-to-cart-perform-button"

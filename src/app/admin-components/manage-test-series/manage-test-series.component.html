@@ -9,15 +9,80 @@
         <div [ngStyle]="{width: '100%', height: height,
               overflow:'auto'}">
           <div fxLayout="column">
-            <div *ngFor="let test of authenticationService.allUsers" class="manage-test-listing-row-content">
+            <div fxLayout="row wrap" fxLayoutAlign="center center" class="manage-test-series-row-content" *ngFor="let testData of adminService.allTests[allTestCurrentPageNo]; let i = index">
+                <div fxFlex=100>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-test-series-heading">{{'manageTestSeries.testName' | translate }}</span><span
+                      class="manage-test-series-text-content">{{testData.name}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-test-series-heading">{{'manageTestSeries.testType' | translate }}</span><span
+                      class="manage-test-series-text-content">{{testData.subjectSubCategoryIdToTestSeries.name}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-test-series-heading">{{'manageTestSeries.noOfQuestions' | translate }}</span><span
+                      class="manage-test-series-text-content">{{testData.totalQuestions}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-test-series-heading">{{'manageTestSeries.duration' | translate }}</span><span
+                      class="manage-test-series-text-content">{{testData.durationMin + " Min."}}</span>
+                  </div>
+                </div>
+                <div fxFlex=100>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-test-series-heading">{{'manageTestSeries.totalMarks' | translate }}</span><span
+                      class="manage-test-series-text-content">{{testData.totalMarks}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-test-series-heading">{{'manageTestSeries.minMarks' | translate }}</span><span
+                      class="manage-test-series-text-content">{{testData.passingMarks}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-test-series-heading">{{'manageTestSeries.price' | translate }}</span><span
+                      class="manage-test-series-text-content">{{testData.price| currency:'INR'}}</span>
+                  </div>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-test-series-heading">{{'manageTestSeries.createdDate' | translate }}</span><span
+                      class="manage-test-series-text-content">{{testData.createdDate.toLocaleString() | date:"medium"}}</span>
+                  </div>
+                </div>
+                <div fxFlex=100>
+                  <div fxFlex=25 fxLayout="column">
+                    <span class="manage-test-series-heading">{{'manageTestSeries.uploadedBy' | translate }}</span><span
+                      class="manage-test-series-text-content">{{testData.uploadedByPublisher.fullName}}</span>
+                  </div>
+                  <div fxFlex=25 style="margin: 3px;" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row">
+                    <span class="manage-users-listing-heading">{{
+                                'manageTestSeries.visibility'
+                                | translate }}</span>
+                    <div fxLayout="row wrap">
+                      <mat-button-toggle-group #requestStatus="matButtonToggleGroup" fxLayout="row"
+                        [(ngModel)]="testData.isVisible" (change)="updateTestSeries(testData)">
+                        <mat-button-toggle [value]="true"
+                          [ngClass]="{'is-visible-status': !testData.isVisible, 'is-visible-status-checked': testData.isVisible}">
+                          {{
+                                        ('manageTestSeries.visible'
+                                        | translate) | uppercase }}
+                        </mat-button-toggle>
+                        <mat-button-toggle [value]="false"
+                          [ngClass]="{'is-not-visible-status-checked': !testData.isVisible, 'is-not-visible-status': testData.isVisible}">
+                          {{
+                                        ('manageTestSeries.notVisible'
+                                        | translate) | uppercase }}
+                        </mat-button-toggle>
+                      </mat-button-toggle-group>
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
       </div>
       <div fxFlex=100 fxLayoutAlign="center center" class="next-prev-layout">
-        <button mat-raised-button class="next-prev-button"><i class="fa
-                    fa-arrow-left" aria-hidden="true"></i></button>
-        <button mat-raised-button class="next-prev-button" fxFlexOffset=5><i class="fa fa-arrow-right"
+        <button mat-raised-button class="next-prev-button" (click)="prevAllTestPage()" [disabled]="!adminService.allTests[allTestCurrentPageNo - 1]"><i
+            class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button mat-raised-button class="next-prev-button" fxFlexOffset=5 (click)="nextAllTestPage()"
+          [disabled]="!adminService.allTests[allTestCurrentPageNo + 1]"><i class="fa fa-arrow-right"
             aria-hidden="true"></i></button>
       </div>
     </mat-card-content>

@@ -51,13 +51,13 @@
                                         <span class="dashboard-listing-heading">{{
                                             'dashboardLabels.adminDashboardLabels.requestCreatedDateTime'
                                             | translate }}</span><span
-                                            class="dashboard-listing-content">{{request.dateCreated | date:"medium"}}</span>
+                                            class="dashboard-listing-content">{{request.dateCreated.toLocaleString() | date:"medium"}}</span>
                                     </div>
                                     <div fxFlex=25 fxLayout="column">
                                         <span class="dashboard-listing-heading">{{
                                             'dashboardLabels.adminDashboardLabels.requestModifyDateTime'
                                             | translate }}</span><span
-                                            class="dashboard-listing-content">{{request.lastModified | date:"medium"}}</span>
+                                            class="dashboard-listing-content">{{request.lastModified.toLocaleString() | date:"medium"}}</span>
                                     </div>
                                    
                                     <div fxFlex=50 fxLayout="column">

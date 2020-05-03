@@ -168,7 +168,6 @@
     }
   },
   "testSeriesListingLabels": {
-    "testId": "Test ID",
     "testName": "Test Name",
     "testType": "Category",
     "noOfQuestions": "No. of Questions",
@@ -176,6 +175,7 @@
     "totalMarks": "Total Marks",
     "minMarks": "Passing Marks",
     "price": "Price",
+    "createdDate": "Created On",
     "uploadedBy": "Uploaded By",
     "ratings": "Ratings",
     "addToCarts": "Add to Carts",
@@ -203,6 +203,20 @@
     "addNewCategory": "Add New Category",
     "updateCategory": "Update",
     "deleteCategory": "Delete"
+  },
+  "manageTestSeries": {
+    "testName": "Test Name",
+    "testType": "Category",
+    "noOfQuestions": "No. of Questions",
+    "duration": "Duration",
+    "totalMarks": "Total Marks",
+    "minMarks": "Passing Marks",
+    "price": "Price",
+    "createdDate": "Created On",
+    "uploadedBy": "Uploaded By",
+    "visibility": "Visibility",
+    "visible": "Visible",
+    "notVisible": "Not Visible"
   },
   "requestsLabels": {
     "addNewRequests": "Add New Request",

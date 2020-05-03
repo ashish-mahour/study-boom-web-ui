@@ -1,12 +1,12 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
-import { TestSeries, TestSeriesData } from 'src/app/shared/interfaces/test-series.interface';
-import { StudentPerformedTestRequest } from 'src/app/shared/interfaces/users.interfaces';
+import { UserService } from '../../services/user/user.service';
+import { TestSeries, TestSeriesData } from '../../shared/interfaces/test-series.interface';
+import { StudentPerformedTestRequest } from '../../shared/interfaces/users.interfaces';
 import { MatDialog } from '@angular/material/dialog';
-import { SubmitRatingsComponent } from 'src/app/shared/submit-ratings/submit-ratings.component';
+import { SubmitRatingsComponent } from '../../shared/submit-ratings/submit-ratings.component';
 
 @Component({
   selector: 'app-perform-test-series',

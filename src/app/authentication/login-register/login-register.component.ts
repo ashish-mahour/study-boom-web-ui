@@ -4,7 +4,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { AuthenticationService } from "../../services/authentication/authentication.service";
-import { ForgotPasswordComponent } from 'src/app/shared/forgot-password/forgot-password/forgot-password.component';
+import { ForgotPasswordComponent } from '../../shared/forgot-password/forgot-password/forgot-password.component';
 
 @Component({
   selector: "app-login-register",

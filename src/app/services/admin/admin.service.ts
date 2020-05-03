@@ -6,10 +6,10 @@ import * as config from "../../shared/config.json";
 import { HttpClient } from "@angular/common/http";
 import { AddUpdateCategoriesComponent } from "../../admin-components/add-update-categories/add-update-categories.component";
 import { Users } from '../../shared/interfaces/users.interfaces';
-import { TestSeries } from '../../shared/interfaces/test-series.interface';
+import { TestSeries, TestSeriesDetailsForAdmin } from '../../shared/interfaces/test-series.interface';
 import { SubjectCategory, CategoryDetails } from '../../shared/interfaces/category.interface';
 import { Requests, RequestDetails } from '../../shared/interfaces/requests.interface';
-import { Page, CategoryStatus, RequestsStatus } from '../../shared/interfaces/status.interface';
+import { Page, CategoryStatus, RequestsStatus, TestSeriesStatus } from '../../shared/interfaces/status.interface';
 
 @Injectable({
   providedIn: "root"
@@ -54,7 +54,7 @@ export class AdminService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: error && error.error? error.error.message: "Error found in getting users!!"
+              message: error && error.error ? error.error.message : "Error found in getting users!!"
             }
           });
         }
@@ -89,7 +89,7 @@ export class AdminService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: error && error.error? error.error.message: "Error found in getting categories!!"
+              message: error && error.error ? error.error.message : "Error found in getting categories!!"
             }
           });
         }
@@ -131,7 +131,7 @@ export class AdminService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: error && error.error? error.error.message: "Error found in adding/updating categories!!"
+              message: error && error.error ? error.error.message : "Error found in adding/updating categories!!"
             }
           });
         }
@@ -165,7 +165,7 @@ export class AdminService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: error && error.error? error.error.message: "Error found in deleting categories!!"
+              message: error && error.error ? error.error.message : "Error found in deleting categories!!"
             }
           });
         }
@@ -173,7 +173,7 @@ export class AdminService {
   }
 
   getAllRequests(page: Page) {
-    this.loadingService.showLoading(true, "Get all requests...");
+    this.loadingService.showLoading(true, "Getting all Requests...");
     this.http
       .get(
         config.serverUrl +
@@ -200,7 +200,7 @@ export class AdminService {
             maxWidth: "60%",
             data: {
               type: "error",
-              message: error && error.error? error.error.message: "Error found in getting requests!!"
+              message: error && error.error ? error.error.message : "Error found in getting requests!!"
             }
           });
         }
@@ -229,9 +229,72 @@ export class AdminService {
           maxWidth: "60%",
           data: {
             type: "error",
-            message: error && error.error? error.error.message: "Error modifing request."
+            message: error && error.error ? error.error.message : "Error modifing request."
           }
         })
+      })
+  }
+
+  getAllTests(page: Page) {
+    this.loadingService.showLoading(true, "Getting all Test Series...");
+    this.http
+      .get(
+        config.serverUrl +
+        config.api.admin +
+        "/get/all/test/series?pageNo=" +
+        page.pageNo +
+        "&limit=" +
+        page.limit
+      )
+      .subscribe(
+        (data: Array<TestSeries>) => {
+          this.loadingService.showLoading(false, null);
+          if (data.length > 10) {
+            this.allTests.push(data.slice(0, 10));
+            this.allTests.push(data.slice(10, data.length));
+          } else if (data.length > 0) {
+            this.allTests.push(data);
+          }
+        },
+        (error: any) => {
+          this.loadingService.showLoading(false, null);
+          this.dialog.open(AlertBoxComponent, {
+            minWidth: "25%",
+            maxWidth: "60%",
+            data: {
+              type: "error",
+              message: error && error.error ? error.error.message : "Error found in getting Test Series!!"
+            }
+          });
+        }
+      );
+  }
+
+  updateTestSeries(testSeriesDetails: TestSeriesDetailsForAdmin) {
+    this.loadingService.showLoading(true, "Changing Visibility...");
+    this.http.post(config.serverUrl +
+      config.api.admin + "/modify/test/series", testSeriesDetails).subscribe((response: TestSeriesStatus) => {
+        this.loadingService.showLoading(false, null);
+        this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "success",
+            message: response.message
+          }
+        });
+        this.allTests = []
+        this.getAllTests({ pageNo: 0, limit: 20 })
+      }, (error: any) => {
+        this.loadingService.showLoading(false, null);
+        this.dialog.open(AlertBoxComponent, {
+          minWidth: "25%",
+          maxWidth: "60%",
+          data: {
+            type: "error",
+            message: error && error.error ? error.error.message : "Error found in getting Test Series!!"
+          }
+        });
       })
   }
 }

@@ -30,6 +30,7 @@ export class AddTestSeriesComponent implements OnInit {
       null,
       [Validators.required, Validators.pattern("[0-9]{1,3}")]
     ],
+    isVisible: [true],
     price: [null, [Validators.required, Validators.pattern("[0-9]{1,3}")]],
     testSeriesQuestions: this.formBuilder.array([], Validators.required)
   });

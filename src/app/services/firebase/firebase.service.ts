@@ -3,8 +3,8 @@ import * as firebase from 'firebase/app'
 import 'firebase/storage'
 import * as config from '../../shared/config.json'
 import { MatDialog } from '@angular/material/dialog';
-import { AlertBoxComponent } from 'src/app/shared/alert-box/alert-box.component';
-import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
+import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
+import { LoadingAnimServiceService } from '../../shared/loading/loading-anim-service.service';
 
 @Injectable({
   providedIn: 'root'

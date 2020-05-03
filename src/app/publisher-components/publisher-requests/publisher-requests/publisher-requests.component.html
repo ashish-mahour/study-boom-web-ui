@@ -29,11 +29,11 @@
                             <div fxFlex=100 fxLayout>
                                 <div fxLayout="column" fxFlex=50>
                                     <span class="manage-requests-listing-heading">{{'requestsLabels.requestCreatedDateTime'| translate }} : </span>
-                                    <span class="manage-requests-listing-content">{{request.dateCreated | date:"medium"}}</span>
+                                    <span class="manage-requests-listing-content">{{request.dateCreated.toLocaleString() | date:"medium"}}</span>
                                 </div>
                                 <div fxLayout="column" fxFlex=50>
                                     <span class="manage-requests-listing-heading">{{'requestsLabels.requestModifyDateTime'| translate }} : </span>
-                                    <span class="manage-requests-listing-content">{{request.lastModified | date:"medium"}}</span>
+                                    <span class="manage-requests-listing-content">{{request.lastModified.toLocaleString() | date:"medium"}}</span>
                                 </div>
                             </div>
                             <div fxFlex=100 fxLayoutAlign="end center" style="padding: 5px;">

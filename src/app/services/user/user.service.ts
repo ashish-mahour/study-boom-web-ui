@@ -5,11 +5,11 @@ import { MatDialog } from '@angular/material/dialog';
 import * as config from '../../shared/config.json';
 import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
 import { TestSeries, StudentPerfromedTest } from '../../shared/interfaces/test-series.interface';
-import { Page } from 'src/app/shared/interfaces/status.interface';
+import { Page } from '../../shared/interfaces/status.interface';
 import { Router } from '@angular/router';
-import { StudentPerformedTestRequest } from 'src/app/shared/interfaces/users.interfaces';
-import { UserReport } from 'src/app/shared/interfaces/reports.interface';
-import { TestSeriesRatings, TestSeriesRatingsStatus } from 'src/app/shared/interfaces/test-series-ratings.interface';
+import { StudentPerformedTestRequest } from '../../shared/interfaces/users.interfaces';
+import { UserReport } from '../../shared/interfaces/reports.interface';
+import { TestSeriesRatings, TestSeriesRatingsStatus } from '../../shared/interfaces/test-series-ratings.interface';
 
 @Injectable({
   providedIn: 'root'

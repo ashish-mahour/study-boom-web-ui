@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { TestSeriesRatings } from '../interfaces/test-series-ratings.interface';
-import { UserService } from 'src/app/services/user/user.service';
+import { UserService } from '../../services/user/user.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({

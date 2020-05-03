@@ -5,8 +5,8 @@ import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { AuthenticationService } from "../../services/authentication/authentication.service";
 import * as config from '../../shared/config.json';
-import { FirebaseService } from 'src/app/services/firebase/firebase.service';
-import { LoadingAnimServiceService } from 'src/app/shared/loading/loading-anim-service.service';
+import { FirebaseService } from '../../services/firebase/firebase.service';
+import { LoadingAnimServiceService } from '../../shared/loading/loading-anim-service.service';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({

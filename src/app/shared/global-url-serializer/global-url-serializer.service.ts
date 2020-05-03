@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DefaultUrlSerializer, UrlTree, UrlSegment } from '@angular/router';
-import { childRouterOutlets } from 'src/app/app-routing.module';
+import { childRouterOutlets } from '../../app-routing.module';
 
 @Injectable({
   providedIn: 'root'
