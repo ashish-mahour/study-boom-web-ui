@@ -238,11 +238,11 @@
                         <button type="button" mat-raised-button class="button-layout-for-remove-icon" [disabled]="testSeriesQuestions().controls.length === 1" (click)="removeQuestion(questionPosition)"><i
                             class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;</button>
                         <button type="button" mat-raised-button class="button-layout-for-prev-icon" fxFlexOffset=2
-                          (click)="questionPosition = questionPosition - 1" [disabled]="questionPosition === 0"><i
+                          (click)="questionPosition = (questionPosition - 1)" [disabled]="!testSeriesQuestionsGroup(questionPosition - 1)"><i
                             class="fa
                       fa-arrow-left" aria-hidden="true"></i></button>
                         <button type="button" mat-raised-button class="button-layout-for-next-icon" fxFlexOffset=2
-                          (click)="questionPosition = questionPosition + 1" [disabled]="questionPosition === testSeriesQuestion.length - 1"> <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                          (click)="questionPosition = (questionPosition + 1)" [disabled]="!testSeriesQuestionsGroup(questionPosition + 1)"> <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                         <button type="button" mat-raised-button class="button-layout-for-add-icon" fxFlexOffset=2
                           (click)="addQuestion()" [disabled]="testSeriesQuestionsGroup(questionPosition).invalid"><i class="fa fa-plus"
                             aria-hidden="true"></i>&nbsp;</button>
